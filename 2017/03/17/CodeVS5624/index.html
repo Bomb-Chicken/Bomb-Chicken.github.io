@@ -7,14 +7,15 @@
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <meta name="description" content="传送门：http://codevs.cn/problem/5624/ 算法一（送分算法）： 最朴素的算法应该就是四重循环暴力枚举每一个 $x_a,x_b,x_c,x_d$ 当然只能通过较少的点 于是$O(n^4)$ 算法二（骗分算法）： 由算法一改变一下便可以省下一重循环 暴力出 $x_a,x_b,x_c ,然后计算出 x_d$ 于是$O(n^3)$ 当然还可以加一些常数上的优化 比如确定 $x_">
+<meta name="keywords" content="枚举、搜索">
 <meta property="og:type" content="article">
-<meta property="og:title" content="【NOIP2016——PJ4】魔法阵">
+<meta property="og:title" content="【搜索；NOIP2016——PJ4】魔法阵">
 <meta property="og:url" content="http://yoursite.com/2017/03/17/CodeVS5624/index.html">
 <meta property="og:site_name" content="炸鸡">
 <meta property="og:description" content="传送门：http://codevs.cn/problem/5624/ 算法一（送分算法）： 最朴素的算法应该就是四重循环暴力枚举每一个 $x_a,x_b,x_c,x_d$ 当然只能通过较少的点 于是$O(n^4)$ 算法二（骗分算法）： 由算法一改变一下便可以省下一重循环 暴力出 $x_a,x_b,x_c ,然后计算出 x_d$ 于是$O(n^3)$ 当然还可以加一些常数上的优化 比如确定 $x_">
-<meta property="og:updated_time" content="2017-04-27T04:42:29.000Z">
+<meta property="og:updated_time" content="2017-05-13T08:51:00.767Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="【NOIP2016——PJ4】魔法阵">
+<meta name="twitter:title" content="【搜索；NOIP2016——PJ4】魔法阵">
 <meta name="twitter:description" content="传送门：http://codevs.cn/problem/5624/ 算法一（送分算法）： 最朴素的算法应该就是四重循环暴力枚举每一个 $x_a,x_b,x_c,x_d$ 当然只能通过较少的点 于是$O(n^4)$ 算法二（骗分算法）： 由算法一改变一下便可以省下一重循环 暴力出 $x_a,x_b,x_c ,然后计算出 x_d$ 于是$O(n^3)$ 当然还可以加一些常数上的优化 比如确定 $x_">
     
     
@@ -35,7 +36,7 @@
         
     
     <!-- title -->
-    <title>【NOIP2016——PJ4】魔法阵</title>
+    <title>【搜索；NOIP2016——PJ4】魔法阵</title>
     <!-- styles -->
     <link rel="stylesheet" href="/css/style.css">
     <!-- rss --><!-- hexo-inject:begin --><!-- hexo-inject:end -->
@@ -80,15 +81,15 @@
     <div id="share" style="display: none">
       <ul>
   <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2017/03/17/CodeVS5624/"><i class="fa fa-facebook " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2017/03/17/CodeVS5624/&text=【NOIP2016——PJ4】魔法阵"><i class="fa fa-twitter " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2017/03/17/CodeVS5624/&title=【NOIP2016——PJ4】魔法阵"><i class="fa fa-linkedin " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2017/03/17/CodeVS5624/&is_video=false&description=【NOIP2016——PJ4】魔法阵"><i class="fa fa-pinterest " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=【NOIP2016——PJ4】魔法阵&body=Check out this article: http://yoursite.com/2017/03/17/CodeVS5624/"><i class="fa fa-envelope " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2017/03/17/CodeVS5624/&title=【NOIP2016——PJ4】魔法阵"><i class="fa fa-get-pocket " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2017/03/17/CodeVS5624/&title=【NOIP2016——PJ4】魔法阵"><i class="fa fa-reddit " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2017/03/17/CodeVS5624/&title=【NOIP2016——PJ4】魔法阵"><i class="fa fa-stumbleupon " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2017/03/17/CodeVS5624/&title=【NOIP2016——PJ4】魔法阵"><i class="fa fa-digg " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2017/03/17/CodeVS5624/&name=【NOIP2016——PJ4】魔法阵&description="><i class="fa fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2017/03/17/CodeVS5624/&text=【搜索；NOIP2016——PJ4】魔法阵"><i class="fa fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2017/03/17/CodeVS5624/&title=【搜索；NOIP2016——PJ4】魔法阵"><i class="fa fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2017/03/17/CodeVS5624/&is_video=false&description=【搜索；NOIP2016——PJ4】魔法阵"><i class="fa fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=【搜索；NOIP2016——PJ4】魔法阵&body=Check out this article: http://yoursite.com/2017/03/17/CodeVS5624/"><i class="fa fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2017/03/17/CodeVS5624/&title=【搜索；NOIP2016——PJ4】魔法阵"><i class="fa fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2017/03/17/CodeVS5624/&title=【搜索；NOIP2016——PJ4】魔法阵"><i class="fa fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2017/03/17/CodeVS5624/&title=【搜索；NOIP2016——PJ4】魔法阵"><i class="fa fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2017/03/17/CodeVS5624/&title=【搜索；NOIP2016——PJ4】魔法阵"><i class="fa fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2017/03/17/CodeVS5624/&name=【搜索；NOIP2016——PJ4】魔法阵&description="><i class="fa fa-tumblr " aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
@@ -105,7 +106,7 @@
   <header>
     
     <h1 class="posttitle" itemprop="name headline">
-        【NOIP2016——PJ4】魔法阵
+        【搜索；NOIP2016——PJ4】魔法阵
     </h1>
 
 
@@ -121,6 +122,11 @@
 
 
       
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/枚举、搜索/">枚举、搜索</a>
+    </div>
+
 
     </div>
   </header>
@@ -183,15 +189,15 @@
     <div id="share-footer" style="display: none">
       <ul>
   <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2017/03/17/CodeVS5624/"><i class="fa fa-facebook fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2017/03/17/CodeVS5624/&text=【NOIP2016——PJ4】魔法阵"><i class="fa fa-twitter fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2017/03/17/CodeVS5624/&title=【NOIP2016——PJ4】魔法阵"><i class="fa fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2017/03/17/CodeVS5624/&is_video=false&description=【NOIP2016——PJ4】魔法阵"><i class="fa fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=【NOIP2016——PJ4】魔法阵&body=Check out this article: http://yoursite.com/2017/03/17/CodeVS5624/"><i class="fa fa-envelope fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2017/03/17/CodeVS5624/&title=【NOIP2016——PJ4】魔法阵"><i class="fa fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2017/03/17/CodeVS5624/&title=【NOIP2016——PJ4】魔法阵"><i class="fa fa-reddit fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2017/03/17/CodeVS5624/&title=【NOIP2016——PJ4】魔法阵"><i class="fa fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2017/03/17/CodeVS5624/&title=【NOIP2016——PJ4】魔法阵"><i class="fa fa-digg fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2017/03/17/CodeVS5624/&name=【NOIP2016——PJ4】魔法阵&description="><i class="fa fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2017/03/17/CodeVS5624/&text=【搜索；NOIP2016——PJ4】魔法阵"><i class="fa fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2017/03/17/CodeVS5624/&title=【搜索；NOIP2016——PJ4】魔法阵"><i class="fa fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2017/03/17/CodeVS5624/&is_video=false&description=【搜索；NOIP2016——PJ4】魔法阵"><i class="fa fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=【搜索；NOIP2016——PJ4】魔法阵&body=Check out this article: http://yoursite.com/2017/03/17/CodeVS5624/"><i class="fa fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2017/03/17/CodeVS5624/&title=【搜索；NOIP2016——PJ4】魔法阵"><i class="fa fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2017/03/17/CodeVS5624/&title=【搜索；NOIP2016——PJ4】魔法阵"><i class="fa fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2017/03/17/CodeVS5624/&title=【搜索；NOIP2016——PJ4】魔法阵"><i class="fa fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2017/03/17/CodeVS5624/&title=【搜索；NOIP2016——PJ4】魔法阵"><i class="fa fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2017/03/17/CodeVS5624/&name=【搜索；NOIP2016——PJ4】魔法阵&description="><i class="fa fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
