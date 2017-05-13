@@ -1,21 +1,247 @@
 <!DOCTYPE html>
-<html<%= config.language ? " lang=" + config.language.substring(0, 2) : ""%>>
-<%- partial('_partial/head') %>
+<html lang=zh>
+<head>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="传送门：https://vijos.org/d/jcsy/p/58b2b8bad3d8a123ab08db9f 这是一道贪心题，主要由2部分组成 1、首先最优情况必定是k张优惠券全部用完，那么先按优惠价排序，排出来前k个优惠价之和如果比m大，则从小到大按优惠价能买几个买几个，然后输出 2、然后考虑如果步骤1后前k个都买下并还有钱剩余，则可能可以再多买， 但是： 前k个必定不能扔掉：一旦某个被扔掉，">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【贪心】兔警官朱迪买礼物">
+<meta property="og:url" content="http://yoursite.com/2017/02/26/practice1/index.html">
+<meta property="og:site_name" content="炸鸡">
+<meta property="og:description" content="传送门：https://vijos.org/d/jcsy/p/58b2b8bad3d8a123ab08db9f 这是一道贪心题，主要由2部分组成 1、首先最优情况必定是k张优惠券全部用完，那么先按优惠价排序，排出来前k个优惠价之和如果比m大，则从小到大按优惠价能买几个买几个，然后输出 2、然后考虑如果步骤1后前k个都买下并还有钱剩余，则可能可以再多买， 但是： 前k个必定不能扔掉：一旦某个被扔掉，">
+<meta property="og:updated_time" content="2017-04-27T04:41:48.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="【贪心】兔警官朱迪买礼物">
+<meta name="twitter:description" content="传送门：https://vijos.org/d/jcsy/p/58b2b8bad3d8a123ab08db9f 这是一道贪心题，主要由2部分组成 1、首先最优情况必定是k张优惠券全部用完，那么先按优惠价排序，排出来前k个优惠价之和如果比m大，则从小到大按优惠价能买几个买几个，然后输出 2、然后考虑如果步骤1后前k个都买下并还有钱剩余，则可能可以再多买， 但是： 前k个必定不能扔掉：一旦某个被扔掉，">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>【贪心】兔警官朱迪买礼物</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- rss --><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    
+    
+</head>
+
 <body>
-    <% if (is_post()) { %>
-      <%- partial('_partial/post/actions_desktop') %>
-    <% } %>
-    <div class="content index width mx-auto px2 my4">
-        <% if (!is_post()) { %>
-          <%- partial('_partial/header') %>
-        <% } %>
-        <%- body %>
+    
+      <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="header-post">
+  <a id="menu-icon" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/links/">Links</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2017/02/28/e_gcd/"><i class="fa fa-chevron-left" aria-hidden="true" onmouseover='$("#i-prev").toggle();' onmouseout='$("#i-prev").toggle();'></i></a></li>
+        
+        
+        <li><a class="icon" href="/2017/02/25/trie/"><i class="fa fa-chevron-right" aria-hidden="true" onmouseover='$("#i-next").toggle();' onmouseout='$("#i-next").toggle();'></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa fa-chevron-up" aria-hidden="true" onmouseover='$("#i-top").toggle();' onmouseout='$("#i-top").toggle();'></i></a></li>
+        <li><a class="icon" href="#"><i class="fa fa-share-alt" aria-hidden="true" onmouseover='$("#i-share").toggle();' onmouseout='$("#i-share").toggle();' onclick='$("#share").toggle();return false;'></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2017/02/26/practice1/"><i class="fa fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2017/02/26/practice1/&text=【贪心】兔警官朱迪买礼物"><i class="fa fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2017/02/26/practice1/&title=【贪心】兔警官朱迪买礼物"><i class="fa fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2017/02/26/practice1/&is_video=false&description=【贪心】兔警官朱迪买礼物"><i class="fa fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=【贪心】兔警官朱迪买礼物&body=Check out this article: http://yoursite.com/2017/02/26/practice1/"><i class="fa fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2017/02/26/practice1/&title=【贪心】兔警官朱迪买礼物"><i class="fa fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2017/02/26/practice1/&title=【贪心】兔警官朱迪买礼物"><i class="fa fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2017/02/26/practice1/&title=【贪心】兔警官朱迪买礼物"><i class="fa fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2017/02/26/practice1/&title=【贪心】兔警官朱迪买礼物"><i class="fa fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2017/02/26/practice1/&name=【贪心】兔警官朱迪买礼物&description="><i class="fa fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
     </div>
-    <% if (is_post()) { %>
-      <%- partial('_partial/post/actions_mobile') %>
-    <% } %>
-    <%- partial('_partial/footer') %>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-number">1.</span> <span class="toc-text">但是：</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index width mx-auto px2 my4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        【贪心】兔警官朱迪买礼物
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">炸鸡</span>
+      </span>
+      
+    <div class="postdate">
+        <time datetime="2017-02-26T12:30:00.000Z" itemprop="datePublished">2017-02-26</time>
+    </div>
+
+
+      
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <p>传送门：<a href="https://vijos.org/d/jcsy/p/58b2b8bad3d8a123ab08db9f" target="_blank" rel="external">https://vijos.org/d/jcsy/p/58b2b8bad3d8a123ab08db9f</a>
+这是一道贪心题，主要由2部分组成
+1、首先最优情况必定是k张优惠券全部用完，那么先按优惠价排序，排出来前k个优惠价之和如果比m大，则从小到大按优惠价能买几个买几个，然后输出
+2、然后考虑如果步骤1后前k个都买下并还有钱剩余，则可能可以再多买，</p>
+<h1>但是：</h1>
+<p>前k个必定不能扔掉：一旦某个被扔掉，则只能省下1张优惠券，这张优惠券用于新的物品要花的钱必定比留下那个扔掉的要多
+所以要加入新的只有两种可能：
+（1）从已有的取出一张优惠券用于加入新的物品（此时新的优惠价要最小，并且被取出优惠券的物品优惠价与原价之差要最小）
+（2）用原价加入新的物品（此时新的原价要最小）
+从（1）（2）中取较优状态用于加入
+那么为了维护已加入物品优惠价与原价之差最小，可以用堆</p>
+<p>以下代码</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;queue&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> MAX 100000000000000007</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> LL long long</span></div><div class="line"></div><div class="line">priority_queue&lt; LL,<span class="built_in">vector</span>&lt;LL&gt;,greater&lt;LL&gt; &gt; h;</div><div class="line">LL n,m,k,s,a_xb,b_xb,ans;</div><div class="line"><span class="keyword">bool</span> f[<span class="number">100005</span>];</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">price</span>&#123;</span></div><div class="line">	LL x,y,z;</div><div class="line">	<span class="keyword">bool</span> <span class="keyword">operator</span> &lt;(<span class="keyword">const</span> price &amp;s)<span class="keyword">const</span>&#123;</div><div class="line">		<span class="keyword">return</span> y&lt;s.y;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line">a[<span class="number">100005</span>],b[<span class="number">100005</span>];</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">bool</span> <span class="title">cmp</span><span class="params">(struct price x,struct price y)</span></span>&#123;</div><div class="line">	<span class="keyword">return</span> x.x&lt;y.x;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line">	<span class="built_in">cin</span>&gt;&gt;n&gt;&gt;m&gt;&gt;k;</div><div class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</div><div class="line">		<span class="built_in">cin</span>&gt;&gt;a[i].x&gt;&gt;a[i].y;</div><div class="line">		a[i].z=i;</div><div class="line">	&#125;</div><div class="line">	sort(a+<span class="number">1</span>,a+n+<span class="number">1</span>);</div><div class="line">	</div><div class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;i++)&#123;</div><div class="line">		<span class="keyword">if</span> (s+a[i].y&lt;=k)&#123;</div><div class="line">			s+=a[i].y;</div><div class="line">			h.push(a[i].x-a[i].y);</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">else</span>&#123;</div><div class="line">			<span class="built_in">cout</span>&lt;&lt;i<span class="number">-1</span>;</div><div class="line">			<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	<span class="built_in">memcpy</span>(b,a,<span class="keyword">sizeof</span> b); sort(b+m+<span class="number">1</span>,b+n+<span class="number">1</span>,cmp);</div><div class="line">	a_xb=m+<span class="number">1</span>; b_xb=m+<span class="number">1</span>;</div><div class="line">	a[n+<span class="number">1</span>].x=a[n+<span class="number">1</span>].y=MAX; b[n+<span class="number">1</span>].x=b[n+<span class="number">1</span>].y=MAX;</div><div class="line">	ans=m;</div><div class="line">	<span class="keyword">while</span> (a_xb&lt;=n||b_xb&lt;=n)&#123;</div><div class="line">		<span class="keyword">if</span> (a[a_xb].y+h.top()&lt;b[b_xb].x)&#123;</div><div class="line">			s+=a[a_xb].y+h.top();</div><div class="line">			h.pop();</div><div class="line">			h.push(a[a_xb].x-a[a_xb].y);</div><div class="line">			f[a[a_xb].z]=<span class="number">1</span>;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">else</span>&#123;</div><div class="line">			s+=b[b_xb].x;</div><div class="line">			f[b[b_xb].z]=<span class="number">1</span>;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">if</span> (s&gt;k)&#123;</div><div class="line">			<span class="built_in">cout</span>&lt;&lt;ans;</div><div class="line">			<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">else</span> ans++;</div><div class="line">		<span class="keyword">while</span> (f[a[a_xb].z]&amp;&amp;a_xb&lt;=n) a_xb++;</div><div class="line">		<span class="keyword">while</span> (f[b[b_xb].z]&amp;&amp;b_xb&lt;=n) b_xb++;</div><div class="line">	&#125;</div><div class="line">	<span class="built_in">cout</span>&lt;&lt;ans;</div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+  </div>
+</article>
+
+
+
+    </div>
+    
+      <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/links/">Links</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-number">1.</span> <span class="toc-text">但是：</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2017/02/26/practice1/"><i class="fa fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2017/02/26/practice1/&text=【贪心】兔警官朱迪买礼物"><i class="fa fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2017/02/26/practice1/&title=【贪心】兔警官朱迪买礼物"><i class="fa fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2017/02/26/practice1/&is_video=false&description=【贪心】兔警官朱迪买礼物"><i class="fa fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=【贪心】兔警官朱迪买礼物&body=Check out this article: http://yoursite.com/2017/02/26/practice1/"><i class="fa fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2017/02/26/practice1/&title=【贪心】兔警官朱迪买礼物"><i class="fa fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2017/02/26/practice1/&title=【贪心】兔警官朱迪买礼物"><i class="fa fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2017/02/26/practice1/&title=【贪心】兔警官朱迪买礼物"><i class="fa fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2017/02/26/practice1/&title=【贪心】兔警官朱迪买礼物"><i class="fa fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2017/02/26/practice1/&name=【贪心】兔警官朱迪买礼物&description="><i class="fa fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+      <ul>
+        <li id="toc"><a class="icon" href="#" onclick='$("#toc-footer").toggle();return false;'><i class="fa fa-list fa-lg" aria-hidden="true"></i> TOC</a></li>
+        <li id="share"><a class="icon" href="#" onclick='$("#share-footer").toggle();return false;'><i class="fa fa-share-alt fa-lg" aria-hidden="true"></i> Share</a></li>
+        <li id="top" style="display:none"><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a></li>
+        <li id="menu"><a class="icon" href="#" onclick='$("#nav-footer").toggle();return false;'><i class="fa fa-bars fa-lg" aria-hidden="true"></i> Menu</a></li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+    
+    <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2017 John Doe
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/links/">Links</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+
 </body>
 </html>
-<%- partial('_partial/styles') %>
-<%- partial('_partial/scripts') %>
+<!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="/lib/meslo-LG/styles.css">
+<link rel="stylesheet" href="/lib/justified-gallery/justifiedGallery.min.css">
+
+
+<!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- Google Analytics -->
+
+<!-- Disqus Comments -->
+
+
