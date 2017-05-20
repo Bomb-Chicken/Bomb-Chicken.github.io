@@ -6,17 +6,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="传送门：http://codevs.cn/problem/1255/(http://codevs.cn/problem/1255/) 这道题很显然是DP 第一个求方案应该是很白痴的DP 三维数组就可以了 用$ f_{i,j,k} $记录自上而下第i层当前层用了j个一共用了k个（注意这里j&amp;lt;=10） 转移就是 $f_{i,j,k}=f_{i-1,j-1,k-j}+f_{i-1,j+1,k-j}">
+    <meta name="description" content="传送门：CodeVS1255 这道题很显然是DP 第一个求方案应该是很白痴的DP 三维数组就可以了 用$ f_{i,j,k} $记录自上而下第i层当前层用了j个一共用了k个（注意这里j&amp;lt;=10） 转移就是 $f_{i,j,k}=f_{i-1,j-1,k-j}+f_{i-1,j+1,k-j}$ 这里的主要问题就在于为什么要自上而下统计 因为第二问求具体方案时要按照自下而上的字典序输出，所以要保">
 <meta name="keywords" content="动态规划DP">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【动态规划】搭积木">
 <meta property="og:url" content="http://yoursite.com/2017/05/13/CodeVS1255/index.html">
 <meta property="og:site_name" content="炸鸡">
-<meta property="og:description" content="传送门：http://codevs.cn/problem/1255/(http://codevs.cn/problem/1255/) 这道题很显然是DP 第一个求方案应该是很白痴的DP 三维数组就可以了 用$ f_{i,j,k} $记录自上而下第i层当前层用了j个一共用了k个（注意这里j&amp;lt;=10） 转移就是 $f_{i,j,k}=f_{i-1,j-1,k-j}+f_{i-1,j+1,k-j}">
-<meta property="og:updated_time" content="2017-05-13T08:44:14.147Z">
+<meta property="og:description" content="传送门：CodeVS1255 这道题很显然是DP 第一个求方案应该是很白痴的DP 三维数组就可以了 用$ f_{i,j,k} $记录自上而下第i层当前层用了j个一共用了k个（注意这里j&amp;lt;=10） 转移就是 $f_{i,j,k}=f_{i-1,j-1,k-j}+f_{i-1,j+1,k-j}$ 这里的主要问题就在于为什么要自上而下统计 因为第二问求具体方案时要按照自下而上的字典序输出，所以要保">
+<meta property="og:updated_time" content="2017-05-20T01:29:19.412Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【动态规划】搭积木">
-<meta name="twitter:description" content="传送门：http://codevs.cn/problem/1255/(http://codevs.cn/problem/1255/) 这道题很显然是DP 第一个求方案应该是很白痴的DP 三维数组就可以了 用$ f_{i,j,k} $记录自上而下第i层当前层用了j个一共用了k个（注意这里j&amp;lt;=10） 转移就是 $f_{i,j,k}=f_{i-1,j-1,k-j}+f_{i-1,j+1,k-j}">
+<meta name="twitter:description" content="传送门：CodeVS1255 这道题很显然是DP 第一个求方案应该是很白痴的DP 三维数组就可以了 用$ f_{i,j,k} $记录自上而下第i层当前层用了j个一共用了k个（注意这里j&amp;lt;=10） 转移就是 $f_{i,j,k}=f_{i-1,j-1,k-j}+f_{i-1,j+1,k-j}$ 这里的主要问题就在于为什么要自上而下统计 因为第二问求具体方案时要按照自下而上的字典序输出，所以要保">
     
     
         
@@ -133,7 +133,7 @@
   
 
   <div class="content" itemprop="articleBody">
-    <p>传送门：http://codevs.cn/problem/1255/(http://codevs.cn/problem/1255/)</p>
+    <p>传送门：<a href="http://codevs.cn/problem/1255/" target="_blank" rel="external">CodeVS1255</a></p>
 <p>这道题很显然是DP</p>
 <p>第一个求方案应该是很白痴的DP</p>
 <p>三维数组就可以了</p>
