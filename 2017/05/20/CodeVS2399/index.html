@@ -9,13 +9,13 @@
     <meta name="description" content="传送门：CodeVS2399 这道题目难度一般，题目原意很显然是求一个特殊限制下的最小树形图，然而数据很大，只支持O(m log m) 但是这道题的特点就是有高度，高度有什么用呢，首先是限定了方向，由于是从特定点（1号点）出发，因此只要处理出能到达哪些点（也就是求第一问），然后再用最小生成树kruskal即可 代码如下： 12345678910111213141516171819202122232">
 <meta name="keywords" content="图论">
 <meta property="og:type" content="article">
-<meta property="og:title" content="【图论】滑雪与时间胶囊">
+<meta property="og:title" content="【生成树】滑雪与时间胶囊">
 <meta property="og:url" content="http://yoursite.com/2017/05/20/CodeVS2399/index.html">
 <meta property="og:site_name" content="炸鸡">
 <meta property="og:description" content="传送门：CodeVS2399 这道题目难度一般，题目原意很显然是求一个特殊限制下的最小树形图，然而数据很大，只支持O(m log m) 但是这道题的特点就是有高度，高度有什么用呢，首先是限定了方向，由于是从特定点（1号点）出发，因此只要处理出能到达哪些点（也就是求第一问），然后再用最小生成树kruskal即可 代码如下： 12345678910111213141516171819202122232">
-<meta property="og:updated_time" content="2017-05-20T01:37:09.833Z">
+<meta property="og:updated_time" content="2017-05-23T13:11:32.989Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="【图论】滑雪与时间胶囊">
+<meta name="twitter:title" content="【生成树】滑雪与时间胶囊">
 <meta name="twitter:description" content="传送门：CodeVS2399 这道题目难度一般，题目原意很显然是求一个特殊限制下的最小树形图，然而数据很大，只支持O(m log m) 但是这道题的特点就是有高度，高度有什么用呢，首先是限定了方向，由于是从特定点（1号点）出发，因此只要处理出能到达哪些点（也就是求第一问），然后再用最小生成树kruskal即可 代码如下： 12345678910111213141516171819202122232">
     
     
@@ -36,7 +36,7 @@
         
     
     <!-- title -->
-    <title>【图论】滑雪与时间胶囊</title>
+    <title>【生成树】滑雪与时间胶囊</title>
     <!-- styles -->
     <link rel="stylesheet" href="/css/style.css">
     <!-- rss --><!-- hexo-inject:begin --><!-- hexo-inject:end -->
@@ -64,6 +64,8 @@
     <span id="actions">
       <ul>
         
+        <li><a class="icon" href="/2017/05/23/CodeVS2404/"><i class="fa fa-chevron-left" aria-hidden="true" onmouseover='$("#i-prev").toggle();' onmouseout='$("#i-prev").toggle();'></i></a></li>
+        
         
         <li><a class="icon" href="/2017/05/13/CodeVS1255/"><i class="fa fa-chevron-right" aria-hidden="true" onmouseover='$("#i-next").toggle();' onmouseout='$("#i-next").toggle();'></i></a></li>
         
@@ -79,15 +81,15 @@
     <div id="share" style="display: none">
       <ul>
   <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2017/05/20/CodeVS2399/"><i class="fa fa-facebook " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2017/05/20/CodeVS2399/&text=【图论】滑雪与时间胶囊"><i class="fa fa-twitter " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2017/05/20/CodeVS2399/&title=【图论】滑雪与时间胶囊"><i class="fa fa-linkedin " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2017/05/20/CodeVS2399/&is_video=false&description=【图论】滑雪与时间胶囊"><i class="fa fa-pinterest " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=【图论】滑雪与时间胶囊&body=Check out this article: http://yoursite.com/2017/05/20/CodeVS2399/"><i class="fa fa-envelope " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2017/05/20/CodeVS2399/&title=【图论】滑雪与时间胶囊"><i class="fa fa-get-pocket " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2017/05/20/CodeVS2399/&title=【图论】滑雪与时间胶囊"><i class="fa fa-reddit " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2017/05/20/CodeVS2399/&title=【图论】滑雪与时间胶囊"><i class="fa fa-stumbleupon " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2017/05/20/CodeVS2399/&title=【图论】滑雪与时间胶囊"><i class="fa fa-digg " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2017/05/20/CodeVS2399/&name=【图论】滑雪与时间胶囊&description="><i class="fa fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2017/05/20/CodeVS2399/&text=【生成树】滑雪与时间胶囊"><i class="fa fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2017/05/20/CodeVS2399/&title=【生成树】滑雪与时间胶囊"><i class="fa fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2017/05/20/CodeVS2399/&is_video=false&description=【生成树】滑雪与时间胶囊"><i class="fa fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=【生成树】滑雪与时间胶囊&body=Check out this article: http://yoursite.com/2017/05/20/CodeVS2399/"><i class="fa fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2017/05/20/CodeVS2399/&title=【生成树】滑雪与时间胶囊"><i class="fa fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2017/05/20/CodeVS2399/&title=【生成树】滑雪与时间胶囊"><i class="fa fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2017/05/20/CodeVS2399/&title=【生成树】滑雪与时间胶囊"><i class="fa fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2017/05/20/CodeVS2399/&title=【生成树】滑雪与时间胶囊"><i class="fa fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2017/05/20/CodeVS2399/&name=【生成树】滑雪与时间胶囊&description="><i class="fa fa-tumblr " aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
@@ -104,7 +106,7 @@
   <header>
     
     <h1 class="posttitle" itemprop="name headline">
-        【图论】滑雪与时间胶囊
+        【生成树】滑雪与时间胶囊
     </h1>
 
 
@@ -164,15 +166,15 @@
     <div id="share-footer" style="display: none">
       <ul>
   <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2017/05/20/CodeVS2399/"><i class="fa fa-facebook fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2017/05/20/CodeVS2399/&text=【图论】滑雪与时间胶囊"><i class="fa fa-twitter fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2017/05/20/CodeVS2399/&title=【图论】滑雪与时间胶囊"><i class="fa fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2017/05/20/CodeVS2399/&is_video=false&description=【图论】滑雪与时间胶囊"><i class="fa fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=【图论】滑雪与时间胶囊&body=Check out this article: http://yoursite.com/2017/05/20/CodeVS2399/"><i class="fa fa-envelope fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2017/05/20/CodeVS2399/&title=【图论】滑雪与时间胶囊"><i class="fa fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2017/05/20/CodeVS2399/&title=【图论】滑雪与时间胶囊"><i class="fa fa-reddit fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2017/05/20/CodeVS2399/&title=【图论】滑雪与时间胶囊"><i class="fa fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2017/05/20/CodeVS2399/&title=【图论】滑雪与时间胶囊"><i class="fa fa-digg fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2017/05/20/CodeVS2399/&name=【图论】滑雪与时间胶囊&description="><i class="fa fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2017/05/20/CodeVS2399/&text=【生成树】滑雪与时间胶囊"><i class="fa fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2017/05/20/CodeVS2399/&title=【生成树】滑雪与时间胶囊"><i class="fa fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2017/05/20/CodeVS2399/&is_video=false&description=【生成树】滑雪与时间胶囊"><i class="fa fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=【生成树】滑雪与时间胶囊&body=Check out this article: http://yoursite.com/2017/05/20/CodeVS2399/"><i class="fa fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2017/05/20/CodeVS2399/&title=【生成树】滑雪与时间胶囊"><i class="fa fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2017/05/20/CodeVS2399/&title=【生成树】滑雪与时间胶囊"><i class="fa fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2017/05/20/CodeVS2399/&title=【生成树】滑雪与时间胶囊"><i class="fa fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2017/05/20/CodeVS2399/&title=【生成树】滑雪与时间胶囊"><i class="fa fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2017/05/20/CodeVS2399/&name=【生成树】滑雪与时间胶囊&description="><i class="fa fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
