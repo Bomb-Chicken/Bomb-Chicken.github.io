@@ -10,7 +10,7 @@
 <meta name="keywords" content="可并堆">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【可并堆】派遣">
-<meta property="og:url" content="http://yoursite.com/2017/07/11/CodeVS1763/index.html">
+<meta property="og:url" content="https://bomb-chicken.github.io/2017/07/11/CodeVS1763/index.html">
 <meta property="og:site_name" content="炸鸡">
 <meta property="og:description" content="传送门：CodeVS1763 做法比较显然，就是给每一个点建一个堆，然后统计以该点为管理者的最优答案，更新一下，然后把这个堆合并到他的父亲节点上，有点类似树形Dp 注意的是建大根堆似乎更优（小根堆秒了的请无视） 统计大根堆里元素之和，然后和预算比较一下，超了就弹出最大的，更新元素和，直到没超为止，更新答案。然后把堆里余下的直接合并到父亲节点即可（因为已弹出的合并了也用不上） 以下代码（左偏树实现）">
 <meta property="og:updated_time" content="2017-07-11T14:14:33.194Z">
@@ -80,16 +80,16 @@
     <br/>
     <div id="share" style="display: none">
       <ul>
-  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2017/07/11/CodeVS1763/"><i class="fa fa-facebook " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2017/07/11/CodeVS1763/&text=【可并堆】派遣"><i class="fa fa-twitter " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2017/07/11/CodeVS1763/&title=【可并堆】派遣"><i class="fa fa-linkedin " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2017/07/11/CodeVS1763/&is_video=false&description=【可并堆】派遣"><i class="fa fa-pinterest " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=【可并堆】派遣&body=Check out this article: http://yoursite.com/2017/07/11/CodeVS1763/"><i class="fa fa-envelope " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2017/07/11/CodeVS1763/&title=【可并堆】派遣"><i class="fa fa-get-pocket " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2017/07/11/CodeVS1763/&title=【可并堆】派遣"><i class="fa fa-reddit " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2017/07/11/CodeVS1763/&title=【可并堆】派遣"><i class="fa fa-stumbleupon " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2017/07/11/CodeVS1763/&title=【可并堆】派遣"><i class="fa fa-digg " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2017/07/11/CodeVS1763/&name=【可并堆】派遣&description="><i class="fa fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://bomb-chicken.github.io/2017/07/11/CodeVS1763/"><i class="fa fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://bomb-chicken.github.io/2017/07/11/CodeVS1763/&text=【可并堆】派遣"><i class="fa fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://bomb-chicken.github.io/2017/07/11/CodeVS1763/&title=【可并堆】派遣"><i class="fa fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://bomb-chicken.github.io/2017/07/11/CodeVS1763/&is_video=false&description=【可并堆】派遣"><i class="fa fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=【可并堆】派遣&body=Check out this article: https://bomb-chicken.github.io/2017/07/11/CodeVS1763/"><i class="fa fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://bomb-chicken.github.io/2017/07/11/CodeVS1763/&title=【可并堆】派遣"><i class="fa fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://bomb-chicken.github.io/2017/07/11/CodeVS1763/&title=【可并堆】派遣"><i class="fa fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://bomb-chicken.github.io/2017/07/11/CodeVS1763/&title=【可并堆】派遣"><i class="fa fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://bomb-chicken.github.io/2017/07/11/CodeVS1763/&title=【可并堆】派遣"><i class="fa fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://bomb-chicken.github.io/2017/07/11/CodeVS1763/&name=【可并堆】派遣&description="><i class="fa fa-tumblr " aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
@@ -166,16 +166,16 @@
 
     <div id="share-footer" style="display: none">
       <ul>
-  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2017/07/11/CodeVS1763/"><i class="fa fa-facebook fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2017/07/11/CodeVS1763/&text=【可并堆】派遣"><i class="fa fa-twitter fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2017/07/11/CodeVS1763/&title=【可并堆】派遣"><i class="fa fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2017/07/11/CodeVS1763/&is_video=false&description=【可并堆】派遣"><i class="fa fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=【可并堆】派遣&body=Check out this article: http://yoursite.com/2017/07/11/CodeVS1763/"><i class="fa fa-envelope fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2017/07/11/CodeVS1763/&title=【可并堆】派遣"><i class="fa fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2017/07/11/CodeVS1763/&title=【可并堆】派遣"><i class="fa fa-reddit fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2017/07/11/CodeVS1763/&title=【可并堆】派遣"><i class="fa fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2017/07/11/CodeVS1763/&title=【可并堆】派遣"><i class="fa fa-digg fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2017/07/11/CodeVS1763/&name=【可并堆】派遣&description="><i class="fa fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://bomb-chicken.github.io/2017/07/11/CodeVS1763/"><i class="fa fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://bomb-chicken.github.io/2017/07/11/CodeVS1763/&text=【可并堆】派遣"><i class="fa fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://bomb-chicken.github.io/2017/07/11/CodeVS1763/&title=【可并堆】派遣"><i class="fa fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://bomb-chicken.github.io/2017/07/11/CodeVS1763/&is_video=false&description=【可并堆】派遣"><i class="fa fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=【可并堆】派遣&body=Check out this article: https://bomb-chicken.github.io/2017/07/11/CodeVS1763/"><i class="fa fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://bomb-chicken.github.io/2017/07/11/CodeVS1763/&title=【可并堆】派遣"><i class="fa fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://bomb-chicken.github.io/2017/07/11/CodeVS1763/&title=【可并堆】派遣"><i class="fa fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://bomb-chicken.github.io/2017/07/11/CodeVS1763/&title=【可并堆】派遣"><i class="fa fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://bomb-chicken.github.io/2017/07/11/CodeVS1763/&title=【可并堆】派遣"><i class="fa fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://bomb-chicken.github.io/2017/07/11/CodeVS1763/&name=【可并堆】派遣&description="><i class="fa fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
@@ -195,7 +195,7 @@
     
     <footer id="footer">
   <div class="footer-left">
-    Copyright &copy; 2017 John Doe
+    Copyright &copy; 2017 炸鸡
   </div>
   <div class="footer-right">
     <nav>

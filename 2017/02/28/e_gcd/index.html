@@ -10,7 +10,7 @@
 <meta name="keywords" content="数论">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【模板】【数论】扩展欧几里得算法">
-<meta property="og:url" content="http://yoursite.com/2017/02/28/e_gcd/index.html">
+<meta property="og:url" content="https://bomb-chicken.github.io/2017/02/28/e_gcd/index.html">
 <meta property="og:site_name" content="炸鸡">
 <meta property="og:description" content="扩展欧几里得算法应用很广： （1）求解不定方程: （2）求解模线性方程（线性同余方程） （3）求解模的逆元 先考虑（1） 对于不定方程 ax+by=c仅当c|gcd(a,b)时方程有解 则可以先求出 ax+by=gcd 的解 因为这不定方程解有无数个，所以我们可以先解出一个通解x0,y0，在利用这个通解表示所有解 因为 ax0+by0=gcd 所以 a(x0+b/gcd*t)+b(y0-a/gcd">
 <meta property="og:updated_time" content="2017-05-20T01:31:01.597Z">
@@ -80,16 +80,16 @@
     <br/>
     <div id="share" style="display: none">
       <ul>
-  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2017/02/28/e_gcd/"><i class="fa fa-facebook " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2017/02/28/e_gcd/&text=【模板】【数论】扩展欧几里得算法"><i class="fa fa-twitter " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2017/02/28/e_gcd/&title=【模板】【数论】扩展欧几里得算法"><i class="fa fa-linkedin " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2017/02/28/e_gcd/&is_video=false&description=【模板】【数论】扩展欧几里得算法"><i class="fa fa-pinterest " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=【模板】【数论】扩展欧几里得算法&body=Check out this article: http://yoursite.com/2017/02/28/e_gcd/"><i class="fa fa-envelope " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2017/02/28/e_gcd/&title=【模板】【数论】扩展欧几里得算法"><i class="fa fa-get-pocket " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2017/02/28/e_gcd/&title=【模板】【数论】扩展欧几里得算法"><i class="fa fa-reddit " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2017/02/28/e_gcd/&title=【模板】【数论】扩展欧几里得算法"><i class="fa fa-stumbleupon " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2017/02/28/e_gcd/&title=【模板】【数论】扩展欧几里得算法"><i class="fa fa-digg " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2017/02/28/e_gcd/&name=【模板】【数论】扩展欧几里得算法&description="><i class="fa fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://bomb-chicken.github.io/2017/02/28/e_gcd/"><i class="fa fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://bomb-chicken.github.io/2017/02/28/e_gcd/&text=【模板】【数论】扩展欧几里得算法"><i class="fa fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://bomb-chicken.github.io/2017/02/28/e_gcd/&title=【模板】【数论】扩展欧几里得算法"><i class="fa fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://bomb-chicken.github.io/2017/02/28/e_gcd/&is_video=false&description=【模板】【数论】扩展欧几里得算法"><i class="fa fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=【模板】【数论】扩展欧几里得算法&body=Check out this article: https://bomb-chicken.github.io/2017/02/28/e_gcd/"><i class="fa fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://bomb-chicken.github.io/2017/02/28/e_gcd/&title=【模板】【数论】扩展欧几里得算法"><i class="fa fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://bomb-chicken.github.io/2017/02/28/e_gcd/&title=【模板】【数论】扩展欧几里得算法"><i class="fa fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://bomb-chicken.github.io/2017/02/28/e_gcd/&title=【模板】【数论】扩展欧几里得算法"><i class="fa fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://bomb-chicken.github.io/2017/02/28/e_gcd/&title=【模板】【数论】扩展欧几里得算法"><i class="fa fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://bomb-chicken.github.io/2017/02/28/e_gcd/&name=【模板】【数论】扩展欧几里得算法&description="><i class="fa fa-tumblr " aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
@@ -192,16 +192,16 @@
 
     <div id="share-footer" style="display: none">
       <ul>
-  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2017/02/28/e_gcd/"><i class="fa fa-facebook fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2017/02/28/e_gcd/&text=【模板】【数论】扩展欧几里得算法"><i class="fa fa-twitter fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2017/02/28/e_gcd/&title=【模板】【数论】扩展欧几里得算法"><i class="fa fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2017/02/28/e_gcd/&is_video=false&description=【模板】【数论】扩展欧几里得算法"><i class="fa fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=【模板】【数论】扩展欧几里得算法&body=Check out this article: http://yoursite.com/2017/02/28/e_gcd/"><i class="fa fa-envelope fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2017/02/28/e_gcd/&title=【模板】【数论】扩展欧几里得算法"><i class="fa fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2017/02/28/e_gcd/&title=【模板】【数论】扩展欧几里得算法"><i class="fa fa-reddit fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2017/02/28/e_gcd/&title=【模板】【数论】扩展欧几里得算法"><i class="fa fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2017/02/28/e_gcd/&title=【模板】【数论】扩展欧几里得算法"><i class="fa fa-digg fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2017/02/28/e_gcd/&name=【模板】【数论】扩展欧几里得算法&description="><i class="fa fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://bomb-chicken.github.io/2017/02/28/e_gcd/"><i class="fa fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://bomb-chicken.github.io/2017/02/28/e_gcd/&text=【模板】【数论】扩展欧几里得算法"><i class="fa fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://bomb-chicken.github.io/2017/02/28/e_gcd/&title=【模板】【数论】扩展欧几里得算法"><i class="fa fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://bomb-chicken.github.io/2017/02/28/e_gcd/&is_video=false&description=【模板】【数论】扩展欧几里得算法"><i class="fa fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=【模板】【数论】扩展欧几里得算法&body=Check out this article: https://bomb-chicken.github.io/2017/02/28/e_gcd/"><i class="fa fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://bomb-chicken.github.io/2017/02/28/e_gcd/&title=【模板】【数论】扩展欧几里得算法"><i class="fa fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://bomb-chicken.github.io/2017/02/28/e_gcd/&title=【模板】【数论】扩展欧几里得算法"><i class="fa fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://bomb-chicken.github.io/2017/02/28/e_gcd/&title=【模板】【数论】扩展欧几里得算法"><i class="fa fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://bomb-chicken.github.io/2017/02/28/e_gcd/&title=【模板】【数论】扩展欧几里得算法"><i class="fa fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://bomb-chicken.github.io/2017/02/28/e_gcd/&name=【模板】【数论】扩展欧几里得算法&description="><i class="fa fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
@@ -221,7 +221,7 @@
     
     <footer id="footer">
   <div class="footer-left">
-    Copyright &copy; 2017 John Doe
+    Copyright &copy; 2017 炸鸡
   </div>
   <div class="footer-right">
     <nav>

@@ -10,7 +10,7 @@
 <meta name="keywords" content="线段树">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【并查集+线段树合并】永无乡">
-<meta property="og:url" content="http://yoursite.com/2017/07/10/CodeVS1477/index.html">
+<meta property="og:url" content="https://bomb-chicken.github.io/2017/07/10/CodeVS1477/index.html">
 <meta property="og:site_name" content="炸鸡">
 <meta property="og:description" content="传送门：CodeVS1477 HNOI的题 经典做法是平衡树+启发式+并查集合并？！反正我不会（至少现在） 于是写了线段树合并+并查集 思路比较清楚的，就是连一条边就合并一下 具体见代码： 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657">
 <meta property="og:updated_time" content="2017-07-10T14:28:45.488Z">
@@ -80,16 +80,16 @@
     <br/>
     <div id="share" style="display: none">
       <ul>
-  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2017/07/10/CodeVS1477/"><i class="fa fa-facebook " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2017/07/10/CodeVS1477/&text=【并查集+线段树合并】永无乡"><i class="fa fa-twitter " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2017/07/10/CodeVS1477/&title=【并查集+线段树合并】永无乡"><i class="fa fa-linkedin " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2017/07/10/CodeVS1477/&is_video=false&description=【并查集+线段树合并】永无乡"><i class="fa fa-pinterest " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=【并查集+线段树合并】永无乡&body=Check out this article: http://yoursite.com/2017/07/10/CodeVS1477/"><i class="fa fa-envelope " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2017/07/10/CodeVS1477/&title=【并查集+线段树合并】永无乡"><i class="fa fa-get-pocket " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2017/07/10/CodeVS1477/&title=【并查集+线段树合并】永无乡"><i class="fa fa-reddit " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2017/07/10/CodeVS1477/&title=【并查集+线段树合并】永无乡"><i class="fa fa-stumbleupon " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2017/07/10/CodeVS1477/&title=【并查集+线段树合并】永无乡"><i class="fa fa-digg " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2017/07/10/CodeVS1477/&name=【并查集+线段树合并】永无乡&description="><i class="fa fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://bomb-chicken.github.io/2017/07/10/CodeVS1477/"><i class="fa fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://bomb-chicken.github.io/2017/07/10/CodeVS1477/&text=【并查集+线段树合并】永无乡"><i class="fa fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://bomb-chicken.github.io/2017/07/10/CodeVS1477/&title=【并查集+线段树合并】永无乡"><i class="fa fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://bomb-chicken.github.io/2017/07/10/CodeVS1477/&is_video=false&description=【并查集+线段树合并】永无乡"><i class="fa fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=【并查集+线段树合并】永无乡&body=Check out this article: https://bomb-chicken.github.io/2017/07/10/CodeVS1477/"><i class="fa fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://bomb-chicken.github.io/2017/07/10/CodeVS1477/&title=【并查集+线段树合并】永无乡"><i class="fa fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://bomb-chicken.github.io/2017/07/10/CodeVS1477/&title=【并查集+线段树合并】永无乡"><i class="fa fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://bomb-chicken.github.io/2017/07/10/CodeVS1477/&title=【并查集+线段树合并】永无乡"><i class="fa fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://bomb-chicken.github.io/2017/07/10/CodeVS1477/&title=【并查集+线段树合并】永无乡"><i class="fa fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://bomb-chicken.github.io/2017/07/10/CodeVS1477/&name=【并查集+线段树合并】永无乡&description="><i class="fa fa-tumblr " aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
@@ -166,16 +166,16 @@
 
     <div id="share-footer" style="display: none">
       <ul>
-  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2017/07/10/CodeVS1477/"><i class="fa fa-facebook fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2017/07/10/CodeVS1477/&text=【并查集+线段树合并】永无乡"><i class="fa fa-twitter fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2017/07/10/CodeVS1477/&title=【并查集+线段树合并】永无乡"><i class="fa fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2017/07/10/CodeVS1477/&is_video=false&description=【并查集+线段树合并】永无乡"><i class="fa fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=【并查集+线段树合并】永无乡&body=Check out this article: http://yoursite.com/2017/07/10/CodeVS1477/"><i class="fa fa-envelope fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2017/07/10/CodeVS1477/&title=【并查集+线段树合并】永无乡"><i class="fa fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2017/07/10/CodeVS1477/&title=【并查集+线段树合并】永无乡"><i class="fa fa-reddit fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2017/07/10/CodeVS1477/&title=【并查集+线段树合并】永无乡"><i class="fa fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2017/07/10/CodeVS1477/&title=【并查集+线段树合并】永无乡"><i class="fa fa-digg fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2017/07/10/CodeVS1477/&name=【并查集+线段树合并】永无乡&description="><i class="fa fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://bomb-chicken.github.io/2017/07/10/CodeVS1477/"><i class="fa fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://bomb-chicken.github.io/2017/07/10/CodeVS1477/&text=【并查集+线段树合并】永无乡"><i class="fa fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://bomb-chicken.github.io/2017/07/10/CodeVS1477/&title=【并查集+线段树合并】永无乡"><i class="fa fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://bomb-chicken.github.io/2017/07/10/CodeVS1477/&is_video=false&description=【并查集+线段树合并】永无乡"><i class="fa fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=【并查集+线段树合并】永无乡&body=Check out this article: https://bomb-chicken.github.io/2017/07/10/CodeVS1477/"><i class="fa fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://bomb-chicken.github.io/2017/07/10/CodeVS1477/&title=【并查集+线段树合并】永无乡"><i class="fa fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://bomb-chicken.github.io/2017/07/10/CodeVS1477/&title=【并查集+线段树合并】永无乡"><i class="fa fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://bomb-chicken.github.io/2017/07/10/CodeVS1477/&title=【并查集+线段树合并】永无乡"><i class="fa fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://bomb-chicken.github.io/2017/07/10/CodeVS1477/&title=【并查集+线段树合并】永无乡"><i class="fa fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://bomb-chicken.github.io/2017/07/10/CodeVS1477/&name=【并查集+线段树合并】永无乡&description="><i class="fa fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
@@ -195,7 +195,7 @@
     
     <footer id="footer">
   <div class="footer-left">
-    Copyright &copy; 2017 John Doe
+    Copyright &copy; 2017 炸鸡
   </div>
   <div class="footer-right">
     <nav>
