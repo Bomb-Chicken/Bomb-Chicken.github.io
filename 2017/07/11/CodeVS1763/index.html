@@ -6,17 +6,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="传送门：CodeVS1763 做法比较显然，就是给每一个点建一个堆，然后统计以该点为管理者的最优答案，更新一下，然后把这个堆合并到他的父亲节点上，有点类似树形Dp 注意的是建大根堆似乎更优（小根堆秒了的请无视） 统计大根堆里元素之和，然后和预算比较一下，超了就弹出最大的，更新元素和，直到没超为止，更新答案。然后把堆里余下的直接合并到父亲节点即可（因为已弹出的合并了也用不上） 以下代码（左偏树实现）">
+    <meta name="description" content="传送门：CodeVS1763  做法比较显然，就是给每一个点建一个堆，然后统计以该点为管理者的最优答案，更新一下，然后把这个堆合并到他的父亲节点上，有点类似树形Dp 注意的是建大根堆似乎更优（小根堆秒了的请无视） 统计大根堆里元素之和，然后和预算比较一下，超了就弹出最大的，更新元素和，直到没超为止，更新答案。然后把堆里余下的直接合并到父亲节点即可（因为已弹出的合并了也用不上）  以下代码（左偏树实">
 <meta name="keywords" content="可并堆">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【可并堆】派遣">
 <meta property="og:url" content="https://bomb-chicken.github.io/2017/07/11/CodeVS1763/index.html">
 <meta property="og:site_name" content="炸鸡">
-<meta property="og:description" content="传送门：CodeVS1763 做法比较显然，就是给每一个点建一个堆，然后统计以该点为管理者的最优答案，更新一下，然后把这个堆合并到他的父亲节点上，有点类似树形Dp 注意的是建大根堆似乎更优（小根堆秒了的请无视） 统计大根堆里元素之和，然后和预算比较一下，超了就弹出最大的，更新元素和，直到没超为止，更新答案。然后把堆里余下的直接合并到父亲节点即可（因为已弹出的合并了也用不上） 以下代码（左偏树实现）">
-<meta property="og:updated_time" content="2017-07-11T14:14:33.194Z">
+<meta property="og:description" content="传送门：CodeVS1763  做法比较显然，就是给每一个点建一个堆，然后统计以该点为管理者的最优答案，更新一下，然后把这个堆合并到他的父亲节点上，有点类似树形Dp 注意的是建大根堆似乎更优（小根堆秒了的请无视） 统计大根堆里元素之和，然后和预算比较一下，超了就弹出最大的，更新元素和，直到没超为止，更新答案。然后把堆里余下的直接合并到父亲节点即可（因为已弹出的合并了也用不上）  以下代码（左偏树实">
+<meta property="og:updated_time" content="2017-07-27T14:09:12.326Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【可并堆】派遣">
-<meta name="twitter:description" content="传送门：CodeVS1763 做法比较显然，就是给每一个点建一个堆，然后统计以该点为管理者的最优答案，更新一下，然后把这个堆合并到他的父亲节点上，有点类似树形Dp 注意的是建大根堆似乎更优（小根堆秒了的请无视） 统计大根堆里元素之和，然后和预算比较一下，超了就弹出最大的，更新元素和，直到没超为止，更新答案。然后把堆里余下的直接合并到父亲节点即可（因为已弹出的合并了也用不上） 以下代码（左偏树实现）">
+<meta name="twitter:description" content="传送门：CodeVS1763  做法比较显然，就是给每一个点建一个堆，然后统计以该点为管理者的最优答案，更新一下，然后把这个堆合并到他的父亲节点上，有点类似树形Dp 注意的是建大根堆似乎更优（小根堆秒了的请无视） 统计大根堆里元素之和，然后和预算比较一下，超了就弹出最大的，更新元素和，直到没超为止，更新答案。然后把堆里余下的直接合并到父亲节点即可（因为已弹出的合并了也用不上）  以下代码（左偏树实">
     
     
         
@@ -56,9 +56,9 @@
          
           <li><a href="/">Home</a></li>
          
-          <li><a href="/links/">Links</a></li>
+          <li><a href="/links">Links</a></li>
          
-          <li><a href="/tags/">Tags</a></li>
+          <li><a href="/tags">Tags</a></li>
         
       </ul>
     </span>
@@ -136,9 +136,11 @@
 
   <div class="content" itemprop="articleBody">
     <p>传送门：<a href="http://codevs.cn/problem/1763/" target="_blank" rel="external">CodeVS1763</a></p>
+<hr>
 <p>做法比较显然，就是给每一个点建一个堆，然后统计以该点为管理者的最优答案，更新一下，然后把这个堆合并到他的父亲节点上，有点类似树形Dp</p>
 <p>注意的是建<strong>大根堆</strong>似乎更优（小根堆秒了的请无视）</p>
 <p>统计大根堆里元素之和，然后和预算比较一下，超了就弹出最大的，更新元素和，直到没超为止，更新答案。然后把堆里余下的直接合并到父亲节点即可（因为已弹出的合并了也用不上）</p>
+<hr>
 <p>以下代码（左偏树实现）：</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></div><div class="line"></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> LL long long</span></div><div class="line">LL n,m,ans,tot;</div><div class="line">LL h[<span class="number">300030</span>],ls[<span class="number">300030</span>],rs[<span class="number">300030</span>],dist[<span class="number">300030</span>];</div><div class="line">LL root[<span class="number">100030</span>],s[<span class="number">100030</span>],ss[<span class="number">100030</span>],a[<span class="number">100030</span>],c[<span class="number">100030</span>],l[<span class="number">100030</span>],head[<span class="number">100030</span>];</div><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">edge</span>&#123;</span></div><div class="line">	LL v,next;</div><div class="line">&#125;e[<span class="number">100030</span>];</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(LL x,LL y)</span></span>&#123;</div><div class="line">	tot++;</div><div class="line">	e[tot].v=y;</div><div class="line">	e[tot].next=head[x];</div><div class="line">	head[x]=tot;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">merge</span><span class="params">(LL x,LL y)</span></span>&#123;</div><div class="line">	<span class="keyword">if</span> (!x || !y) <span class="keyword">return</span> x|y;</div><div class="line">	<span class="keyword">if</span> (h[x]&lt;h[y]) swap(x,y);</div><div class="line">	rs[x]=merge(rs[x],y);</div><div class="line">	<span class="keyword">if</span> (dist[ls[x]]&lt;dist[rs[x]]) swap(ls[x],rs[x]);</div><div class="line">	dist[x]=dist[rs[x]]==<span class="number">0</span>?dist[rs[x]]+<span class="number">1</span>:<span class="number">0</span>;</div><div class="line">	<span class="keyword">return</span> x;</div><div class="line">&#125;</div><div class="line">	</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">search</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</div><div class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i=head[x];i;i=e[i].next)&#123;</div><div class="line">		search(e[i].v);</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	LL jd=root[x];</div><div class="line">	<span class="keyword">while</span> (s[x]&gt;m)&#123;</div><div class="line">		ss[x]--;</div><div class="line">		s[x]-=h[jd];</div><div class="line">		jd=merge(ls[jd],rs[jd]);</div><div class="line">	&#125;</div><div class="line">	root[x]=jd;</div><div class="line">	</div><div class="line">	root[a[x]]=merge(root[a[x]],jd);</div><div class="line">	s[a[x]]+=s[x]; ss[a[x]]+=ss[x];</div><div class="line">	<span class="keyword">if</span> (ss[x]*l[x]&gt;ans) ans=ss[x]*l[x];</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line">	<span class="built_in">scanf</span>(<span class="string">"%lld%lld"</span>,&amp;n,&amp;m);</div><div class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</div><div class="line">		<span class="built_in">scanf</span>(<span class="string">"%lld%lld%lld"</span>,&amp;a[i],&amp;c[i],&amp;l[i]);</div><div class="line">		add(a[i],i);</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;=n;i++)&#123;</div><div class="line">		h[i]=c[i];</div><div class="line">		ss[i]++; s[i]+=c[i];</div><div class="line">		root[i]=i;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	search(<span class="number">0</span>);</div><div class="line">		</div><div class="line">	<span class="built_in">printf</span>(<span class="string">"%lld\n"</span>,ans);</div><div class="line">	</div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 
@@ -157,9 +159,9 @@
          
           <li><a href="/">Home</a></li>
          
-          <li><a href="/links/">Links</a></li>
+          <li><a href="/links">Links</a></li>
          
-          <li><a href="/tags/">Tags</a></li>
+          <li><a href="/tags">Tags</a></li>
         
       </ul>
     </div>
@@ -207,9 +209,9 @@
          
           <li><a href="/">Home</a></li>
          
-          <li><a href="/links/">Links</a></li>
+          <li><a href="/links">Links</a></li>
          
-          <li><a href="/tags/">Tags</a></li>
+          <li><a href="/tags">Tags</a></li>
         
       </ul>
     </nav>

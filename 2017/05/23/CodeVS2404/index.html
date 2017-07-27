@@ -6,17 +6,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="题目传送门：CodeVS2404 这是一道很典型的差分约束系统 由于是我的第一道差分约束系统，先来科普一下 差分约束系统 仅限于我的理解 差分约束系统可以用来求解一类不等式的解 例如： a-b&amp;gt;=x;	b-c&amp;gt;=y; 显然可以得到 a-c&amp;gt;=x+y 那么为了求解这类东西可以将a-b&amp;gt;=x转换为从a点向b点连一条长度为x的边（这里连边的方向什么都可以随题意改变，符号也可以改变">
+    <meta name="description" content="题目传送门：CodeVS2404  这是一道很典型的差分约束系统 由于是我的第一道差分约束系统，先来科普一下 差分约束系统 仅限于我的理解 差分约束系统可以用来求解一类不等式的解 例如： a-b&amp;gt;=x;	b-c&amp;gt;=y; 显然可以得到 a-c&amp;gt;=x+y 那么为了求解这类东西可以将a-b&amp;gt;=x转换为从a点向b点连一条长度为x的边（这里连边的方向什么都可以随题意改变，符号也可以改">
 <meta name="keywords" content="图论">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【差分约束系统】糖果">
 <meta property="og:url" content="https://bomb-chicken.github.io/2017/05/23/CodeVS2404/index.html">
 <meta property="og:site_name" content="炸鸡">
-<meta property="og:description" content="题目传送门：CodeVS2404 这是一道很典型的差分约束系统 由于是我的第一道差分约束系统，先来科普一下 差分约束系统 仅限于我的理解 差分约束系统可以用来求解一类不等式的解 例如： a-b&amp;gt;=x;	b-c&amp;gt;=y; 显然可以得到 a-c&amp;gt;=x+y 那么为了求解这类东西可以将a-b&amp;gt;=x转换为从a点向b点连一条长度为x的边（这里连边的方向什么都可以随题意改变，符号也可以改变">
-<meta property="og:updated_time" content="2017-05-23T13:14:12.191Z">
+<meta property="og:description" content="题目传送门：CodeVS2404  这是一道很典型的差分约束系统 由于是我的第一道差分约束系统，先来科普一下 差分约束系统 仅限于我的理解 差分约束系统可以用来求解一类不等式的解 例如： a-b&amp;gt;=x;	b-c&amp;gt;=y; 显然可以得到 a-c&amp;gt;=x+y 那么为了求解这类东西可以将a-b&amp;gt;=x转换为从a点向b点连一条长度为x的边（这里连边的方向什么都可以随题意改变，符号也可以改">
+<meta property="og:updated_time" content="2017-07-27T14:10:15.644Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【差分约束系统】糖果">
-<meta name="twitter:description" content="题目传送门：CodeVS2404 这是一道很典型的差分约束系统 由于是我的第一道差分约束系统，先来科普一下 差分约束系统 仅限于我的理解 差分约束系统可以用来求解一类不等式的解 例如： a-b&amp;gt;=x;	b-c&amp;gt;=y; 显然可以得到 a-c&amp;gt;=x+y 那么为了求解这类东西可以将a-b&amp;gt;=x转换为从a点向b点连一条长度为x的边（这里连边的方向什么都可以随题意改变，符号也可以改变">
+<meta name="twitter:description" content="题目传送门：CodeVS2404  这是一道很典型的差分约束系统 由于是我的第一道差分约束系统，先来科普一下 差分约束系统 仅限于我的理解 差分约束系统可以用来求解一类不等式的解 例如： a-b&amp;gt;=x;	b-c&amp;gt;=y; 显然可以得到 a-c&amp;gt;=x+y 那么为了求解这类东西可以将a-b&amp;gt;=x转换为从a点向b点连一条长度为x的边（这里连边的方向什么都可以随题意改变，符号也可以改">
     
     
         
@@ -56,9 +56,9 @@
          
           <li><a href="/">Home</a></li>
          
-          <li><a href="/links/">Links</a></li>
+          <li><a href="/links">Links</a></li>
          
-          <li><a href="/tags/">Tags</a></li>
+          <li><a href="/tags">Tags</a></li>
         
       </ul>
     </span>
@@ -66,7 +66,7 @@
     <span id="actions">
       <ul>
         
-        <li><a class="icon" href="/2017/05/24/bitwise/"><i class="fa fa-chevron-left" aria-hidden="true" onmouseover='$("#i-prev").toggle();' onmouseout='$("#i-prev").toggle();'></i></a></li>
+        <li><a class="icon" href="/2017/05/24/集合整数/"><i class="fa fa-chevron-left" aria-hidden="true" onmouseover='$("#i-prev").toggle();' onmouseout='$("#i-prev").toggle();'></i></a></li>
         
         
         <li><a class="icon" href="/2017/05/20/CodeVS2399/"><i class="fa fa-chevron-right" aria-hidden="true" onmouseover='$("#i-next").toggle();' onmouseout='$("#i-next").toggle();'></i></a></li>
@@ -136,6 +136,7 @@
 
   <div class="content" itemprop="articleBody">
     <p>题目传送门：<a href="http://codevs.cn/problem/2404/" target="_blank" rel="external">CodeVS2404</a></p>
+<hr>
 <p>这是一道很典型的差分约束系统</p>
 <p>由于是我的第一道差分约束系统，先来科普一下</p>
 <h1>差分约束系统</h1>
@@ -146,6 +147,7 @@
 <p>显然可以得到 a-c&gt;=x+y</p>
 <p>那么为了求解这类东西可以将a-b&gt;=x转换为从a点向b点连一条长度为x的边（这里连边的方向什么都可以随题意改变，符号也可以改变）</p>
 <p>建完图以后SPFA之类的就可以求解了</p>
+<hr>
 <h1>回到题目</h1>
 <p>于是对各类情况分类讨论建图，</p>
 <p>这里有两个注意点：</p>
@@ -155,6 +157,7 @@
 <p>也可以先把所有点都放到队列里</p>
 <p>然后SPFA</p>
 <p>此题有个坑点，加到队列时如果逆序似乎会T一个点。。。</p>
+<hr>
 <p>详见代码：</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></div><div class="line"></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> LL long long</span></div><div class="line"></div><div class="line">LL n,m,tot,t,w,now,x,y,z,ans;</div><div class="line">LL head[<span class="number">100030</span>],q[<span class="number">100030</span>],vis[<span class="number">100030</span>],cir[<span class="number">100030</span>],dis[<span class="number">100030</span>];</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">edge</span>&#123;</span></div><div class="line">	LL u,v,dis,last;</div><div class="line">&#125;</div><div class="line">e[<span class="number">400030</span>];</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(LL x,LL y,LL z)</span></span>&#123;</div><div class="line">	tot++;</div><div class="line">	e[tot].u=x;</div><div class="line">	e[tot].v=y;</div><div class="line">	e[tot].dis=z;</div><div class="line">	e[tot].last=head[x];</div><div class="line">	head[x]=tot;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">bool</span> <span class="title">spfa</span><span class="params">()</span></span>&#123;</div><div class="line">	q[<span class="number">1</span>]=<span class="number">0</span>;</div><div class="line">	vis[<span class="number">0</span>]=<span class="number">1</span>;</div><div class="line">	cir[<span class="number">0</span>]=<span class="number">1</span>;</div><div class="line">	t=<span class="number">0</span>;</div><div class="line">	w=<span class="number">1</span>;</div><div class="line">	<span class="keyword">while</span> (t!=w)&#123;</div><div class="line">		t=t%(n+<span class="number">10</span>)+<span class="number">1</span>;</div><div class="line">		now=q[t];</div><div class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i=head[now];i;i=e[i].last)</div><div class="line">			<span class="keyword">if</span> (dis[e[i].v]&lt;dis[now]+e[i].dis)&#123;</div><div class="line">				dis[e[i].v]=dis[now]+e[i].dis;</div><div class="line">				<span class="keyword">if</span> (++cir[e[i].v]&gt;n) <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">				<span class="keyword">if</span> (!vis[e[i].v])&#123;</div><div class="line">					vis[e[i].v]=<span class="number">1</span>;</div><div class="line">					w=w%(n+<span class="number">10</span>)+<span class="number">1</span>;</div><div class="line">					q[w]=e[i].v;</div><div class="line">				&#125;</div><div class="line">			&#125;</div><div class="line">		vis[now]=<span class="number">0</span>;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> <span class="number">1</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line">	<span class="built_in">scanf</span>(<span class="string">"%lld%lld"</span>,&amp;n,&amp;m);</div><div class="line">	</div><div class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i=n;i&gt;<span class="number">0</span>;i--) add(<span class="number">0</span>,i,<span class="number">1</span>);</div><div class="line">	</div><div class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;i++)&#123;</div><div class="line">		<span class="built_in">scanf</span>(<span class="string">"%lld%lld%lld"</span>,&amp;x,&amp;y,&amp;z);</div><div class="line">		<span class="keyword">if</span> (x==<span class="number">1</span>)&#123; add(y,z,<span class="number">0</span>); add(z,y,<span class="number">0</span>); &#125;</div><div class="line">		<span class="keyword">if</span> (x==<span class="number">2</span>)&#123;</div><div class="line">			<span class="keyword">if</span> (y==z)&#123; <span class="built_in">printf</span>(<span class="string">"-1\n"</span>); <span class="keyword">return</span> <span class="number">0</span>; &#125;</div><div class="line">			add(y,z,<span class="number">1</span>);</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">if</span> (x==<span class="number">3</span>) add(z,y,<span class="number">0</span>);</div><div class="line">		<span class="keyword">if</span> (x==<span class="number">4</span>)&#123;</div><div class="line">			<span class="keyword">if</span> (y==z)&#123; <span class="built_in">printf</span>(<span class="string">"-1\n"</span>); <span class="keyword">return</span> <span class="number">0</span>; &#125;</div><div class="line">			add(z,y,<span class="number">1</span>);</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">if</span> (x==<span class="number">5</span>) add(y,z,<span class="number">0</span>);</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	<span class="keyword">if</span> (!spfa())&#123;</div><div class="line">		<span class="built_in">printf</span>(<span class="string">"-1\n"</span>);</div><div class="line">		<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) ans+=dis[i];</div><div class="line">	<span class="built_in">printf</span>(<span class="string">"%lld\n"</span>,ans);</div><div class="line">	</div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
   </div>
@@ -172,9 +175,9 @@
          
           <li><a href="/">Home</a></li>
          
-          <li><a href="/links/">Links</a></li>
+          <li><a href="/links">Links</a></li>
          
-          <li><a href="/tags/">Tags</a></li>
+          <li><a href="/tags">Tags</a></li>
         
       </ul>
     </div>
@@ -222,9 +225,9 @@
          
           <li><a href="/">Home</a></li>
          
-          <li><a href="/links/">Links</a></li>
+          <li><a href="/links">Links</a></li>
          
-          <li><a href="/tags/">Tags</a></li>
+          <li><a href="/tags">Tags</a></li>
         
       </ul>
     </nav>

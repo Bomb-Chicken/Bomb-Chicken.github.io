@@ -6,17 +6,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="传送门：CodeVS2399 这道题目难度一般，题目原意很显然是求一个特殊限制下的最小树形图，然而数据很大，只支持O(m log m) 但是这道题的特点就是有高度，高度有什么用呢，首先是限定了方向，由于是从特定点（1号点）出发，因此只要处理出能到达哪些点（也就是求第一问），然后再用最小生成树kruskal即可 代码如下： 12345678910111213141516171819202122232">
+    <meta name="description" content="传送门：CodeVS2399  这道题目难度一般，题目原意很显然是求一个特殊限制下的最小树形图，然而数据很大，只支持O(m log m) 但是这道题的特点就是有高度，高度有什么用呢，首先是限定了方向，由于是从特定点（1号点）出发，因此只要处理出能到达哪些点（也就是求第一问），然后再用最小生成树kruskal即可  代码如下： 123456789101112131415161718192021222">
 <meta name="keywords" content="图论">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【生成树】滑雪与时间胶囊">
 <meta property="og:url" content="https://bomb-chicken.github.io/2017/05/20/CodeVS2399/index.html">
 <meta property="og:site_name" content="炸鸡">
-<meta property="og:description" content="传送门：CodeVS2399 这道题目难度一般，题目原意很显然是求一个特殊限制下的最小树形图，然而数据很大，只支持O(m log m) 但是这道题的特点就是有高度，高度有什么用呢，首先是限定了方向，由于是从特定点（1号点）出发，因此只要处理出能到达哪些点（也就是求第一问），然后再用最小生成树kruskal即可 代码如下： 12345678910111213141516171819202122232">
-<meta property="og:updated_time" content="2017-05-23T13:11:32.989Z">
+<meta property="og:description" content="传送门：CodeVS2399  这道题目难度一般，题目原意很显然是求一个特殊限制下的最小树形图，然而数据很大，只支持O(m log m) 但是这道题的特点就是有高度，高度有什么用呢，首先是限定了方向，由于是从特定点（1号点）出发，因此只要处理出能到达哪些点（也就是求第一问），然后再用最小生成树kruskal即可  代码如下： 123456789101112131415161718192021222">
+<meta property="og:updated_time" content="2017-07-27T14:09:56.475Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【生成树】滑雪与时间胶囊">
-<meta name="twitter:description" content="传送门：CodeVS2399 这道题目难度一般，题目原意很显然是求一个特殊限制下的最小树形图，然而数据很大，只支持O(m log m) 但是这道题的特点就是有高度，高度有什么用呢，首先是限定了方向，由于是从特定点（1号点）出发，因此只要处理出能到达哪些点（也就是求第一问），然后再用最小生成树kruskal即可 代码如下： 12345678910111213141516171819202122232">
+<meta name="twitter:description" content="传送门：CodeVS2399  这道题目难度一般，题目原意很显然是求一个特殊限制下的最小树形图，然而数据很大，只支持O(m log m) 但是这道题的特点就是有高度，高度有什么用呢，首先是限定了方向，由于是从特定点（1号点）出发，因此只要处理出能到达哪些点（也就是求第一问），然后再用最小生成树kruskal即可  代码如下： 123456789101112131415161718192021222">
     
     
         
@@ -56,9 +56,9 @@
          
           <li><a href="/">Home</a></li>
          
-          <li><a href="/links/">Links</a></li>
+          <li><a href="/links">Links</a></li>
          
-          <li><a href="/tags/">Tags</a></li>
+          <li><a href="/tags">Tags</a></li>
         
       </ul>
     </span>
@@ -136,8 +136,10 @@
 
   <div class="content" itemprop="articleBody">
     <p>传送门：<a href="http://codevs.cn/problem/2399/" target="_blank" rel="external">CodeVS2399</a></p>
+<hr>
 <p>这道题目难度一般，题目原意很显然是求一个特殊限制下的最小树形图，然而数据很大，只支持O(m log m)</p>
 <p>但是这道题的特点就是有高度，高度有什么用呢，首先是限定了方向，由于是从特定点（1号点）出发，因此只要处理出能到达哪些点（也就是求第一问），然后再用最小生成树kruskal即可</p>
+<hr>
 <p>代码如下：</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></div><div class="line"></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> LL long long</span></div><div class="line"></div><div class="line">LL fa[<span class="number">300000</span>],FA[<span class="number">300000</span>];</div><div class="line">LL n,m,x,y,z,ans,sum,tot,t,w,now,p;</div><div class="line">LL a[<span class="number">300000</span>],q[<span class="number">300000</span>],head[<span class="number">300000</span>],last[<span class="number">300000</span>];</div><div class="line"><span class="keyword">bool</span> vis[<span class="number">300000</span>];</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">edge</span>&#123;</span></div><div class="line">	LL u,v,dis,next;</div><div class="line">	</div><div class="line">	<span class="keyword">bool</span> <span class="keyword">operator</span> &lt; (<span class="keyword">const</span> edge x) <span class="keyword">const</span>&#123;</div><div class="line">		<span class="keyword">if</span> (a[v]==a[x.v]) <span class="keyword">return</span> dis&lt;x.dis;</div><div class="line">		<span class="keyword">return</span> a[v]&gt;a[x.v];</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line">e[<span class="number">3000000</span>];</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">(<span class="keyword">int</span> n)</span></span>&#123;</div><div class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) fa[i]=i;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">find</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</div><div class="line">	<span class="keyword">if</span> (x==fa[x]) <span class="keyword">return</span> x;</div><div class="line">	fa[x]=find(fa[x]);</div><div class="line">	<span class="keyword">return</span> fa[x];</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y,<span class="keyword">int</span> z)</span></span>&#123;</div><div class="line">	tot++;</div><div class="line">	e[tot].u=x;</div><div class="line">	e[tot].v=y;</div><div class="line">	e[tot].dis=z;</div><div class="line">	<span class="keyword">if</span> (head[x]==<span class="number">0</span>)</div><div class="line">		head[x]=tot;</div><div class="line">	<span class="keyword">else</span></div><div class="line">		e[last[x]].next=tot;</div><div class="line">	last[x]=tot;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">bfs</span><span class="params">()</span></span>&#123;</div><div class="line">	sum=<span class="number">1</span>;</div><div class="line">	q[<span class="number">1</span>]=<span class="number">1</span>;</div><div class="line">	vis[<span class="number">1</span>]=<span class="number">1</span>;</div><div class="line">	t=<span class="number">0</span>; w=<span class="number">1</span>;</div><div class="line">	<span class="keyword">while</span> (t&lt;w)&#123;</div><div class="line">		t++;</div><div class="line">		now=q[t];</div><div class="line">		p=head[now];</div><div class="line">		<span class="keyword">while</span> (p&gt;<span class="number">0</span>)&#123;</div><div class="line">			<span class="keyword">if</span> (!vis[e[p].v])&#123;</div><div class="line">				vis[e[p].v]=<span class="number">1</span>;</div><div class="line">				w++;</div><div class="line">				sum++;</div><div class="line">				q[w]=e[p].v;</div><div class="line">			&#125;</div><div class="line">			p=e[p].next;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line">		</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line">	<span class="built_in">scanf</span>(<span class="string">"%lld%lld"</span>,&amp;n,&amp;m);</div><div class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) <span class="built_in">scanf</span>(<span class="string">"%lld"</span>,&amp;a[i]);</div><div class="line">	</div><div class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;i++)&#123;</div><div class="line">		<span class="built_in">scanf</span>(<span class="string">"%lld%lld%lld"</span>,&amp;x,&amp;y,&amp;z);</div><div class="line">		<span class="keyword">if</span> (a[x]&gt;=a[y]) add(x,y,z);</div><div class="line">		<span class="keyword">if</span> (a[y]&gt;=a[x]) add(y,x,z);</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	bfs();</div><div class="line">	</div><div class="line">	sort(e+<span class="number">1</span>,e+tot+<span class="number">1</span>);</div><div class="line">	init(n);</div><div class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=tot;i++)</div><div class="line">		<span class="keyword">if</span> (vis[e[i].u] &amp;&amp; vis[e[i].v])&#123;</div><div class="line">			<span class="keyword">int</span> fu=find(e[i].u),fv=find(e[i].v);</div><div class="line">			<span class="keyword">if</span> (fu!=fv)&#123;</div><div class="line">				fa[fv]=fu;</div><div class="line">				ans+=e[i].dis;</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">		</div><div class="line">	<span class="built_in">printf</span>(<span class="string">"%lld %lld\n"</span>,sum,ans);</div><div class="line">	</div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 
@@ -156,9 +158,9 @@
          
           <li><a href="/">Home</a></li>
          
-          <li><a href="/links/">Links</a></li>
+          <li><a href="/links">Links</a></li>
          
-          <li><a href="/tags/">Tags</a></li>
+          <li><a href="/tags">Tags</a></li>
         
       </ul>
     </div>
@@ -206,9 +208,9 @@
          
           <li><a href="/">Home</a></li>
          
-          <li><a href="/links/">Links</a></li>
+          <li><a href="/links">Links</a></li>
          
-          <li><a href="/tags/">Tags</a></li>
+          <li><a href="/tags">Tags</a></li>
         
       </ul>
     </nav>

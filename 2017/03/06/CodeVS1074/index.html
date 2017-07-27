@@ -6,17 +6,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="题目传送门：CodeVS1074 现在才发现我这么蒟蒻，并查集都不怎么会用啊！！！ 这道题似乎用了一个很巧妙（估计是我太弱）的东西，就是用 i , i+n , i+n*2 来表示 i 在 A B C 三个种类，似乎是可以轮换的 然后每读入一次先验证是否是假话，不是的话就合并（好像是废话） 具体见代码吧 123456789101112131415161718192021222324252627282">
+    <meta name="description" content="题目传送门：CodeVS1074  现在才发现我这么蒟蒻，并查集都不怎么会用啊！！！ 这道题似乎用了一个很巧妙（估计是我太弱）的东西，就是用 i , i+n , i+n*2 来表示 i 在 A B C 三个种类，似乎是可以轮换的 然后每读入一次先验证是否是假话，不是的话就合并（好像是废话）  具体见代码吧 1234567891011121314151617181920212223242526272">
 <meta name="keywords" content="并查集">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【并查集】食物链">
 <meta property="og:url" content="https://bomb-chicken.github.io/2017/03/06/CodeVS1074/index.html">
 <meta property="og:site_name" content="炸鸡">
-<meta property="og:description" content="题目传送门：CodeVS1074 现在才发现我这么蒟蒻，并查集都不怎么会用啊！！！ 这道题似乎用了一个很巧妙（估计是我太弱）的东西，就是用 i , i+n , i+n*2 来表示 i 在 A B C 三个种类，似乎是可以轮换的 然后每读入一次先验证是否是假话，不是的话就合并（好像是废话） 具体见代码吧 123456789101112131415161718192021222324252627282">
-<meta property="og:updated_time" content="2017-05-20T01:28:29.037Z">
+<meta property="og:description" content="题目传送门：CodeVS1074  现在才发现我这么蒟蒻，并查集都不怎么会用啊！！！ 这道题似乎用了一个很巧妙（估计是我太弱）的东西，就是用 i , i+n , i+n*2 来表示 i 在 A B C 三个种类，似乎是可以轮换的 然后每读入一次先验证是否是假话，不是的话就合并（好像是废话）  具体见代码吧 1234567891011121314151617181920212223242526272">
+<meta property="og:updated_time" content="2017-07-27T14:02:41.278Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【并查集】食物链">
-<meta name="twitter:description" content="题目传送门：CodeVS1074 现在才发现我这么蒟蒻，并查集都不怎么会用啊！！！ 这道题似乎用了一个很巧妙（估计是我太弱）的东西，就是用 i , i+n , i+n*2 来表示 i 在 A B C 三个种类，似乎是可以轮换的 然后每读入一次先验证是否是假话，不是的话就合并（好像是废话） 具体见代码吧 123456789101112131415161718192021222324252627282">
+<meta name="twitter:description" content="题目传送门：CodeVS1074  现在才发现我这么蒟蒻，并查集都不怎么会用啊！！！ 这道题似乎用了一个很巧妙（估计是我太弱）的东西，就是用 i , i+n , i+n*2 来表示 i 在 A B C 三个种类，似乎是可以轮换的 然后每读入一次先验证是否是假话，不是的话就合并（好像是废话）  具体见代码吧 1234567891011121314151617181920212223242526272">
     
     
         
@@ -56,9 +56,9 @@
          
           <li><a href="/">Home</a></li>
          
-          <li><a href="/links/">Links</a></li>
+          <li><a href="/links">Links</a></li>
          
-          <li><a href="/tags/">Tags</a></li>
+          <li><a href="/tags">Tags</a></li>
         
       </ul>
     </span>
@@ -66,7 +66,7 @@
     <span id="actions">
       <ul>
         
-        <li><a class="icon" href="/2017/03/15/search1/"><i class="fa fa-chevron-left" aria-hidden="true" onmouseover='$("#i-prev").toggle();' onmouseout='$("#i-prev").toggle();'></i></a></li>
+        <li><a class="icon" href="/2017/03/15/折半枚举/"><i class="fa fa-chevron-left" aria-hidden="true" onmouseover='$("#i-prev").toggle();' onmouseout='$("#i-prev").toggle();'></i></a></li>
         
         
         <li><a class="icon" href="/2017/02/28/e_gcd/"><i class="fa fa-chevron-right" aria-hidden="true" onmouseover='$("#i-next").toggle();' onmouseout='$("#i-next").toggle();'></i></a></li>
@@ -136,9 +136,11 @@
 
   <div class="content" itemprop="articleBody">
     <p>题目传送门：<a href="http://codevs.cn/problem/1074/" target="_blank" rel="external">CodeVS1074</a></p>
+<hr>
 <p>现在才发现我这么蒟蒻，并查集都不怎么会用啊！！！</p>
 <p>这道题似乎用了一个很巧妙（估计是我太弱）的东西，就是用 i , i+n , i+n*2 来表示 i 在 A B C 三个种类，似乎是可以轮换的</p>
 <p>然后每读入一次先验证是否是假话，不是的话就合并（好像是废话）</p>
+<hr>
 <p>具体见代码吧</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></div><div class="line"></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> LL long long</span></div><div class="line"></div><div class="line"><span class="keyword">int</span> fa[<span class="number">150005</span>],n,m,x,y,z,ans;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">find</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</div><div class="line">	<span class="keyword">if</span> (fa[x]==x) <span class="keyword">return</span> x;</div><div class="line">	fa[x]=find(fa[x]);</div><div class="line">	<span class="keyword">return</span> fa[x];</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">unite</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span></span>&#123;</div><div class="line">	x=find(x);</div><div class="line">	y=find(y);</div><div class="line">	<span class="keyword">if</span> (x==y) <span class="keyword">return</span>;</div><div class="line">	fa[x]=y;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line">	<span class="built_in">cin</span>&gt;&gt;n&gt;&gt;m;</div><div class="line">	</div><div class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n*<span class="number">3</span>;i++)</div><div class="line">		fa[i]=i;</div><div class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;i++)&#123;</div><div class="line">		<span class="built_in">cin</span>&gt;&gt;z&gt;&gt;x&gt;&gt;y;</div><div class="line">		</div><div class="line">		<span class="keyword">if</span> (x&lt;<span class="number">0</span> || x&gt;n || y&lt;<span class="number">0</span> ||y&gt;n)&#123;</div><div class="line">			ans++;</div><div class="line">			<span class="keyword">continue</span>;</div><div class="line">		&#125;</div><div class="line">		</div><div class="line">		<span class="keyword">if</span> (z==<span class="number">1</span>)&#123;</div><div class="line">			<span class="keyword">if</span> (find(x)==find(y+n) || find(x)==find(y+n*<span class="number">2</span>))&#123;<span class="comment">//x与y一样时显然不能互相吃来吃去</span></div><div class="line">				ans++;</div><div class="line">				<span class="keyword">continue</span>;</div><div class="line">			&#125;</div><div class="line">			<span class="keyword">else</span>&#123;</div><div class="line">				unite(x,y);</div><div class="line">				unite(x+n,y+n);</div><div class="line">				unite(x+n*<span class="number">2</span>,y+n*<span class="number">2</span>);</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">		</div><div class="line">		<span class="keyword">if</span> (z==<span class="number">2</span>)&#123;</div><div class="line">			<span class="keyword">if</span> (find(x)==find(y) || find(x)==find(y+n*<span class="number">2</span>))&#123;<span class="comment">//x吃y时x显然不与y一样，也不能是y吃x</span></div><div class="line">				ans++;</div><div class="line">				<span class="keyword">continue</span>;</div><div class="line">			&#125;</div><div class="line">			<span class="keyword">else</span>&#123;</div><div class="line">				unite(x,y+n);</div><div class="line">				unite(x+n,y+n*<span class="number">2</span>);</div><div class="line">				unite(x+n*<span class="number">2</span>,y);</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	<span class="built_in">cout</span>&lt;&lt;ans;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 
@@ -157,9 +159,9 @@
          
           <li><a href="/">Home</a></li>
          
-          <li><a href="/links/">Links</a></li>
+          <li><a href="/links">Links</a></li>
          
-          <li><a href="/tags/">Tags</a></li>
+          <li><a href="/tags">Tags</a></li>
         
       </ul>
     </div>
@@ -207,9 +209,9 @@
          
           <li><a href="/">Home</a></li>
          
-          <li><a href="/links/">Links</a></li>
+          <li><a href="/links">Links</a></li>
          
-          <li><a href="/tags/">Tags</a></li>
+          <li><a href="/tags">Tags</a></li>
         
       </ul>
     </nav>

@@ -6,17 +6,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="传送门：CodeVS1477 HNOI的题 经典做法是平衡树+启发式+并查集合并？！反正我不会（至少现在） 于是写了线段树合并+并查集 思路比较清楚的，就是连一条边就合并一下 具体见代码： 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657">
-<meta name="keywords" content="线段树">
+    <meta name="description" content="传送门：CodeVS1477 HNOI的题  经典做法是平衡树+启发式+并查集合并？！反正我不会（至少现在） 于是写了线段树合并+并查集 思路比较清楚的，就是连一条边就合并一下  具体见代码： 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556">
+<meta name="keywords" content="线段树,并查集">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【并查集+线段树合并】永无乡">
 <meta property="og:url" content="https://bomb-chicken.github.io/2017/07/10/CodeVS1477/index.html">
 <meta property="og:site_name" content="炸鸡">
-<meta property="og:description" content="传送门：CodeVS1477 HNOI的题 经典做法是平衡树+启发式+并查集合并？！反正我不会（至少现在） 于是写了线段树合并+并查集 思路比较清楚的，就是连一条边就合并一下 具体见代码： 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657">
-<meta property="og:updated_time" content="2017-07-10T14:28:45.488Z">
+<meta property="og:description" content="传送门：CodeVS1477 HNOI的题  经典做法是平衡树+启发式+并查集合并？！反正我不会（至少现在） 于是写了线段树合并+并查集 思路比较清楚的，就是连一条边就合并一下  具体见代码： 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556">
+<meta property="og:updated_time" content="2017-07-27T14:08:14.808Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【并查集+线段树合并】永无乡">
-<meta name="twitter:description" content="传送门：CodeVS1477 HNOI的题 经典做法是平衡树+启发式+并查集合并？！反正我不会（至少现在） 于是写了线段树合并+并查集 思路比较清楚的，就是连一条边就合并一下 具体见代码： 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657">
+<meta name="twitter:description" content="传送门：CodeVS1477 HNOI的题  经典做法是平衡树+启发式+并查集合并？！反正我不会（至少现在） 于是写了线段树合并+并查集 思路比较清楚的，就是连一条边就合并一下  具体见代码： 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556">
     
     
         
@@ -56,9 +56,9 @@
          
           <li><a href="/">Home</a></li>
          
-          <li><a href="/links/">Links</a></li>
+          <li><a href="/links">Links</a></li>
          
-          <li><a href="/tags/">Tags</a></li>
+          <li><a href="/tags">Tags</a></li>
         
       </ul>
     </span>
@@ -126,7 +126,7 @@
       
     <div class="article-tag">
         <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/线段树/">线段树</a>
+        <a class="tag-link" href="/tags/并查集/">并查集</a>, <a class="tag-link" href="/tags/线段树/">线段树</a>
     </div>
 
 
@@ -137,9 +137,11 @@
   <div class="content" itemprop="articleBody">
     <p>传送门：<a href="http://codevs.cn/problem/1477/" target="_blank" rel="external">CodeVS1477</a></p>
 <p>HNOI的题</p>
+<hr>
 <p>经典做法是平衡树+启发式+并查集合并？！反正我不会（至少现在）</p>
 <p>于是写了线段树合并+并查集</p>
 <p>思路比较清楚的，就是连一条边就合并一下</p>
+<hr>
 <p>具体见代码：</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></div><div class="line"></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="keyword">int</span> n,m,p,tot,x,y,a[<span class="number">100030</span>],head[<span class="number">100030</span>],id[<span class="number">100030</span>],fa[<span class="number">100030</span>],sum[<span class="number">100030</span>*<span class="number">30</span>],ls[<span class="number">100030</span>*<span class="number">30</span>],rs[<span class="number">100030</span>*<span class="number">30</span>];</div><div class="line"><span class="keyword">char</span> ch;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">set_up</span><span class="params">(<span class="keyword">int</span> &amp;k,<span class="keyword">int</span> x,<span class="keyword">int</span> l,<span class="keyword">int</span> r)</span></span>&#123;</div><div class="line">	k=++tot;</div><div class="line">	<span class="keyword">if</span> (l==r)&#123;</div><div class="line">		sum[k]++;</div><div class="line">		<span class="keyword">return</span>;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	<span class="keyword">int</span> mid=(l+r)&gt;&gt;<span class="number">1</span>;</div><div class="line">	<span class="keyword">if</span> (x&lt;=mid) set_up(ls[k],x,l,mid); <span class="keyword">else</span> set_up(rs[k],x,mid+<span class="number">1</span>,r);</div><div class="line">	sum[k]=sum[ls[k]]+sum[rs[k]];</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">merge</span><span class="params">(<span class="keyword">int</span> &amp;x,<span class="keyword">int</span> &amp;y)</span></span>&#123;</div><div class="line">	<span class="keyword">if</span> (x==<span class="number">0</span>) <span class="keyword">return</span>;</div><div class="line">	<span class="keyword">if</span> (x!=<span class="number">0</span> &amp;&amp; y==<span class="number">0</span>)&#123;</div><div class="line">		y=x; <span class="keyword">return</span>;</div><div class="line">	&#125;</div><div class="line">	sum[y]+=sum[x];</div><div class="line">	merge(ls[x],ls[y]);</div><div class="line">	merge(rs[x],rs[y]);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">gfa</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</div><div class="line">	<span class="keyword">return</span> (x==fa[x])?x:(fa[x]=gfa(fa[x]));</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">quiz</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> k)</span></span>&#123;</div><div class="line">	x=head[gfa(x)];</div><div class="line">	<span class="keyword">if</span> (sum[x]&lt;k) <span class="keyword">return</span> <span class="number">-1</span>;</div><div class="line">	</div><div class="line">	<span class="keyword">int</span> l=<span class="number">1</span>,r=n;</div><div class="line">	<span class="keyword">while</span> (l&lt;r)&#123;</div><div class="line">		<span class="keyword">int</span> tmp=sum[ls[x]],mid=(l+r)&gt;&gt;<span class="number">1</span>;</div><div class="line">		<span class="keyword">if</span> (k&lt;=tmp) r=mid,x=ls[x];</div><div class="line">		<span class="keyword">else</span> k-=tmp,l=mid+<span class="number">1</span>,x=rs[x];</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> id[l];</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line">	<span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;n,&amp;m);</div><div class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</div><div class="line">		<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;a[i]);</div><div class="line">		fa[i]=i;</div><div class="line">		id[a[i]]=i;</div><div class="line">		set_up(head[i],a[i],<span class="number">1</span>,n);</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;i++)&#123;</div><div class="line">		<span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;x,&amp;y);</div><div class="line">		x=gfa(x),y=gfa(y);</div><div class="line">		<span class="keyword">if</span> (x!=y)&#123;</div><div class="line">			fa[x]=y;</div><div class="line">			merge(head[x],head[y]);</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;p);</div><div class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=p;i++)&#123;</div><div class="line">		<span class="keyword">for</span> (ch=getchar();ch!=<span class="string">'Q'</span> &amp;&amp; ch!=<span class="string">'B'</span>;ch=getchar());</div><div class="line">		<span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;x,&amp;y);</div><div class="line">		<span class="keyword">if</span> (ch==<span class="string">'B'</span>)&#123;</div><div class="line">			x=gfa(x),y=gfa(y);</div><div class="line">			<span class="keyword">if</span> (x!=y)&#123;</div><div class="line">				fa[x]=y;</div><div class="line">				merge(head[x],head[y]);</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">if</span> (ch==<span class="string">'Q'</span>)</div><div class="line">			<span class="built_in">printf</span>(<span class="string">"%d\n"</span>,quiz(x,y));</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
   </div>
@@ -157,9 +159,9 @@
          
           <li><a href="/">Home</a></li>
          
-          <li><a href="/links/">Links</a></li>
+          <li><a href="/links">Links</a></li>
          
-          <li><a href="/tags/">Tags</a></li>
+          <li><a href="/tags">Tags</a></li>
         
       </ul>
     </div>
@@ -207,9 +209,9 @@
          
           <li><a href="/">Home</a></li>
          
-          <li><a href="/links/">Links</a></li>
+          <li><a href="/links">Links</a></li>
          
-          <li><a href="/tags/">Tags</a></li>
+          <li><a href="/tags">Tags</a></li>
         
       </ul>
     </nav>

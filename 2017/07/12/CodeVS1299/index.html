@@ -6,17 +6,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="传送门：CodeVS1299 线段树水题，两种lazy tag维护一下就没了吧 贴代码： 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253#include&amp;lt;iostream&amp;gt;#include&amp;lt;cstdio&amp;gt;using namesp">
+    <meta name="description" content="传送门：CodeVS1299  线段树水题，两种lazy tag维护一下就没了吧  贴代码： 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253#include&amp;lt;iostream&amp;gt;#include&amp;lt;cstdio&amp;gt;using name">
 <meta name="keywords" content="线段树">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【线段树】切水果">
 <meta property="og:url" content="https://bomb-chicken.github.io/2017/07/12/CodeVS1299/index.html">
 <meta property="og:site_name" content="炸鸡">
-<meta property="og:description" content="传送门：CodeVS1299 线段树水题，两种lazy tag维护一下就没了吧 贴代码： 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253#include&amp;lt;iostream&amp;gt;#include&amp;lt;cstdio&amp;gt;using namesp">
-<meta property="og:updated_time" content="2017-07-12T15:40:21.584Z">
+<meta property="og:description" content="传送门：CodeVS1299  线段树水题，两种lazy tag维护一下就没了吧  贴代码： 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253#include&amp;lt;iostream&amp;gt;#include&amp;lt;cstdio&amp;gt;using name">
+<meta property="og:updated_time" content="2017-07-27T14:07:47.805Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【线段树】切水果">
-<meta name="twitter:description" content="传送门：CodeVS1299 线段树水题，两种lazy tag维护一下就没了吧 贴代码： 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253#include&amp;lt;iostream&amp;gt;#include&amp;lt;cstdio&amp;gt;using namesp">
+<meta name="twitter:description" content="传送门：CodeVS1299  线段树水题，两种lazy tag维护一下就没了吧  贴代码： 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253#include&amp;lt;iostream&amp;gt;#include&amp;lt;cstdio&amp;gt;using name">
     
     
         
@@ -56,9 +56,9 @@
          
           <li><a href="/">Home</a></li>
          
-          <li><a href="/links/">Links</a></li>
+          <li><a href="/links">Links</a></li>
          
-          <li><a href="/tags/">Tags</a></li>
+          <li><a href="/tags">Tags</a></li>
         
       </ul>
     </span>
@@ -136,7 +136,9 @@
 
   <div class="content" itemprop="articleBody">
     <p>传送门：<a href="http://codevs.cn/problem/1299/" target="_blank" rel="external">CodeVS1299</a></p>
+<hr>
 <p>线段树水题，两种lazy tag维护一下就没了吧</p>
+<hr>
 <p>贴代码：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></div><div class="line"></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"></div><div class="line"><span class="keyword">int</span> n,m,l,r,sum[<span class="number">3000000</span>],cov[<span class="number">3000000</span>];</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">pushdown</span><span class="params">(<span class="keyword">int</span> cur,<span class="keyword">int</span> l,<span class="keyword">int</span> r,<span class="keyword">int</span> mid)</span></span>&#123;</div><div class="line">	<span class="keyword">if</span> (cov[cur]==<span class="number">2</span>)&#123;</div><div class="line">		sum[cur&lt;&lt;<span class="number">1</span>]=<span class="number">0</span>;</div><div class="line">		sum[cur&lt;&lt;<span class="number">1</span>|<span class="number">1</span>]=<span class="number">0</span>;</div><div class="line">		cov[cur&lt;&lt;<span class="number">1</span>]=cov[cur];</div><div class="line">		cov[cur&lt;&lt;<span class="number">1</span>|<span class="number">1</span>]=cov[cur];</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">if</span> (cov[cur]==<span class="number">1</span>)&#123;</div><div class="line">		sum[cur&lt;&lt;<span class="number">1</span>]=mid-l+<span class="number">1</span>;</div><div class="line">		sum[cur&lt;&lt;<span class="number">1</span>|<span class="number">1</span>]=r-mid;</div><div class="line">		cov[cur&lt;&lt;<span class="number">1</span>]=cov[cur];</div><div class="line">		cov[cur&lt;&lt;<span class="number">1</span>|<span class="number">1</span>]=cov[cur];</div><div class="line">	&#125;</div><div class="line">	cov[cur]=<span class="number">0</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">update</span><span class="params">(<span class="keyword">int</span> cur)</span></span>&#123;</div><div class="line">	sum[cur]=sum[cur&lt;&lt;<span class="number">1</span>]+sum[cur&lt;&lt;<span class="number">1</span>|<span class="number">1</span>];</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> l,<span class="keyword">int</span> r,<span class="keyword">int</span> L,<span class="keyword">int</span> R,<span class="keyword">int</span> s,<span class="keyword">int</span> cur)</span></span>&#123;</div><div class="line">	<span class="keyword">if</span> (l&gt;=L &amp;&amp; r&lt;=R)&#123;</div><div class="line">		cov[cur]=s;</div><div class="line">		sum[cur]=(s==<span class="number">1</span>)?(r-l+<span class="number">1</span>):sum[cur];</div><div class="line">		sum[cur]=(s==<span class="number">2</span>)?<span class="number">0</span>:sum[cur];</div><div class="line">		<span class="keyword">return</span>;</div><div class="line">	&#125;	</div><div class="line">	<span class="keyword">int</span> mid=(l+r)&gt;&gt;<span class="number">1</span>;</div><div class="line">	pushdown(cur,l,r,mid);</div><div class="line">	<span class="keyword">if</span> (L&lt;=mid) add(l,mid,L,R,s,cur&lt;&lt;<span class="number">1</span>);</div><div class="line">	<span class="keyword">if</span> (R&gt;mid) add(mid+<span class="number">1</span>,r,L,R,s,cur&lt;&lt;<span class="number">1</span>|<span class="number">1</span>);</div><div class="line">	update(cur);</div><div class="line">&#125;</div><div class="line">	</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line">	<span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;n,&amp;m);</div><div class="line">	add(<span class="number">1</span>,n,<span class="number">1</span>,n,<span class="number">1</span>,<span class="number">1</span>);</div><div class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;i++)&#123;</div><div class="line">		<span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;l,&amp;r);</div><div class="line">		add(<span class="number">1</span>,n,l,r,<span class="number">2</span>,<span class="number">1</span>);</div><div class="line">		<span class="built_in">printf</span>(<span class="string">"%d\n"</span>,sum[<span class="number">1</span>]);</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
   </div>
@@ -154,9 +156,9 @@
          
           <li><a href="/">Home</a></li>
          
-          <li><a href="/links/">Links</a></li>
+          <li><a href="/links">Links</a></li>
          
-          <li><a href="/tags/">Tags</a></li>
+          <li><a href="/tags">Tags</a></li>
         
       </ul>
     </div>
@@ -204,9 +206,9 @@
          
           <li><a href="/">Home</a></li>
          
-          <li><a href="/links/">Links</a></li>
+          <li><a href="/links">Links</a></li>
          
-          <li><a href="/tags/">Tags</a></li>
+          <li><a href="/tags">Tags</a></li>
         
       </ul>
     </nav>

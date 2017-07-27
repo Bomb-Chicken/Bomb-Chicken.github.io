@@ -6,17 +6,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="传送门：CodeVS3286 2013NOIP提高组的题 很显然如果a中第i大的与b中第i大的对应，那么结果最优 由于同组中个不相同，排序+map可以轻松实现对应 这样就能求出序列q，其中$q_i$表示$a_i$放在$q_i$位时能与$b_i$对应 然后找出q中的逆序对个数（取模），即为答案。 代码如下： 1234567891011121314151617181920212223242526272">
+    <meta name="description" content="传送门：CodeVS3286 2013NOIP提高组的题  很显然如果a中第i大的与b中第i大的对应，那么结果最优 由于同组中个不相同，排序+map可以轻松实现对应 这样就能求出序列q，其中$q_i$表示$a_i$放在$q_i$位时能与$b_i$对应 然后找出q中的逆序对个数（取模），即为答案。  代码如下： 12345678910111213141516171819202122232425262">
 <meta name="keywords" content="分治">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【归并】火柴排序">
 <meta property="og:url" content="https://bomb-chicken.github.io/2017/07/10/CodeVS3286/index.html">
 <meta property="og:site_name" content="炸鸡">
-<meta property="og:description" content="传送门：CodeVS3286 2013NOIP提高组的题 很显然如果a中第i大的与b中第i大的对应，那么结果最优 由于同组中个不相同，排序+map可以轻松实现对应 这样就能求出序列q，其中$q_i$表示$a_i$放在$q_i$位时能与$b_i$对应 然后找出q中的逆序对个数（取模），即为答案。 代码如下： 1234567891011121314151617181920212223242526272">
-<meta property="og:updated_time" content="2017-07-10T14:01:01.902Z">
+<meta property="og:description" content="传送门：CodeVS3286 2013NOIP提高组的题  很显然如果a中第i大的与b中第i大的对应，那么结果最优 由于同组中个不相同，排序+map可以轻松实现对应 这样就能求出序列q，其中$q_i$表示$a_i$放在$q_i$位时能与$b_i$对应 然后找出q中的逆序对个数（取模），即为答案。  代码如下： 12345678910111213141516171819202122232425262">
+<meta property="og:updated_time" content="2017-07-27T14:10:35.257Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【归并】火柴排序">
-<meta name="twitter:description" content="传送门：CodeVS3286 2013NOIP提高组的题 很显然如果a中第i大的与b中第i大的对应，那么结果最优 由于同组中个不相同，排序+map可以轻松实现对应 这样就能求出序列q，其中$q_i$表示$a_i$放在$q_i$位时能与$b_i$对应 然后找出q中的逆序对个数（取模），即为答案。 代码如下： 1234567891011121314151617181920212223242526272">
+<meta name="twitter:description" content="传送门：CodeVS3286 2013NOIP提高组的题  很显然如果a中第i大的与b中第i大的对应，那么结果最优 由于同组中个不相同，排序+map可以轻松实现对应 这样就能求出序列q，其中$q_i$表示$a_i$放在$q_i$位时能与$b_i$对应 然后找出q中的逆序对个数（取模），即为答案。  代码如下： 12345678910111213141516171819202122232425262">
     
     
         
@@ -56,9 +56,9 @@
          
           <li><a href="/">Home</a></li>
          
-          <li><a href="/links/">Links</a></li>
+          <li><a href="/links">Links</a></li>
          
-          <li><a href="/tags/">Tags</a></li>
+          <li><a href="/tags">Tags</a></li>
         
       </ul>
     </span>
@@ -137,10 +137,12 @@
   <div class="content" itemprop="articleBody">
     <p>传送门：<a href="http://codevs.cn/problem/3286/" target="_blank" rel="external">CodeVS3286</a></p>
 <p>2013NOIP提高组的题</p>
+<hr>
 <p>很显然如果a中第i大的与b中第i大的对应，那么结果最优</p>
 <p>由于同组中个不相同，排序+map可以轻松实现对应</p>
 <p>这样就能求出序列q，其中$q_i$表示$a_i$放在$q_i$位时能与$b_i$对应</p>
 <p>然后找出q中的逆序对个数（取模），即为答案。</p>
+<hr>
 <p>代码如下：</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;map&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cmath&gt;</span></span></div><div class="line"></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> mo 99999997</span></div><div class="line"></div><div class="line"><span class="keyword">int</span> n,ans;</div><div class="line"><span class="keyword">int</span> a[<span class="number">100030</span>],b[<span class="number">100030</span>],aa[<span class="number">100030</span>],bb[<span class="number">100030</span>],t[<span class="number">100030</span>],p[<span class="number">100030</span>],q[<span class="number">100030</span>];</div><div class="line"><span class="built_in">map</span>&lt;<span class="keyword">int</span>,<span class="keyword">int</span>&gt; m_a,m_b;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">merge</span><span class="params">(<span class="keyword">int</span> l,<span class="keyword">int</span> r)</span></span>&#123;</div><div class="line">	<span class="keyword">if</span> (l==r) <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">	<span class="keyword">int</span> mid=(l+r)&gt;&gt;<span class="number">1</span>;</div><div class="line">	<span class="keyword">int</span> sum=(merge(l,mid)+merge(mid+<span class="number">1</span>,r))%mo;</div><div class="line">	</div><div class="line">	<span class="keyword">int</span> j=mid+<span class="number">1</span>;</div><div class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i=l;i&lt;=mid;i++)&#123;</div><div class="line">		<span class="keyword">while</span> (j&lt;=r &amp;&amp; q[i]&gt;q[j])</div><div class="line">			j++;</div><div class="line">		sum=(sum+j-mid<span class="number">-1</span>)%mo;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	<span class="keyword">int</span> xb=l;</div><div class="line">	j=mid+<span class="number">1</span>;</div><div class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i=l;i&lt;=mid;i++)&#123;</div><div class="line">		<span class="keyword">while</span> (j&lt;=r &amp;&amp; q[i]&gt;q[j])&#123;</div><div class="line">			t[xb]=q[j];</div><div class="line">			xb++;</div><div class="line">			j++;</div><div class="line">		&#125;</div><div class="line">		t[xb]=q[i];</div><div class="line">		xb++;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">while</span> (j&lt;=r)&#123;</div><div class="line">		t[xb]=q[j];</div><div class="line">		xb++;</div><div class="line">		j++;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i=l;i&lt;=r;i++) q[i]=t[i];</div><div class="line">	</div><div class="line">	<span class="keyword">return</span> sum%mo;</div><div class="line">&#125;</div><div class="line">	</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n);</div><div class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;a[i]),aa[i]=a[i];</div><div class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;b[i]),bb[i]=b[i];</div><div class="line">	</div><div class="line">	sort(aa+<span class="number">1</span>,aa+n+<span class="number">1</span>); sort(bb+<span class="number">1</span>,bb+n+<span class="number">1</span>);</div><div class="line">	</div><div class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</div><div class="line">		m_b[bb[i]]=i;</div><div class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</div><div class="line">		p[m_b[b[i]]]=i;</div><div class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</div><div class="line">		m_a[aa[i]]=i;</div><div class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</div><div class="line">		q[i]=p[m_a[a[i]]];</div><div class="line">	</div><div class="line">	ans=merge(<span class="number">1</span>,n);</div><div class="line">	</div><div class="line">	<span class="built_in">printf</span>(<span class="string">"%d\n"</span>,ans);</div><div class="line">	</div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
   </div>
@@ -158,9 +160,9 @@
          
           <li><a href="/">Home</a></li>
          
-          <li><a href="/links/">Links</a></li>
+          <li><a href="/links">Links</a></li>
          
-          <li><a href="/tags/">Tags</a></li>
+          <li><a href="/tags">Tags</a></li>
         
       </ul>
     </div>
@@ -208,9 +210,9 @@
          
           <li><a href="/">Home</a></li>
          
-          <li><a href="/links/">Links</a></li>
+          <li><a href="/links">Links</a></li>
          
-          <li><a href="/tags/">Tags</a></li>
+          <li><a href="/tags">Tags</a></li>
         
       </ul>
     </nav>

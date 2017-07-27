@@ -6,17 +6,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="传送门：CodeVS1255 这道题很显然是DP 第一个求方案应该是很白痴的DP 三维数组就可以了 用$ f_{i,j,k} $记录自上而下第i层当前层用了j个一共用了k个（注意这里j&amp;lt;=10） 转移就是 $f_{i,j,k}=f_{i-1,j-1,k-j}+f_{i-1,j+1,k-j}$ 这里的主要问题就在于为什么要自上而下统计 因为第二问求具体方案时要按照自下而上的字典序输出，所以要保">
+    <meta name="description" content="传送门：CodeVS1255  这道题很显然是DP 第一个求方案应该是很白痴的DP 三维数组就可以了 用$ f_{i,j,k} $记录自上而下第i层当前层用了j个一共用了k个（注意这里j&amp;lt;=10） 转移就是 $f_{i,j,k}=f_{i-1,j-1,k-j}+f_{i-1,j+1,k-j}$ 这里的主要问题就在于为什么要自上而下统计 因为第二问求具体方案时要按照自下而上的字典序输出，所以要">
 <meta name="keywords" content="动态规划DP">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【动态规划】搭积木">
 <meta property="og:url" content="https://bomb-chicken.github.io/2017/05/13/CodeVS1255/index.html">
 <meta property="og:site_name" content="炸鸡">
-<meta property="og:description" content="传送门：CodeVS1255 这道题很显然是DP 第一个求方案应该是很白痴的DP 三维数组就可以了 用$ f_{i,j,k} $记录自上而下第i层当前层用了j个一共用了k个（注意这里j&amp;lt;=10） 转移就是 $f_{i,j,k}=f_{i-1,j-1,k-j}+f_{i-1,j+1,k-j}$ 这里的主要问题就在于为什么要自上而下统计 因为第二问求具体方案时要按照自下而上的字典序输出，所以要保">
-<meta property="og:updated_time" content="2017-07-14T14:00:57.510Z">
+<meta property="og:description" content="传送门：CodeVS1255  这道题很显然是DP 第一个求方案应该是很白痴的DP 三维数组就可以了 用$ f_{i,j,k} $记录自上而下第i层当前层用了j个一共用了k个（注意这里j&amp;lt;=10） 转移就是 $f_{i,j,k}=f_{i-1,j-1,k-j}+f_{i-1,j+1,k-j}$ 这里的主要问题就在于为什么要自上而下统计 因为第二问求具体方案时要按照自下而上的字典序输出，所以要">
+<meta property="og:updated_time" content="2017-07-27T14:07:34.354Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【动态规划】搭积木">
-<meta name="twitter:description" content="传送门：CodeVS1255 这道题很显然是DP 第一个求方案应该是很白痴的DP 三维数组就可以了 用$ f_{i,j,k} $记录自上而下第i层当前层用了j个一共用了k个（注意这里j&amp;lt;=10） 转移就是 $f_{i,j,k}=f_{i-1,j-1,k-j}+f_{i-1,j+1,k-j}$ 这里的主要问题就在于为什么要自上而下统计 因为第二问求具体方案时要按照自下而上的字典序输出，所以要保">
+<meta name="twitter:description" content="传送门：CodeVS1255  这道题很显然是DP 第一个求方案应该是很白痴的DP 三维数组就可以了 用$ f_{i,j,k} $记录自上而下第i层当前层用了j个一共用了k个（注意这里j&amp;lt;=10） 转移就是 $f_{i,j,k}=f_{i-1,j-1,k-j}+f_{i-1,j+1,k-j}$ 这里的主要问题就在于为什么要自上而下统计 因为第二问求具体方案时要按照自下而上的字典序输出，所以要">
     
     
         
@@ -56,9 +56,9 @@
          
           <li><a href="/">Home</a></li>
          
-          <li><a href="/links/">Links</a></li>
+          <li><a href="/links">Links</a></li>
          
-          <li><a href="/tags/">Tags</a></li>
+          <li><a href="/tags">Tags</a></li>
         
       </ul>
     </span>
@@ -136,6 +136,7 @@
 
   <div class="content" itemprop="articleBody">
     <p>传送门：<a href="http://codevs.cn/problem/1255/" target="_blank" rel="external">CodeVS1255</a></p>
+<hr>
 <p>这道题很显然是DP</p>
 <p>第一个求方案应该是很白痴的DP</p>
 <p>三维数组就可以了</p>
@@ -144,6 +145,7 @@
 <p>$f_{i,j,k}=f_{i-1,j-1,k-j}+f_{i-1,j+1,k-j}$</p>
 <p>这里的主要问题就在于为什么要自上而下统计</p>
 <p>因为第二问求具体方案时要按照自下而上的字典序输出，所以要保证下面状态的比上面的大，成为一棵树（二叉树），然后就可以求解方案了</p>
+<hr>
 <p>代码如下</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cmath&gt;</span></span></div><div class="line"></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="keyword">long</span> <span class="keyword">long</span> n,h,m,ans,x,p,q,s;</div><div class="line"><span class="keyword">long</span> <span class="keyword">long</span> f[<span class="number">80</span>][<span class="number">30</span>][<span class="number">1000</span>];</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line">	<span class="built_in">scanf</span>(<span class="string">"%lld%lld%lld"</span>,&amp;n,&amp;h,&amp;m);</div><div class="line">	</div><div class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=<span class="number">10</span>;i++)</div><div class="line">		f[<span class="number">1</span>][i][i]=<span class="number">1</span>;</div><div class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">2</span>;i&lt;=h;i++)</div><div class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=<span class="number">10</span>;j++)</div><div class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> k=<span class="number">1</span>;k&lt;=n;k++)</div><div class="line">				f[i][j][k]=f[i<span class="number">-1</span>][j<span class="number">-1</span>][k-j]+f[i<span class="number">-1</span>][j+<span class="number">1</span>][k-j];</div><div class="line">				</div><div class="line">	<span class="built_in">printf</span>(<span class="string">"%lld\n"</span>,f[h][m][n]);</div><div class="line">	</div><div class="line">	<span class="keyword">while</span> (<span class="number">1</span>)&#123;</div><div class="line">		<span class="built_in">scanf</span>(<span class="string">"%lld"</span>,&amp;x);</div><div class="line">		<span class="keyword">if</span> (x==<span class="number">-1</span>) <span class="keyword">break</span>;</div><div class="line">		p=m;</div><div class="line">		q=h;</div><div class="line">		s=n;</div><div class="line">		<span class="keyword">while</span> (q)&#123;</div><div class="line">			<span class="built_in">printf</span>(<span class="string">"%lld "</span>,p);</div><div class="line">			<span class="keyword">if</span> (x&lt;=f[q<span class="number">-1</span>][p<span class="number">-1</span>][s-p])&#123;</div><div class="line">				s-=p;</div><div class="line">				q--;</div><div class="line">				p--;</div><div class="line">			&#125;</div><div class="line">			<span class="keyword">else</span>&#123;</div><div class="line">				x-=f[q<span class="number">-1</span>][p<span class="number">-1</span>][s-p];</div><div class="line">				s-=p;</div><div class="line">				q--;</div><div class="line">				p++;</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">		<span class="built_in">printf</span>(<span class="string">"\n"</span>);</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 
@@ -162,9 +164,9 @@
          
           <li><a href="/">Home</a></li>
          
-          <li><a href="/links/">Links</a></li>
+          <li><a href="/links">Links</a></li>
          
-          <li><a href="/tags/">Tags</a></li>
+          <li><a href="/tags">Tags</a></li>
         
       </ul>
     </div>
@@ -212,9 +214,9 @@
          
           <li><a href="/">Home</a></li>
          
-          <li><a href="/links/">Links</a></li>
+          <li><a href="/links">Links</a></li>
          
-          <li><a href="/tags/">Tags</a></li>
+          <li><a href="/tags">Tags</a></li>
         
       </ul>
     </nav>
