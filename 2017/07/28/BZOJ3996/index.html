@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="传送鸡：BZOJ3996 TJOI2015  套路题 先转化题意（好复杂） 题目实际上是要求把一堆点分两堆，一堆选择，另一堆不选，选择点i需要$c_i$代价，同时选择(i,j)可以得到收益$b_{i,j}$。 由于最小割只能求最小代价，先要转化。 不妨假设收益最大化为sum，然后建立源点s和汇点t，和s连接表示选择，和t连接表示不选。 由于是s-t割，一个点必然是选或者不选。 然后把源点s和点(i">
+<meta name="keywords" content="网络流,数论">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【最小割】线性代数">
+<meta property="og:url" content="https://bomb-chicken.github.io/2017/07/28/BZOJ3996/index.html">
+<meta property="og:site_name" content="炸鸡">
+<meta property="og:description" content="传送鸡：BZOJ3996 TJOI2015  套路题 先转化题意（好复杂） 题目实际上是要求把一堆点分两堆，一堆选择，另一堆不选，选择点i需要$c_i$代价，同时选择(i,j)可以得到收益$b_{i,j}$。 由于最小割只能求最小代价，先要转化。 不妨假设收益最大化为sum，然后建立源点s和汇点t，和s连接表示选择，和t连接表示不选。 由于是s-t割，一个点必然是选或者不选。 然后把源点s和点(i">
+<meta property="og:updated_time" content="2017-07-29T14:06:23.743Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="【最小割】线性代数">
+<meta name="twitter:description" content="传送鸡：BZOJ3996 TJOI2015  套路题 先转化题意（好复杂） 题目实际上是要求把一堆点分两堆，一堆选择，另一堆不选，选择点i需要$c_i$代价，同时选择(i,j)可以得到收益$b_{i,j}$。 由于最小割只能求最小代价，先要转化。 不妨假设收益最大化为sum，然后建立源点s和汇点t，和s连接表示选择，和t连接表示不选。 由于是s-t割，一个点必然是选或者不选。 然后把源点s和点(i">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>【最小割】线性代数</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- rss --><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    
+    
+</head>
+
+<body>
+    
+      <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="header-post">
+  <a id="menu-icon" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/links">Links</a></li>
+         
+          <li><a href="/tags">Tags</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2017/07/28/BZOJ1305/"><i class="fa fa-chevron-left" aria-hidden="true" onmouseover='$("#i-prev").toggle();' onmouseout='$("#i-prev").toggle();'></i></a></li>
+        
+        
+        <li><a class="icon" href="/2017/07/28/BZOJ2127/"><i class="fa fa-chevron-right" aria-hidden="true" onmouseover='$("#i-next").toggle();' onmouseout='$("#i-next").toggle();'></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa fa-chevron-up" aria-hidden="true" onmouseover='$("#i-top").toggle();' onmouseout='$("#i-top").toggle();'></i></a></li>
+        <li><a class="icon" href="#"><i class="fa fa-share-alt" aria-hidden="true" onmouseover='$("#i-share").toggle();' onmouseout='$("#i-share").toggle();' onclick='$("#share").toggle();return false;'></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://bomb-chicken.github.io/2017/07/28/BZOJ3996/"><i class="fa fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://bomb-chicken.github.io/2017/07/28/BZOJ3996/&text=【最小割】线性代数"><i class="fa fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://bomb-chicken.github.io/2017/07/28/BZOJ3996/&title=【最小割】线性代数"><i class="fa fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://bomb-chicken.github.io/2017/07/28/BZOJ3996/&is_video=false&description=【最小割】线性代数"><i class="fa fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=【最小割】线性代数&body=Check out this article: https://bomb-chicken.github.io/2017/07/28/BZOJ3996/"><i class="fa fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://bomb-chicken.github.io/2017/07/28/BZOJ3996/&title=【最小割】线性代数"><i class="fa fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://bomb-chicken.github.io/2017/07/28/BZOJ3996/&title=【最小割】线性代数"><i class="fa fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://bomb-chicken.github.io/2017/07/28/BZOJ3996/&title=【最小割】线性代数"><i class="fa fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://bomb-chicken.github.io/2017/07/28/BZOJ3996/&title=【最小割】线性代数"><i class="fa fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://bomb-chicken.github.io/2017/07/28/BZOJ3996/&name=【最小割】线性代数&description="><i class="fa fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index width mx-auto px2 my4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        【最小割】线性代数
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">炸鸡</span>
+      </span>
+      
+    <div class="postdate">
+        <time datetime="2017-07-28T14:50:57.000Z" itemprop="datePublished">2017-07-28</time>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/数论/">数论</a>, <a class="tag-link" href="/tags/网络流/">网络流</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <p>传送鸡：<a href="http://www.lydsy.com/JudgeOnline/problem.php?id=3996" target="_blank" rel="external">BZOJ3996</a></p>
+<p>TJOI2015</p>
+<hr>
+<p>套路题</p>
+<p>先转化题意（好复杂）</p>
+<p>题目实际上是要求把一堆点分两堆，一堆选择，另一堆不选，选择点i需要$c_i$代价，同时选择(i,j)可以得到收益$b_{i,j}$。</p>
+<p>由于最小割只能求最小代价，先要转化。</p>
+<p>不妨假设收益最大化为sum，然后建立源点s和汇点t，和s连接表示选择，和t连接表示不选。</p>
+<p>由于是s-t割，一个点必然是选或者不选。</p>
+<p>然后把源点s和点(i,j)连容量为$b_{i,j}$的边，因为已经假设收益最大化，最后如果最后切断则表示不选(i,j)的代价；</p>
+<p>同样把点i和汇点t连容量$c_i$的边，最后如果切断则表示选择i的代价。</p>
+<p>完成建图后，跑最小割</p>
+<p><strong>PS：这道题的一般形式就是最大闭合权子图（by梁大）</strong></p>
+<hr>
+<p>贴代码：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></div><div class="line"></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> INF 100000000</span></div><div class="line"></div><div class="line"><span class="keyword">int</span> sum,n,x,s,t,tot,head[<span class="number">800030</span>],iter[<span class="number">800030</span>],level[<span class="number">800030</span>],q[<span class="number">800030</span>];</div><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">edge</span>&#123;</span><span class="keyword">int</span> v,cap,rev,nxt;&#125;E[<span class="number">3000030</span>];</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y,<span class="keyword">int</span> k)</span></span>&#123;</div><div class="line">	E[++tot].v=y; E[tot].cap=k; E[tot].rev=tot+<span class="number">1</span>; E[tot].nxt=head[x]; head[x]=tot;</div><div class="line">	E[++tot].v=x; E[tot].cap=<span class="number">0</span>; E[tot].rev=tot<span class="number">-1</span>; E[tot].nxt=head[y]; head[y]=tot;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">bfs</span><span class="params">(<span class="keyword">int</span> s)</span></span>&#123;</div><div class="line">	<span class="built_in">memset</span>(level,<span class="number">-1</span>,<span class="keyword">sizeof</span> level);</div><div class="line">	<span class="keyword">int</span> t=<span class="number">0</span>,w=<span class="number">1</span>;</div><div class="line">	level[s]=<span class="number">0</span>; q[<span class="number">1</span>]=s;</div><div class="line">	<span class="keyword">while</span> (t&lt;w)&#123;</div><div class="line">		t++;</div><div class="line">		<span class="keyword">int</span> v=q[t];</div><div class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i=head[v];i;i=E[i].nxt)&#123;</div><div class="line">			edge &amp;e=E[i];</div><div class="line">			<span class="keyword">if</span> (e.cap&gt;<span class="number">0</span> &amp;&amp; level[e.v]&lt;<span class="number">0</span>)&#123;</div><div class="line">				level[e.v]=level[v]+<span class="number">1</span>;</div><div class="line">				q[++w]=e.v;</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> v,<span class="keyword">int</span> t,<span class="keyword">int</span> f)</span></span>&#123;</div><div class="line">	<span class="keyword">if</span> (v==t) <span class="keyword">return</span> f;</div><div class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> &amp;i=iter[v];i;i=E[i].nxt)&#123;</div><div class="line">		edge &amp;e=E[i];</div><div class="line">		<span class="keyword">if</span> (e.cap&gt;<span class="number">0</span> &amp;&amp; level[v]&lt;level[e.v])&#123;</div><div class="line">			<span class="keyword">int</span> d=dfs(e.v,t,min(f,e.cap));</div><div class="line">			<span class="keyword">if</span> (d&gt;<span class="number">0</span>)&#123;</div><div class="line">				e.cap-=d;</div><div class="line">				E[e.rev].cap+=d;</div><div class="line">				<span class="keyword">return</span> d;</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">dinic</span><span class="params">(<span class="keyword">int</span> s,<span class="keyword">int</span> t)</span></span>&#123;</div><div class="line">	<span class="keyword">int</span> flow=<span class="number">0</span>;</div><div class="line">	<span class="keyword">for</span>(;;)&#123;</div><div class="line">		bfs(s);</div><div class="line">		<span class="keyword">if</span> (level[t]&lt;<span class="number">0</span>) <span class="keyword">return</span> flow;</div><div class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=<span class="number">2</span>*n*n+<span class="number">1</span>;i++) iter[i]=head[i];</div><div class="line">		<span class="keyword">int</span> f=<span class="number">0</span>;</div><div class="line">		<span class="keyword">while</span> ((f=dfs(s,t,INF))&gt;<span class="number">0</span>)</div><div class="line">			flow+=f;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n);</div><div class="line">	s=<span class="number">2</span>*n*n; t=<span class="number">2</span>*n*n+<span class="number">1</span>;</div><div class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</div><div class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=n;j++)&#123;</div><div class="line">			<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;x);</div><div class="line">			sum+=x;</div><div class="line">			add(s,i*n+j+n,x);</div><div class="line">			add(i*n+j+n,i,INF);</div><div class="line">			add(i*n+j+n,j,INF);</div><div class="line">		&#125;</div><div class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</div><div class="line">		<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;x);</div><div class="line">		add(i,t,x);</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	<span class="built_in">printf</span>(<span class="string">"%d\n"</span>,sum-dinic(s,t));</div><div class="line">	</div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+  </div>
+</article>
+
+
+
+    </div>
+    
+      <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/links">Links</a></li>
+         
+          <li><a href="/tags">Tags</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://bomb-chicken.github.io/2017/07/28/BZOJ3996/"><i class="fa fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://bomb-chicken.github.io/2017/07/28/BZOJ3996/&text=【最小割】线性代数"><i class="fa fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://bomb-chicken.github.io/2017/07/28/BZOJ3996/&title=【最小割】线性代数"><i class="fa fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://bomb-chicken.github.io/2017/07/28/BZOJ3996/&is_video=false&description=【最小割】线性代数"><i class="fa fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=【最小割】线性代数&body=Check out this article: https://bomb-chicken.github.io/2017/07/28/BZOJ3996/"><i class="fa fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://bomb-chicken.github.io/2017/07/28/BZOJ3996/&title=【最小割】线性代数"><i class="fa fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://bomb-chicken.github.io/2017/07/28/BZOJ3996/&title=【最小割】线性代数"><i class="fa fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://bomb-chicken.github.io/2017/07/28/BZOJ3996/&title=【最小割】线性代数"><i class="fa fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://bomb-chicken.github.io/2017/07/28/BZOJ3996/&title=【最小割】线性代数"><i class="fa fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://bomb-chicken.github.io/2017/07/28/BZOJ3996/&name=【最小割】线性代数&description="><i class="fa fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+      <ul>
+        <li id="toc"><a class="icon" href="#" onclick='$("#toc-footer").toggle();return false;'><i class="fa fa-list fa-lg" aria-hidden="true"></i> TOC</a></li>
+        <li id="share"><a class="icon" href="#" onclick='$("#share-footer").toggle();return false;'><i class="fa fa-share-alt fa-lg" aria-hidden="true"></i> Share</a></li>
+        <li id="top" style="display:none"><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a></li>
+        <li id="menu"><a class="icon" href="#" onclick='$("#nav-footer").toggle();return false;'><i class="fa fa-bars fa-lg" aria-hidden="true"></i> Menu</a></li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+    
+    <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2017 炸鸡
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/links">Links</a></li>
+         
+          <li><a href="/tags">Tags</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+
+</body>
+</html>
+<!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="/lib/meslo-LG/styles.css">
+<link rel="stylesheet" href="/lib/justified-gallery/justifiedGallery.min.css">
+
+
+<!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- Google Analytics -->
+
+<!-- Disqus Comments -->
+
+
