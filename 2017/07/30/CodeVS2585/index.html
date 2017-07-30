@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="传送门：CodeVS2585 POI2012  ~~吐槽一下这道题真的是没有结论做不出！~~ 思路： 首先想到模拟，显然GG。 于是就开始撕烤，然而除了暴力枚举并没有思路。 ~~于是查看题解，~~发现了一条性质： 首先循环相同的2个串可以表示为AB和BA 记$f_i$为|A|为i时|B|的最大值，然后可以发现 $$f_i\geqslant f_{i-1}-2\longrightarrow f_{i">
+<meta name="keywords" content="字符串">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【字符串哈希】Prefixuffix">
+<meta property="og:url" content="https://bomb-chicken.github.io/2017/07/30/CodeVS2585/index.html">
+<meta property="og:site_name" content="炸鸡">
+<meta property="og:description" content="传送门：CodeVS2585 POI2012  ~~吐槽一下这道题真的是没有结论做不出！~~ 思路： 首先想到模拟，显然GG。 于是就开始撕烤，然而除了暴力枚举并没有思路。 ~~于是查看题解，~~发现了一条性质： 首先循环相同的2个串可以表示为AB和BA 记$f_i$为|A|为i时|B|的最大值，然后可以发现 $$f_i\geqslant f_{i-1}-2\longrightarrow f_{i">
+<meta property="og:updated_time" content="2017-07-30T14:21:07.635Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="【字符串哈希】Prefixuffix">
+<meta name="twitter:description" content="传送门：CodeVS2585 POI2012  ~~吐槽一下这道题真的是没有结论做不出！~~ 思路： 首先想到模拟，显然GG。 于是就开始撕烤，然而除了暴力枚举并没有思路。 ~~于是查看题解，~~发现了一条性质： 首先循环相同的2个串可以表示为AB和BA 记$f_i$为|A|为i时|B|的最大值，然后可以发现 $$f_i\geqslant f_{i-1}-2\longrightarrow f_{i">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>【字符串哈希】Prefixuffix</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- rss --><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    
+    
+</head>
+
+<body>
+    
+      <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="header-post">
+  <a id="menu-icon" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/links">Links</a></li>
+         
+          <li><a href="/tags">Tags</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2017/07/30/summary1/"><i class="fa fa-chevron-left" aria-hidden="true" onmouseover='$("#i-prev").toggle();' onmouseout='$("#i-prev").toggle();'></i></a></li>
+        
+        
+        <li><a class="icon" href="/2017/07/29/BZOJ1001/"><i class="fa fa-chevron-right" aria-hidden="true" onmouseover='$("#i-next").toggle();' onmouseout='$("#i-next").toggle();'></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa fa-chevron-up" aria-hidden="true" onmouseover='$("#i-top").toggle();' onmouseout='$("#i-top").toggle();'></i></a></li>
+        <li><a class="icon" href="#"><i class="fa fa-share-alt" aria-hidden="true" onmouseover='$("#i-share").toggle();' onmouseout='$("#i-share").toggle();' onclick='$("#share").toggle();return false;'></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://bomb-chicken.github.io/2017/07/30/CodeVS2585/"><i class="fa fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://bomb-chicken.github.io/2017/07/30/CodeVS2585/&text=【字符串哈希】Prefixuffix"><i class="fa fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://bomb-chicken.github.io/2017/07/30/CodeVS2585/&title=【字符串哈希】Prefixuffix"><i class="fa fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://bomb-chicken.github.io/2017/07/30/CodeVS2585/&is_video=false&description=【字符串哈希】Prefixuffix"><i class="fa fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=【字符串哈希】Prefixuffix&body=Check out this article: https://bomb-chicken.github.io/2017/07/30/CodeVS2585/"><i class="fa fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://bomb-chicken.github.io/2017/07/30/CodeVS2585/&title=【字符串哈希】Prefixuffix"><i class="fa fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://bomb-chicken.github.io/2017/07/30/CodeVS2585/&title=【字符串哈希】Prefixuffix"><i class="fa fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://bomb-chicken.github.io/2017/07/30/CodeVS2585/&title=【字符串哈希】Prefixuffix"><i class="fa fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://bomb-chicken.github.io/2017/07/30/CodeVS2585/&title=【字符串哈希】Prefixuffix"><i class="fa fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://bomb-chicken.github.io/2017/07/30/CodeVS2585/&name=【字符串哈希】Prefixuffix&description="><i class="fa fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index width mx-auto px2 my4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        【字符串哈希】Prefixuffix
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">炸鸡</span>
+      </span>
+      
+    <div class="postdate">
+        <time datetime="2017-07-30T14:00:19.000Z" itemprop="datePublished">2017-07-30</time>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/字符串/">字符串</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <p>传送门：<a href="http://codevs.cn/problem/2585/" target="_blank" rel="external">CodeVS2585</a></p>
+<p>POI2012</p>
+<hr>
+<p>~~吐槽一下这道题真的是没有结论做不出！~~</p>
+<p>思路：</p>
+<p>首先想到模拟，显然GG。</p>
+<p>于是就开始撕烤，然而除了暴力枚举并没有思路。</p>
+<p>~~于是查看题解，~~发现了一条性质：</p>
+<p>首先循环相同的2个串可以表示为AB和BA</p>
+<p>记$f_i$为|A|为i时|B|的最大值，然后可以发现</p>
+<p>$$f_i\geqslant f_{i-1}-2\longrightarrow f_{i-1}\leqslant f_i+2$$</p>
+<p>因为两个相同的串两边各去掉一个字符后依然相等。</p>
+<p>~~这个结论很好证，然而根本想不到。~~</p>
+<p>然后i从$\frac{n}{2}$开始往下枚举，然后j记录当前的$f_i$,那么j的取值范围就收到$f_i$的限制，然后加（两）个哈希判一下就好了。</p>
+<p>然后就可以秒了。</p>
+<hr>
+<p>贴代码：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></div><div class="line"></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> LL long long</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> Mo (LL)1000000009</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> BASE (LL)233233</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> min(x,y) ((x)&lt;(y)?(x):(y))</span></div><div class="line"></div><div class="line">LL Hash[<span class="number">1000030</span>],hAsh[<span class="number">1000030</span>],pw[<span class="number">1000030</span>];</div><div class="line">LL ans,n;</div><div class="line"><span class="keyword">char</span> s[<span class="number">1000030</span>];</div><div class="line"></div><div class="line"><span class="function">LL <span class="title">get_hash</span><span class="params">(LL x,LL y)</span></span>&#123;<span class="keyword">return</span> (hAsh[y]-(hAsh[x<span class="number">-1</span>]*pw[y-x+<span class="number">1</span>])%Mo+Mo)%Mo;&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line">	<span class="built_in">scanf</span>(<span class="string">"%lld\n"</span>,&amp;n);</div><div class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) s[i]=getchar();</div><div class="line">	</div><div class="line">	pw[<span class="number">0</span>]=<span class="number">1</span>;</div><div class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</div><div class="line">		Hash[i]=(Hash[i<span class="number">-1</span>]+s[i])%Mo;</div><div class="line">		hAsh[i]=(hAsh[i<span class="number">-1</span>]*BASE+s[i])%Mo;</div><div class="line">		pw[i]=pw[i<span class="number">-1</span>]*BASE%Mo;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i=n/<span class="number">2</span>,j=<span class="number">0</span>;i&gt;<span class="number">0</span>;i--,j=min(j+<span class="number">2</span>,(n/<span class="number">2</span>-i)))&#123;</div><div class="line">		<span class="keyword">for</span> (;j&gt;<span class="number">0</span>;j--)</div><div class="line">			<span class="keyword">if</span> (get_hash(i+<span class="number">1</span>,i+j)==get_hash(n-i-j+<span class="number">1</span>,n-i) &amp;&amp; Hash[i+j]-Hash[i]==Hash[n-i]-Hash[n-i-j])</div><div class="line">				<span class="keyword">break</span>;</div><div class="line">		<span class="keyword">if</span> (get_hash(<span class="number">1</span>,i)==get_hash(n-i+<span class="number">1</span>,n) &amp;&amp; Hash[i]==Hash[n]-Hash[n-i])</div><div class="line">			<span class="keyword">if</span> (ans&lt;i+j) ans=i+j;</div><div class="line">		</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	<span class="built_in">printf</span>(<span class="string">"%lld\n"</span>,ans);</div><div class="line">	</div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+  </div>
+</article>
+
+
+
+    </div>
+    
+      <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/links">Links</a></li>
+         
+          <li><a href="/tags">Tags</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://bomb-chicken.github.io/2017/07/30/CodeVS2585/"><i class="fa fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://bomb-chicken.github.io/2017/07/30/CodeVS2585/&text=【字符串哈希】Prefixuffix"><i class="fa fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://bomb-chicken.github.io/2017/07/30/CodeVS2585/&title=【字符串哈希】Prefixuffix"><i class="fa fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://bomb-chicken.github.io/2017/07/30/CodeVS2585/&is_video=false&description=【字符串哈希】Prefixuffix"><i class="fa fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=【字符串哈希】Prefixuffix&body=Check out this article: https://bomb-chicken.github.io/2017/07/30/CodeVS2585/"><i class="fa fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://bomb-chicken.github.io/2017/07/30/CodeVS2585/&title=【字符串哈希】Prefixuffix"><i class="fa fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://bomb-chicken.github.io/2017/07/30/CodeVS2585/&title=【字符串哈希】Prefixuffix"><i class="fa fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://bomb-chicken.github.io/2017/07/30/CodeVS2585/&title=【字符串哈希】Prefixuffix"><i class="fa fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://bomb-chicken.github.io/2017/07/30/CodeVS2585/&title=【字符串哈希】Prefixuffix"><i class="fa fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://bomb-chicken.github.io/2017/07/30/CodeVS2585/&name=【字符串哈希】Prefixuffix&description="><i class="fa fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+      <ul>
+        <li id="toc"><a class="icon" href="#" onclick='$("#toc-footer").toggle();return false;'><i class="fa fa-list fa-lg" aria-hidden="true"></i> TOC</a></li>
+        <li id="share"><a class="icon" href="#" onclick='$("#share-footer").toggle();return false;'><i class="fa fa-share-alt fa-lg" aria-hidden="true"></i> Share</a></li>
+        <li id="top" style="display:none"><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a></li>
+        <li id="menu"><a class="icon" href="#" onclick='$("#nav-footer").toggle();return false;'><i class="fa fa-bars fa-lg" aria-hidden="true"></i> Menu</a></li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+    
+    <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2017 炸鸡
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/links">Links</a></li>
+         
+          <li><a href="/tags">Tags</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+
+</body>
+</html>
+<!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="/lib/meslo-LG/styles.css">
+<link rel="stylesheet" href="/lib/justified-gallery/justifiedGallery.min.css">
+
+
+<!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- Google Analytics -->
+
+<!-- Disqus Comments -->
+
+
