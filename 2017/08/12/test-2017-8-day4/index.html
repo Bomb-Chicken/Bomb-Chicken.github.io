@@ -6,17 +6,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="if(&quot;orzsro&quot;==prompt(&quot;请输入密码&quot;))     {         alert(&quot;正确&quot;);     }     else     {         alert(&quot;错误&quot;);         location=&quot;https://bomb-chicken.github.io/&quot;; #返回网站，请自定义     }  **NOIP模拟题day4** ​">
+    <meta name="description" content="function doDecrypt(pwd, onError) { 	console.log(&quot;in doDecrypt&quot;); 	var txt = document.getElementById(&quot;enc_content&quot;).innerHTML; 	var plantext; 	try { 	  	var bytes = CryptoJS.AES.decrypt(txt, pwd); 		p">
 <meta name="keywords" content="试题">
 <meta property="og:type" content="article">
 <meta property="og:title" content="诚享2017-8月day4">
 <meta property="og:url" content="https://bomb-chicken.github.io/2017/08/12/test-2017-8-day4/index.html">
 <meta property="og:site_name" content="炸鸡">
-<meta property="og:description" content="if(&quot;orzsro&quot;==prompt(&quot;请输入密码&quot;))     {         alert(&quot;正确&quot;);     }     else     {         alert(&quot;错误&quot;);         location=&quot;https://bomb-chicken.github.io/&quot;; #返回网站，请自定义     }  **NOIP模拟题day4** ​">
-<meta property="og:updated_time" content="2017-08-12T14:32:11.488Z">
+<meta property="og:description" content="function doDecrypt(pwd, onError) { 	console.log(&quot;in doDecrypt&quot;); 	var txt = document.getElementById(&quot;enc_content&quot;).innerHTML; 	var plantext; 	try { 	  	var bytes = CryptoJS.AES.decrypt(txt, pwd); 		p">
+<meta property="og:updated_time" content="2017-08-12T15:05:51.484Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="诚享2017-8月day4">
-<meta name="twitter:description" content="if(&quot;orzsro&quot;==prompt(&quot;请输入密码&quot;))     {         alert(&quot;正确&quot;);     }     else     {         alert(&quot;错误&quot;);         location=&quot;https://bomb-chicken.github.io/&quot;; #返回网站，请自定义     }  **NOIP模拟题day4** ​">
+<meta name="twitter:description" content="function doDecrypt(pwd, onError) { 	console.log(&quot;in doDecrypt&quot;); 	var txt = document.getElementById(&quot;enc_content&quot;).innerHTML; 	var plantext; 	try { 	  	var bytes = CryptoJS.AES.decrypt(txt, pwd); 		p">
     
     
         
@@ -133,110 +133,35 @@
   
 
   <div class="content" itemprop="articleBody">
-    <script>
-    if("orzsro"==prompt("请输入密码"))
-    {
-        alert("正确");
-    }
-    else
-    {
-        alert("错误");
-        location="https://bomb-chicken.github.io/"; #返回网站，请自定义
-    }
+    <script src=/js/crypto-js.js></script><script>
+function doDecrypt(pwd, onError) {
+	console.log("in doDecrypt");
+	var txt = document.getElementById("enc_content").innerHTML;
+	var plantext;
+	try {
+	  	var bytes = CryptoJS.AES.decrypt(txt, pwd);
+		plaintext = bytes.toString(CryptoJS.enc.Utf8);
+	} catch(err) {
+		if(onError) {onError(err);}
+		return;
+	}
+	document.getElementById("enc_content").innerHTML = plaintext;
+	document.getElementById("enc_content").style.display = "block";
+   document.getElementById("enc_passwd").style.display = "none";
+}
 </script>
-<center>**NOIP模拟题day4**</center>
-<p>​																				清华大学 茹逸中</p>
-<p>题目概览</p>
-<p>| 题目名称   | 搬砖              | 过河              | 水库                  |
-| ------ | --------------- | --------------- | ------------------- |
-| 程序文件名  | brick.pas/c/cpp | river.pas/c/cpp | reservoir.pas/c/cpp |
-| 输入文件名  | brick.in        | river.in        | reservoir.in        |
-| 输出文件名  | brick.out       | river.out       | reservoir.out       |
-| 运行时间上限 | 2秒              | 1秒              | 1秒                  |
-| 运行内存上限 | 512M            | 512M            | 512M                |
-| 比较方式   | 全文比较            | 全文比较            | 全文比较                |
-| 题目类型   | 传统              | 传统              | 传统                  |</p>
-<center>**搬砖(brick)**</center>
-<p>【题目描述】</p>
-<p>​         小R需要去工地上搬砖头。工地上有n块砖头，第i块砖头的重量为![img](file:///C:/Users/ADMINI~1/AppData/Local/Temp/msohtmlclip1/01/clip_image002.png)（![img](file:///C:/Users/ADMINI~1/AppData/Local/Temp/msohtmlclip1/01/clip_image004.png)）。现在小R有一辆板车，这辆板车的载重量为W（![img](file:///C:/Users/ADMINI~1/AppData/Local/Temp/msohtmlclip1/01/clip_image006.png)）。请问小R能一次搬走的最大多少重量的砖头？</p>
-<p>【输入格式】</p>
-<p>​         第一行两个整数，分别代表W和N。</p>
-<p>以后N行，每行一个正整数表示![img](file:///C:/Users/ADMINI~1/AppData/Local/Temp/msohtmlclip1/01/clip_image002.png)</p>
-<p>【输出格式】</p>
-<p>​         仅一个整数，表示小R在他的板车的载重量范围内一次性能搬走的最大重量。</p>
-<p>【输入样例】</p>
-<p>21 5</p>
-<p>7</p>
-<p>5</p>
-<p>4</p>
-<p>18</p>
-<p>1</p>
-<p>【输出样例】</p>
-<p>19</p>
-<p>【数据范围与约定】</p>
-<p>对于20%的数据 N&lt;=24</p>
-<p>对于50%的数据 N&lt;=45</p>
-<p>对于80%的数据 N&lt;=50</p>
-<p>对于100%的数据 N&lt;=52 W,gi&lt;=10^9</p>
-<hr>
-<center>**过河(river)**</center>
-<p>【题目描述】</p>
-<p>​         有(N+1)个平行于y轴的河岸排成一排，每两个河岸之间夹着一条河，所以一共有N条河。第i条河的宽度为wi，ryz在第i条河中行进的速度为vi。河岸的宽度忽略不计。令X=sigma(wi)。</p>
-<p>规定：</p>
-<p>1、ryz从(0,0)出发，终点是(X,Y)。Y是一个给定的整数。</p>
-<p>2、ryz在渡河时，必须从一个整点驶向另一个整点，花费的时间为这两个点的欧几里得距离除以速度。</p>
-<p>3、ryz可以在河岸上行走，但也是必须从一个整点走向另一个整点，速度为给定的u。</p>
-<p>​         求花费时间的最小值。</p>
-<p>【输入格式】</p>
-<p>​         第一行三个正整数N,Y,u。</p>
-<p>​         第二行N个正整数表示wi。</p>
-<p>​         第三行N个正整数表示vi。</p>
-<p>【输出格式】</p>
-<p>​         输出一行答案，保留4位小数。</p>
-<p>【输入样例】</p>
-<p>2 3 1</p>
-<p>5 5</p>
-<p>1 1</p>
-<p>【输出样例】</p>
-<p>10.4842</p>
-<p>【样例解释】</p>
-<p>Ryz先从(0,0)渡过第一条河到达(5,1)，花费时间为5.0990，然后渡过第二条河到达(10,3)，花费时间为5.3852。</p>
-<p>先到(5,2)再到(10,3)也一种最优解。</p>
-<p>【数据范围与约定】</p>
-<p>对于30%的数据,N&lt;=50,Y&lt;=500;</p>
-<p>对于60%的数据,N&lt;=50;</p>
-<p>对于100%的数据,N&lt;=50000;</p>
-<p>对于100%的数据,u,wi,vi,Y&lt;=10^5。</p>
-<hr>
-<center>**水库(reservoir)**</center>
-<p>【题目描述】</p>
-<p>​         R国有n座城市和n-1条长度为1的双向道路，每条双向道路连接两座城市，城市之间均相互连通。</p>
-<p>现在你需要维护R国的供水系统。你可以在一些城市修建水库，在第i个城市修建水库需要每年c_i的维护费用。对于没有修建水库的城市，如果离它最近的水库的距离为d，那么需要每年t_i的运输费用来保证该城市的用水需求。保证t_i严格递增。</p>
-<p>你的任务是计算出每年所需要的最小花费。</p>
-<p>【输入格式】</p>
-<p>​         第一行1个整数n，表示城市的数量。</p>
-<p>​         第二行n个整数，第i个整数表示c_i。</p>
-<p>第三行n个整数，第i个整数表示t_i。</p>
-<p>​         接下来n-1行，每行三个整数s,t，表示s和t之间有一条边。</p>
-<p>【输出格式】</p>
-<p>​         输出每年的最小花费。</p>
-<p>【输入样例】</p>
-<p>4</p>
-<p>5 3 1 6</p>
-<p>1 5 10 11</p>
-<p>1 2</p>
-<p>1 3</p>
-<p>2 4</p>
-<p>【输出样例】</p>
-<p>6</p>
-<p>【样例解释】</p>
-<p>在2号城市和3号城市修建水库。</p>
-<p>【数据范围与约定】</p>
-<p>对于10%的数据，n&lt;=5</p>
-<p>对于30%的数据，n&lt;=20</p>
-<p>对于另外40%的数据，t_i=i</p>
-<p>对于100%的数据，n&lt;=1000，c_i,t_i&lt;=100000。</p>
-
+<div id="enc_content" style="display:none">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</div><div id="enc_passwd"> <input id="enc_pwd_input" type="text" style="border-radius: 5px;border-style: groove;height: 30px;width: 50%;cursor: auto;font-size: 102%;color: currentColor;outline: none;text-overflow: initial;padding-left: 5px;" onkeydown="if (event.keyCode == 13) { decrypt(); return false;}"> <input type="submit" value="解&nbsp;密" onclick="decrypt()" style="width: 58px;height: 34px;border-radius: 5px;background-color: white;border-style: solid;color: currentColor;"><div id="enc_error" style="display: inline-block;color: #d84527;margin-left: 10px"></div>
+<script>
+var onError = function(error) {
+	document.getElementById("enc_error").innerHTML = "password error!"
+};
+function decrypt() {
+var passwd = document.getElementById("enc_pwd_input").value;
+console.log(passwd);
+doDecrypt(passwd, onError);
+}
+</script>
+</div>
   </div>
 </article>
 
