@@ -6,17 +6,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="传送门：BZOJ4373  这道题思路还是比较简单的，不过和数学关系比较多，主要就是维护几个判定等差数列的条件 思路一 标准的方法貌似是：  特判两种情况（k=0 或 l=r）   维护区间最大最小值 维护区间差分后的GCD值 维护每一个数的前缀  然后由于已知的公差k：GCD=k，pre&amp;lt;l（意思是区间内没有重复），MAX-MIN=k（r-l）。 判断一下就好了 然后由于本渣写代码较菜，所">
+    <meta name="description" content="传送门：BZOJ4373  这道题思路还是比较简单的，不过和数学关系比较多，主要就是维护几个判定等差数列的条件 思路一标准的方法貌似是：  特判两种情况（k=0 或 l=r）   维护区间最大最小值 维护区间差分后的GCD值 维护每一个数的前缀  然后由于已知的公差k：GCD=k，pre&amp;lt;l（意思是区间内没有重复），MAX-MIN=k（r-l）。 判断一下就好了 然后由于本渣写代码较菜，所以">
 <meta name="keywords" content="线段树">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【线段树】算术天才⑨与等差数列">
 <meta property="og:url" content="https://bomb-chicken.github.io/2017/07/13/BZOJ4373/index.html">
 <meta property="og:site_name" content="炸鸡">
-<meta property="og:description" content="传送门：BZOJ4373  这道题思路还是比较简单的，不过和数学关系比较多，主要就是维护几个判定等差数列的条件 思路一 标准的方法貌似是：  特判两种情况（k=0 或 l=r）   维护区间最大最小值 维护区间差分后的GCD值 维护每一个数的前缀  然后由于已知的公差k：GCD=k，pre&amp;lt;l（意思是区间内没有重复），MAX-MIN=k（r-l）。 判断一下就好了 然后由于本渣写代码较菜，所">
+<meta property="og:description" content="传送门：BZOJ4373  这道题思路还是比较简单的，不过和数学关系比较多，主要就是维护几个判定等差数列的条件 思路一标准的方法貌似是：  特判两种情况（k=0 或 l=r）   维护区间最大最小值 维护区间差分后的GCD值 维护每一个数的前缀  然后由于已知的公差k：GCD=k，pre&amp;lt;l（意思是区间内没有重复），MAX-MIN=k（r-l）。 判断一下就好了 然后由于本渣写代码较菜，所以">
 <meta property="og:updated_time" content="2017-07-27T14:02:17.510Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【线段树】算术天才⑨与等差数列">
-<meta name="twitter:description" content="传送门：BZOJ4373  这道题思路还是比较简单的，不过和数学关系比较多，主要就是维护几个判定等差数列的条件 思路一 标准的方法貌似是：  特判两种情况（k=0 或 l=r）   维护区间最大最小值 维护区间差分后的GCD值 维护每一个数的前缀  然后由于已知的公差k：GCD=k，pre&amp;lt;l（意思是区间内没有重复），MAX-MIN=k（r-l）。 判断一下就好了 然后由于本渣写代码较菜，所">
+<meta name="twitter:description" content="传送门：BZOJ4373  这道题思路还是比较简单的，不过和数学关系比较多，主要就是维护几个判定等差数列的条件 思路一标准的方法貌似是：  特判两种情况（k=0 或 l=r）   维护区间最大最小值 维护区间差分后的GCD值 维护每一个数的前缀  然后由于已知的公差k：GCD=k，pre&amp;lt;l（意思是区间内没有重复），MAX-MIN=k（r-l）。 判断一下就好了 然后由于本渣写代码较菜，所以">
     
     
         
@@ -96,7 +96,7 @@
 
     </div>
     <div id="toc">
-      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-number">1.</span> <span class="toc-text">思路一</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-number">2.</span> <span class="toc-text">思路二</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#思路一"><span class="toc-number">1.</span> <span class="toc-text">思路一</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#思路二"><span class="toc-number">2.</span> <span class="toc-text">思路二</span></a></li></ol>
     </div>
   </span>
 </div>
@@ -138,8 +138,7 @@
     <p>传送门：<a href="http://www.lydsy.com/JudgeOnline/problem.php?id=4373" target="_blank" rel="external">BZOJ4373</a></p>
 <hr>
 <p>这道题思路还是比较简单的，不过和数学关系比较多，主要就是维护几个判定等差数列的条件</p>
-<h1>思路一</h1>
-<p>标准的方法貌似是：</p>
+<h1 id="思路一"><a href="#思路一" class="headerlink" title="思路一"></a>思路一</h1><p>标准的方法貌似是：</p>
 <ul>
 <li>特判两种情况（k=0 或 l=r）</li>
 </ul>
@@ -151,20 +150,15 @@
 <p>然后由于已知的公差k：GCD=k，pre&lt;l（意思是区间内没有重复），MAX-MIN=k（r-l）。</p>
 <p>判断一下就好了</p>
 <p>然后由于本渣写代码较菜，所以没写成（GG）</p>
-<h1>思路二</h1>
-<p>这个利用了一点hash的思想（或许可以证明，反正我不会）</p>
+<h1 id="思路二"><a href="#思路二" class="headerlink" title="思路二"></a>思路二</h1><p>这个利用了一点hash的思想（或许可以证明，反正我不会）</p>
 <ul>
-<li>
-<p>特判不能少</p>
+<li><p>特判不能少</p>
 </li>
-<li>
-<p>维护区间最大最小值</p>
+<li><p>维护区间最大最小值</p>
 </li>
-<li>
-<p>维护区间和</p>
+<li><p>维护区间和</p>
 </li>
-<li>
-<p>维护区间平方和</p>
+<li><p>维护区间平方和</p>
 </li>
 </ul>
 <p>然后，知道MIN和公差k，应该可以求出理想等差数列的区间最大值、区间和、区间平方和（不用long long，直接除法改乘法然后自然溢出即可）</p>
@@ -198,7 +192,7 @@
     </div>
 
     <div id="toc-footer" style="display: none">
-      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-number">1.</span> <span class="toc-text">思路一</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-number">2.</span> <span class="toc-text">思路二</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#思路一"><span class="toc-number">1.</span> <span class="toc-text">思路一</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#思路二"><span class="toc-number">2.</span> <span class="toc-text">思路二</span></a></li></ol>
     </div>
 
     <div id="share-footer" style="display: none">

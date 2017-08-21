@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="折半枚举 折半枚举是一种很好用的枚举方法，比如有时集合过大无法全部搜索，但刚好只需要他们的和或其他可以处理出的东西，就可以一半一半搜 题1 4 Values whose Sum is 0 传送门：http://poj.org/problem?id=2785 此题就是要求 a+b+c+d=0 的个数 那么 a+b=-(c+d) 只与和有关，所以先把 c+d 的和预处理并排序，当 a+b 值一定时，显">
+<meta name="keywords">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【折半枚举】">
+<meta property="og:url" content="http://yoursite.com/2017/03/15/search1/index.html">
+<meta property="og:site_name" content="炸鸡">
+<meta property="og:description" content="折半枚举 折半枚举是一种很好用的枚举方法，比如有时集合过大无法全部搜索，但刚好只需要他们的和或其他可以处理出的东西，就可以一半一半搜 题1 4 Values whose Sum is 0 传送门：http://poj.org/problem?id=2785 此题就是要求 a+b+c+d=0 的个数 那么 a+b=-(c+d) 只与和有关，所以先把 c+d 的和预处理并排序，当 a+b 值一定时，显">
+<meta property="og:updated_time" content="2017-04-27T10:48:55.375Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="【折半枚举】">
+<meta name="twitter:description" content="折半枚举 折半枚举是一种很好用的枚举方法，比如有时集合过大无法全部搜索，但刚好只需要他们的和或其他可以处理出的东西，就可以一半一半搜 题1 4 Values whose Sum is 0 传送门：http://poj.org/problem?id=2785 此题就是要求 a+b+c+d=0 的个数 那么 a+b=-(c+d) 只与和有关，所以先把 c+d 的和预处理并排序，当 a+b 值一定时，显">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>【折半枚举】</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- rss --><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    
+    
+</head>
+
+<body>
+    
+      <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="header-post">
+  <a id="menu-icon" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/links/">Links</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2017/03/06/CodeVS1074/"><i class="fa fa-chevron-left" aria-hidden="true" onmouseover='$("#i-prev").toggle();' onmouseout='$("#i-prev").toggle();'></i></a></li>
+        
+        
+        <li><a class="icon" href="/2017/03/17/CodeVS5624/"><i class="fa fa-chevron-right" aria-hidden="true" onmouseover='$("#i-next").toggle();' onmouseout='$("#i-next").toggle();'></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa fa-chevron-up" aria-hidden="true" onmouseover='$("#i-top").toggle();' onmouseout='$("#i-top").toggle();'></i></a></li>
+        <li><a class="icon" href="#"><i class="fa fa-share-alt" aria-hidden="true" onmouseover='$("#i-share").toggle();' onmouseout='$("#i-share").toggle();' onclick='$("#share").toggle();return false;'></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2017/03/15/search1/"><i class="fa fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2017/03/15/search1/&text=【折半枚举】"><i class="fa fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2017/03/15/search1/&title=【折半枚举】"><i class="fa fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2017/03/15/search1/&is_video=false&description=【折半枚举】"><i class="fa fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=【折半枚举】&body=Check out this article: http://yoursite.com/2017/03/15/search1/"><i class="fa fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2017/03/15/search1/&title=【折半枚举】"><i class="fa fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2017/03/15/search1/&title=【折半枚举】"><i class="fa fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2017/03/15/search1/&title=【折半枚举】"><i class="fa fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2017/03/15/search1/&title=【折半枚举】"><i class="fa fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2017/03/15/search1/&name=【折半枚举】&description="><i class="fa fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-number">1.</span> <span class="toc-text">折半枚举</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-number">2.</span> <span class="toc-text">题1</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-number">3.</span> <span class="toc-text">题2 （NOIP PJ 的题目）</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index width mx-auto px2 my4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        【折半枚举】
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">炸鸡</span>
+      </span>
+      
+    <div class="postdate">
+        <time datetime="2017-03-15T13:26:00.000Z" itemprop="datePublished">2017-03-15</time>
+    </div>
+
+
+      
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h1>折半枚举</h1>
+<p>折半枚举是一种很好用的枚举方法，比如有时集合过大无法全部搜索，但刚好只需要他们的和或其他可以处理出的东西，就可以一半一半搜</p>
+<h1>题1</h1>
+<p>4 Values whose Sum is 0
+传送门：http://poj.org/problem?id=2785
+此题就是要求 a+b+c+d=0 的个数
+那么 a+b=-(c+d)
+只与和有关，所以先把 c+d 的和预处理并排序，当 a+b 值一定时，显然 c+d 值也一定，所以只要二分出
+满足c+d=-(a+b) 的 c+d 的个数即可
+很容易的样子
+以下代码</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></div><div class="line"></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> LL long long</span></div><div class="line"></div><div class="line"><span class="keyword">int</span> n,ans;;</div><div class="line"><span class="keyword">int</span> a[<span class="number">4005</span>],b[<span class="number">4005</span>],c[<span class="number">4005</span>],d[<span class="number">4005</span>],f[<span class="number">16000005</span>];</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line">	<span class="built_in">cin</span>&gt;&gt;n;</div><div class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) <span class="built_in">cin</span>&gt;&gt;a[i]&gt;&gt;b[i]&gt;&gt;c[i]&gt;&gt;d[i];</div><div class="line">	</div><div class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</div><div class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=n;j++)</div><div class="line">			f[(i<span class="number">-1</span>)*n+j]=c[i]+d[j];</div><div class="line">	sort(f+<span class="number">1</span>,f+n*n+<span class="number">1</span>);</div><div class="line">	</div><div class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</div><div class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=n;j++)&#123;</div><div class="line">			<span class="keyword">int</span> F=-(a[i]+b[j]);</div><div class="line">			ans+=upper_bound(f+<span class="number">1</span>,f+n*n+<span class="number">1</span>,F)-lower_bound(f+<span class="number">1</span>,f+n*n+<span class="number">1</span>,F);</div><div class="line">		&#125;</div><div class="line">		</div><div class="line">	<span class="built_in">cout</span>&lt;&lt;ans;</div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1>题2 （NOIP PJ 的题目）</h1>
+<p>传送门：<a href="http://codevs.cn/problem/5624/" target="_blank" rel="external">http://codevs.cn/problem/5624/</a>
+可以算是一个折半枚举吧
+显然一次处理完<span>$x_a,x_b,x_c,x_d$</span><!-- Has MathJax -->时间不支持
+用 <span>$ans^{xy}$</span><!-- Has MathJax -->记录 数x（注意不是第x个）在位置y上出现的次数
+那么枚举差值 i ，
+再枚举 <span>$x_a$</span><!-- Has MathJax -->
+则 ：
+	 <span>$x_b=x_a+i*2;$</span><!-- Has MathJax -->
+	 <span>$x_c&gt;x_b+i*6=x_a+i*8;$</span><!-- Has MathJax -->
+	 <span>$x_d=x_c+i;$</span><!-- Has MathJax -->
+换句话说 <span>$x_b$</span><!-- Has MathJax --> 已确定下来
+然后再来研究一下 <span>$x_c,x_d$</span><!-- Has MathJax -->
+当 <span>$x_c$</span><!-- Has MathJax --> 确定下来后，<span>$x_d$</span><!-- Has MathJax --> 也确定下来
+并且随着 <span>$x_a$</span><!-- Has MathJax --> 的增大 <span>$x_c$</span><!-- Has MathJax --> 的范围单调递减（反过来就是随着 <span>$x_a$</span><!-- Has MathJax --> 的增大，<span>$x_c$</span><!-- Has MathJax --> 的范围单调递增）
+于是就可以利用这一性质求出 <span>$sum=\sum(f[x_c]*f[x_d])$</span><!-- Has MathJax -->
+然后就能累加到 <span>$ans_{x_a1} 和 ans_{x_b2}$</span><!-- Has MathJax --> 上
+同理累加 <span>$ans_{x_c3} 和 ans_{x_d4}$</span><!-- Has MathJax --></p>
+<p><strong>所以核心就是每次对前两个或后两个利用单调性进行处理</strong></p>
+<p>详见代码</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></div><div class="line"></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="keyword">int</span> n,m,sum,A,B,C,D,a[<span class="number">40005</span>],f[<span class="number">20005</span>],ans[<span class="number">20005</span>][<span class="number">5</span>];</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line">	<span class="built_in">cin</span>&gt;&gt;n&gt;&gt;m;</div><div class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;i++)&#123;</div><div class="line">		<span class="built_in">cin</span>&gt;&gt;a[i];</div><div class="line">		f[a[i]]++;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=<span class="number">2000</span>;i++)&#123;</div><div class="line">		sum=<span class="number">0</span>;</div><div class="line">		<span class="keyword">for</span> (A=n<span class="number">-9</span>*i<span class="number">-1</span>;A&gt;=<span class="number">1</span>;A--)&#123;</div><div class="line">			B=A+<span class="number">2</span>*i; C=A+<span class="number">8</span>*i+<span class="number">1</span>; D=A+<span class="number">9</span>*i+<span class="number">1</span>;</div><div class="line">			sum+=f[C]*f[D];</div><div class="line">			ans[A][<span class="number">1</span>]+=f[B]*sum;</div><div class="line">			ans[B][<span class="number">2</span>]+=f[A]*sum;</div><div class="line">			</div><div class="line">		&#125;</div><div class="line">		sum=<span class="number">0</span>;</div><div class="line">		<span class="keyword">for</span> (C=<span class="number">2</span>+<span class="number">8</span>*i;C&lt;=n;C++)&#123;</div><div class="line">			A=C<span class="number">-8</span>*i<span class="number">-1</span>; B=C<span class="number">-6</span>*i<span class="number">-1</span>; D=C+i;</div><div class="line">			sum+=f[A]*f[B];</div><div class="line">			ans[C][<span class="number">3</span>]+=f[D]*sum;</div><div class="line">			ans[D][<span class="number">4</span>]+=f[C]*sum;</div><div class="line">			</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;i++) </div><div class="line">		<span class="built_in">cout</span>&lt;&lt;ans[a[i]][<span class="number">1</span>]&lt;&lt;<span class="string">' '</span>&lt;&lt;ans[a[i]][<span class="number">2</span>]&lt;&lt;<span class="string">' '</span>&lt;&lt;ans[a[i]][<span class="number">3</span>]&lt;&lt;<span class="string">' '</span>&lt;&lt;ans[a[i]][<span class="number">4</span>]&lt;&lt;<span class="string">'\n'</span>;</div><div class="line">	</div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+  </div>
+</article>
+
+
+
+    </div>
+    
+      <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/links/">Links</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-number">1.</span> <span class="toc-text">折半枚举</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-number">2.</span> <span class="toc-text">题1</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-number">3.</span> <span class="toc-text">题2 （NOIP PJ 的题目）</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2017/03/15/search1/"><i class="fa fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2017/03/15/search1/&text=【折半枚举】"><i class="fa fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2017/03/15/search1/&title=【折半枚举】"><i class="fa fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2017/03/15/search1/&is_video=false&description=【折半枚举】"><i class="fa fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=【折半枚举】&body=Check out this article: http://yoursite.com/2017/03/15/search1/"><i class="fa fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2017/03/15/search1/&title=【折半枚举】"><i class="fa fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2017/03/15/search1/&title=【折半枚举】"><i class="fa fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2017/03/15/search1/&title=【折半枚举】"><i class="fa fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2017/03/15/search1/&title=【折半枚举】"><i class="fa fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2017/03/15/search1/&name=【折半枚举】&description="><i class="fa fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+      <ul>
+        <li id="toc"><a class="icon" href="#" onclick='$("#toc-footer").toggle();return false;'><i class="fa fa-list fa-lg" aria-hidden="true"></i> TOC</a></li>
+        <li id="share"><a class="icon" href="#" onclick='$("#share-footer").toggle();return false;'><i class="fa fa-share-alt fa-lg" aria-hidden="true"></i> Share</a></li>
+        <li id="top" style="display:none"><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a></li>
+        <li id="menu"><a class="icon" href="#" onclick='$("#nav-footer").toggle();return false;'><i class="fa fa-bars fa-lg" aria-hidden="true"></i> Menu</a></li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+    
+    <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2017 John Doe
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/links/">Links</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+
+</body>
+</html>
+<!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="/lib/meslo-LG/styles.css">
+<link rel="stylesheet" href="/lib/justified-gallery/justifiedGallery.min.css">
+
+
+<!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- Google Analytics -->
+
+<!-- Disqus Comments -->
+
+

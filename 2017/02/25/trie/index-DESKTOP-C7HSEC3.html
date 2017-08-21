@@ -7,13 +7,13 @@
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <meta name="description" content="Trie可用来保存字符集合 12345678910111213141516171819void trie_push(char s[10])&amp;#123;	k=0;	for (int j=0;j&amp;lt;strlen(s);j++)		if (t[k][s[j]]==0)&amp;#123;			xb++;			t[k][s[j]]=xb;			k=xb;		&amp;#125;		else k=t[k][s[j]];">
-<meta name="keywords" content="字符串">
+<meta name="keywords">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【模板】【字符串】Trie（前缀树、字典树）">
-<meta property="og:url" content="https://bomb-chicken.github.io/2017/02/25/trie/index.html">
+<meta property="og:url" content="http://yoursite.com/2017/02/25/trie/index.html">
 <meta property="og:site_name" content="炸鸡">
 <meta property="og:description" content="Trie可用来保存字符集合 12345678910111213141516171819void trie_push(char s[10])&amp;#123;	k=0;	for (int j=0;j&amp;lt;strlen(s);j++)		if (t[k][s[j]]==0)&amp;#123;			xb++;			t[k][s[j]]=xb;			k=xb;		&amp;#125;		else k=t[k][s[j]];">
-<meta property="og:updated_time" content="2017-05-20T01:32:49.737Z">
+<meta property="og:updated_time" content="2017-04-27T04:27:01.704Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【模板】【字符串】Trie（前缀树、字典树）">
 <meta name="twitter:description" content="Trie可用来保存字符集合 12345678910111213141516171819void trie_push(char s[10])&amp;#123;	k=0;	for (int j=0;j&amp;lt;strlen(s);j++)		if (t[k][s[j]]==0)&amp;#123;			xb++;			t[k][s[j]]=xb;			k=xb;		&amp;#125;		else k=t[k][s[j]];">
@@ -56,9 +56,7 @@
          
           <li><a href="/">Home</a></li>
          
-          <li><a href="/links">Links</a></li>
-         
-          <li><a href="/tags">Tags</a></li>
+          <li><a href="/links/">Links</a></li>
         
       </ul>
     </span>
@@ -66,10 +64,10 @@
     <span id="actions">
       <ul>
         
-        <li><a class="icon" href="/2017/02/26/practice1/"><i class="fa fa-chevron-left" aria-hidden="true" onmouseover='$("#i-prev").toggle();' onmouseout='$("#i-prev").toggle();'></i></a></li>
+        <li><a class="icon" href="/2017/02/23/KMP/"><i class="fa fa-chevron-left" aria-hidden="true" onmouseover='$("#i-prev").toggle();' onmouseout='$("#i-prev").toggle();'></i></a></li>
         
         
-        <li><a class="icon" href="/2017/02/23/KMP/"><i class="fa fa-chevron-right" aria-hidden="true" onmouseover='$("#i-next").toggle();' onmouseout='$("#i-next").toggle();'></i></a></li>
+        <li><a class="icon" href="/2017/02/26/practice1/"><i class="fa fa-chevron-right" aria-hidden="true" onmouseover='$("#i-next").toggle();' onmouseout='$("#i-next").toggle();'></i></a></li>
         
         <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa fa-chevron-up" aria-hidden="true" onmouseover='$("#i-top").toggle();' onmouseout='$("#i-top").toggle();'></i></a></li>
         <li><a class="icon" href="#"><i class="fa fa-share-alt" aria-hidden="true" onmouseover='$("#i-share").toggle();' onmouseout='$("#i-share").toggle();' onclick='$("#share").toggle();return false;'></i></a></li>
@@ -82,16 +80,16 @@
     <br/>
     <div id="share" style="display: none">
       <ul>
-  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://bomb-chicken.github.io/2017/02/25/trie/"><i class="fa fa-facebook " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://twitter.com/share?url=https://bomb-chicken.github.io/2017/02/25/trie/&text=【模板】【字符串】Trie（前缀树、字典树）"><i class="fa fa-twitter " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://bomb-chicken.github.io/2017/02/25/trie/&title=【模板】【字符串】Trie（前缀树、字典树）"><i class="fa fa-linkedin " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://bomb-chicken.github.io/2017/02/25/trie/&is_video=false&description=【模板】【字符串】Trie（前缀树、字典树）"><i class="fa fa-pinterest " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=【模板】【字符串】Trie（前缀树、字典树）&body=Check out this article: https://bomb-chicken.github.io/2017/02/25/trie/"><i class="fa fa-envelope " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://getpocket.com/save?url=https://bomb-chicken.github.io/2017/02/25/trie/&title=【模板】【字符串】Trie（前缀树、字典树）"><i class="fa fa-get-pocket " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://reddit.com/submit?url=https://bomb-chicken.github.io/2017/02/25/trie/&title=【模板】【字符串】Trie（前缀树、字典树）"><i class="fa fa-reddit " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://bomb-chicken.github.io/2017/02/25/trie/&title=【模板】【字符串】Trie（前缀树、字典树）"><i class="fa fa-stumbleupon " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://digg.com/submit?url=https://bomb-chicken.github.io/2017/02/25/trie/&title=【模板】【字符串】Trie（前缀树、字典树）"><i class="fa fa-digg " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://bomb-chicken.github.io/2017/02/25/trie/&name=【模板】【字符串】Trie（前缀树、字典树）&description="><i class="fa fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2017/02/25/trie/"><i class="fa fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2017/02/25/trie/&text=【模板】【字符串】Trie（前缀树、字典树）"><i class="fa fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2017/02/25/trie/&title=【模板】【字符串】Trie（前缀树、字典树）"><i class="fa fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2017/02/25/trie/&is_video=false&description=【模板】【字符串】Trie（前缀树、字典树）"><i class="fa fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=【模板】【字符串】Trie（前缀树、字典树）&body=Check out this article: http://yoursite.com/2017/02/25/trie/"><i class="fa fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2017/02/25/trie/&title=【模板】【字符串】Trie（前缀树、字典树）"><i class="fa fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2017/02/25/trie/&title=【模板】【字符串】Trie（前缀树、字典树）"><i class="fa fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2017/02/25/trie/&title=【模板】【字符串】Trie（前缀树、字典树）"><i class="fa fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2017/02/25/trie/&title=【模板】【字符串】Trie（前缀树、字典树）"><i class="fa fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2017/02/25/trie/&name=【模板】【字符串】Trie（前缀树、字典树）&description="><i class="fa fa-tumblr " aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
@@ -124,11 +122,6 @@
 
 
       
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/字符串/">字符串</a>
-    </div>
-
 
     </div>
   </header>
@@ -137,7 +130,8 @@
   <div class="content" itemprop="articleBody">
     <p>Trie可用来保存字符集合</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">trie_push</span><span class="params">(<span class="keyword">char</span> s[<span class="number">10</span>])</span></span>&#123;</div><div class="line">	k=<span class="number">0</span>;</div><div class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;<span class="built_in">strlen</span>(s);j++)</div><div class="line">		<span class="keyword">if</span> (t[k][s[j]]==<span class="number">0</span>)&#123;</div><div class="line">			xb++;</div><div class="line">			t[k][s[j]]=xb;</div><div class="line">			k=xb;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">else</span> k=t[k][s[j]];</div><div class="line">	<span class="keyword">return</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">bool</span> <span class="title">trie_search</span><span class="params">(<span class="keyword">char</span> s[<span class="number">10</span>])</span></span>&#123;</div><div class="line">	k=<span class="number">0</span>;</div><div class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;<span class="built_in">strlen</span>(s);j++)</div><div class="line">		<span class="keyword">if</span> (t[k][s[j]]==<span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">		<span class="keyword">else</span> k=t[k][s[j]];	 </div><div class="line">	<span class="keyword">return</span> <span class="number">1</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>题目传送门<br><a href="http://codevs.cn/problem/4189/" target="_blank" rel="external">CodeVS4189</a></p>
+<p>题目传送门
+CodeVS 4189 字典：<a href="http://codevs.cn/problem/4189/" target="_blank" rel="external">http://codevs.cn/problem/4189/</a></p>
 
   </div>
 </article>
@@ -154,9 +148,7 @@
          
           <li><a href="/">Home</a></li>
          
-          <li><a href="/links">Links</a></li>
-         
-          <li><a href="/tags">Tags</a></li>
+          <li><a href="/links/">Links</a></li>
         
       </ul>
     </div>
@@ -167,16 +159,16 @@
 
     <div id="share-footer" style="display: none">
       <ul>
-  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://bomb-chicken.github.io/2017/02/25/trie/"><i class="fa fa-facebook fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://twitter.com/share?url=https://bomb-chicken.github.io/2017/02/25/trie/&text=【模板】【字符串】Trie（前缀树、字典树）"><i class="fa fa-twitter fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://bomb-chicken.github.io/2017/02/25/trie/&title=【模板】【字符串】Trie（前缀树、字典树）"><i class="fa fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://bomb-chicken.github.io/2017/02/25/trie/&is_video=false&description=【模板】【字符串】Trie（前缀树、字典树）"><i class="fa fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=【模板】【字符串】Trie（前缀树、字典树）&body=Check out this article: https://bomb-chicken.github.io/2017/02/25/trie/"><i class="fa fa-envelope fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://getpocket.com/save?url=https://bomb-chicken.github.io/2017/02/25/trie/&title=【模板】【字符串】Trie（前缀树、字典树）"><i class="fa fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://reddit.com/submit?url=https://bomb-chicken.github.io/2017/02/25/trie/&title=【模板】【字符串】Trie（前缀树、字典树）"><i class="fa fa-reddit fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://bomb-chicken.github.io/2017/02/25/trie/&title=【模板】【字符串】Trie（前缀树、字典树）"><i class="fa fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://digg.com/submit?url=https://bomb-chicken.github.io/2017/02/25/trie/&title=【模板】【字符串】Trie（前缀树、字典树）"><i class="fa fa-digg fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://bomb-chicken.github.io/2017/02/25/trie/&name=【模板】【字符串】Trie（前缀树、字典树）&description="><i class="fa fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2017/02/25/trie/"><i class="fa fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2017/02/25/trie/&text=【模板】【字符串】Trie（前缀树、字典树）"><i class="fa fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2017/02/25/trie/&title=【模板】【字符串】Trie（前缀树、字典树）"><i class="fa fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2017/02/25/trie/&is_video=false&description=【模板】【字符串】Trie（前缀树、字典树）"><i class="fa fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=【模板】【字符串】Trie（前缀树、字典树）&body=Check out this article: http://yoursite.com/2017/02/25/trie/"><i class="fa fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2017/02/25/trie/&title=【模板】【字符串】Trie（前缀树、字典树）"><i class="fa fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2017/02/25/trie/&title=【模板】【字符串】Trie（前缀树、字典树）"><i class="fa fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2017/02/25/trie/&title=【模板】【字符串】Trie（前缀树、字典树）"><i class="fa fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2017/02/25/trie/&title=【模板】【字符串】Trie（前缀树、字典树）"><i class="fa fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2017/02/25/trie/&name=【模板】【字符串】Trie（前缀树、字典树）&description="><i class="fa fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
@@ -196,7 +188,7 @@
     
     <footer id="footer">
   <div class="footer-left">
-    Copyright &copy; 2017 炸鸡
+    Copyright &copy; 2017 John Doe
   </div>
   <div class="footer-right">
     <nav>
@@ -204,9 +196,7 @@
          
           <li><a href="/">Home</a></li>
          
-          <li><a href="/links">Links</a></li>
-         
-          <li><a href="/tags">Tags</a></li>
+          <li><a href="/links/">Links</a></li>
         
       </ul>
     </nav>
