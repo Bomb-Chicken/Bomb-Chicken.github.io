@@ -6,17 +6,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="传送门：CodeVS1615 CTSC的题目，非常巧妙的思路（似乎贪心都是这样的）  首先在链上选取两个点一定是相邻的（废话不多解释） 那么求出所有相邻的差$len_1,len2……len{n-1}$ 问题成功转化为在n-1个数中取出k个不相邻的使其和最小（注意取出k个，因为1个差代表了两个点/一条链） 到这似乎还比较容易想 然而，怎么求呢？ 一看似乎可以Dp，然而似乎会TLE 于是经过乱（度）搞">
+    <meta name="description" content="传送门：CodeVS1615 CTSC的题目，非常巧妙的思路（似乎贪心都是这样的）  首先在链上选取两个点一定是相邻的（废话不多解释） 那么求出所有相邻的差$len_1,len_2……len_{n-1}$ 问题成功转化为在n-1个数中取出k个不相邻的使其和最小（注意取出k个，因为1个差代表了两个点/一条链） 到这似乎还比较容易想 然而，怎么求呢？ 一看似乎可以Dp，然而似乎会TLE 于是经过乱（度">
 <meta name="keywords" content="贪心">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【贪心+堆优化】数据备份">
 <meta property="og:url" content="https://bomb-chicken.github.io/2017/07/10/CodeVS1615/index.html">
 <meta property="og:site_name" content="炸鸡">
-<meta property="og:description" content="传送门：CodeVS1615 CTSC的题目，非常巧妙的思路（似乎贪心都是这样的）  首先在链上选取两个点一定是相邻的（废话不多解释） 那么求出所有相邻的差$len_1,len2……len{n-1}$ 问题成功转化为在n-1个数中取出k个不相邻的使其和最小（注意取出k个，因为1个差代表了两个点/一条链） 到这似乎还比较容易想 然而，怎么求呢？ 一看似乎可以Dp，然而似乎会TLE 于是经过乱（度）搞">
+<meta property="og:description" content="传送门：CodeVS1615 CTSC的题目，非常巧妙的思路（似乎贪心都是这样的）  首先在链上选取两个点一定是相邻的（废话不多解释） 那么求出所有相邻的差$len_1,len_2……len_{n-1}$ 问题成功转化为在n-1个数中取出k个不相邻的使其和最小（注意取出k个，因为1个差代表了两个点/一条链） 到这似乎还比较容易想 然而，怎么求呢？ 一看似乎可以Dp，然而似乎会TLE 于是经过乱（度">
 <meta property="og:updated_time" content="2017-07-27T14:09:03.410Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【贪心+堆优化】数据备份">
-<meta name="twitter:description" content="传送门：CodeVS1615 CTSC的题目，非常巧妙的思路（似乎贪心都是这样的）  首先在链上选取两个点一定是相邻的（废话不多解释） 那么求出所有相邻的差$len_1,len2……len{n-1}$ 问题成功转化为在n-1个数中取出k个不相邻的使其和最小（注意取出k个，因为1个差代表了两个点/一条链） 到这似乎还比较容易想 然而，怎么求呢？ 一看似乎可以Dp，然而似乎会TLE 于是经过乱（度）搞">
+<meta name="twitter:description" content="传送门：CodeVS1615 CTSC的题目，非常巧妙的思路（似乎贪心都是这样的）  首先在链上选取两个点一定是相邻的（废话不多解释） 那么求出所有相邻的差$len_1,len_2……len_{n-1}$ 问题成功转化为在n-1个数中取出k个不相邻的使其和最小（注意取出k个，因为1个差代表了两个点/一条链） 到这似乎还比较容易想 然而，怎么求呢？ 一看似乎可以Dp，然而似乎会TLE 于是经过乱（度">
     
     
         
@@ -139,7 +139,7 @@
 <p>CTSC的题目，非常巧妙的思路（似乎贪心都是这样的）</p>
 <hr>
 <p>首先在链上选取两个点一定是相邻的（废话不多解释）</p>
-<p>那么求出所有相邻的差$len_1,len<em>2……len</em>{n-1}$</p>
+<p>那么求出所有相邻的差$len_1,len_2……len_{n-1}$</p>
 <p>问题成功转化为在n-1个数中取出k个不相邻的使其和最小（注意取出k个，因为1个差代表了两个点/一条链）</p>
 <p>到这似乎还比较容易想</p>
 <p>然而，怎么求呢？</p>
@@ -148,8 +148,8 @@
 <p>用堆来维护数列：</p>
 <p>每次选一个最小的数，加上，然后删掉相邻的数，</p>
 <p><strong>重点：该数可能可以<u>扩展</u>为与其相邻的两个点，自己不选（不能<u>扩展</u>为别的，因为一旦不相邻那么不必把已选的给删去</strong></p>
-<p>于是把相邻的数之和减去取出的数，插回堆中，如果下次选了这个数表示<strong><u>扩展</u></strong></p>
-<p> 如果取出的数处于边界那么就不用插回了，判断时标记一下就好（详见代码）</p>
+<p>于是把相邻的数之和减去取出的数，插回堆中，如果下次选了这个数表示**<u>扩展</u>**</p>
+<p>如果取出的数处于边界那么就不用插回了，判断时标记一下就好（详见代码）</p>
 <hr>
 <p>代码如下（似乎挺简短的，细节很多）：</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;queue&gt;</span></span></div><div class="line"></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> pr pair<span class="meta-string">&lt;int,int&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> INF 1200000000</span></div><div class="line"></div><div class="line"><span class="keyword">int</span> n,m,ans,len[<span class="number">100030</span>],last[<span class="number">100030</span>],next[<span class="number">100030</span>],a[<span class="number">100030</span>];</div><div class="line">priority_queue &lt; pr, <span class="built_in">vector</span>&lt;pr&gt;, greater&lt;pr&gt; &gt;h;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line">	<span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;n,&amp;m);</div><div class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;a[i]);</div><div class="line">	</div><div class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">2</span>;i&lt;=n;i++)&#123;</div><div class="line">		len[i]=a[i]-a[i<span class="number">-1</span>];</div><div class="line">		h.push(make_pair(len[i],i));</div><div class="line">		next[i]=i+<span class="number">1</span>;</div><div class="line">		last[i]=i<span class="number">-1</span>;</div><div class="line">	&#125;</div><div class="line">	last[<span class="number">2</span>]=next[n]=<span class="number">0</span>;<span class="comment">//mark,len[] start at 2 but not 1</span></div><div class="line">	</div><div class="line">	<span class="keyword">while</span> (m--)&#123;</div><div class="line">		<span class="keyword">while</span> (h.top().first!=len[h.top().second]) h.pop();</div><div class="line">		</div><div class="line">		<span class="keyword">int</span> u=h.top().second; h.pop();</div><div class="line">		<span class="keyword">int</span> l=last[u],r=next[u];</div><div class="line">		ans+=len[u];</div><div class="line">		</div><div class="line">		next[last[u]=last[l]]=u;</div><div class="line">		last[next[u]=next[r]]=u;</div><div class="line">		len[u]=(l&amp;&amp;r)?(len[l]+len[r]-len[u]):INF;</div><div class="line">		<span class="comment">//if l==0 || r==0 len[u]=INF</span></div><div class="line">		<span class="comment">//判断边界</span></div><div class="line">		len[l]=len[r]=INF;</div><div class="line">		</div><div class="line">		h.push(make_pair(len[u],u));</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	<span class="built_in">printf</span>(<span class="string">"%d\n"</span>,ans);</div><div class="line">	</div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>

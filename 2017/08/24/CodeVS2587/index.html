@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="传送塔：CodeVS2587 POI2012，真是好题啊  思路：先预处理last[x]表示小于等于x的最大元素是多少 每个点能填的最大值即为其父亲能填的最大值减1，可以用宽搜搜出每个点能填的最大值 同时对于每个数k，处理出能填的最大值为k的点的个数 然后从小到大枚举数k，如果此时小于等于k的数中，只有k仍未被确定分配给哪个点， 且存在一个数能填的最大值为k，那么就把k分配给这个数。否则就把这个数">
+<meta name="keywords" content="贪心">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【贪心】Salaries">
+<meta property="og:url" content="https://bomb-chicken.github.io/2017/08/24/CodeVS2587/index.html">
+<meta property="og:site_name" content="炸鸡">
+<meta property="og:description" content="传送塔：CodeVS2587 POI2012，真是好题啊  思路：先预处理last[x]表示小于等于x的最大元素是多少 每个点能填的最大值即为其父亲能填的最大值减1，可以用宽搜搜出每个点能填的最大值 同时对于每个数k，处理出能填的最大值为k的点的个数 然后从小到大枚举数k，如果此时小于等于k的数中，只有k仍未被确定分配给哪个点， 且存在一个数能填的最大值为k，那么就把k分配给这个数。否则就把这个数">
+<meta property="og:updated_time" content="2017-08-24T14:34:45.554Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="【贪心】Salaries">
+<meta name="twitter:description" content="传送塔：CodeVS2587 POI2012，真是好题啊  思路：先预处理last[x]表示小于等于x的最大元素是多少 每个点能填的最大值即为其父亲能填的最大值减1，可以用宽搜搜出每个点能填的最大值 同时对于每个数k，处理出能填的最大值为k的点的个数 然后从小到大枚举数k，如果此时小于等于k的数中，只有k仍未被确定分配给哪个点， 且存在一个数能填的最大值为k，那么就把k分配给这个数。否则就把这个数">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>【贪心】Salaries</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- rss --><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    
+    
+</head>
+
+<body>
+    
+      <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="header-post">
+  <a id="menu-icon" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/links">Links</a></li>
+         
+          <li><a href="/tags">Tags</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" href="/2017/08/24/CodeVS4646/"><i class="fa fa-chevron-right" aria-hidden="true" onmouseover='$("#i-next").toggle();' onmouseout='$("#i-next").toggle();'></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa fa-chevron-up" aria-hidden="true" onmouseover='$("#i-top").toggle();' onmouseout='$("#i-top").toggle();'></i></a></li>
+        <li><a class="icon" href="#"><i class="fa fa-share-alt" aria-hidden="true" onmouseover='$("#i-share").toggle();' onmouseout='$("#i-share").toggle();' onclick='$("#share").toggle();return false;'></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://bomb-chicken.github.io/2017/08/24/CodeVS2587/"><i class="fa fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://bomb-chicken.github.io/2017/08/24/CodeVS2587/&text=【贪心】Salaries"><i class="fa fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://bomb-chicken.github.io/2017/08/24/CodeVS2587/&title=【贪心】Salaries"><i class="fa fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://bomb-chicken.github.io/2017/08/24/CodeVS2587/&is_video=false&description=【贪心】Salaries"><i class="fa fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=【贪心】Salaries&body=Check out this article: https://bomb-chicken.github.io/2017/08/24/CodeVS2587/"><i class="fa fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://bomb-chicken.github.io/2017/08/24/CodeVS2587/&title=【贪心】Salaries"><i class="fa fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://bomb-chicken.github.io/2017/08/24/CodeVS2587/&title=【贪心】Salaries"><i class="fa fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://bomb-chicken.github.io/2017/08/24/CodeVS2587/&title=【贪心】Salaries"><i class="fa fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://bomb-chicken.github.io/2017/08/24/CodeVS2587/&title=【贪心】Salaries"><i class="fa fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://bomb-chicken.github.io/2017/08/24/CodeVS2587/&name=【贪心】Salaries&description="><i class="fa fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index width mx-auto px2 my4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        【贪心】Salaries
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">炸鸡</span>
+      </span>
+      
+    <div class="postdate">
+        <time datetime="2017-08-24T14:08:36.000Z" itemprop="datePublished">2017-08-24</time>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/贪心/">贪心</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <p>传送塔：<a href="http://codevs.cn/problem/2587/" target="_blank" rel="external">CodeVS2587</a></p>
+<p>POI2012，真是好题啊</p>
+<hr>
+<p>思路：先预处理last[x]表示小于等于x的最大元素是多少
+每个点能填的最大值即为其父亲能填的最大值减1，可以用宽搜搜出每个点能填的最大值
+同时对于每个数k，处理出能填的最大值为k的点的个数
+然后从小到大枚举数k，如果此时小于等于k的数中，只有k仍未被确定分配给哪个点，
+且存在一个数能填的最大值为k，那么就把k分配给这个数。否则就把这个数压到一个黑箱里。
+可以发现<strong>黑箱里的数可以用于填补不确定的点</strong>，并且可以互换。</p>
+<hr>
+<p>代码虽短但内容很丰富：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></div><div class="line"></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> N 3000000</span></div><div class="line"><span class="keyword">int</span> n,root,a[N],b[N],last[N],head[N],nxt[N],fa[N],q[N],pos[N],sum[N];</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">getint</span><span class="params">()</span></span>&#123;</div><div class="line">	<span class="keyword">char</span> ch; <span class="keyword">int</span> sum=<span class="number">0</span>;</div><div class="line">	<span class="keyword">for</span> (ch=getchar();ch&lt;<span class="string">'0'</span> || ch&gt;<span class="string">'9'</span>;ch=getchar());</div><div class="line">	<span class="keyword">for</span> (;ch&gt;=<span class="string">'0'</span> &amp;&amp; ch&lt;=<span class="string">'9'</span>;ch=getchar()) sum=sum*<span class="number">10</span>+ch-<span class="string">'0'</span>;</div><div class="line">	<span class="keyword">return</span> sum;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span></span>&#123;nxt[y]=head[x]; head[x]=y;&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">getlast</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;<span class="keyword">return</span> x==last[x]?x:getlast(last[x]);&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line">	n=getint();</div><div class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) last[i]=i;<span class="comment">//------last[x]记录未确定的小于x的最大元素</span></div><div class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</div><div class="line">		fa[i]=getint(); a[i]=getint();</div><div class="line">		<span class="keyword">if</span> (a[i])&#123;b[i]=a[i]; last[a[i]]=a[i]<span class="number">-1</span>;&#125;</div><div class="line">		<span class="keyword">if</span> (fa[i]!=i) add(fa[i],i); <span class="keyword">else</span>&#123;root=i; fa[root]=<span class="number">0</span>;&#125;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	<span class="keyword">int</span> tt=<span class="number">0</span>,ww=<span class="number">1</span>; q[<span class="number">1</span>]=root; a[<span class="number">0</span>]=n+<span class="number">1</span>;</div><div class="line">	<span class="keyword">while</span> (tt&lt;ww)&#123;</div><div class="line">		<span class="keyword">int</span> u=q[++tt];</div><div class="line">		<span class="keyword">if</span> (!a[u])&#123;a[u]=getlast(a[fa[u]]<span class="number">-1</span>); pos[a[u]]=u; sum[a[u]]++;&#125;</div><div class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i=head[u];i;i=nxt[i]) q[++ww]=i;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	<span class="keyword">int</span> tmp=<span class="number">0</span>;</div><div class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;<span class="comment">//------------枚举每个权值 </span></div><div class="line">		<span class="keyword">if</span> (last[i]==i) tmp++;<span class="comment">//----------黑箱中权值个数增加</span></div><div class="line">		<span class="keyword">if</span> (sum[i] &amp;&amp; tmp==<span class="number">1</span>) b[pos[i]]=i;<span class="comment">//--------黑箱中权值唯一</span></div><div class="line">		tmp-=sum[i];<span class="comment">//-----------拿黑箱中的权值进行填补</span></div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) <span class="built_in">printf</span>(<span class="string">"%d\n"</span>,b[i]);</div><div class="line">	</div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+  </div>
+</article>
+
+
+
+    </div>
+    
+      <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/links">Links</a></li>
+         
+          <li><a href="/tags">Tags</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://bomb-chicken.github.io/2017/08/24/CodeVS2587/"><i class="fa fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://bomb-chicken.github.io/2017/08/24/CodeVS2587/&text=【贪心】Salaries"><i class="fa fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://bomb-chicken.github.io/2017/08/24/CodeVS2587/&title=【贪心】Salaries"><i class="fa fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://bomb-chicken.github.io/2017/08/24/CodeVS2587/&is_video=false&description=【贪心】Salaries"><i class="fa fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=【贪心】Salaries&body=Check out this article: https://bomb-chicken.github.io/2017/08/24/CodeVS2587/"><i class="fa fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://bomb-chicken.github.io/2017/08/24/CodeVS2587/&title=【贪心】Salaries"><i class="fa fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://bomb-chicken.github.io/2017/08/24/CodeVS2587/&title=【贪心】Salaries"><i class="fa fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://bomb-chicken.github.io/2017/08/24/CodeVS2587/&title=【贪心】Salaries"><i class="fa fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://bomb-chicken.github.io/2017/08/24/CodeVS2587/&title=【贪心】Salaries"><i class="fa fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://bomb-chicken.github.io/2017/08/24/CodeVS2587/&name=【贪心】Salaries&description="><i class="fa fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+      <ul>
+        <li id="toc"><a class="icon" href="#" onclick='$("#toc-footer").toggle();return false;'><i class="fa fa-list fa-lg" aria-hidden="true"></i> TOC</a></li>
+        <li id="share"><a class="icon" href="#" onclick='$("#share-footer").toggle();return false;'><i class="fa fa-share-alt fa-lg" aria-hidden="true"></i> Share</a></li>
+        <li id="top" style="display:none"><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a></li>
+        <li id="menu"><a class="icon" href="#" onclick='$("#nav-footer").toggle();return false;'><i class="fa fa-bars fa-lg" aria-hidden="true"></i> Menu</a></li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+    
+    <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2017 炸鸡
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/links">Links</a></li>
+         
+          <li><a href="/tags">Tags</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+
+</body>
+</html>
+<!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="/lib/meslo-LG/styles.css">
+<link rel="stylesheet" href="/lib/justified-gallery/justifiedGallery.min.css">
+
+
+<!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- Google Analytics -->
+
+<!-- Disqus Comments -->
+
+

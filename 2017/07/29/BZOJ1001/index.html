@@ -6,17 +6,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="传送门：BZOJ1001BeiJing2006什么鬼比赛？  思路一：直接最大流（听说慢？） 思路二：平面图最大流转最短路。就是说这张图的割一定是由连续的几个三角形区域构成的，相当于一条从左下方到右上方的路径，边权等于跨过的边的容量。跑最短路。 注意：本菜鸡写代码较弱，导致需要特判n==1 || m==1的情况。（对拍愣是没拍出来，对拍的dalao貌似并没有些特判，结果A了）  思路二代码： 12">
+    <meta name="description" content="传送门：BZOJ1001 BeiJing2006什么鬼比赛？  思路一：直接最大流（听说慢？） 思路二：平面图最大流转最短路。就是说这张图的割一定是由连续的几个三角形区域构成的，相当于一条从左下方到右上方的路径，边权等于跨过的边的容量。跑最短路。 注意：本菜鸡写代码较弱，导致需要特判n==1 || m==1的情况。（对拍愣是没拍出来，对拍的dalao貌似并没有些特判，结果A了）  思路二代码： 1">
 <meta name="keywords" content="-网络流 -图论">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【平面图最大流转最短路】狼抓兔子">
 <meta property="og:url" content="https://bomb-chicken.github.io/2017/07/29/BZOJ1001/index.html">
 <meta property="og:site_name" content="炸鸡">
-<meta property="og:description" content="传送门：BZOJ1001BeiJing2006什么鬼比赛？  思路一：直接最大流（听说慢？） 思路二：平面图最大流转最短路。就是说这张图的割一定是由连续的几个三角形区域构成的，相当于一条从左下方到右上方的路径，边权等于跨过的边的容量。跑最短路。 注意：本菜鸡写代码较弱，导致需要特判n==1 || m==1的情况。（对拍愣是没拍出来，对拍的dalao貌似并没有些特判，结果A了）  思路二代码： 12">
+<meta property="og:description" content="传送门：BZOJ1001 BeiJing2006什么鬼比赛？  思路一：直接最大流（听说慢？） 思路二：平面图最大流转最短路。就是说这张图的割一定是由连续的几个三角形区域构成的，相当于一条从左下方到右上方的路径，边权等于跨过的边的容量。跑最短路。 注意：本菜鸡写代码较弱，导致需要特判n==1 || m==1的情况。（对拍愣是没拍出来，对拍的dalao貌似并没有些特判，结果A了）  思路二代码： 1">
 <meta property="og:updated_time" content="2017-07-29T15:16:29.028Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【平面图最大流转最短路】狼抓兔子">
-<meta name="twitter:description" content="传送门：BZOJ1001BeiJing2006什么鬼比赛？  思路一：直接最大流（听说慢？） 思路二：平面图最大流转最短路。就是说这张图的割一定是由连续的几个三角形区域构成的，相当于一条从左下方到右上方的路径，边权等于跨过的边的容量。跑最短路。 注意：本菜鸡写代码较弱，导致需要特判n==1 || m==1的情况。（对拍愣是没拍出来，对拍的dalao貌似并没有些特判，结果A了）  思路二代码： 12">
+<meta name="twitter:description" content="传送门：BZOJ1001 BeiJing2006什么鬼比赛？  思路一：直接最大流（听说慢？） 思路二：平面图最大流转最短路。就是说这张图的割一定是由连续的几个三角形区域构成的，相当于一条从左下方到右上方的路径，边权等于跨过的边的容量。跑最短路。 注意：本菜鸡写代码较弱，导致需要特判n==1 || m==1的情况。（对拍愣是没拍出来，对拍的dalao貌似并没有些特判，结果A了）  思路二代码： 1">
     
     
         
@@ -135,7 +135,8 @@
   
 
   <div class="content" itemprop="articleBody">
-    <p>传送门：<a href="http://www.lydsy.com/JudgeOnline/problem.php?id=1001" target="_blank" rel="external">BZOJ1001</a><br>BeiJing2006什么鬼比赛？</p>
+    <p>传送门：<a href="http://www.lydsy.com/JudgeOnline/problem.php?id=1001" target="_blank" rel="external">BZOJ1001</a>
+BeiJing2006什么鬼比赛？</p>
 <hr>
 <p>思路一：直接最大流（听说慢？）</p>
 <p>思路二：平面图最大流转最短路。就是说这张图的割一定是由连续的几个三角形区域构成的，相当于一条从左下方到右上方的路径，边权等于跨过的边的容量。跑最短路。</p>

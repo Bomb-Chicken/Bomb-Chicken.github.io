@@ -6,17 +6,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="题目传送门：CodeVS2404  这是一道很典型的差分约束系统 由于是我的第一道差分约束系统，先来科普一下 差分约束系统仅限于我的理解 差分约束系统可以用来求解一类不等式的解 例如： a-b&amp;gt;=x;    b-c&amp;gt;=y; 显然可以得到 a-c&amp;gt;=x+y 那么为了求解这类东西可以将a-b&amp;gt;=x转换为从a点向b点连一条长度为x的边（这里连边的方向什么都可以随题意改变，符号也可">
+    <meta name="description" content="题目传送门：CodeVS2404  这是一道很典型的差分约束系统 由于是我的第一道差分约束系统，先来科普一下 差分约束系统 仅限于我的理解 差分约束系统可以用来求解一类不等式的解 例如： a-b&amp;gt;=x;	b-c&amp;gt;=y; 显然可以得到 a-c&amp;gt;=x+y 那么为了求解这类东西可以将a-b&amp;gt;=x转换为从a点向b点连一条长度为x的边（这里连边的方向什么都可以随题意改变，符号也可以改">
 <meta name="keywords" content="图论">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【差分约束系统】糖果">
 <meta property="og:url" content="https://bomb-chicken.github.io/2017/05/23/CodeVS2404/index.html">
 <meta property="og:site_name" content="炸鸡">
-<meta property="og:description" content="题目传送门：CodeVS2404  这是一道很典型的差分约束系统 由于是我的第一道差分约束系统，先来科普一下 差分约束系统仅限于我的理解 差分约束系统可以用来求解一类不等式的解 例如： a-b&amp;gt;=x;    b-c&amp;gt;=y; 显然可以得到 a-c&amp;gt;=x+y 那么为了求解这类东西可以将a-b&amp;gt;=x转换为从a点向b点连一条长度为x的边（这里连边的方向什么都可以随题意改变，符号也可">
+<meta property="og:description" content="题目传送门：CodeVS2404  这是一道很典型的差分约束系统 由于是我的第一道差分约束系统，先来科普一下 差分约束系统 仅限于我的理解 差分约束系统可以用来求解一类不等式的解 例如： a-b&amp;gt;=x;	b-c&amp;gt;=y; 显然可以得到 a-c&amp;gt;=x+y 那么为了求解这类东西可以将a-b&amp;gt;=x转换为从a点向b点连一条长度为x的边（这里连边的方向什么都可以随题意改变，符号也可以改">
 <meta property="og:updated_time" content="2017-07-27T14:10:15.644Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【差分约束系统】糖果">
-<meta name="twitter:description" content="题目传送门：CodeVS2404  这是一道很典型的差分约束系统 由于是我的第一道差分约束系统，先来科普一下 差分约束系统仅限于我的理解 差分约束系统可以用来求解一类不等式的解 例如： a-b&amp;gt;=x;    b-c&amp;gt;=y; 显然可以得到 a-c&amp;gt;=x+y 那么为了求解这类东西可以将a-b&amp;gt;=x转换为从a点向b点连一条长度为x的边（这里连边的方向什么都可以随题意改变，符号也可">
+<meta name="twitter:description" content="题目传送门：CodeVS2404  这是一道很典型的差分约束系统 由于是我的第一道差分约束系统，先来科普一下 差分约束系统 仅限于我的理解 差分约束系统可以用来求解一类不等式的解 例如： a-b&amp;gt;=x;	b-c&amp;gt;=y; 显然可以得到 a-c&amp;gt;=x+y 那么为了求解这类东西可以将a-b&amp;gt;=x转换为从a点向b点连一条长度为x的边（这里连边的方向什么都可以随题意改变，符号也可以改">
     
     
         
@@ -96,7 +96,7 @@
 
     </div>
     <div id="toc">
-      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#差分约束系统"><span class="toc-number">1.</span> <span class="toc-text">差分约束系统</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#回到题目"><span class="toc-number">2.</span> <span class="toc-text">回到题目</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-number">1.</span> <span class="toc-text">差分约束系统</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-number">2.</span> <span class="toc-text">回到题目</span></a></li></ol>
     </div>
   </span>
 </div>
@@ -139,18 +139,20 @@
 <hr>
 <p>这是一道很典型的差分约束系统</p>
 <p>由于是我的第一道差分约束系统，先来科普一下</p>
-<h1 id="差分约束系统"><a href="#差分约束系统" class="headerlink" title="差分约束系统"></a>差分约束系统</h1><p>仅限于我的理解</p>
+<h1>差分约束系统</h1>
+<p>仅限于我的理解</p>
 <p>差分约束系统可以用来求解一类不等式的解</p>
 <p>例如：</p>
-<p>a-b&gt;=x;    b-c&gt;=y;</p>
+<p>a-b&gt;=x;	b-c&gt;=y;</p>
 <p>显然可以得到 a-c&gt;=x+y</p>
 <p>那么为了求解这类东西可以将a-b&gt;=x转换为从a点向b点连一条长度为x的边（这里连边的方向什么都可以随题意改变，符号也可以改变）</p>
 <p>建完图以后SPFA之类的就可以求解了</p>
 <hr>
-<h1 id="回到题目"><a href="#回到题目" class="headerlink" title="回到题目"></a>回到题目</h1><p>于是对各类情况分类讨论建图，</p>
+<h1>回到题目</h1>
+<p>于是对各类情况分类讨论建图，</p>
 <p>这里有两个注意点：</p>
-<p>—-如果a==b，那么就a向b连一条长度为0的边，b向a也连一条长度为0的边</p>
-<p>—-如果a!=b， 不要忘了特判不能是一个小朋友，否则自环不好处理</p>
+<p>----如果a==b，那么就a向b连一条长度为0的边，b向a也连一条长度为0的边</p>
+<p>----如果a!=b， 不要忘了特判不能是一个小朋友，否则自环不好处理</p>
 <p>然后为了使整个图连通起来，可以建一个源点S，由S向所有点连边，边长为1（因为每个人至少1颗糖）</p>
 <p>也可以先把所有点都放到队列里</p>
 <p>然后SPFA</p>
@@ -181,7 +183,7 @@
     </div>
 
     <div id="toc-footer" style="display: none">
-      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#差分约束系统"><span class="toc-number">1.</span> <span class="toc-text">差分约束系统</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#回到题目"><span class="toc-number">2.</span> <span class="toc-text">回到题目</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-number">1.</span> <span class="toc-text">差分约束系统</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-number">2.</span> <span class="toc-text">回到题目</span></a></li></ol>
     </div>
 
     <div id="share-footer" style="display: none">
