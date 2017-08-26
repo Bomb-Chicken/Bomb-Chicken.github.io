@@ -6,18 +6,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="传送门：POJ2728  题意：大致就是求一个最优比率生成树，也就是平均值最大或最小 思路： 步骤一 最大（小）化平均值有个经典套路： 这里要求$\frac{\sum\limits_{i\in E}{cost_i}}{\sum\limits_{i\in E}{dist_i}}$尽可能小 假设比率为m 那么$\frac{\sum\limits_{i\in E}{cost_i}}{\sum\limit">
+    <meta name="description" content="传送门：POJ2728  题意：大致就是求一个最优比率生成树，也就是平均值最大或最小 思路： 步骤一最大（小）化平均值有个经典套路： 这里要求$\frac{\sum\limits_{i\in E}{costi}}{\sum\limits{i\in E}{dist_i}}$尽可能小 假设比率为m 那么$\frac{\sum\limits_{i\in E}{costi}}{\sum\limits{i\">
 <meta name="keywords" content="图论,二分">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【二分+最小生成树】Desert King">
 <meta property="og:url" content="https://bomb-chicken.github.io/2017/07/27/POJ2728/index.html">
 <meta property="og:site_name" content="炸鸡">
-<meta property="og:description" content="传送门：POJ2728  题意：大致就是求一个最优比率生成树，也就是平均值最大或最小 思路： 步骤一 最大（小）化平均值有个经典套路： 这里要求$\frac{\sum\limits_{i\in E}{cost_i}}{\sum\limits_{i\in E}{dist_i}}$尽可能小 假设比率为m 那么$\frac{\sum\limits_{i\in E}{cost_i}}{\sum\limit">
+<meta property="og:description" content="传送门：POJ2728  题意：大致就是求一个最优比率生成树，也就是平均值最大或最小 思路： 步骤一最大（小）化平均值有个经典套路： 这里要求$\frac{\sum\limits_{i\in E}{costi}}{\sum\limits{i\in E}{dist_i}}$尽可能小 假设比率为m 那么$\frac{\sum\limits_{i\in E}{costi}}{\sum\limits{i\">
 <meta property="og:image" content="https://github.com/Bomb-Chicken/Bomb-Chicken.github.io/blob/master/images/POJ2728-1.png?raw=true">
 <meta property="og:updated_time" content="2017-07-27T14:45:11.312Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【二分+最小生成树】Desert King">
-<meta name="twitter:description" content="传送门：POJ2728  题意：大致就是求一个最优比率生成树，也就是平均值最大或最小 思路： 步骤一 最大（小）化平均值有个经典套路： 这里要求$\frac{\sum\limits_{i\in E}{cost_i}}{\sum\limits_{i\in E}{dist_i}}$尽可能小 假设比率为m 那么$\frac{\sum\limits_{i\in E}{cost_i}}{\sum\limit">
+<meta name="twitter:description" content="传送门：POJ2728  题意：大致就是求一个最优比率生成树，也就是平均值最大或最小 思路： 步骤一最大（小）化平均值有个经典套路： 这里要求$\frac{\sum\limits_{i\in E}{costi}}{\sum\limits{i\in E}{dist_i}}$尽可能小 假设比率为m 那么$\frac{\sum\limits_{i\in E}{costi}}{\sum\limits{i\">
 <meta name="twitter:image" content="https://github.com/Bomb-Chicken/Bomb-Chicken.github.io/blob/master/images/POJ2728-1.png?raw=true">
     
     
@@ -98,7 +98,7 @@
 
     </div>
     <div id="toc">
-      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-number">1.</span> <span class="toc-text">步骤一</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-number">2.</span> <span class="toc-text">步骤二</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#步骤一"><span class="toc-number">1.</span> <span class="toc-text">步骤一</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#步骤二"><span class="toc-number">2.</span> <span class="toc-text">步骤二</span></a></li></ol>
     </div>
   </span>
 </div>
@@ -141,14 +141,12 @@
 <hr>
 <p>题意：大致就是求一个最优比率生成树，也就是平均值最大或最小</p>
 <p>思路：</p>
-<h1>步骤一</h1>
-<p>最大（小）化平均值有个经典套路：</p>
-<p>这里要求$\frac{\sum\limits_{i\in E}{cost_i}}{\sum\limits_{i\in E}{dist_i}}$尽可能小</p>
+<h1 id="步骤一"><a href="#步骤一" class="headerlink" title="步骤一"></a>步骤一</h1><p>最大（小）化平均值有个经典套路：</p>
+<p>这里要求$\frac{\sum\limits_{i\in E}{cost<em>i}}{\sum\limits</em>{i\in E}{dist_i}}$尽可能小</p>
 <p>假设比率为m</p>
-<p>那么$\frac{\sum\limits_{i\in E}{cost_i}}{\sum\limits_{i\in E}{dist_i}}\leqslant  m$</p>
+<p>那么$\frac{\sum\limits_{i\in E}{cost<em>i}}{\sum\limits</em>{i\in E}{dist_i}}\leqslant  m$</p>
 <p>$\sum{(cost_i-dist_i\times m)}\leqslant 0$</p>
-<h1>步骤二</h1>
-<p>推完上面的以后就可以发现只要假定了一个比率m，</p>
+<h1 id="步骤二"><a href="#步骤二" class="headerlink" title="步骤二"></a>步骤二</h1><p>推完上面的以后就可以发现只要假定了一个比率m，</p>
 <p>就可以把$(v_i-w_i\times m)$作为新的边权求最小生成树。</p>
 <p>那么m可以用二分法或牛顿迭代法来搞定</p>
 <hr>
@@ -182,7 +180,7 @@
     </div>
 
     <div id="toc-footer" style="display: none">
-      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-number">1.</span> <span class="toc-text">步骤一</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-number">2.</span> <span class="toc-text">步骤二</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#步骤一"><span class="toc-number">1.</span> <span class="toc-text">步骤一</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#步骤二"><span class="toc-number">2.</span> <span class="toc-text">步骤二</span></a></li></ol>
     </div>
 
     <div id="share-footer" style="display: none">

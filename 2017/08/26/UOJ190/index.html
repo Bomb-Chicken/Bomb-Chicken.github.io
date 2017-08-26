@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="传送仙人掌：UOJ190 ZJOI2017  讲道理这道题我考场上可能是爆0了。。。（读优写挂我也是很无奈，不然30分） 先放一张萌萌哒仙人掌（这似乎是这个hexo主题的图，是不是很搭）  思路：终于进入正题  链的做法还是比较sb的，dp可做，直接找规律也是可以的，反正是2的幂次。  然后考虑树的做法，两点$(u,v)$之间的连边可以看作是一条覆盖了$(u,lca(u,v)),(v,lca(u,">
+<meta name="keywords" content="图论,动态规划DP,仙人掌">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【仙人掌+树形dp】仙人掌">
+<meta property="og:url" content="https://bomb-chicken.github.io/2017/08/26/UOJ190/index.html">
+<meta property="og:site_name" content="炸鸡">
+<meta property="og:description" content="传送仙人掌：UOJ190 ZJOI2017  讲道理这道题我考场上可能是爆0了。。。（读优写挂我也是很无奈，不然30分） 先放一张萌萌哒仙人掌（这似乎是这个hexo主题的图，是不是很搭）  思路：终于进入正题  链的做法还是比较sb的，dp可做，直接找规律也是可以的，反正是2的幂次。  然后考虑树的做法，两点$(u,v)$之间的连边可以看作是一条覆盖了$(u,lca(u,v)),(v,lca(u,">
+<meta property="og:image" content="https://github.com/Bomb-Chicken/Bomb-Chicken.github.io/blob/master/images/cactus.png?raw=true">
+<meta property="og:updated_time" content="2017-08-26T14:08:40.514Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="【仙人掌+树形dp】仙人掌">
+<meta name="twitter:description" content="传送仙人掌：UOJ190 ZJOI2017  讲道理这道题我考场上可能是爆0了。。。（读优写挂我也是很无奈，不然30分） 先放一张萌萌哒仙人掌（这似乎是这个hexo主题的图，是不是很搭）  思路：终于进入正题  链的做法还是比较sb的，dp可做，直接找规律也是可以的，反正是2的幂次。  然后考虑树的做法，两点$(u,v)$之间的连边可以看作是一条覆盖了$(u,lca(u,v)),(v,lca(u,">
+<meta name="twitter:image" content="https://github.com/Bomb-Chicken/Bomb-Chicken.github.io/blob/master/images/cactus.png?raw=true">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>【仙人掌+树形dp】仙人掌</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- rss --><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    
+    
+</head>
+
+<body>
+    
+      <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="header-post">
+  <a id="menu-icon" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/links">Links</a></li>
+         
+          <li><a href="/tags">Tags</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" href="/2017/08/26/LOJ112/"><i class="fa fa-chevron-right" aria-hidden="true" onmouseover='$("#i-next").toggle();' onmouseout='$("#i-next").toggle();'></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa fa-chevron-up" aria-hidden="true" onmouseover='$("#i-top").toggle();' onmouseout='$("#i-top").toggle();'></i></a></li>
+        <li><a class="icon" href="#"><i class="fa fa-share-alt" aria-hidden="true" onmouseover='$("#i-share").toggle();' onmouseout='$("#i-share").toggle();' onclick='$("#share").toggle();return false;'></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://bomb-chicken.github.io/2017/08/26/UOJ190/"><i class="fa fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://bomb-chicken.github.io/2017/08/26/UOJ190/&text=【仙人掌+树形dp】仙人掌"><i class="fa fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://bomb-chicken.github.io/2017/08/26/UOJ190/&title=【仙人掌+树形dp】仙人掌"><i class="fa fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://bomb-chicken.github.io/2017/08/26/UOJ190/&is_video=false&description=【仙人掌+树形dp】仙人掌"><i class="fa fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=【仙人掌+树形dp】仙人掌&body=Check out this article: https://bomb-chicken.github.io/2017/08/26/UOJ190/"><i class="fa fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://bomb-chicken.github.io/2017/08/26/UOJ190/&title=【仙人掌+树形dp】仙人掌"><i class="fa fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://bomb-chicken.github.io/2017/08/26/UOJ190/&title=【仙人掌+树形dp】仙人掌"><i class="fa fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://bomb-chicken.github.io/2017/08/26/UOJ190/&title=【仙人掌+树形dp】仙人掌"><i class="fa fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://bomb-chicken.github.io/2017/08/26/UOJ190/&title=【仙人掌+树形dp】仙人掌"><i class="fa fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://bomb-chicken.github.io/2017/08/26/UOJ190/&name=【仙人掌+树形dp】仙人掌&description="><i class="fa fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index width mx-auto px2 my4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        【仙人掌+树形dp】仙人掌
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">炸鸡</span>
+      </span>
+      
+    <div class="postdate">
+        <time datetime="2017-08-26T13:01:03.000Z" itemprop="datePublished">2017-08-26</time>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/仙人掌/">仙人掌</a>, <a class="tag-link" href="/tags/动态规划DP/">动态规划DP</a>, <a class="tag-link" href="/tags/图论/">图论</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <p>传送仙人掌：<a href="http://uoj.ac/problem/290" target="_blank" rel="external">UOJ190</a></p>
+<p>ZJOI2017</p>
+<hr>
+<p>讲道理这道题我考场上可能是爆0了。。。（读优写挂我也是很无奈，不然30分）</p>
+<p>先放一张萌萌哒仙人掌<del>（这似乎是这个hexo主题的图，是不是很搭）</del></p>
+<p><img src="https://github.com/Bomb-Chicken/Bomb-Chicken.github.io/blob/master/images/cactus.png?raw=true" alt="cactus"></p>
+<p>思路：终于进入正题</p>
+<ul>
+<li>链的做法还是比较sb的，dp可做，直接找规律也是可以的，反正是2的幂次。</li>
+<li><ul>
+<li>然后考虑树的做法，两点$(u,v)$之间的连边可以看作是一条覆盖了$(u,lca(u,v)),(v,lca(u,v))$的链</li>
+<li>可以发现这道题有一个要求是没有重边，这个性质可就厉害了。可以发现在一个合法的仙人掌（合法的答案），一定是原树上的每条边要么被长度&gt;2的链覆盖，要么不被覆盖。<strong>可以把不覆盖强行当做是被长度为1的链覆盖，因为实际上不存在长度为1的链，所以计数上不会有影响。</strong>这样题意就转化为了求用链恰好覆盖整棵树一次的方案数。</li>
+<li>考虑树形dp，用$f_i$表示i（i不为根）及其子树的边和父边被覆盖且恰有一条链连向子树外某点的方案数（不考虑连向外面的是哪个点）：<ul>
+<li>为什么这么设计状态呢？可以发现对于一棵不是根节点i及其子树，子树内（包括i）总有且一条链是连向子树外的。如果不连出去，i所对应的父边就不被覆盖了；如果连出去多条，i所对应的父边就被多次覆盖。</li>
+<li>那么怎么$f_i$转移呢？</li>
+<li>首先i的子树是相对独立的，换句话说每棵子树内部的连边与其他子树无关，每棵子树只有连出去的边才能与其他子树连边或是连到i的外面。考虑到$f_i$的意义，若干棵子树中必须选出一棵来连向i子树的外面，其余的一部分连向i，另一部分相互两两配对。可以发现最终配对的结果与只与子树的棵树有关。</li>
+<li>那么$f<em>i=k\times g</em>{k-1}\times\prod\limits_{j\in child(i)} f_j$，其中k表示i的子树的棵树；</li>
+<li>$g_k$表示的k条边在内部两两配对或连到i的方案数，那么k-1是因为一条边强制连到外面</li>
+<li>$g<em>k=g</em>{k-1}+g<em>{k-2}\times(k-1)$，因为新加进来的边连到根节点的贡献是$g</em>{k-1}$，配对的话要挑出一条已有的边来配对，贡献是$g_{k-2}\times(k-1)$，这个可以预处理一发。</li>
+<li>根的话不用连出去，自己推一下。</li>
+</ul>
+</li>
+<li>至此树的dp没了。</li>
+<li>可能是假的，因为这个dp方程显然可以直接分解成乘法，$ans=\prod g_x$。<del>讲道理我是看UOJ上的代码发现的。</del></li>
+</ul>
+</li>
+<li><ul>
+<li>然后考虑仙人掌，如果不是仙人掌那显然是GG的。特判一发。</li>
+<li>是仙人掌的话可以发现环上的边是没有救的。</li>
+<li>所以把环边删掉以后仙人掌就变成了森林，乘法原理。</li>
+<li>重点可能是找仙人掌吧！</li>
+</ul>
+</li>
+</ul>
+<p>注意：取模不要忘，预处理注意时间啊（题目有说t很大然而我瞎）</p>
+<hr>
+<p>还是贴代码吧：</p>
+<p>正常树形dp：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></div><div class="line"></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> LL long long</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> N 2200000</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> mo 998244353</span></div><div class="line"></div><div class="line">LL t,n,m,x,y,tot,head[N],f[N],g[N],fa[N],mark[N];</div><div class="line"><span class="keyword">bool</span> vis[N],vis2[N];</div><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">edge</span>&#123;</span>LL v,nxt;&#125;e[N];</div><div class="line"></div><div class="line"><span class="function">LL <span class="title">getint</span><span class="params">()</span></span>&#123;</div><div class="line">	<span class="keyword">char</span> ch; LL sum=<span class="number">0</span>;</div><div class="line">	<span class="keyword">for</span> (ch=getchar();ch&lt;<span class="string">'0'</span> || ch&gt;<span class="string">'9'</span>;ch=getchar());</div><div class="line">	<span class="keyword">for</span> (;ch&gt;=<span class="string">'0'</span> &amp;&amp; ch&lt;=<span class="string">'9'</span>;ch=getchar()) sum=sum*<span class="number">10</span>+ch-<span class="string">'0'</span>;</div><div class="line">	<span class="keyword">return</span> sum;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(LL x,LL y)</span></span>&#123;e[++tot].v=y; e[tot].nxt=head[x]; head[x]=tot;&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">(LL n)</span></span>&#123;tot=<span class="number">1</span>;	<span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;vis[i]=head[i]=mark[i]=fa[i]=vis2[i]=<span class="number">0</span>; f[i]=<span class="number">1</span>;&#125;&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">bool</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> u)</span></span>&#123;<span class="comment">//判定仙人掌+标记环边</span></div><div class="line">	vis[u]=<span class="number">1</span>;</div><div class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i=head[u];i;i=e[i].nxt)&#123;</div><div class="line">		<span class="keyword">int</span> v=e[i].v;</div><div class="line">		<span class="keyword">if</span> (v==fa[u]) <span class="keyword">continue</span>;</div><div class="line">		<span class="keyword">if</span> (!vis[v])&#123;fa[v]=u; <span class="keyword">if</span> (dfs(v)) <span class="keyword">return</span> <span class="number">1</span>;&#125;</div><div class="line">		<span class="keyword">else</span>&#123;</div><div class="line">			e[i^<span class="number">1</span>].v=fa[v];<span class="comment">//防止找到环以后反着又找到了</span></div><div class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> k=u;k!=v;k=fa[k])&#123;</div><div class="line">				<span class="keyword">if</span> (mark[k]) <span class="keyword">return</span> <span class="number">1</span>; <span class="keyword">else</span> mark[k]=<span class="number">1</span>;<span class="comment">//已经到过的环GG</span></div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">dp</span><span class="params">(LL u)</span></span>&#123;</div><div class="line">	<span class="keyword">int</span> sum=<span class="number">0</span>; vis2[u]=<span class="number">1</span>;</div><div class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i=head[u];i;i=e[i].nxt)&#123;</div><div class="line">		<span class="keyword">int</span> v=e[i].v;</div><div class="line">		<span class="keyword">if</span> (fa[u]==v || vis2[v]) <span class="keyword">continue</span>; </div><div class="line">		dp(v);</div><div class="line">		<span class="keyword">if</span> (!mark[v])&#123;sum++; f[u]=f[u]*f[v]%mo;&#125;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">if</span> (sum!=<span class="number">0</span>)&#123;</div><div class="line">		<span class="keyword">if</span> (fa[u]==<span class="number">0</span> || mark[u]) f[u]=f[u]*g[sum]%mo;<span class="comment">//某棵树的根</span></div><div class="line">		<span class="keyword">else</span> f[u]=f[u]*(g[sum<span class="number">-1</span>]*sum%mo+g[sum])%mo;<span class="comment">//某棵树的子树的根</span></div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line">		</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line">	t=getint();</div><div class="line">	<span class="keyword">while</span> (t--)&#123;</div><div class="line">		n=getint(); m=getint();</div><div class="line">		init(n);</div><div class="line">		g[<span class="number">0</span>]=g[<span class="number">1</span>]=<span class="number">1</span>; <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">2</span>;i&lt;=n;i++) g[i]=(g[i<span class="number">-1</span>]+g[i<span class="number">-2</span>]*(i<span class="number">-1</span>))%mo;<span class="comment">//预处理</span></div><div class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;i++)&#123;</div><div class="line">			x=getint(); y=getint();</div><div class="line">			add(x,y); add(y,x);</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">if</span> (dfs(<span class="number">1</span>))&#123;<span class="built_in">puts</span>(<span class="string">"0"</span>); <span class="keyword">continue</span>;&#125;;</div><div class="line">		dp(<span class="number">1</span>); LL ans=f[<span class="number">1</span>];</div><div class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">2</span>;i&lt;=n;i++) <span class="keyword">if</span> (mark[i]) ans=ans*f[i]%mo;</div><div class="line">		<span class="built_in">printf</span>(<span class="string">"%lld\n"</span>,ans);</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	</div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>强行换成乘法：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></div><div class="line"></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> LL long long</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> N 2200000</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> mo 998244353</span></div><div class="line"></div><div class="line">LL t,n,m,x,y,tot,head[N],cnt[N],g[N],fa[N],mark[N];</div><div class="line"><span class="keyword">bool</span> vis[N];</div><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">edge</span>&#123;</span>LL v,nxt;&#125;e[N];</div><div class="line"></div><div class="line"><span class="function">LL <span class="title">getint</span><span class="params">()</span></span>&#123;</div><div class="line">	<span class="keyword">char</span> ch; LL sum=<span class="number">0</span>;</div><div class="line">	<span class="keyword">for</span> (ch=getchar();ch&lt;<span class="string">'0'</span> || ch&gt;<span class="string">'9'</span>;ch=getchar());</div><div class="line">	<span class="keyword">for</span> (;ch&gt;=<span class="string">'0'</span> &amp;&amp; ch&lt;=<span class="string">'9'</span>;ch=getchar()) sum=sum*<span class="number">10</span>+ch-<span class="string">'0'</span>;</div><div class="line">	<span class="keyword">return</span> sum;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(LL x,LL y)</span></span>&#123;e[++tot].v=y; e[tot].nxt=head[x]; head[x]=tot;&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">(LL n)</span></span>&#123;tot=<span class="number">1</span>;	<span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) vis[i]=head[i]=mark[i]=fa[i]=cnt[i]=<span class="number">0</span>;&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">bool</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> u)</span></span>&#123;</div><div class="line">	vis[u]=<span class="number">1</span>;</div><div class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i=head[u];i;i=e[i].nxt)&#123;</div><div class="line">		<span class="keyword">int</span> v=e[i].v;</div><div class="line">		<span class="keyword">if</span> (v==fa[u]) <span class="keyword">continue</span>;</div><div class="line">		<span class="keyword">if</span> (!vis[v])&#123;fa[v]=u; <span class="keyword">if</span> (dfs(v)) <span class="keyword">return</span> <span class="number">1</span>;&#125;</div><div class="line">		<span class="keyword">else</span>&#123;</div><div class="line">			e[i^<span class="number">1</span>].v=fa[v];</div><div class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> k=u;k!=v;k=fa[k])&#123;</div><div class="line">				<span class="keyword">if</span> (mark[k]) <span class="keyword">return</span> <span class="number">1</span>; <span class="keyword">else</span> mark[k]=<span class="number">1</span>;</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div><div class="line">		</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line">	t=getint();</div><div class="line">	<span class="keyword">while</span> (t--)&#123;</div><div class="line">		n=getint(); m=getint();</div><div class="line">		init(n);</div><div class="line">		g[<span class="number">0</span>]=g[<span class="number">1</span>]=<span class="number">1</span>; <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">2</span>;i&lt;=n;i++) g[i]=(g[i<span class="number">-1</span>]+g[i<span class="number">-2</span>]*(i<span class="number">-1</span>))%mo;</div><div class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;i++)&#123;</div><div class="line">			x=getint(); y=getint();</div><div class="line">			add(x,y); add(y,x);</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">if</span> (dfs(<span class="number">1</span>))&#123;<span class="built_in">puts</span>(<span class="string">"0"</span>); <span class="keyword">continue</span>;&#125;;</div><div class="line">		</div><div class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">2</span>;i&lt;=n;i++) <span class="keyword">if</span> (!mark[i])&#123;cnt[i]++; cnt[fa[i]]++;&#125;<span class="comment">//统计子节点个数</span></div><div class="line">		LL ans=<span class="number">1</span>;</div><div class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) ans=ans*g[cnt[i]]%mo;<span class="comment">//每个节点本身的贡献实际上是子节点的个数带来的</span></div><div class="line">		<span class="built_in">printf</span>(<span class="string">"%lld\n"</span>,ans);</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	</div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+  </div>
+</article>
+
+
+
+    </div>
+    
+      <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/links">Links</a></li>
+         
+          <li><a href="/tags">Tags</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://bomb-chicken.github.io/2017/08/26/UOJ190/"><i class="fa fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://bomb-chicken.github.io/2017/08/26/UOJ190/&text=【仙人掌+树形dp】仙人掌"><i class="fa fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://bomb-chicken.github.io/2017/08/26/UOJ190/&title=【仙人掌+树形dp】仙人掌"><i class="fa fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://bomb-chicken.github.io/2017/08/26/UOJ190/&is_video=false&description=【仙人掌+树形dp】仙人掌"><i class="fa fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=【仙人掌+树形dp】仙人掌&body=Check out this article: https://bomb-chicken.github.io/2017/08/26/UOJ190/"><i class="fa fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://bomb-chicken.github.io/2017/08/26/UOJ190/&title=【仙人掌+树形dp】仙人掌"><i class="fa fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://bomb-chicken.github.io/2017/08/26/UOJ190/&title=【仙人掌+树形dp】仙人掌"><i class="fa fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://bomb-chicken.github.io/2017/08/26/UOJ190/&title=【仙人掌+树形dp】仙人掌"><i class="fa fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://bomb-chicken.github.io/2017/08/26/UOJ190/&title=【仙人掌+树形dp】仙人掌"><i class="fa fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://bomb-chicken.github.io/2017/08/26/UOJ190/&name=【仙人掌+树形dp】仙人掌&description="><i class="fa fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+      <ul>
+        <li id="toc"><a class="icon" href="#" onclick='$("#toc-footer").toggle();return false;'><i class="fa fa-list fa-lg" aria-hidden="true"></i> TOC</a></li>
+        <li id="share"><a class="icon" href="#" onclick='$("#share-footer").toggle();return false;'><i class="fa fa-share-alt fa-lg" aria-hidden="true"></i> Share</a></li>
+        <li id="top" style="display:none"><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a></li>
+        <li id="menu"><a class="icon" href="#" onclick='$("#nav-footer").toggle();return false;'><i class="fa fa-bars fa-lg" aria-hidden="true"></i> Menu</a></li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+    
+    <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2017 炸鸡
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/links">Links</a></li>
+         
+          <li><a href="/tags">Tags</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+
+</body>
+</html>
+<!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="/lib/meslo-LG/styles.css">
+<link rel="stylesheet" href="/lib/justified-gallery/justifiedGallery.min.css">
+
+
+<!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- Google Analytics -->
+
+<!-- Disqus Comments -->
+
+
