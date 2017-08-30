@@ -6,18 +6,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="传送仙人掌：UOJ190 ZJOI2017  讲道理这道题我考场上可能是爆0了。。。（读优写挂我也是很无奈，不然30分） 先放一张萌萌哒仙人掌（这似乎是这个hexo主题的图，是不是很搭）  思路：终于进入正题  链的做法还是比较sb的，dp可做，直接找规律也是可以的，反正是2的幂次。  然后考虑树的做法，两点$(u,v)$之间的连边可以看作是一条覆盖了$(u,lca(u,v)),(v,lca(u,">
+    <meta name="description" content="传送仙人掌：UOJ190 ZJOI2017  讲道理这道题我考场上可能是爆0了。。。（读优写挂我也是很无奈，不然30分） 先放一张萌萌哒仙人掌（这似乎是这个hexo主题的图，是不是很搭）  思路：终于进入正题  链的做法还是比较sb的，dp可做，直接找规律也是可以的，反正是2的幂次。   然后考虑树的做法，两点$(u,v)$之间的连边可以看作是一条覆盖了$(u,lca(u,v)),(v,lca(u">
 <meta name="keywords" content="图论,动态规划DP,仙人掌">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【仙人掌+树形dp】仙人掌">
 <meta property="og:url" content="https://bomb-chicken.github.io/2017/08/26/UOJ190/index.html">
 <meta property="og:site_name" content="炸鸡">
-<meta property="og:description" content="传送仙人掌：UOJ190 ZJOI2017  讲道理这道题我考场上可能是爆0了。。。（读优写挂我也是很无奈，不然30分） 先放一张萌萌哒仙人掌（这似乎是这个hexo主题的图，是不是很搭）  思路：终于进入正题  链的做法还是比较sb的，dp可做，直接找规律也是可以的，反正是2的幂次。  然后考虑树的做法，两点$(u,v)$之间的连边可以看作是一条覆盖了$(u,lca(u,v)),(v,lca(u,">
+<meta property="og:description" content="传送仙人掌：UOJ190 ZJOI2017  讲道理这道题我考场上可能是爆0了。。。（读优写挂我也是很无奈，不然30分） 先放一张萌萌哒仙人掌（这似乎是这个hexo主题的图，是不是很搭）  思路：终于进入正题  链的做法还是比较sb的，dp可做，直接找规律也是可以的，反正是2的幂次。   然后考虑树的做法，两点$(u,v)$之间的连边可以看作是一条覆盖了$(u,lca(u,v)),(v,lca(u">
 <meta property="og:image" content="https://github.com/Bomb-Chicken/Bomb-Chicken.github.io/blob/master/images/cactus.png?raw=true">
-<meta property="og:updated_time" content="2017-08-26T14:26:29.000Z">
+<meta property="og:updated_time" content="2017-08-30T14:25:50.820Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【仙人掌+树形dp】仙人掌">
-<meta name="twitter:description" content="传送仙人掌：UOJ190 ZJOI2017  讲道理这道题我考场上可能是爆0了。。。（读优写挂我也是很无奈，不然30分） 先放一张萌萌哒仙人掌（这似乎是这个hexo主题的图，是不是很搭）  思路：终于进入正题  链的做法还是比较sb的，dp可做，直接找规律也是可以的，反正是2的幂次。  然后考虑树的做法，两点$(u,v)$之间的连边可以看作是一条覆盖了$(u,lca(u,v)),(v,lca(u,">
+<meta name="twitter:description" content="传送仙人掌：UOJ190 ZJOI2017  讲道理这道题我考场上可能是爆0了。。。（读优写挂我也是很无奈，不然30分） 先放一张萌萌哒仙人掌（这似乎是这个hexo主题的图，是不是很搭）  思路：终于进入正题  链的做法还是比较sb的，dp可做，直接找规律也是可以的，反正是2的幂次。   然后考虑树的做法，两点$(u,v)$之间的连边可以看作是一条覆盖了$(u,lca(u,v)),(v,lca(u">
 <meta name="twitter:image" content="https://github.com/Bomb-Chicken/Bomb-Chicken.github.io/blob/master/images/cactus.png?raw=true">
     
     
@@ -146,16 +146,18 @@
 <p>思路：终于进入正题</p>
 <ul>
 <li>链的做法还是比较sb的，dp可做，直接找规律也是可以的，反正是2的幂次。</li>
-<li><ul>
+<li>
+<ul>
 <li>然后考虑树的做法，两点$(u,v)$之间的连边可以看作是一条覆盖了$(u,lca(u,v)),(v,lca(u,v))$的链</li>
-<li>可以发现这道题有一个要求是没有重边，这个性质可就厉害了。可以发现在一个合法的仙人掌（合法的答案），一定是原树上的每条边要么被长度&gt;2的链覆盖，要么不被覆盖。<strong>可以把不覆盖强行当做是被长度为1的链覆盖，因为实际上不存在长度为1的链，所以计数上不会有影响。</strong>这样题意就转化为了求用链恰好覆盖整棵树一次的方案数。</li>
-<li>考虑树形dp，用$f_i$表示i（i不为根）及其子树的边和父边被覆盖且恰有一条链连向子树外某点的方案数（不考虑连向外面的是哪个点）：<ul>
+<li>可以发现这道题有一个要求是没有重边，这个性质可就厉害了。可以发现在一个合法的仙人掌（合法的答案），一定是原树上的每条边要么被长度&gt;2的链覆盖，要么不被覆盖。 <strong>可以把不覆盖强行当做是被长度为1的链覆盖，因为实际上不存在长度为1的链，所以计数上不会有影响。</strong> 这样题意就转化为了求用链恰好覆盖整棵树一次的方案数。</li>
+<li>考虑树形dp，用$f_i$表示i（i不为根）及其子树的边和父边被覆盖且恰有一条链连向子树外某点的方案数（不考虑连向外面的是哪个点）：
+<ul>
 <li>为什么这么设计状态呢？可以发现对于一棵不是根节点i及其子树，子树内（包括i）总有且一条链是连向子树外的。如果不连出去，i所对应的父边就不被覆盖了；如果连出去多条，i所对应的父边就被多次覆盖。</li>
 <li>那么怎么$f_i$转移呢？</li>
-<li>首先i的子树是相对独立的，换句话说每棵子树内部的连边与其他子树无关，每棵子树只有连出去的边才能与其他子树连边或是连到i的外面。考虑到$f_i$的意义，若干棵子树中必须选出一棵来连向i子树的外面，其余的一部分连向i，另一部分相互两两配对。可以发现最终配对的结果与只与子树的棵树有关。</li>
-<li>那么$f<em>i=k\times g</em>{k-1}\times\prod\limits_{j\in child(i)} f_j$，其中k表示i的子树的棵树；</li>
+<li>首先i的子树是相对独立的，换句话说每棵子树内部的连边与其他子树无关，每棵子树只有连出去的边才能与其他子树连边或是连到i的外面。考虑到$f_i​$的意义，若干棵子树中必须选出一棵来连向i子树的外面，其余的一部分连向i，另一部分相互两两配对。可以发现最终配对的结果与只与子树的棵树有关。</li>
+<li>那么$f_i = k\times g_{k-1} \times \prod\limits_{j\in child(i)} f_j$，其中k表示i的子树的棵树；</li>
 <li>$g_k$表示的k条边在内部两两配对或连到i的方案数，那么k-1是因为一条边强制连到外面</li>
-<li>$g<em>k=g</em>{k-1}+g<em>{k-2}\times(k-1)$，因为新加进来的边连到根节点的贡献是$g</em>{k-1}$，配对的话要挑出一条已有的边来配对，贡献是$g_{k-2}\times(k-1)$，这个可以预处理一发。</li>
+<li>$g_k=g_{k-1}+g_{k-2}\times(k-1)$，因为新加进来的边连到根节点的贡献是$g_{k-1}$，配对的话要挑出一条已有的边来配对，贡献是$g_{k-2}\times(k-1)$，这个可以预处理一发。</li>
 <li>根的话不用连出去，自己推一下。</li>
 </ul>
 </li>
@@ -163,7 +165,8 @@
 <li>可能是假的，因为这个dp方程显然可以直接分解成乘法，$ans=\prod g_x$。<del>讲道理我是看UOJ上的代码发现的。</del></li>
 </ul>
 </li>
-<li><ul>
+<li>
+<ul>
 <li>然后考虑仙人掌，如果不是仙人掌那显然是GG的。特判一发。</li>
 <li>是仙人掌的话可以发现环上的边是没有救的。</li>
 <li>所以把环边删掉以后仙人掌就变成了森林，乘法原理。</li>

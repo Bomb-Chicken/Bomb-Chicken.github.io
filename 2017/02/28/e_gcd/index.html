@@ -13,7 +13,7 @@
 <meta property="og:url" content="https://bomb-chicken.github.io/2017/02/28/e_gcd/index.html">
 <meta property="og:site_name" content="炸鸡">
 <meta property="og:description" content="扩展欧几里得算法应用很广： （1）求解不定方程: （2）求解模线性方程（线性同余方程） （3）求解模的逆元  先考虑（1） 对于不定方程 ax+by=c仅当c|gcd(a,b)时方程有解 则可以先求出 ax+by=gcd 的解 因为这不定方程解有无数个，所以我们可以先解出一个通解x0,y0，在利用这个通解表示所有解 因为 ax0+by0=gcd 所以 a(x0+b/gcd*t)+b(y0-a/gc">
-<meta property="og:updated_time" content="2017-07-27T14:12:19.000Z">
+<meta property="og:updated_time" content="2017-07-27T14:12:19.832Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【模板】【数论】扩展欧几里得算法">
 <meta name="twitter:description" content="扩展欧几里得算法应用很广： （1）求解不定方程: （2）求解模线性方程（线性同余方程） （3）求解模的逆元  先考虑（1） 对于不定方程 ax+by=c仅当c|gcd(a,b)时方程有解 则可以先求出 ax+by=gcd 的解 因为这不定方程解有无数个，所以我们可以先解出一个通解x0,y0，在利用这个通解表示所有解 因为 ax0+by0=gcd 所以 a(x0+b/gcd*t)+b(y0-a/gc">
@@ -153,7 +153,7 @@
 <p>此时 <code>a0=gcd</code>，<code>b0=0</code></p>
 <p>因为 <code>ax+by=0</code> 所以 <code>x=1</code>，<code>y=0</code>（其实y可以为任意数）</p>
 <p>那么返回上一层 <code>a0=b1</code>，<code>b0=a1%b1</code></p>
-<p>所以 </p>
+<p>所以</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">gcd=a1x1+b1y1</div><div class="line">   =a0x0+b0y0</div><div class="line">   =b1x0+(a1%b1)y0</div><div class="line">   =b1x0+(a1-a1/b1*b1)y0</div><div class="line">   =a1y0+b1(x0-a1/b1*y0)</div></pre></td></tr></table></figure>
 <p>所以 <code>x1=y0</code>, <code>y1=x0-a1/b1*y0</code></p>
 <p>除此之外还可以根据通解判断一定范围内解的个数（显然）</p>
@@ -161,11 +161,13 @@
 <p>以下基础代码</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">gcd</span><span class="params">(LL a,LL b,LL &amp;x,LL &amp;y)</span></span>&#123;</div><div class="line">	<span class="keyword">if</span> (b==<span class="number">0</span>)&#123;</div><div class="line">		x=<span class="number">1</span>;</div><div class="line">		y=<span class="number">0</span>;</div><div class="line">		<span class="keyword">return</span> a;</div><div class="line">	&#125;</div><div class="line">	LL k=gcd(b,a%b,x,y);</div><div class="line">	LL t=x;</div><div class="line">	x=y;</div><div class="line">	y=t-a/b*y;</div><div class="line">	<span class="keyword">return</span> k;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <hr>
-<p>（2）<br>关于 <code>ax=b(mod n)</code></p>
+<p>（2）
+关于 <code>ax=b(mod n)</code></p>
 <p>可化为 <code>ax+ny=b</code></p>
 <p>再按如上方法</p>
 <hr>
-<p>（3）<br>所谓逆元，<code>ax=1(mod n)</code></p>
+<p>（3）
+所谓逆元，<code>ax=1(mod n)</code></p>
 <p>则可以化为 <code>ax+ny=1</code></p>
 <p>再按如上方法</p>
 

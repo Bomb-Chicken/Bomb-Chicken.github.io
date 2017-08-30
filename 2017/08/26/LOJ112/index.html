@@ -13,7 +13,7 @@
 <meta property="og:url" content="https://bomb-chicken.github.io/2017/08/26/LOJ112/index.html">
 <meta property="og:site_name" content="炸鸡">
 <meta property="og:description" content="传送台:LOJ112 吐槽一下cdq分治模板题好难找啊！！！  思路：题意相当于求三维坐标系中一个点的左下角有几个点（这难道不是数点？） 如果考虑二维坐标系中，那么只需对一维排序，另一维求最长不下降子序列。 然而三维中一维排完序还有两维（真悲伤）。 考虑分治，首先如果点A对点B的答案产生贡献，那$必定有x_A\leqslant x_B,y_A\leqslant y_B,z_A\leqslant z">
-<meta property="og:updated_time" content="2017-08-26T14:09:46.000Z">
+<meta property="og:updated_time" content="2017-08-26T14:09:46.331Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【cdq分治】三维偏序">
 <meta name="twitter:description" content="传送台:LOJ112 吐槽一下cdq分治模板题好难找啊！！！  思路：题意相当于求三维坐标系中一个点的左下角有几个点（这难道不是数点？） 如果考虑二维坐标系中，那么只需对一维排序，另一维求最长不下降子序列。 然而三维中一维排完序还有两维（真悲伤）。 考虑分治，首先如果点A对点B的答案产生贡献，那$必定有x_A\leqslant x_B,y_A\leqslant y_B,z_A\leqslant z">
@@ -145,11 +145,13 @@
 <p>那如果所有点按x为第一关键字，y为第二关键字，z位第三关键字排序，排名靠右的点一定不会对左边的点的答案产生影响。</p>
 <p>考虑点A，假设当前点的区间为$[l,r]$，中间点为mid，那么：</p>
 <ul>
-<li><p>如果点A在右区间，那么该区间内它的答案由两部分组成：$[l,mid]$和$[mid+1,rank_A]$，</p>
+<li>
+<p>如果点A在右区间，那么该区间内它的答案由两部分组成：$[l,mid]$和$[mid+1,rank_A]$，</p>
 <p>前者可以先把$[l,mid]$内元素标记，然后把区间$[l,r]$内的元素以y为第一关键字元素排序后，把标记的元素依次加入维护z的树状数组中，未标记的统计答案，因为标记的元素属于左区间，未标记的属于右区间，只有标记的可能对未标记的有影响。</p>
 <p>后者可以递归处理。</p>
 </li>
-<li><p>如果点A在左区间，直接递归处理就完了</p>
+<li>
+<p>如果点A在左区间，直接递归处理就完了</p>
 </li>
 </ul>
 <hr>

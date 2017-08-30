@@ -6,17 +6,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="传送门：CodeVS2585 POI2012  吐槽一下这道题真的是没有结论做不出！ 思路： 首先想到模拟，显然GG。 于是就开始撕烤，然而除了暴力枚举并没有思路。 于是查看题解，发现了一条性质： 首先循环相同的2个串可以表示为AB和BA 记$f_i$为|A|为i时|B|的最大值，然后可以发现 $$fi\geqslant f{i-1}-2\longrightarrow f_{i-1}\leqsla">
+    <meta name="description" content="传送门：CodeVS2585 POI2012  吐槽一下这道题真的是没有结论做不出！ 思路： 首先想到模拟，显然GG。 于是就开始撕烤，然而除了暴力枚举并没有思路。 于是查看题解，发现了一条性质： 首先循环相同的2个串可以表示为AB和BA 记$f_i$为|A|为i时|B|的最大值，然后可以发现 $$f_i\geqslant f_{i-1}-2\longrightarrow f_{i-1}\leqs">
 <meta name="keywords" content="字符串">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【字符串哈希】Prefixuffix">
 <meta property="og:url" content="https://bomb-chicken.github.io/2017/07/30/CodeVS2585/index.html">
 <meta property="og:site_name" content="炸鸡">
-<meta property="og:description" content="传送门：CodeVS2585 POI2012  吐槽一下这道题真的是没有结论做不出！ 思路： 首先想到模拟，显然GG。 于是就开始撕烤，然而除了暴力枚举并没有思路。 于是查看题解，发现了一条性质： 首先循环相同的2个串可以表示为AB和BA 记$f_i$为|A|为i时|B|的最大值，然后可以发现 $$fi\geqslant f{i-1}-2\longrightarrow f_{i-1}\leqsla">
-<meta property="og:updated_time" content="2017-07-31T06:55:36.000Z">
+<meta property="og:description" content="传送门：CodeVS2585 POI2012  吐槽一下这道题真的是没有结论做不出！ 思路： 首先想到模拟，显然GG。 于是就开始撕烤，然而除了暴力枚举并没有思路。 于是查看题解，发现了一条性质： 首先循环相同的2个串可以表示为AB和BA 记$f_i$为|A|为i时|B|的最大值，然后可以发现 $$f_i\geqslant f_{i-1}-2\longrightarrow f_{i-1}\leqs">
+<meta property="og:updated_time" content="2017-07-31T06:55:36.191Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【字符串哈希】Prefixuffix">
-<meta name="twitter:description" content="传送门：CodeVS2585 POI2012  吐槽一下这道题真的是没有结论做不出！ 思路： 首先想到模拟，显然GG。 于是就开始撕烤，然而除了暴力枚举并没有思路。 于是查看题解，发现了一条性质： 首先循环相同的2个串可以表示为AB和BA 记$f_i$为|A|为i时|B|的最大值，然后可以发现 $$fi\geqslant f{i-1}-2\longrightarrow f_{i-1}\leqsla">
+<meta name="twitter:description" content="传送门：CodeVS2585 POI2012  吐槽一下这道题真的是没有结论做不出！ 思路： 首先想到模拟，显然GG。 于是就开始撕烤，然而除了暴力枚举并没有思路。 于是查看题解，发现了一条性质： 首先循环相同的2个串可以表示为AB和BA 记$f_i$为|A|为i时|B|的最大值，然后可以发现 $$f_i\geqslant f_{i-1}-2\longrightarrow f_{i-1}\leqs">
     
     
         
@@ -145,7 +145,7 @@
 <p><del>于是查看题解，</del>发现了一条性质：</p>
 <p>首先循环相同的2个串可以表示为AB和BA</p>
 <p>记$f_i$为|A|为i时|B|的最大值，然后可以发现</p>
-<p>$$f<em>i\geqslant f</em>{i-1}-2\longrightarrow f_{i-1}\leqslant f_i+2$$</p>
+<p>$$f_i\geqslant f_{i-1}-2\longrightarrow f_{i-1}\leqslant f_i+2$$</p>
 <p>因为两个相同的串两边各去掉一个字符后依然相等。</p>
 <p><del>这个结论很好证，然而根本想不到。</del></p>
 <p>然后i从$\frac{n}{2}$开始往下枚举，然后j记录当前的$f_i$,那么j的取值范围就收到$f_i$的限制，然后加（两）个哈希判一下就好了。</p>

@@ -13,7 +13,7 @@
 <meta property="og:url" content="https://bomb-chicken.github.io/2017/02/25/trie/index.html">
 <meta property="og:site_name" content="炸鸡">
 <meta property="og:description" content="Trie可用来保存字符集合 12345678910111213141516171819void trie_push(char s[10])&amp;#123;	k=0;	for (int j=0;j&amp;lt;strlen(s);j++)		if (t[k][s[j]]==0)&amp;#123;			xb++;			t[k][s[j]]=xb;			k=xb;		&amp;#125;		else k=t[k][s[j]];">
-<meta property="og:updated_time" content="2017-05-20T01:32:49.000Z">
+<meta property="og:updated_time" content="2017-05-20T01:32:49.737Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【模板】【字符串】Trie（前缀树、字典树）">
 <meta name="twitter:description" content="Trie可用来保存字符集合 12345678910111213141516171819void trie_push(char s[10])&amp;#123;	k=0;	for (int j=0;j&amp;lt;strlen(s);j++)		if (t[k][s[j]]==0)&amp;#123;			xb++;			t[k][s[j]]=xb;			k=xb;		&amp;#125;		else k=t[k][s[j]];">
@@ -137,7 +137,8 @@
   <div class="content" itemprop="articleBody">
     <p>Trie可用来保存字符集合</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">trie_push</span><span class="params">(<span class="keyword">char</span> s[<span class="number">10</span>])</span></span>&#123;</div><div class="line">	k=<span class="number">0</span>;</div><div class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;<span class="built_in">strlen</span>(s);j++)</div><div class="line">		<span class="keyword">if</span> (t[k][s[j]]==<span class="number">0</span>)&#123;</div><div class="line">			xb++;</div><div class="line">			t[k][s[j]]=xb;</div><div class="line">			k=xb;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">else</span> k=t[k][s[j]];</div><div class="line">	<span class="keyword">return</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">bool</span> <span class="title">trie_search</span><span class="params">(<span class="keyword">char</span> s[<span class="number">10</span>])</span></span>&#123;</div><div class="line">	k=<span class="number">0</span>;</div><div class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;<span class="built_in">strlen</span>(s);j++)</div><div class="line">		<span class="keyword">if</span> (t[k][s[j]]==<span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">		<span class="keyword">else</span> k=t[k][s[j]];	 </div><div class="line">	<span class="keyword">return</span> <span class="number">1</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>题目传送门<br><a href="http://codevs.cn/problem/4189/" target="_blank" rel="external">CodeVS4189</a></p>
+<p>题目传送门
+<a href="http://codevs.cn/problem/4189/" target="_blank" rel="external">CodeVS4189</a></p>
 
   </div>
 </article>
