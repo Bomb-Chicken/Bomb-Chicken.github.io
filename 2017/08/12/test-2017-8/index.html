@@ -13,7 +13,7 @@
 <meta property="og:url" content="https://bomb-chicken.github.io/2017/08/12/test-2017-8/index.html">
 <meta property="og:site_name" content="炸鸡">
 <meta property="og:description" content="function doDecrypt(pwd, onError) { 	console.log(&quot;in doDecrypt&quot;); 	var txt = document.getElementById(&quot;enc_content&quot;).innerHTML; 	var plantext; 	try { 	  	var bytes = CryptoJS.AES.decrypt(txt, pwd); 		p">
-<meta property="og:updated_time" content="2017-08-23T13:56:49.000Z">
+<meta property="og:updated_time" content="2017-08-23T13:56:49.747Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="诚享2017-8月集训">
 <meta name="twitter:description" content="function doDecrypt(pwd, onError) { 	console.log(&quot;in doDecrypt&quot;); 	var txt = document.getElementById(&quot;enc_content&quot;).innerHTML; 	var plantext; 	try { 	  	var bytes = CryptoJS.AES.decrypt(txt, pwd); 		p">
@@ -152,7 +152,7 @@ function doDecrypt(pwd, onError) {
    document.getElementById("enc_passwd").style.display = "none";
 }
 </script>
-<div id="enc_content" style="display:none">U2FsdGVkX1+R9NMYkclVjDgjEcCDwJWgHzgcb4uFzJERp2sFRFVHWNfd5adqpLDewsBrHt2lcVLkrruYBEUn4rOv4NVjeUyqhD0mCesjv6RfiPf0ZFJHbebzPHp+KgNt9FC79+nGRze91bukLsZU974wK3k7ddfGB7ZXGxikF0A+7/4iQCXmHnRKwnQn2gnQrEw+O8GGtpENKlp7W5p0bxBTWypqVWxnGPkggYCMpjEfWUykPdfR3z7R6dlNYKgNQaRKd8hIwq2t+CLqQTc5OOMwmts4NWals/63hplBMI7okr4lsaeu2kskjDwXHG5BbZk086HTiNBX7knSEsRuoLT5q5Z2B1KxihYb/k9CqrLJ/kkNy7vSWrWy43kBd/vXwkZ9M3d1HdSCKo+7NF7a+qIrEnrYCfXkhUA1ocwjTSjcFHk4hfrJlE2y2D1CSMdPpq0xjFP6TkaSOmzSzAnY4A==</div><div id="enc_passwd"> <input id="enc_pwd_input" type="text" style="border-radius: 5px;border-style: groove;height: 30px;width: 50%;cursor: auto;font-size: 102%;color: currentColor;outline: none;text-overflow: initial;padding-left: 5px;" onkeydown="if (event.keyCode == 13) { decrypt(); return false;}"> <input type="submit" value="解&nbsp;密" onclick="decrypt()" style="width: 58px;height: 34px;border-radius: 5px;background-color: white;border-style: solid;color: currentColor;"><div id="enc_error" style="display: inline-block;color: #d84527;margin-left: 10px"></div>
+<div id="enc_content" style="display:none">U2FsdGVkX18ztsOhTuPl+x1DP5XbVvP+SdO+Hs/k4KUO91h3gPcPAExuE+00pgQmVGoFQ9+97x7SKdoBkHQiXfAHbOKSTAsoC6/PCtOh5pCUWMGUI9HJ/+lz8eGSq1sY6or6olfCXw3MSPNfyEpTRmTFtW0jX5IV/eyE6cgNrsmw94ndoPwwsjYx5eqdP5eT8624URuAXip5lw3KvdqnTn0LPbsoHtFLJdBqI54kMrHqHaiUoMPqgAXDy0lATNj0QxmxreqKA0/qB0749qozugoUxPIgpkB1KOKkIg4YcNXwjFS9SdKNVxGKBVo7RfRhhgK+GR4AK2qQ2v9/fNAtZa8M0VoQrJn6lkrg3kicYLvqm60Sp0HFaXGFANjOHlSZ5h9aXQc7UOb1WwGcWP3fy8g3vhVjhWnZEGuRNPvaeS8leNpfEaYOLyTD1C1l6oWWyD720A0/b+kda0yduS97ZA==</div><div id="enc_passwd"> <input id="enc_pwd_input" type="text" style="border-radius: 5px;border-style: groove;height: 30px;width: 50%;cursor: auto;font-size: 102%;color: currentColor;outline: none;text-overflow: initial;padding-left: 5px;" onkeydown="if (event.keyCode == 13) { decrypt(); return false;}"> <input type="submit" value="解&nbsp;密" onclick="decrypt()" style="width: 58px;height: 34px;border-radius: 5px;background-color: white;border-style: solid;color: currentColor;"><div id="enc_error" style="display: inline-block;color: #d84527;margin-left: 10px"></div>
 <script>
 var onError = function(error) {
 	document.getElementById("enc_error").innerHTML = "password error!"

@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="传送门：POJ2942  题意： 国王要在圆桌上召开骑士会议，但是若干对骑士之间互相憎恨。 ① 相互憎恨的两个骑士不能坐在相邻的2个位置； ② 出席会议的骑士数必须是奇数。 求无法出席任何会议的骑士的个数 。 思路： 建补图+求点双连通分量，根据某引理：如果一个点双连通分量中存在一个奇环，则该点双中的每个点都可出现在奇环中。 然后染色判断一下就好。 注意： 求点双不是边双，由于一个点可能在多个点双">
+<meta name="keywords" content="图论">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【点双+二分图判定】Knights of the Round Table">
+<meta property="og:url" content="https://bomb-chicken.github.io/2017/09/02/POJ2942/index.html">
+<meta property="og:site_name" content="炸鸡">
+<meta property="og:description" content="传送门：POJ2942  题意： 国王要在圆桌上召开骑士会议，但是若干对骑士之间互相憎恨。 ① 相互憎恨的两个骑士不能坐在相邻的2个位置； ② 出席会议的骑士数必须是奇数。 求无法出席任何会议的骑士的个数 。 思路： 建补图+求点双连通分量，根据某引理：如果一个点双连通分量中存在一个奇环，则该点双中的每个点都可出现在奇环中。 然后染色判断一下就好。 注意： 求点双不是边双，由于一个点可能在多个点双">
+<meta property="og:updated_time" content="2017-09-02T11:01:39.790Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="【点双+二分图判定】Knights of the Round Table">
+<meta name="twitter:description" content="传送门：POJ2942  题意： 国王要在圆桌上召开骑士会议，但是若干对骑士之间互相憎恨。 ① 相互憎恨的两个骑士不能坐在相邻的2个位置； ② 出席会议的骑士数必须是奇数。 求无法出席任何会议的骑士的个数 。 思路： 建补图+求点双连通分量，根据某引理：如果一个点双连通分量中存在一个奇环，则该点双中的每个点都可出现在奇环中。 然后染色判断一下就好。 注意： 求点双不是边双，由于一个点可能在多个点双">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>【点双+二分图判定】Knights of the Round Table</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- rss --><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    
+    
+</head>
+
+<body>
+    
+      <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="header-post">
+  <a id="menu-icon" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/links">Links</a></li>
+         
+          <li><a href="/tags">Tags</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2017/09/02/POJ3764/"><i class="fa fa-chevron-left" aria-hidden="true" onmouseover='$("#i-prev").toggle();' onmouseout='$("#i-prev").toggle();'></i></a></li>
+        
+        
+        <li><a class="icon" href="/2017/08/31/BZOJ2141/"><i class="fa fa-chevron-right" aria-hidden="true" onmouseover='$("#i-next").toggle();' onmouseout='$("#i-next").toggle();'></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa fa-chevron-up" aria-hidden="true" onmouseover='$("#i-top").toggle();' onmouseout='$("#i-top").toggle();'></i></a></li>
+        <li><a class="icon" href="#"><i class="fa fa-share-alt" aria-hidden="true" onmouseover='$("#i-share").toggle();' onmouseout='$("#i-share").toggle();' onclick='$("#share").toggle();return false;'></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://bomb-chicken.github.io/2017/09/02/POJ2942/"><i class="fa fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://bomb-chicken.github.io/2017/09/02/POJ2942/&text=【点双+二分图判定】Knights of the Round Table"><i class="fa fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://bomb-chicken.github.io/2017/09/02/POJ2942/&title=【点双+二分图判定】Knights of the Round Table"><i class="fa fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://bomb-chicken.github.io/2017/09/02/POJ2942/&is_video=false&description=【点双+二分图判定】Knights of the Round Table"><i class="fa fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=【点双+二分图判定】Knights of the Round Table&body=Check out this article: https://bomb-chicken.github.io/2017/09/02/POJ2942/"><i class="fa fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://bomb-chicken.github.io/2017/09/02/POJ2942/&title=【点双+二分图判定】Knights of the Round Table"><i class="fa fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://bomb-chicken.github.io/2017/09/02/POJ2942/&title=【点双+二分图判定】Knights of the Round Table"><i class="fa fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://bomb-chicken.github.io/2017/09/02/POJ2942/&title=【点双+二分图判定】Knights of the Round Table"><i class="fa fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://bomb-chicken.github.io/2017/09/02/POJ2942/&title=【点双+二分图判定】Knights of the Round Table"><i class="fa fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://bomb-chicken.github.io/2017/09/02/POJ2942/&name=【点双+二分图判定】Knights of the Round Table&description="><i class="fa fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index width mx-auto px2 my4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        【点双+二分图判定】Knights of the Round Table
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">炸鸡</span>
+      </span>
+      
+    <div class="postdate">
+        <time datetime="2017-09-02T10:55:20.000Z" itemprop="datePublished">2017-09-02</time>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/图论/">图论</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <p>传送门：<a href="http://poj.org/problem?id=2942" target="_blank" rel="external">POJ2942</a></p>
+<hr>
+<p>题意：</p>
+<p>国王要在圆桌上召开骑士会议，但是若干对骑士之间互相憎恨。</p>
+<p>① 相互憎恨的两个骑士不能坐在相邻的2个位置；</p>
+<p>② 出席会议的骑士数必须是奇数。</p>
+<p>求无法出席任何会议的骑士的个数 。</p>
+<p>思路：</p>
+<p>建补图+求点双连通分量，根据某引理：如果一个点双连通分量中存在一个奇环，则该点双中的每个点都可出现在奇环中。</p>
+<p>然后染色判断一下就好。</p>
+<p>注意：
+求点双不是边双，由于一个点可能在多个点双中，所以枚举的点不能直接出锅；</p>
+<p>出锅代码：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> (;<span class="built_in">stack</span>[top+<span class="number">1</span>]!=v;)&#123;belong[<span class="built_in">stack</span>[top]]=cnt; top--;&#125;</div><div class="line">belong[u]=cnt;</div></pre></td></tr></table></figure>
+<p>注意for条件不能换为stack[top]!=u</p>
+<p>因为u,v中间可能存在很多未出锅的点</p>
+<hr>
+<p>详见代码：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></div><div class="line"></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> N 1200</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> M 3000000</span></div><div class="line"></div><div class="line"><span class="keyword">int</span> n,m,x,y,tot,clock,top,cnt,sum,ss;</div><div class="line"><span class="keyword">int</span> head[N],dfn[N],low[N],belong[N],p[N][N],col[N],<span class="built_in">stack</span>[N],q[N],ff[N];</div><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">edge</span>&#123;</span><span class="keyword">int</span> v,nxt;&#125;e[M];</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span></span>&#123;e[++tot].v=y; e[tot].nxt=head[x]; head[x]=tot;&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">()</span></span>&#123;</div><div class="line">	clock=top=cnt=<span class="number">0</span>; tot=<span class="number">1</span>;</div><div class="line">	<span class="built_in">memset</span>(head,<span class="number">0</span>,<span class="keyword">sizeof</span> head); <span class="built_in">memset</span>(e,<span class="number">0</span>,<span class="keyword">sizeof</span> e);</div><div class="line">	<span class="built_in">memset</span>(dfn,<span class="number">0</span>,<span class="keyword">sizeof</span> dfn); <span class="built_in">memset</span>(low,<span class="number">0</span>,<span class="keyword">sizeof</span> low);</div><div class="line">	<span class="built_in">memset</span>(p,<span class="number">0</span>,<span class="keyword">sizeof</span> p); <span class="built_in">memset</span>(col,<span class="number">-1</span>,<span class="keyword">sizeof</span> col);</div><div class="line">	<span class="built_in">memset</span>(ff,<span class="number">0</span>,<span class="keyword">sizeof</span> ff); <span class="built_in">memset</span>(belong,<span class="number">0</span>,<span class="keyword">sizeof</span> belong);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">solve</span><span class="params">(<span class="keyword">int</span> i)</span></span>&#123;</div><div class="line">	<span class="keyword">int</span> tt=<span class="number">0</span>,ww=<span class="number">1</span>; q[<span class="number">1</span>]=i; col[i]=<span class="number">1</span>; <span class="keyword">bool</span> flag=<span class="number">0</span>;</div><div class="line">	<span class="keyword">while</span> (tt&lt;ww)&#123;</div><div class="line">		<span class="keyword">int</span> u=q[++tt],color=col[u];</div><div class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> j=head[u];j;j=e[j].nxt)&#123;</div><div class="line">			<span class="keyword">int</span> v=e[j].v;</div><div class="line">			<span class="keyword">if</span> (belong[v]!=belong[u]) <span class="keyword">continue</span>;</div><div class="line">			<span class="keyword">if</span> (col[v]==color)&#123;flag=<span class="number">1</span>; <span class="keyword">break</span>;&#125;</div><div class="line">			<span class="keyword">else</span> <span class="keyword">if</span> (col[v]==<span class="number">-1</span>)&#123;col[v]=<span class="number">1</span>^color; q[++ww]=v;&#125;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">if</span> (flag) <span class="keyword">break</span>;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">if</span> (flag)</div><div class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=n;j++)</div><div class="line">			<span class="keyword">if</span> (belong[j]==belong[i]) ff[j]=<span class="number">1</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">tarjan</span><span class="params">(<span class="keyword">int</span> u,<span class="keyword">int</span> fa)</span></span>&#123;</div><div class="line">	dfn[u]=low[u]=++clock; <span class="built_in">stack</span>[++top]=u;</div><div class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i=head[u];i;i=e[i].nxt)&#123;</div><div class="line">		<span class="keyword">if</span> (i==(fa^<span class="number">1</span>)) <span class="keyword">continue</span>;</div><div class="line">		<span class="keyword">int</span> v=e[i].v;</div><div class="line">		<span class="keyword">if</span> (!dfn[v])&#123;</div><div class="line">			tarjan(v,i); low[u]=min(low[u],low[v]);</div><div class="line">			<span class="keyword">if</span> (low[v]&gt;=dfn[u])&#123;</div><div class="line">				cnt++;</div><div class="line">				<span class="keyword">for</span> (;<span class="built_in">stack</span>[top+<span class="number">1</span>]!=v;)&#123;belong[<span class="built_in">stack</span>[top]]=cnt; top--;&#125;</div><div class="line">				<span class="comment">//出栈条件很重要，和边双不同 </span></div><div class="line">				belong[u]=cnt;</div><div class="line">				<span class="built_in">memset</span>(col,<span class="number">-1</span>,<span class="keyword">sizeof</span> col); solve(u);</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">else</span> low[u]=min(low[u],dfn[v]);</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line">	<span class="keyword">while</span> (<span class="number">1</span>)&#123;</div><div class="line">		<span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;n,&amp;m);</div><div class="line">		<span class="keyword">if</span> (n==<span class="number">0</span> &amp;&amp; m==<span class="number">0</span>) <span class="keyword">break</span>;</div><div class="line">		init();</div><div class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;i++)&#123;<span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;x,&amp;y); p[x][y]=p[y][x]=<span class="number">1</span>;&#125;</div><div class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</div><div class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> j=i+<span class="number">1</span>;j&lt;=n;j++)</div><div class="line">				<span class="keyword">if</span> (!p[i][j])&#123;add(i,j); add(j,i);&#125;</div><div class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</div><div class="line">		 <span class="keyword">if</span> (!dfn[i]) tarjan(i,<span class="number">0</span>);</div><div class="line">		sum=<span class="number">0</span>; <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) <span class="keyword">if</span> (!ff[i] || !head[i]) sum++;</div><div class="line">		<span class="built_in">printf</span>(<span class="string">"%d\n"</span>,sum);</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+  </div>
+</article>
+
+
+
+    </div>
+    
+      <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/links">Links</a></li>
+         
+          <li><a href="/tags">Tags</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://bomb-chicken.github.io/2017/09/02/POJ2942/"><i class="fa fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://bomb-chicken.github.io/2017/09/02/POJ2942/&text=【点双+二分图判定】Knights of the Round Table"><i class="fa fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://bomb-chicken.github.io/2017/09/02/POJ2942/&title=【点双+二分图判定】Knights of the Round Table"><i class="fa fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://bomb-chicken.github.io/2017/09/02/POJ2942/&is_video=false&description=【点双+二分图判定】Knights of the Round Table"><i class="fa fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=【点双+二分图判定】Knights of the Round Table&body=Check out this article: https://bomb-chicken.github.io/2017/09/02/POJ2942/"><i class="fa fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://bomb-chicken.github.io/2017/09/02/POJ2942/&title=【点双+二分图判定】Knights of the Round Table"><i class="fa fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://bomb-chicken.github.io/2017/09/02/POJ2942/&title=【点双+二分图判定】Knights of the Round Table"><i class="fa fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://bomb-chicken.github.io/2017/09/02/POJ2942/&title=【点双+二分图判定】Knights of the Round Table"><i class="fa fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://bomb-chicken.github.io/2017/09/02/POJ2942/&title=【点双+二分图判定】Knights of the Round Table"><i class="fa fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://bomb-chicken.github.io/2017/09/02/POJ2942/&name=【点双+二分图判定】Knights of the Round Table&description="><i class="fa fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+      <ul>
+        <li id="toc"><a class="icon" href="#" onclick='$("#toc-footer").toggle();return false;'><i class="fa fa-list fa-lg" aria-hidden="true"></i> TOC</a></li>
+        <li id="share"><a class="icon" href="#" onclick='$("#share-footer").toggle();return false;'><i class="fa fa-share-alt fa-lg" aria-hidden="true"></i> Share</a></li>
+        <li id="top" style="display:none"><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a></li>
+        <li id="menu"><a class="icon" href="#" onclick='$("#nav-footer").toggle();return false;'><i class="fa fa-bars fa-lg" aria-hidden="true"></i> Menu</a></li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+    
+    <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2017 炸鸡
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/links">Links</a></li>
+         
+          <li><a href="/tags">Tags</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+
+</body>
+</html>
+<!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="/lib/meslo-LG/styles.css">
+<link rel="stylesheet" href="/lib/justified-gallery/justifiedGallery.min.css">
+
+
+<!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- Google Analytics -->
+
+<!-- Disqus Comments -->
+
+
