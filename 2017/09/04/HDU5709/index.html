@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="传送门：HDU5709 题意：给定一棵有根树，每条边长度均为1； 每个结点有1个颜色，多次询问以某结点为根且与某它距离不超过x的子树中有几种颜色； 强制在线；  思路： 不考虑距离限制，把树化成DFS序； 那么每个点加进来会使该点 到 dfs序上与它相邻的同色点与它的LCA 这条路径上（不包括LCA）多一个颜色； 由于是dfs序，可以用线段树维护； 如果考虑距离限制，答案为把深度小于等于deep+">
+<meta name="keywords" content="线段树,主席树">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【主席树】Claris Loves Painting">
+<meta property="og:url" content="https://bomb-chicken.github.io/2017/09/04/HDU5709/index.html">
+<meta property="og:site_name" content="炸鸡">
+<meta property="og:description" content="传送门：HDU5709 题意：给定一棵有根树，每条边长度均为1； 每个结点有1个颜色，多次询问以某结点为根且与某它距离不超过x的子树中有几种颜色； 强制在线；  思路： 不考虑距离限制，把树化成DFS序； 那么每个点加进来会使该点 到 dfs序上与它相邻的同色点与它的LCA 这条路径上（不包括LCA）多一个颜色； 由于是dfs序，可以用线段树维护； 如果考虑距离限制，答案为把深度小于等于deep+">
+<meta property="og:updated_time" content="2017-09-04T14:25:02.828Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="【主席树】Claris Loves Painting">
+<meta name="twitter:description" content="传送门：HDU5709 题意：给定一棵有根树，每条边长度均为1； 每个结点有1个颜色，多次询问以某结点为根且与某它距离不超过x的子树中有几种颜色； 强制在线；  思路： 不考虑距离限制，把树化成DFS序； 那么每个点加进来会使该点 到 dfs序上与它相邻的同色点与它的LCA 这条路径上（不包括LCA）多一个颜色； 由于是dfs序，可以用线段树维护； 如果考虑距离限制，答案为把深度小于等于deep+">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>【主席树】Claris Loves Painting</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- rss --><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    
+    
+</head>
+
+<body>
+    
+      <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="header-post">
+  <a id="menu-icon" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/links">Links</a></li>
+         
+          <li><a href="/tags">Tags</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2017/09/04/LOJ524/"><i class="fa fa-chevron-left" aria-hidden="true" onmouseover='$("#i-prev").toggle();' onmouseout='$("#i-prev").toggle();'></i></a></li>
+        
+        
+        <li><a class="icon" href="/2017/09/02/CodeVS1803/"><i class="fa fa-chevron-right" aria-hidden="true" onmouseover='$("#i-next").toggle();' onmouseout='$("#i-next").toggle();'></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa fa-chevron-up" aria-hidden="true" onmouseover='$("#i-top").toggle();' onmouseout='$("#i-top").toggle();'></i></a></li>
+        <li><a class="icon" href="#"><i class="fa fa-share-alt" aria-hidden="true" onmouseover='$("#i-share").toggle();' onmouseout='$("#i-share").toggle();' onclick='$("#share").toggle();return false;'></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://bomb-chicken.github.io/2017/09/04/HDU5709/"><i class="fa fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://bomb-chicken.github.io/2017/09/04/HDU5709/&text=【主席树】Claris Loves Painting"><i class="fa fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://bomb-chicken.github.io/2017/09/04/HDU5709/&title=【主席树】Claris Loves Painting"><i class="fa fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://bomb-chicken.github.io/2017/09/04/HDU5709/&is_video=false&description=【主席树】Claris Loves Painting"><i class="fa fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=【主席树】Claris Loves Painting&body=Check out this article: https://bomb-chicken.github.io/2017/09/04/HDU5709/"><i class="fa fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://bomb-chicken.github.io/2017/09/04/HDU5709/&title=【主席树】Claris Loves Painting"><i class="fa fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://bomb-chicken.github.io/2017/09/04/HDU5709/&title=【主席树】Claris Loves Painting"><i class="fa fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://bomb-chicken.github.io/2017/09/04/HDU5709/&title=【主席树】Claris Loves Painting"><i class="fa fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://bomb-chicken.github.io/2017/09/04/HDU5709/&title=【主席树】Claris Loves Painting"><i class="fa fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://bomb-chicken.github.io/2017/09/04/HDU5709/&name=【主席树】Claris Loves Painting&description="><i class="fa fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index width mx-auto px2 my4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        【主席树】Claris Loves Painting
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">炸鸡</span>
+      </span>
+      
+    <div class="postdate">
+        <time datetime="2017-09-04T14:08:54.000Z" itemprop="datePublished">2017-09-04</time>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/主席树/">主席树</a>, <a class="tag-link" href="/tags/线段树/">线段树</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <p>传送门：<a href="http://acm.hdu.edu.cn/showproblem.php?pid=5709" target="_blank" rel="external">HDU5709</a></p>
+<p>题意：给定一棵有根树，每条边长度均为1；</p>
+<p>每个结点有1个颜色，多次询问以某结点为根且与某它距离不超过x的子树中有几种颜色；</p>
+<p>强制在线；</p>
+<hr>
+<p>思路：</p>
+<p>不考虑距离限制，把树化成DFS序；</p>
+<p>那么每个点加进来会使该点 到 dfs序上与它相邻的同色点与它的LCA 这条路径上（不包括LCA）多一个颜色；</p>
+<p>由于是dfs序，可以用线段树维护；</p>
+<p>如果考虑距离限制，答案为把深度小于等于deep+dist的点加进来时的答案，可用主席树；</p>
+<p>注意：</p>
+<p>按照深度加点，dfs序上相邻的点是已经加进来的点，可用set维护
+注意初始化的时间复杂度；</p>
+<hr>
+<p>代码：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;set&gt;</span></span></div><div class="line"></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> N 300000</span></div><div class="line"></div><div class="line"><span class="keyword">int</span> t,n,m,clock,tot,tot2,tot3,x,d,ans,MAX;</div><div class="line"><span class="keyword">int</span> a[N],dfn[N],deep[N],top[N],fa[N],size[N],head[N],fin[N],DFS[N];</div><div class="line"><span class="keyword">int</span> sum[N*<span class="number">21</span>],ls[N*<span class="number">21</span>],rs[N*<span class="number">21</span>],rt[N],q[N],pos[N];</div><div class="line"><span class="built_in">set</span>&lt; pair&lt;<span class="keyword">int</span>,<span class="keyword">int</span>&gt; &gt; s;</div><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">edge</span>&#123;</span><span class="keyword">int</span> v,nxt;&#125;e[N];</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">(<span class="keyword">int</span> n)</span></span>&#123;</div><div class="line">    clock=tot=tot2=tot3=ans=MAX=<span class="number">0</span>;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;=n*<span class="number">2</span>*<span class="number">20</span>;i++) sum[i]=ls[i]=rs[i]=<span class="number">0</span>;</div><div class="line">    <span class="built_in">memset</span>(rt,<span class="number">0</span>,<span class="keyword">sizeof</span> rt);    <span class="built_in">memset</span>(pos,<span class="number">0</span>,<span class="keyword">sizeof</span> pos);</div><div class="line">    <span class="built_in">memset</span>(dfn,<span class="number">0</span>,<span class="keyword">sizeof</span> dfn); <span class="built_in">memset</span>(head,<span class="number">0</span>,<span class="keyword">sizeof</span> head);</div><div class="line">    <span class="built_in">memset</span>(deep,<span class="number">0</span>,<span class="keyword">sizeof</span> deep); <span class="built_in">memset</span>(top,<span class="number">0</span>,<span class="keyword">sizeof</span> top);</div><div class="line">    <span class="built_in">memset</span>(fin,<span class="number">0</span>,<span class="keyword">sizeof</span> fin); <span class="built_in">memset</span>(sum,<span class="number">0</span>,<span class="keyword">sizeof</span> sum);</div><div class="line">    <span class="built_in">memset</span>(e,<span class="number">0</span>,<span class="keyword">sizeof</span> e); <span class="built_in">memset</span>(size,<span class="number">0</span>,<span class="keyword">sizeof</span> size);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span></span>&#123;e[++tot].v=y; e[tot].nxt=head[x]; head[x]=tot;&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs1</span><span class="params">(<span class="keyword">int</span> cur)</span></span>&#123;</div><div class="line">    dfn[cur]=++clock; DFS[clock]=cur; fin[cur]=dfn[cur];</div><div class="line">    deep[cur]=deep[fa[cur]]+<span class="number">1</span>; size[cur]=<span class="number">1</span>;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i=head[cur];i;i=e[i].nxt)&#123;</div><div class="line">        dfs1(e[i].v); size[cur]+=size[e[i].v];</div><div class="line">        fin[cur]=fin[e[i].v];</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs2</span><span class="params">(<span class="keyword">int</span> cur)</span></span>&#123;</div><div class="line">    <span class="keyword">if</span> (!top[cur]) top[cur]=cur;</div><div class="line">    <span class="keyword">int</span> t=<span class="number">0</span>;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i=head[cur];i;i=e[i].nxt) <span class="keyword">if</span> (size[e[i].v]&gt;size[t]) t=e[i].v;</div><div class="line">    <span class="keyword">if</span> (!t) <span class="keyword">return</span>; top[t]=top[cur]; dfs2(t);</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i=head[cur];i;i=e[i].nxt) <span class="keyword">if</span> (e[i].v!=t) dfs2(e[i].v);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">lca</span><span class="params">(<span class="keyword">int</span> u,<span class="keyword">int</span> v)</span></span>&#123;</div><div class="line">    <span class="keyword">for</span> (;top[u]!=top[v];u=fa[top[u]]) <span class="keyword">if</span> (deep[top[u]]&lt;deep[top[v]]) swap(u,v);</div><div class="line">    <span class="keyword">return</span> deep[u]&lt;deep[v]?u:v;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> &amp;root,<span class="keyword">int</span> root2,<span class="keyword">int</span> l,<span class="keyword">int</span> r,<span class="keyword">int</span> k,<span class="keyword">int</span> s)</span></span>&#123;</div><div class="line">    <span class="keyword">if</span> (!root) root=++tot2; sum[root]=sum[root2]+s;</div><div class="line">    <span class="keyword">if</span> (l==r) <span class="keyword">return</span>;</div><div class="line">    <span class="keyword">int</span> mid=(l+r)&gt;&gt;<span class="number">1</span>;</div><div class="line">    <span class="keyword">if</span> (k&lt;=mid)&#123;rs[root]=rs[root2]; add(ls[root],ls[root2],l,mid,k,s);&#125;</div><div class="line">    <span class="keyword">if</span> (k&gt;mid)&#123;ls[root]=ls[root2]; add(rs[root],rs[root2],mid+<span class="number">1</span>,r,k,s);&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">query</span><span class="params">(<span class="keyword">int</span> root,<span class="keyword">int</span> l,<span class="keyword">int</span> r,<span class="keyword">int</span> L,<span class="keyword">int</span> R)</span></span>&#123;</div><div class="line">    <span class="keyword">if</span> (!root) <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">    <span class="keyword">if</span> (L&lt;=l &amp;&amp; R&gt;=r) <span class="keyword">return</span> sum[root];</div><div class="line">    <span class="keyword">int</span> mid=(l+r)&gt;&gt;<span class="number">1</span>,tmp=<span class="number">0</span>;</div><div class="line">    <span class="keyword">if</span> (L&lt;=mid) tmp+=query(ls[root],l,mid,L,R);</div><div class="line">    <span class="keyword">if</span> (R&gt;mid) tmp+=query(rs[root],mid+<span class="number">1</span>,r,L,R);</div><div class="line">    <span class="keyword">return</span> tmp;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;t);</div><div class="line">    <span class="keyword">while</span> (t--)&#123;</div><div class="line">        init(n);</div><div class="line">        </div><div class="line">        <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;n,&amp;m);</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;a[i]);</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">2</span>;i&lt;=n;i++)&#123;<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;fa[i]); add(fa[i],i);&#125;</div><div class="line">        </div><div class="line">        dfs1(<span class="number">1</span>); dfs2(<span class="number">1</span>);</div><div class="line">        </div><div class="line">        <span class="keyword">int</span> tt=<span class="number">0</span>,ww=<span class="number">1</span>; q[<span class="number">1</span>]=<span class="number">1</span>; s.clear();</div><div class="line">        <span class="keyword">while</span> (tt&lt;ww)&#123;</div><div class="line">            <span class="keyword">int</span> u=q[++tt];</div><div class="line">            tot3++; add(rt[tot3],rt[tot3<span class="number">-1</span>],<span class="number">1</span>,n,dfn[u],<span class="number">1</span>);</div><div class="line">            <span class="keyword">int</span> LCA=<span class="number">0</span>;</div><div class="line">            <span class="keyword">if</span> (s.lower_bound(make_pair(a[u],dfn[u]))!=s.begin())&#123;</div><div class="line">                pair&lt;<span class="keyword">int</span>,<span class="keyword">int</span>&gt; tmp=*(--s.lower_bound(make_pair(a[u],dfn[u])));</div><div class="line">                <span class="keyword">if</span> (tmp.first==a[u] &amp;&amp; deep[LCA]&lt;deep[lca(u,DFS[tmp.second])]) LCA=lca(u,DFS[tmp.second]);</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">if</span> (s.upper_bound(make_pair(a[u],dfn[u]))!=s.end())&#123;</div><div class="line">                pair&lt;<span class="keyword">int</span>,<span class="keyword">int</span>&gt; tmp=*s.upper_bound(make_pair(a[u],dfn[u]));</div><div class="line">                <span class="keyword">if</span> (tmp.first==a[u] &amp;&amp; deep[LCA]&lt;deep[lca(u,DFS[tmp.second])]) LCA=lca(u,DFS[tmp.second]);</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">if</span> (LCA)&#123;tot3++; add(rt[tot3],rt[tot3<span class="number">-1</span>],<span class="number">1</span>,n,dfn[LCA],<span class="number">-1</span>);&#125;</div><div class="line">            pos[deep[u]]=tot3; MAX=max(deep[u],MAX);</div><div class="line">            s.insert(make_pair(a[u],dfn[u]));</div><div class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i=head[u];i;i=e[i].nxt) q[++ww]=e[i].v;</div><div class="line">        &#125;        </div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;i++)&#123;</div><div class="line">            <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;x,&amp;d); x^=ans; d^=ans; </div><div class="line">            <span class="keyword">int</span> tmp=min(deep[x]+d,MAX);</div><div class="line">            <span class="built_in">printf</span>(<span class="string">"%d\n"</span>,ans=query(rt[pos[tmp]],<span class="number">1</span>,n,dfn[x],fin[x]));</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+  </div>
+</article>
+
+
+
+    </div>
+    
+      <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/links">Links</a></li>
+         
+          <li><a href="/tags">Tags</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://bomb-chicken.github.io/2017/09/04/HDU5709/"><i class="fa fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://bomb-chicken.github.io/2017/09/04/HDU5709/&text=【主席树】Claris Loves Painting"><i class="fa fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://bomb-chicken.github.io/2017/09/04/HDU5709/&title=【主席树】Claris Loves Painting"><i class="fa fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://bomb-chicken.github.io/2017/09/04/HDU5709/&is_video=false&description=【主席树】Claris Loves Painting"><i class="fa fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=【主席树】Claris Loves Painting&body=Check out this article: https://bomb-chicken.github.io/2017/09/04/HDU5709/"><i class="fa fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://bomb-chicken.github.io/2017/09/04/HDU5709/&title=【主席树】Claris Loves Painting"><i class="fa fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://bomb-chicken.github.io/2017/09/04/HDU5709/&title=【主席树】Claris Loves Painting"><i class="fa fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://bomb-chicken.github.io/2017/09/04/HDU5709/&title=【主席树】Claris Loves Painting"><i class="fa fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://bomb-chicken.github.io/2017/09/04/HDU5709/&title=【主席树】Claris Loves Painting"><i class="fa fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://bomb-chicken.github.io/2017/09/04/HDU5709/&name=【主席树】Claris Loves Painting&description="><i class="fa fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+      <ul>
+        <li id="toc"><a class="icon" href="#" onclick='$("#toc-footer").toggle();return false;'><i class="fa fa-list fa-lg" aria-hidden="true"></i> TOC</a></li>
+        <li id="share"><a class="icon" href="#" onclick='$("#share-footer").toggle();return false;'><i class="fa fa-share-alt fa-lg" aria-hidden="true"></i> Share</a></li>
+        <li id="top" style="display:none"><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a></li>
+        <li id="menu"><a class="icon" href="#" onclick='$("#nav-footer").toggle();return false;'><i class="fa fa-bars fa-lg" aria-hidden="true"></i> Menu</a></li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+    
+    <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2017 炸鸡
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/links">Links</a></li>
+         
+          <li><a href="/tags">Tags</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+
+</body>
+</html>
+<!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="/lib/meslo-LG/styles.css">
+<link rel="stylesheet" href="/lib/justified-gallery/justifiedGallery.min.css">
+
+
+<!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- Google Analytics -->
+
+<!-- Disqus Comments -->
+
+
