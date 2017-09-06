@@ -56,6 +56,8 @@
          
           <li><a href="/">Home</a></li>
          
+          <li><a href="/about">About</a></li>
+         
           <li><a href="/links">Links</a></li>
          
           <li><a href="/tags">Tags</a></li>
@@ -152,7 +154,7 @@ function doDecrypt(pwd, onError) {
    document.getElementById("enc_passwd").style.display = "none";
 }
 </script>
-<div id="enc_content" style="display:none">U2FsdGVkX19ZtuOKvv185L7TyS7e2st87aDXgu5nIRD88eBD3o+oRvoGcg2Tlu615nSOmChIsLEbxpsFgJdvivhkS8NDN6jdbFNAiYGYFF0Y6cSxxCZMKgSgFLhwHQTL0bRM3EI/lZVn0FrwUlSV1JXXjNs9RgT5lIulTDAzp5ZESoQY3/BGdAlqj9+uLQdq71xxpnu8Y5+G6XdwS/8Xmr7D5qo9gRiq2UOH+YtdV99Nh6DWkNTvVQuGjW7KGG/VnX9rk6F5P7Sr+YqKk7YOfwDCajCKVSZYqz1AYusWNK2WaOE4RReETPxoJe5KvIMUP0eDaCEz7kp1M9/w3QCb+i2UDrzxsGTP/spbTFqIVtoOdGpCuPO7YU4b7Z3X48qFaxPS30GpeUsp+PrZ60eVYipSOua1RRvsKx3n6z4+7sJdPXEAmwGfU0p0fPTcq9n2CI4Hr8fA6xFI2Dw/4GrDNQ==</div><div id="enc_passwd"> <input id="enc_pwd_input" type="text" style="border-radius: 5px;border-style: groove;height: 30px;width: 50%;cursor: auto;font-size: 102%;color: currentColor;outline: none;text-overflow: initial;padding-left: 5px;" onkeydown="if (event.keyCode == 13) { decrypt(); return false;}"> <input type="submit" value="解&nbsp;密" onclick="decrypt()" style="width: 58px;height: 34px;border-radius: 5px;background-color: white;border-style: solid;color: currentColor;"><div id="enc_error" style="display: inline-block;color: #d84527;margin-left: 10px"></div>
+<div id="enc_content" style="display:none">U2FsdGVkX1+Yq9X6nv6qTtRvfcJpWx0GWwZtybBrLPznz4ddlcQOPSW9CqiIdY3WqLaJfw2a9BMHBx/Bk0fQ+B2pCFFkq5mCht9B+ApRFb9cE0HbMaqK0yjRmDt0WEuKjgkGtp+d4JM2B0VV3OSzJTjrdKui0TnrwO855TsVqaODgIn5GA3e4HrYF/uOSmuL4UcfuyZup6lgieOqqiJqYU9EGDnZhJbKE18OnN5Q25vnfIJhHsaeQSV/t3Q/OFapDyr3uWPrD3ZlhuZiQ8phRU7NKCbqYwr+r7RnrKCnVc0EMB3vXEIHKYQubHEx8llV9olwzoheihQeLpJtYYpqqYdDCpVtMwIA0GgJKmhISA1eTwjpChGRCpwuH8S4O6PRITYqavPt5HpkeKHjJCfj+u82ReLuLs3wADc22njTSSVDkqnMa5unrsp/cfPJF6YEMPe9rFGWDRmv1hRFDuT+Ig==</div><div id="enc_passwd"> <input id="enc_pwd_input" type="text" style="border-radius: 5px;border-style: groove;height: 30px;width: 50%;cursor: auto;font-size: 102%;color: currentColor;outline: none;text-overflow: initial;padding-left: 5px;" onkeydown="if (event.keyCode == 13) { decrypt(); return false;}"> <input type="submit" value="解&nbsp;密" onclick="decrypt()" style="width: 58px;height: 34px;border-radius: 5px;background-color: white;border-style: solid;color: currentColor;"><div id="enc_error" style="display: inline-block;color: #d84527;margin-left: 10px"></div>
 <script>
 var onError = function(error) {
 	document.getElementById("enc_error").innerHTML = "password error!"
@@ -178,6 +180,8 @@ doDecrypt(passwd, onError);
       <ul>
          
           <li><a href="/">Home</a></li>
+         
+          <li><a href="/about">About</a></li>
          
           <li><a href="/links">Links</a></li>
          
@@ -228,6 +232,8 @@ doDecrypt(passwd, onError);
       <ul>
          
           <li><a href="/">Home</a></li>
+         
+          <li><a href="/about">About</a></li>
          
           <li><a href="/links">Links</a></li>
          
