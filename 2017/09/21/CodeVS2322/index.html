@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="传送门：CodeVS2322 ZJOI2011居然考原题，还考数学题  思路：  n为人数，k为座位数；   首先通过古典概型可以发现，设A为使每个人都有座位的有序n元组（即n张表），$P(A)=\frac{|A|}{|\Omega|}$； 显然，有$|\Omega|=k^n$； 那么考虑求$|A|$； 直接求似乎并不容易我不会； 考虑构造一个n元组B：在k个座位后增加一个座位，让k+1个座位围成">
+<meta name="keywords" content="概率,组合问题">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【概率+组合计数】看电影">
+<meta property="og:url" content="https://bomb-chicken.github.io/2017/09/21/CodeVS2322/index.html">
+<meta property="og:site_name" content="炸鸡">
+<meta property="og:description" content="传送门：CodeVS2322 ZJOI2011居然考原题，还考数学题  思路：  n为人数，k为座位数；   首先通过古典概型可以发现，设A为使每个人都有座位的有序n元组（即n张表），$P(A)=\frac{|A|}{|\Omega|}$； 显然，有$|\Omega|=k^n$； 那么考虑求$|A|$； 直接求似乎并不容易我不会； 考虑构造一个n元组B：在k个座位后增加一个座位，让k+1个座位围成">
+<meta property="og:updated_time" content="2017-09-21T11:43:11.999Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="【概率+组合计数】看电影">
+<meta name="twitter:description" content="传送门：CodeVS2322 ZJOI2011居然考原题，还考数学题  思路：  n为人数，k为座位数；   首先通过古典概型可以发现，设A为使每个人都有座位的有序n元组（即n张表），$P(A)=\frac{|A|}{|\Omega|}$； 显然，有$|\Omega|=k^n$； 那么考虑求$|A|$； 直接求似乎并不容易我不会； 考虑构造一个n元组B：在k个座位后增加一个座位，让k+1个座位围成">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>【概率+组合计数】看电影</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- rss --><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    
+    
+</head>
+
+<body>
+    
+      <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="header-post">
+  <a id="menu-icon" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about">About</a></li>
+         
+          <li><a href="/links">Links</a></li>
+         
+          <li><a href="/tags">Tags</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2017/09/21/POJ3071/"><i class="fa fa-chevron-left" aria-hidden="true" onmouseover='$("#i-prev").toggle();' onmouseout='$("#i-prev").toggle();'></i></a></li>
+        
+        
+        <li><a class="icon" href="/2017/09/20/BZOJ3624/"><i class="fa fa-chevron-right" aria-hidden="true" onmouseover='$("#i-next").toggle();' onmouseout='$("#i-next").toggle();'></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa fa-chevron-up" aria-hidden="true" onmouseover='$("#i-top").toggle();' onmouseout='$("#i-top").toggle();'></i></a></li>
+        <li><a class="icon" href="#"><i class="fa fa-share-alt" aria-hidden="true" onmouseover='$("#i-share").toggle();' onmouseout='$("#i-share").toggle();' onclick='$("#share").toggle();return false;'></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://bomb-chicken.github.io/2017/09/21/CodeVS2322/"><i class="fa fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://bomb-chicken.github.io/2017/09/21/CodeVS2322/&text=【概率+组合计数】看电影"><i class="fa fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://bomb-chicken.github.io/2017/09/21/CodeVS2322/&title=【概率+组合计数】看电影"><i class="fa fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://bomb-chicken.github.io/2017/09/21/CodeVS2322/&is_video=false&description=【概率+组合计数】看电影"><i class="fa fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=【概率+组合计数】看电影&body=Check out this article: https://bomb-chicken.github.io/2017/09/21/CodeVS2322/"><i class="fa fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://bomb-chicken.github.io/2017/09/21/CodeVS2322/&title=【概率+组合计数】看电影"><i class="fa fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://bomb-chicken.github.io/2017/09/21/CodeVS2322/&title=【概率+组合计数】看电影"><i class="fa fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://bomb-chicken.github.io/2017/09/21/CodeVS2322/&title=【概率+组合计数】看电影"><i class="fa fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://bomb-chicken.github.io/2017/09/21/CodeVS2322/&title=【概率+组合计数】看电影"><i class="fa fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://bomb-chicken.github.io/2017/09/21/CodeVS2322/&name=【概率+组合计数】看电影&description="><i class="fa fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index width mx-auto px2 my4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        【概率+组合计数】看电影
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">炸鸡</span>
+      </span>
+      
+    <div class="postdate">
+        <time datetime="2017-09-21T11:05:59.000Z" itemprop="datePublished">2017-09-21</time>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/概率/">概率</a>, <a class="tag-link" href="/tags/组合问题/">组合问题</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <p>传送门：<a href="http://codevs.cn/problem/2322/" target="_blank" rel="external">CodeVS2322</a></p>
+<p><del>ZJOI2011居然考原题，还考数学题</del></p>
+<hr>
+<p>思路：</p>
+<ul>
+<li>n为人数，k为座位数；</li>
+</ul>
+<ul>
+<li>首先通过古典概型可以发现，设A为使每个人都有座位的有序n元组（即n张表），$P(A)=\frac{|A|}{|\Omega|}$；</li>
+<li>显然，有$|\Omega|=k^n$；</li>
+<li>那么考虑求$|A|$；</li>
+<li>直接求<del>似乎并不容易</del>我不会；</li>
+<li>考虑构造一个n元组B：在k个座位后增加一个座位，让k+1个座位围成一个环，再在B中选择电影票，再选择空位破环成链，由于环的旋转对称性，$|B|=(k+1)^{n-1}\times (k+1-n)$；</li>
+<li>然后考虑证明$|A|=|B|$；</li>
+<li>任意一个A中的n元组都可以在B中摆放，B中的n元组都能达到一种合法的座位方案，所以$|A|=|B|$</li>
+</ul>
+<p>注意：</p>
+<ul>
+<li>约分时不要遗漏。</li>
+</ul>
+<hr>
+<p>代码如下：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></div><div class="line"></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="keyword">int</span> t,n,m;</div><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">bigint</span>&#123;</span></div><div class="line">	<span class="keyword">static</span> <span class="keyword">const</span> <span class="keyword">int</span> B=<span class="number">10000</span>;</div><div class="line">	<span class="keyword">int</span> ws,s[<span class="number">1000</span>];</div><div class="line">	bigint()&#123;ws=<span class="number">1</span>; <span class="built_in">memset</span>(s,<span class="number">0</span>,<span class="keyword">sizeof</span> s);&#125;</div><div class="line">	bigint <span class="keyword">operator</span> * (<span class="keyword">const</span> bigint x) <span class="keyword">const</span>&#123;</div><div class="line">		bigint ret;</div><div class="line">		ret.ws=ws+x.ws<span class="number">-1</span>; <span class="keyword">int</span> jw;</div><div class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=ws;i++)&#123;</div><div class="line">			jw=<span class="number">0</span>;</div><div class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=x.ws;j++)&#123;</div><div class="line">				ret.s[i+j<span class="number">-1</span>]+=s[i]*x.s[j]+jw;</div><div class="line">				jw=ret.s[i+j<span class="number">-1</span>]/B;</div><div class="line">				ret.s[i+j<span class="number">-1</span>]%=B;</div><div class="line">			&#125;</div><div class="line">			<span class="keyword">if</span> (jw!=<span class="number">0</span>) ret.s[i+x.ws]=jw;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">if</span> (ret.s[ws+x.ws]) ret.ws=ws+x.ws;</div><div class="line">		<span class="keyword">return</span> ret;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">void</span> <span class="keyword">operator</span> = (<span class="keyword">const</span> <span class="keyword">int</span> x)&#123;<span class="keyword">this</span>-&gt;ws=<span class="number">1</span>; <span class="keyword">this</span>-&gt;s[<span class="number">1</span>]=x;&#125;</div><div class="line">&#125;fz,fm;</div><div class="line"></div><div class="line"><span class="function">bigint <span class="title">pow</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span></span>&#123;</div><div class="line">	bigint tmp,ret; tmp=x; ret=<span class="number">1</span>;</div><div class="line">	<span class="keyword">while</span> (y)&#123;<span class="keyword">if</span> (y&amp;<span class="number">1</span>) ret=ret*tmp; y&gt;&gt;=<span class="number">1</span>; tmp=tmp*tmp;&#125;</div><div class="line">	<span class="keyword">return</span> ret;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">print</span><span class="params">(bigint x)</span></span>&#123;</div><div class="line">	<span class="built_in">printf</span>(<span class="string">"%d"</span>,x.s[x.ws]);</div><div class="line">	<span class="keyword">while</span> (--x.ws) <span class="built_in">printf</span>(<span class="string">"%d%d%d%d"</span>,x.s[x.ws]/<span class="number">1000</span>,x.s[x.ws]/<span class="number">100</span>%<span class="number">10</span>,x.s[x.ws]/<span class="number">10</span>%<span class="number">10</span>,x.s[x.ws]%<span class="number">10</span>);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">gcd</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span></span>&#123;<span class="keyword">return</span> y==<span class="number">0</span>?x:gcd(y,x%y);&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;t);</div><div class="line">	<span class="keyword">while</span> (t--)&#123;</div><div class="line">		<span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;n,&amp;m); <span class="keyword">if</span> (n&gt;m)&#123;<span class="built_in">puts</span>(<span class="string">"0 1"</span>); <span class="keyword">continue</span>;&#125;</div><div class="line">		fz=<span class="built_in">pow</span>(m+<span class="number">1</span>,n<span class="number">-1</span>); fm=<span class="number">1</span>; <span class="keyword">int</span> p=m+<span class="number">1</span>-n; bigint tmp;</div><div class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</div><div class="line">			<span class="keyword">int</span> g=gcd(m,p);	tmp=m/g; fm=fm*tmp; p/=g;</div><div class="line">		&#125;</div><div class="line">		tmp=p; fz=fz*tmp;</div><div class="line">		print(fz); <span class="built_in">printf</span>(<span class="string">" "</span>); print(fm); <span class="built_in">puts</span>(<span class="string">""</span>);</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+  </div>
+</article>
+
+
+
+    </div>
+    
+      <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about">About</a></li>
+         
+          <li><a href="/links">Links</a></li>
+         
+          <li><a href="/tags">Tags</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://bomb-chicken.github.io/2017/09/21/CodeVS2322/"><i class="fa fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://bomb-chicken.github.io/2017/09/21/CodeVS2322/&text=【概率+组合计数】看电影"><i class="fa fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://bomb-chicken.github.io/2017/09/21/CodeVS2322/&title=【概率+组合计数】看电影"><i class="fa fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://bomb-chicken.github.io/2017/09/21/CodeVS2322/&is_video=false&description=【概率+组合计数】看电影"><i class="fa fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=【概率+组合计数】看电影&body=Check out this article: https://bomb-chicken.github.io/2017/09/21/CodeVS2322/"><i class="fa fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://bomb-chicken.github.io/2017/09/21/CodeVS2322/&title=【概率+组合计数】看电影"><i class="fa fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://bomb-chicken.github.io/2017/09/21/CodeVS2322/&title=【概率+组合计数】看电影"><i class="fa fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://bomb-chicken.github.io/2017/09/21/CodeVS2322/&title=【概率+组合计数】看电影"><i class="fa fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://bomb-chicken.github.io/2017/09/21/CodeVS2322/&title=【概率+组合计数】看电影"><i class="fa fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://bomb-chicken.github.io/2017/09/21/CodeVS2322/&name=【概率+组合计数】看电影&description="><i class="fa fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+      <ul>
+        <li id="toc"><a class="icon" href="#" onclick='$("#toc-footer").toggle();return false;'><i class="fa fa-list fa-lg" aria-hidden="true"></i> TOC</a></li>
+        <li id="share"><a class="icon" href="#" onclick='$("#share-footer").toggle();return false;'><i class="fa fa-share-alt fa-lg" aria-hidden="true"></i> Share</a></li>
+        <li id="top" style="display:none"><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a></li>
+        <li id="menu"><a class="icon" href="#" onclick='$("#nav-footer").toggle();return false;'><i class="fa fa-bars fa-lg" aria-hidden="true"></i> Menu</a></li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+    
+    <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2017 炸鸡
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about">About</a></li>
+         
+          <li><a href="/links">Links</a></li>
+         
+          <li><a href="/tags">Tags</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+
+</body>
+</html>
+<!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="/lib/meslo-LG/styles.css">
+<link rel="stylesheet" href="/lib/justified-gallery/justifiedGallery.min.css">
+
+
+<!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- Google Analytics -->
+
+<!-- Disqus Comments -->
+
+
