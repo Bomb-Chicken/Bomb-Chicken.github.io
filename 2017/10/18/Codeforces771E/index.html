@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="传送门：Codeforces771E  思路：  朴素的想法是用$dp_{i,j}$第一排用了i个，第二排用了j个，最多能放几个矩形； 考虑优化DP，用$f_i$表示原来的$dp_{i,i}$，再处理出最小的j1,j2满足$dp_{i,j1}=f_i+1,dp_{j2,i}=f_i+1$； 然后可以证明时间是$O(n^2)$的讲道理我并不会   代码如下： 12345678910111213141">
+<meta name="keywords" content="动态规划DP">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【2*N型DP】Bear and Rectangle Strips">
+<meta property="og:url" content="https://bomb-chicken.github.io/2017/10/18/Codeforces771E/index.html">
+<meta property="og:site_name" content="炸鸡">
+<meta property="og:description" content="传送门：Codeforces771E  思路：  朴素的想法是用$dp_{i,j}$第一排用了i个，第二排用了j个，最多能放几个矩形； 考虑优化DP，用$f_i$表示原来的$dp_{i,i}$，再处理出最小的j1,j2满足$dp_{i,j1}=f_i+1,dp_{j2,i}=f_i+1$； 然后可以证明时间是$O(n^2)$的讲道理我并不会   代码如下： 12345678910111213141">
+<meta property="og:updated_time" content="2017-10-18T08:04:43.309Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="【2*N型DP】Bear and Rectangle Strips">
+<meta name="twitter:description" content="传送门：Codeforces771E  思路：  朴素的想法是用$dp_{i,j}$第一排用了i个，第二排用了j个，最多能放几个矩形； 考虑优化DP，用$f_i$表示原来的$dp_{i,i}$，再处理出最小的j1,j2满足$dp_{i,j1}=f_i+1,dp_{j2,i}=f_i+1$； 然后可以证明时间是$O(n^2)$的讲道理我并不会   代码如下： 12345678910111213141">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>【2*N型DP】Bear and Rectangle Strips</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- rss --><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    
+    
+</head>
+
+<body>
+    
+      <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="header-post">
+  <a id="menu-icon" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about">About</a></li>
+         
+          <li><a href="/links">Links</a></li>
+         
+          <li><a href="/tags">Tags</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2017/10/18/Codeforces778E/"><i class="fa fa-chevron-left" aria-hidden="true" onmouseover='$("#i-prev").toggle();' onmouseout='$("#i-prev").toggle();'></i></a></li>
+        
+        
+        <li><a class="icon" href="/2017/10/18/Codeforces721E/"><i class="fa fa-chevron-right" aria-hidden="true" onmouseover='$("#i-next").toggle();' onmouseout='$("#i-next").toggle();'></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa fa-chevron-up" aria-hidden="true" onmouseover='$("#i-top").toggle();' onmouseout='$("#i-top").toggle();'></i></a></li>
+        <li><a class="icon" href="#"><i class="fa fa-share-alt" aria-hidden="true" onmouseover='$("#i-share").toggle();' onmouseout='$("#i-share").toggle();' onclick='$("#share").toggle();return false;'></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://bomb-chicken.github.io/2017/10/18/Codeforces771E/"><i class="fa fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://bomb-chicken.github.io/2017/10/18/Codeforces771E/&text=【2*N型DP】Bear and Rectangle Strips"><i class="fa fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://bomb-chicken.github.io/2017/10/18/Codeforces771E/&title=【2*N型DP】Bear and Rectangle Strips"><i class="fa fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://bomb-chicken.github.io/2017/10/18/Codeforces771E/&is_video=false&description=【2*N型DP】Bear and Rectangle Strips"><i class="fa fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=【2*N型DP】Bear and Rectangle Strips&body=Check out this article: https://bomb-chicken.github.io/2017/10/18/Codeforces771E/"><i class="fa fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://bomb-chicken.github.io/2017/10/18/Codeforces771E/&title=【2*N型DP】Bear and Rectangle Strips"><i class="fa fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://bomb-chicken.github.io/2017/10/18/Codeforces771E/&title=【2*N型DP】Bear and Rectangle Strips"><i class="fa fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://bomb-chicken.github.io/2017/10/18/Codeforces771E/&title=【2*N型DP】Bear and Rectangle Strips"><i class="fa fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://bomb-chicken.github.io/2017/10/18/Codeforces771E/&title=【2*N型DP】Bear and Rectangle Strips"><i class="fa fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://bomb-chicken.github.io/2017/10/18/Codeforces771E/&name=【2*N型DP】Bear and Rectangle Strips&description="><i class="fa fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index width mx-auto px2 my4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        【2*N型DP】Bear and Rectangle Strips
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">炸鸡</span>
+      </span>
+      
+    <div class="postdate">
+        <time datetime="2017-10-18T07:01:42.000Z" itemprop="datePublished">2017-10-18</time>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/动态规划DP/">动态规划DP</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <p>传送门：<a href="http://codeforces.com/problemset/problem/771/E" target="_blank" rel="external">Codeforces771E</a></p>
+<hr>
+<p>思路：</p>
+<ul>
+<li>朴素的想法是用$dp_{i,j}$第一排用了i个，第二排用了j个，最多能放几个矩形；</li>
+<li>考虑优化DP，用$f_i$表示原来的$dp_{i,i}$，再处理出最小的j1,j2满足$dp_{i,j1}=f_i+1,dp_{j2,i}=f_i+1$；</li>
+<li>然后可以证明时间是$O(n^2)$的<del>讲道理我并不会</del></li>
+</ul>
+<hr>
+<p>代码如下：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;map&gt;</span></span></div><div class="line"></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> N 800000</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> LL long long</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> INF 0x3f3f3f3f</span></div><div class="line"></div><div class="line"><span class="keyword">int</span> n,tot,nxt[<span class="number">3</span>][N],f[N],head[N],go[N*<span class="number">15</span>];</div><div class="line">LL a[<span class="number">3</span>][N];</div><div class="line"><span class="built_in">map</span>&lt;LL,<span class="keyword">int</span>&gt; m[<span class="number">3</span>];</div><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">node</span>&#123;</span><span class="keyword">int</span> x,y,val;&#125;q[N*<span class="number">15</span>];</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">upd</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y,<span class="keyword">int</span> val)</span></span>&#123;</div><div class="line">	<span class="keyword">int</span> mx=max(x,y),mn=min(x,y);</div><div class="line">	f[mx]=max(f[mx],val);</div><div class="line">	q[++tot]=(node)&#123;x,y,val&#125;; go[tot]=head[mn]; head[mn]=tot;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y,<span class="keyword">int</span> val)</span></span>&#123;</div><div class="line">	<span class="keyword">if</span> (x&lt;n)&#123;</div><div class="line">		upd(x+<span class="number">1</span>,y,val);</div><div class="line">		<span class="keyword">if</span> (nxt[<span class="number">1</span>][x]!=<span class="number">0</span>) upd(nxt[<span class="number">1</span>][x],y,val+<span class="number">1</span>);</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">if</span> (y&lt;n)&#123;</div><div class="line">		upd(x,y+<span class="number">1</span>,val);</div><div class="line">		<span class="keyword">if</span> (nxt[<span class="number">2</span>][y]!=<span class="number">0</span>) upd(x,nxt[<span class="number">2</span>][y],val+<span class="number">1</span>);</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">if</span> (x&lt;n &amp;&amp; x==y &amp;&amp; nxt[<span class="number">0</span>][x]!=<span class="number">0</span>) upd(nxt[<span class="number">0</span>][x],nxt[<span class="number">0</span>][x],val+<span class="number">1</span>);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n);</div><div class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;<span class="built_in">scanf</span>(<span class="string">"%lld"</span>,&amp;a[<span class="number">1</span>][i]); a[<span class="number">1</span>][i]+=a[<span class="number">1</span>][i<span class="number">-1</span>]; a[<span class="number">0</span>][i]+=a[<span class="number">1</span>][i];&#125;</div><div class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;<span class="built_in">scanf</span>(<span class="string">"%lld"</span>,&amp;a[<span class="number">2</span>][i]); a[<span class="number">2</span>][i]+=a[<span class="number">2</span>][i<span class="number">-1</span>]; a[<span class="number">0</span>][i]+=a[<span class="number">2</span>][i];&#125;</div><div class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i=n;i&gt;=<span class="number">0</span>;i--)&#123;</div><div class="line">		<span class="keyword">if</span> (m[<span class="number">0</span>][a[<span class="number">0</span>][i]]) nxt[<span class="number">0</span>][i]=m[<span class="number">0</span>][a[<span class="number">0</span>][i]];</div><div class="line">		<span class="keyword">if</span> (m[<span class="number">1</span>][a[<span class="number">1</span>][i]]) nxt[<span class="number">1</span>][i]=m[<span class="number">1</span>][a[<span class="number">1</span>][i]];</div><div class="line">		<span class="keyword">if</span> (m[<span class="number">2</span>][a[<span class="number">2</span>][i]]) nxt[<span class="number">2</span>][i]=m[<span class="number">2</span>][a[<span class="number">2</span>][i]];</div><div class="line">		m[<span class="number">0</span>][a[<span class="number">0</span>][i]]=i;</div><div class="line">		m[<span class="number">1</span>][a[<span class="number">1</span>][i]]=i;</div><div class="line">		m[<span class="number">2</span>][a[<span class="number">2</span>][i]]=i;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;=n;i++)&#123;</div><div class="line">		<span class="keyword">int</span> now=f[i],x=INF,y=INF; add(i,i,now);</div><div class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> j=head[i];j;j=go[j])&#123;</div><div class="line">			<span class="keyword">if</span> (q[j].x==i &amp;&amp; q[j].val==now+<span class="number">1</span>) y=min(y,q[j].y);</div><div class="line">			<span class="keyword">if</span> (q[j].y==i &amp;&amp; q[j].val==now+<span class="number">1</span>) x=min(x,q[j].x);</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">if</span> (x!=INF) add(x,i,now+<span class="number">1</span>);</div><div class="line">		<span class="keyword">if</span> (y!=INF) add(i,y,now+<span class="number">1</span>);</div><div class="line">	&#125;</div><div class="line">	<span class="built_in">printf</span>(<span class="string">"%d\n"</span>,f[n]);</div><div class="line">	</div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+  </div>
+</article>
+
+
+
+    </div>
+    
+      <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about">About</a></li>
+         
+          <li><a href="/links">Links</a></li>
+         
+          <li><a href="/tags">Tags</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://bomb-chicken.github.io/2017/10/18/Codeforces771E/"><i class="fa fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://bomb-chicken.github.io/2017/10/18/Codeforces771E/&text=【2*N型DP】Bear and Rectangle Strips"><i class="fa fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://bomb-chicken.github.io/2017/10/18/Codeforces771E/&title=【2*N型DP】Bear and Rectangle Strips"><i class="fa fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://bomb-chicken.github.io/2017/10/18/Codeforces771E/&is_video=false&description=【2*N型DP】Bear and Rectangle Strips"><i class="fa fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=【2*N型DP】Bear and Rectangle Strips&body=Check out this article: https://bomb-chicken.github.io/2017/10/18/Codeforces771E/"><i class="fa fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://bomb-chicken.github.io/2017/10/18/Codeforces771E/&title=【2*N型DP】Bear and Rectangle Strips"><i class="fa fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://bomb-chicken.github.io/2017/10/18/Codeforces771E/&title=【2*N型DP】Bear and Rectangle Strips"><i class="fa fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://bomb-chicken.github.io/2017/10/18/Codeforces771E/&title=【2*N型DP】Bear and Rectangle Strips"><i class="fa fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://bomb-chicken.github.io/2017/10/18/Codeforces771E/&title=【2*N型DP】Bear and Rectangle Strips"><i class="fa fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://bomb-chicken.github.io/2017/10/18/Codeforces771E/&name=【2*N型DP】Bear and Rectangle Strips&description="><i class="fa fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+      <ul>
+        <li id="toc"><a class="icon" href="#" onclick='$("#toc-footer").toggle();return false;'><i class="fa fa-list fa-lg" aria-hidden="true"></i> TOC</a></li>
+        <li id="share"><a class="icon" href="#" onclick='$("#share-footer").toggle();return false;'><i class="fa fa-share-alt fa-lg" aria-hidden="true"></i> Share</a></li>
+        <li id="top" style="display:none"><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a></li>
+        <li id="menu"><a class="icon" href="#" onclick='$("#nav-footer").toggle();return false;'><i class="fa fa-bars fa-lg" aria-hidden="true"></i> Menu</a></li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+    
+    <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2017 炸鸡
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about">About</a></li>
+         
+          <li><a href="/links">Links</a></li>
+         
+          <li><a href="/tags">Tags</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+
+</body>
+</html>
+<!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="/lib/meslo-LG/styles.css">
+<link rel="stylesheet" href="/lib/justified-gallery/justifiedGallery.min.css">
+
+
+<!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- Google Analytics -->
+
+<!-- Disqus Comments -->
+
+

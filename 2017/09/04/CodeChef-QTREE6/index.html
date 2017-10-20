@@ -7,7 +7,7 @@
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <meta name="description" content="传送门：CodeChef-QTREE6 题意：给定一棵树，开始时每个点是黑色的，要求支持单点翻转颜色，询问同色连通块大小  思路： 对一棵树进行树链剖分，维护以每个点在其子树中的连通块大小，可用树状数组分别维护黑白2色 那么询问时只需跳到同色连通块顶部 对于重链，维护点权和（黑为1，白为0），然后可以快速判断一段链上是否是一个颜色 不是就二分 维护连通块是区间修改单点查询 维护区间和是单点修改区间">
-<meta name="keywords" content="树链剖分,树状数组,二分">
+<meta name="keywords" content="树状数组,树链剖分,二分">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【树链剖分+二分】Query on a tree VI">
 <meta property="og:url" content="https://bomb-chicken.github.io/2017/09/04/CodeChef-QTREE6/index.html">
