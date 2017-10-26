@@ -6,13 +6,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta property="og:type" content="article">
-<meta property="og:title" content="LOJ2033">
+    <meta name="description" content="传送门：LOJ2033  思路：似乎是后缀自动机裸题，每次把新字符加入后缀自动机，更新答案即可。 注意：由于字符集较大，转移要用map来储存。  代码如下： 123456789101112131415161718192021222324252627282930313233343536373839#include&amp;lt;iostream&amp;gt;#include&amp;lt;cstdio&amp;gt;#inclu">
+<meta name="keywords" content="字符串">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【后缀自动机】生成魔咒">
 <meta property="og:url" content="https://bomb-chicken.github.io/2017/09/18/LOJ2033/index.html">
 <meta property="og:site_name" content="炸鸡">
-<meta property="og:updated_time" content="2017-09-18T14:02:15.000Z">
+<meta property="og:description" content="传送门：LOJ2033  思路：似乎是后缀自动机裸题，每次把新字符加入后缀自动机，更新答案即可。 注意：由于字符集较大，转移要用map来储存。  代码如下： 123456789101112131415161718192021222324252627282930313233343536373839#include&amp;lt;iostream&amp;gt;#include&amp;lt;cstdio&amp;gt;#inclu">
+<meta property="og:updated_time" content="2017-10-26T01:33:19.004Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="LOJ2033">
+<meta name="twitter:title" content="【后缀自动机】生成魔咒">
+<meta name="twitter:description" content="传送门：LOJ2033  思路：似乎是后缀自动机裸题，每次把新字符加入后缀自动机，更新答案即可。 注意：由于字符集较大，转移要用map来储存。  代码如下： 123456789101112131415161718192021222324252627282930313233343536373839#include&amp;lt;iostream&amp;gt;#include&amp;lt;cstdio&amp;gt;#inclu">
     
     
         
@@ -32,7 +36,7 @@
         
     
     <!-- title -->
-    <title>LOJ2033</title>
+    <title>【后缀自动机】生成魔咒</title>
     <!-- styles -->
     <link rel="stylesheet" href="/css/style.css">
     <!-- rss --><!-- hexo-inject:begin --><!-- hexo-inject:end -->
@@ -81,15 +85,15 @@
     <div id="share" style="display: none">
       <ul>
   <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://bomb-chicken.github.io/2017/09/18/LOJ2033/"><i class="fa fa-facebook " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://twitter.com/share?url=https://bomb-chicken.github.io/2017/09/18/LOJ2033/&text=LOJ2033"><i class="fa fa-twitter " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://bomb-chicken.github.io/2017/09/18/LOJ2033/&title=LOJ2033"><i class="fa fa-linkedin " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://bomb-chicken.github.io/2017/09/18/LOJ2033/&is_video=false&description=LOJ2033"><i class="fa fa-pinterest " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=LOJ2033&body=Check out this article: https://bomb-chicken.github.io/2017/09/18/LOJ2033/"><i class="fa fa-envelope " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://getpocket.com/save?url=https://bomb-chicken.github.io/2017/09/18/LOJ2033/&title=LOJ2033"><i class="fa fa-get-pocket " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://reddit.com/submit?url=https://bomb-chicken.github.io/2017/09/18/LOJ2033/&title=LOJ2033"><i class="fa fa-reddit " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://bomb-chicken.github.io/2017/09/18/LOJ2033/&title=LOJ2033"><i class="fa fa-stumbleupon " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://digg.com/submit?url=https://bomb-chicken.github.io/2017/09/18/LOJ2033/&title=LOJ2033"><i class="fa fa-digg " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://bomb-chicken.github.io/2017/09/18/LOJ2033/&name=LOJ2033&description="><i class="fa fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://bomb-chicken.github.io/2017/09/18/LOJ2033/&text=【后缀自动机】生成魔咒"><i class="fa fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://bomb-chicken.github.io/2017/09/18/LOJ2033/&title=【后缀自动机】生成魔咒"><i class="fa fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://bomb-chicken.github.io/2017/09/18/LOJ2033/&is_video=false&description=【后缀自动机】生成魔咒"><i class="fa fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=【后缀自动机】生成魔咒&body=Check out this article: https://bomb-chicken.github.io/2017/09/18/LOJ2033/"><i class="fa fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://bomb-chicken.github.io/2017/09/18/LOJ2033/&title=【后缀自动机】生成魔咒"><i class="fa fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://bomb-chicken.github.io/2017/09/18/LOJ2033/&title=【后缀自动机】生成魔咒"><i class="fa fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://bomb-chicken.github.io/2017/09/18/LOJ2033/&title=【后缀自动机】生成魔咒"><i class="fa fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://bomb-chicken.github.io/2017/09/18/LOJ2033/&title=【后缀自动机】生成魔咒"><i class="fa fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://bomb-chicken.github.io/2017/09/18/LOJ2033/&name=【后缀自动机】生成魔咒&description="><i class="fa fa-tumblr " aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
@@ -106,7 +110,7 @@
   <header>
     
     <h1 class="posttitle" itemprop="name headline">
-        LOJ2033
+        【后缀自动机】生成魔咒
     </h1>
 
 
@@ -122,13 +126,25 @@
 
 
       
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/字符串/">字符串</a>
+    </div>
+
 
     </div>
   </header>
   
 
   <div class="content" itemprop="articleBody">
-    
+    <p>传送门：<a href="https://loj.ac/problem/2033" target="_blank" rel="external">LOJ2033</a></p>
+<hr>
+<p>思路：似乎是后缀自动机裸题，每次把新字符加入后缀自动机，更新答案即可。</p>
+<p>注意：由于字符集较大，转移要用map来储存。</p>
+<hr>
+<p>代码如下：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;map&gt;</span></span></div><div class="line"></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> N 300000</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> LL long long</span></div><div class="line"></div><div class="line"><span class="keyword">int</span> n,x,cnt,p,np,q,nq,stt[N],fa[N];</div><div class="line">LL ans;</div><div class="line"><span class="built_in">map</span>&lt;<span class="keyword">int</span>,<span class="keyword">int</span>&gt; c[N];</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">extend</span><span class="params">(<span class="keyword">int</span> w)</span></span>&#123;</div><div class="line">	p=np; stt[np=++cnt]=stt[p]+<span class="number">1</span>;</div><div class="line">	<span class="keyword">for</span> (;p &amp;&amp; !c[p].count(w);p=fa[p]) c[p][w]=np;</div><div class="line">	<span class="keyword">if</span> (!p) fa[np]=<span class="number">1</span>;</div><div class="line">	<span class="keyword">else</span>&#123;</div><div class="line">		<span class="keyword">if</span> (stt[q=c[p][w]]==stt[p]+<span class="number">1</span>) fa[np]=q;</div><div class="line">		<span class="keyword">else</span>&#123;</div><div class="line">			stt[nq=++cnt]=stt[p]+<span class="number">1</span>;</div><div class="line">			<span class="keyword">for</span> (<span class="built_in">map</span>&lt;<span class="keyword">int</span>,<span class="keyword">int</span>&gt;::iterator i=c[q].begin();i!=c[q].end();i++) c[nq][i-&gt;first]=i-&gt;second;</div><div class="line">			fa[nq]=fa[q]; fa[q]=fa[np]=nq;</div><div class="line">			<span class="keyword">for</span> (;p &amp;&amp; c[p][w]==q;p=fa[p]) c[p][w]=nq;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n); cnt=np=<span class="number">1</span>;</div><div class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</div><div class="line">		<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;x);</div><div class="line">		extend(x);</div><div class="line">		ans+=stt[np]-stt[fa[np]];</div><div class="line">		<span class="built_in">printf</span>(<span class="string">"%lld\n"</span>,ans);</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
   </div>
 </article>
 
@@ -160,15 +176,15 @@
     <div id="share-footer" style="display: none">
       <ul>
   <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://bomb-chicken.github.io/2017/09/18/LOJ2033/"><i class="fa fa-facebook fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://twitter.com/share?url=https://bomb-chicken.github.io/2017/09/18/LOJ2033/&text=LOJ2033"><i class="fa fa-twitter fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://bomb-chicken.github.io/2017/09/18/LOJ2033/&title=LOJ2033"><i class="fa fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://bomb-chicken.github.io/2017/09/18/LOJ2033/&is_video=false&description=LOJ2033"><i class="fa fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=LOJ2033&body=Check out this article: https://bomb-chicken.github.io/2017/09/18/LOJ2033/"><i class="fa fa-envelope fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://getpocket.com/save?url=https://bomb-chicken.github.io/2017/09/18/LOJ2033/&title=LOJ2033"><i class="fa fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://reddit.com/submit?url=https://bomb-chicken.github.io/2017/09/18/LOJ2033/&title=LOJ2033"><i class="fa fa-reddit fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://bomb-chicken.github.io/2017/09/18/LOJ2033/&title=LOJ2033"><i class="fa fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://digg.com/submit?url=https://bomb-chicken.github.io/2017/09/18/LOJ2033/&title=LOJ2033"><i class="fa fa-digg fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://bomb-chicken.github.io/2017/09/18/LOJ2033/&name=LOJ2033&description="><i class="fa fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://bomb-chicken.github.io/2017/09/18/LOJ2033/&text=【后缀自动机】生成魔咒"><i class="fa fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://bomb-chicken.github.io/2017/09/18/LOJ2033/&title=【后缀自动机】生成魔咒"><i class="fa fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://bomb-chicken.github.io/2017/09/18/LOJ2033/&is_video=false&description=【后缀自动机】生成魔咒"><i class="fa fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=【后缀自动机】生成魔咒&body=Check out this article: https://bomb-chicken.github.io/2017/09/18/LOJ2033/"><i class="fa fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://bomb-chicken.github.io/2017/09/18/LOJ2033/&title=【后缀自动机】生成魔咒"><i class="fa fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://bomb-chicken.github.io/2017/09/18/LOJ2033/&title=【后缀自动机】生成魔咒"><i class="fa fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://bomb-chicken.github.io/2017/09/18/LOJ2033/&title=【后缀自动机】生成魔咒"><i class="fa fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://bomb-chicken.github.io/2017/09/18/LOJ2033/&title=【后缀自动机】生成魔咒"><i class="fa fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://bomb-chicken.github.io/2017/09/18/LOJ2033/&name=【后缀自动机】生成魔咒&description="><i class="fa fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
 </ul>
 
     </div>

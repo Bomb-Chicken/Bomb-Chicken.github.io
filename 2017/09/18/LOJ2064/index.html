@@ -6,13 +6,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta property="og:type" content="article">
-<meta property="og:title" content="LOJ2064">
+    <meta name="description" content="传送门：LOJ2064  思路：  将A串建成后辍缀自动机，用B串在自动机上跑； 匹配的贡献是$(lcp-stt_{fa_x})\times sz_x$，同时更新前面的值； 由于$lcp&amp;gt;stt_{fa_x}$，对前面的更新只要标记一下再往回传即可。  注意：  标记（贡献）不要算重。   代码如下： 123456789101112131415161718192021222324252627">
+<meta name="keywords" content="字符串">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【后缀自动机】找相同字符">
 <meta property="og:url" content="https://bomb-chicken.github.io/2017/09/18/LOJ2064/index.html">
 <meta property="og:site_name" content="炸鸡">
-<meta property="og:updated_time" content="2017-09-18T14:02:49.000Z">
+<meta property="og:description" content="传送门：LOJ2064  思路：  将A串建成后辍缀自动机，用B串在自动机上跑； 匹配的贡献是$(lcp-stt_{fa_x})\times sz_x$，同时更新前面的值； 由于$lcp&amp;gt;stt_{fa_x}$，对前面的更新只要标记一下再往回传即可。  注意：  标记（贡献）不要算重。   代码如下： 123456789101112131415161718192021222324252627">
+<meta property="og:updated_time" content="2017-10-26T01:45:20.041Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="LOJ2064">
+<meta name="twitter:title" content="【后缀自动机】找相同字符">
+<meta name="twitter:description" content="传送门：LOJ2064  思路：  将A串建成后辍缀自动机，用B串在自动机上跑； 匹配的贡献是$(lcp-stt_{fa_x})\times sz_x$，同时更新前面的值； 由于$lcp&amp;gt;stt_{fa_x}$，对前面的更新只要标记一下再往回传即可。  注意：  标记（贡献）不要算重。   代码如下： 123456789101112131415161718192021222324252627">
     
     
         
@@ -32,7 +36,7 @@
         
     
     <!-- title -->
-    <title>LOJ2064</title>
+    <title>【后缀自动机】找相同字符</title>
     <!-- styles -->
     <link rel="stylesheet" href="/css/style.css">
     <!-- rss --><!-- hexo-inject:begin --><!-- hexo-inject:end -->
@@ -81,15 +85,15 @@
     <div id="share" style="display: none">
       <ul>
   <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://bomb-chicken.github.io/2017/09/18/LOJ2064/"><i class="fa fa-facebook " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://twitter.com/share?url=https://bomb-chicken.github.io/2017/09/18/LOJ2064/&text=LOJ2064"><i class="fa fa-twitter " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://bomb-chicken.github.io/2017/09/18/LOJ2064/&title=LOJ2064"><i class="fa fa-linkedin " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://bomb-chicken.github.io/2017/09/18/LOJ2064/&is_video=false&description=LOJ2064"><i class="fa fa-pinterest " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=LOJ2064&body=Check out this article: https://bomb-chicken.github.io/2017/09/18/LOJ2064/"><i class="fa fa-envelope " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://getpocket.com/save?url=https://bomb-chicken.github.io/2017/09/18/LOJ2064/&title=LOJ2064"><i class="fa fa-get-pocket " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://reddit.com/submit?url=https://bomb-chicken.github.io/2017/09/18/LOJ2064/&title=LOJ2064"><i class="fa fa-reddit " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://bomb-chicken.github.io/2017/09/18/LOJ2064/&title=LOJ2064"><i class="fa fa-stumbleupon " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://digg.com/submit?url=https://bomb-chicken.github.io/2017/09/18/LOJ2064/&title=LOJ2064"><i class="fa fa-digg " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://bomb-chicken.github.io/2017/09/18/LOJ2064/&name=LOJ2064&description="><i class="fa fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://bomb-chicken.github.io/2017/09/18/LOJ2064/&text=【后缀自动机】找相同字符"><i class="fa fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://bomb-chicken.github.io/2017/09/18/LOJ2064/&title=【后缀自动机】找相同字符"><i class="fa fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://bomb-chicken.github.io/2017/09/18/LOJ2064/&is_video=false&description=【后缀自动机】找相同字符"><i class="fa fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=【后缀自动机】找相同字符&body=Check out this article: https://bomb-chicken.github.io/2017/09/18/LOJ2064/"><i class="fa fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://bomb-chicken.github.io/2017/09/18/LOJ2064/&title=【后缀自动机】找相同字符"><i class="fa fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://bomb-chicken.github.io/2017/09/18/LOJ2064/&title=【后缀自动机】找相同字符"><i class="fa fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://bomb-chicken.github.io/2017/09/18/LOJ2064/&title=【后缀自动机】找相同字符"><i class="fa fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://bomb-chicken.github.io/2017/09/18/LOJ2064/&title=【后缀自动机】找相同字符"><i class="fa fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://bomb-chicken.github.io/2017/09/18/LOJ2064/&name=【后缀自动机】找相同字符&description="><i class="fa fa-tumblr " aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
@@ -106,7 +110,7 @@
   <header>
     
     <h1 class="posttitle" itemprop="name headline">
-        LOJ2064
+        【后缀自动机】找相同字符
     </h1>
 
 
@@ -122,13 +126,33 @@
 
 
       
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/字符串/">字符串</a>
+    </div>
+
 
     </div>
   </header>
   
 
   <div class="content" itemprop="articleBody">
-    
+    <p>传送门：<a href="https://loj.ac/problem/2064" target="_blank" rel="external">LOJ2064</a></p>
+<hr>
+<p>思路：</p>
+<ul>
+<li>将A串建成后<del>辍</del>缀自动机，用B串在自动机上跑；</li>
+<li>匹配的贡献是$(lcp-stt_{fa_x})\times sz_x$，同时更新前面的值；</li>
+<li>由于$lcp&gt;stt_{fa_x}$，对前面的更新只要标记一下再往回传即可。</li>
+</ul>
+<p>注意：</p>
+<ul>
+<li>标记（贡献）不要算重。</li>
+</ul>
+<hr>
+<p>代码如下：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></div><div class="line"></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> LL long long</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> N 800000</span></div><div class="line"></div><div class="line">LL p,np,q,nq,cnt,fa[N],stt[N],c[N][<span class="number">30</span>],f[N],g[N],sum[N],qq[N],sz[N];</div><div class="line"><span class="keyword">char</span> s[N];</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">extend</span><span class="params">(LL w)</span></span>&#123;</div><div class="line">	p=np; stt[np=++cnt]=stt[p]+<span class="number">1</span>; sz[np]++;</div><div class="line">	<span class="keyword">for</span> (;p &amp;&amp; !c[p][w];p=fa[p]) c[p][w]=np;</div><div class="line">	<span class="keyword">if</span> (!p) fa[np]=<span class="number">1</span>;</div><div class="line">	<span class="keyword">else</span>&#123;</div><div class="line">		<span class="keyword">if</span> (stt[q=c[p][w]]==stt[p]+<span class="number">1</span>) fa[np]=q;</div><div class="line">		<span class="keyword">else</span>&#123;</div><div class="line">			stt[nq=++cnt]=stt[p]+<span class="number">1</span>;</div><div class="line">			<span class="built_in">memcpy</span>(c[nq],c[q],<span class="keyword">sizeof</span> c[q]);</div><div class="line">			fa[nq]=fa[q]; fa[q]=fa[np]=nq;</div><div class="line">			<span class="keyword">for</span> (;p &amp;&amp; c[p][w]==q;p=fa[p]) c[p][w]=nq;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">solve</span><span class="params">(<span class="keyword">char</span> s[])</span></span>&#123;</div><div class="line">	LL xb=<span class="number">1</span>,len=<span class="built_in">strlen</span>(s+<span class="number">1</span>),ans=<span class="number">0</span>,tmp=<span class="number">0</span>;</div><div class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=cnt;i++) sum[stt[i]]++;</div><div class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=cnt;i++) sum[i]+=sum[i<span class="number">-1</span>];</div><div class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=cnt;i++) qq[sum[stt[i]]--]=i;</div><div class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i=cnt;i&gt;=<span class="number">1</span>;i--) sz[fa[qq[i]]]+=sz[qq[i]];</div><div class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=len;i++)&#123;</div><div class="line">		LL w=s[i]-<span class="string">'a'</span>+<span class="number">1</span>;</div><div class="line">		<span class="keyword">while</span> (xb &amp;&amp; !c[xb][w]) xb=fa[xb];</div><div class="line">		<span class="keyword">if</span> (!xb)&#123;xb=<span class="number">1</span>; tmp=<span class="number">0</span>;&#125;</div><div class="line">		<span class="keyword">else</span>&#123;tmp=min(tmp,stt[xb])+<span class="number">1</span>; xb=c[xb][w]; ans+=(tmp-stt[fa[xb]])*sz[xb]; f[xb]++;&#125;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i=cnt;i&gt;=<span class="number">1</span>;i--) g[fa[qq[i]]]+=f[qq[i]]+g[qq[i]];</div><div class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=cnt;i++) ans+=g[i]*(stt[i]-stt[fa[i]])*sz[i];</div><div class="line">	<span class="built_in">printf</span>(<span class="string">"%lld\n"</span>,ans);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;                        </div><div class="line">	<span class="built_in">scanf</span>(<span class="string">"%s"</span>,s+<span class="number">1</span>);</div><div class="line">	LL len=<span class="built_in">strlen</span>(s+<span class="number">1</span>); np=++cnt;</div><div class="line">	<span class="keyword">for</span> (LL i=<span class="number">1</span>;i&lt;=len;i++) extend(s[i]-<span class="string">'a'</span>+<span class="number">1</span>);</div><div class="line">	<span class="built_in">scanf</span>(<span class="string">"%s"</span>,s+<span class="number">1</span>); solve(s);</div><div class="line">	</div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
   </div>
 </article>
 
@@ -160,15 +184,15 @@
     <div id="share-footer" style="display: none">
       <ul>
   <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://bomb-chicken.github.io/2017/09/18/LOJ2064/"><i class="fa fa-facebook fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://twitter.com/share?url=https://bomb-chicken.github.io/2017/09/18/LOJ2064/&text=LOJ2064"><i class="fa fa-twitter fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://bomb-chicken.github.io/2017/09/18/LOJ2064/&title=LOJ2064"><i class="fa fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://bomb-chicken.github.io/2017/09/18/LOJ2064/&is_video=false&description=LOJ2064"><i class="fa fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=LOJ2064&body=Check out this article: https://bomb-chicken.github.io/2017/09/18/LOJ2064/"><i class="fa fa-envelope fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://getpocket.com/save?url=https://bomb-chicken.github.io/2017/09/18/LOJ2064/&title=LOJ2064"><i class="fa fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://reddit.com/submit?url=https://bomb-chicken.github.io/2017/09/18/LOJ2064/&title=LOJ2064"><i class="fa fa-reddit fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://bomb-chicken.github.io/2017/09/18/LOJ2064/&title=LOJ2064"><i class="fa fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://digg.com/submit?url=https://bomb-chicken.github.io/2017/09/18/LOJ2064/&title=LOJ2064"><i class="fa fa-digg fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://bomb-chicken.github.io/2017/09/18/LOJ2064/&name=LOJ2064&description="><i class="fa fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://bomb-chicken.github.io/2017/09/18/LOJ2064/&text=【后缀自动机】找相同字符"><i class="fa fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://bomb-chicken.github.io/2017/09/18/LOJ2064/&title=【后缀自动机】找相同字符"><i class="fa fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://bomb-chicken.github.io/2017/09/18/LOJ2064/&is_video=false&description=【后缀自动机】找相同字符"><i class="fa fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=【后缀自动机】找相同字符&body=Check out this article: https://bomb-chicken.github.io/2017/09/18/LOJ2064/"><i class="fa fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://bomb-chicken.github.io/2017/09/18/LOJ2064/&title=【后缀自动机】找相同字符"><i class="fa fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://bomb-chicken.github.io/2017/09/18/LOJ2064/&title=【后缀自动机】找相同字符"><i class="fa fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://bomb-chicken.github.io/2017/09/18/LOJ2064/&title=【后缀自动机】找相同字符"><i class="fa fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://bomb-chicken.github.io/2017/09/18/LOJ2064/&title=【后缀自动机】找相同字符"><i class="fa fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://bomb-chicken.github.io/2017/09/18/LOJ2064/&name=【后缀自动机】找相同字符&description="><i class="fa fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
