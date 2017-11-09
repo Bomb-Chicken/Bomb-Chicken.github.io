@@ -9,13 +9,13 @@
     <meta name="description" content="传送门：BZOJ4242 JOI  思路：  可以发现答案为两个点在MST的路径上边权最大的边； 先求出所有点的MST，直接连边肯定没希望，考虑用BFS，每个点向外扩展，相遇了才连边，其它边不可能出现在MST中； 然后求出MST以后就是树上RMQ，树上路径倍增？？？似乎可以树剖+ST。  注意：  开始建完图后边数是4NM，N,M为网格图的长宽； 如果用计数排序注意边权大小； 注意卡空间。   代">
 <meta name="keywords" content="图论">
 <meta property="og:type" content="article">
-<meta property="og:title" content="【平面图MST+树上RMQ】">
+<meta property="og:title" content="【平面图MST+树上RMQ】水壶">
 <meta property="og:url" content="https://bomb-chicken.github.io/2017/09/20/BZOJ4242/index.html">
 <meta property="og:site_name" content="炸鸡">
 <meta property="og:description" content="传送门：BZOJ4242 JOI  思路：  可以发现答案为两个点在MST的路径上边权最大的边； 先求出所有点的MST，直接连边肯定没希望，考虑用BFS，每个点向外扩展，相遇了才连边，其它边不可能出现在MST中； 然后求出MST以后就是树上RMQ，树上路径倍增？？？似乎可以树剖+ST。  注意：  开始建完图后边数是4NM，N,M为网格图的长宽； 如果用计数排序注意边权大小； 注意卡空间。   代">
-<meta property="og:updated_time" content="2017-09-20T07:11:38.746Z">
+<meta property="og:updated_time" content="2017-11-08T23:57:51.747Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="【平面图MST+树上RMQ】">
+<meta name="twitter:title" content="【平面图MST+树上RMQ】水壶">
 <meta name="twitter:description" content="传送门：BZOJ4242 JOI  思路：  可以发现答案为两个点在MST的路径上边权最大的边； 先求出所有点的MST，直接连边肯定没希望，考虑用BFS，每个点向外扩展，相遇了才连边，其它边不可能出现在MST中； 然后求出MST以后就是树上RMQ，树上路径倍增？？？似乎可以树剖+ST。  注意：  开始建完图后边数是4NM，N,M为网格图的长宽； 如果用计数排序注意边权大小； 注意卡空间。   代">
     
     
@@ -36,7 +36,7 @@
         
     
     <!-- title -->
-    <title>【平面图MST+树上RMQ】</title>
+    <title>【平面图MST+树上RMQ】水壶</title>
     <!-- styles -->
     <link rel="stylesheet" href="/css/style.css">
     <!-- rss --><!-- hexo-inject:begin --><!-- hexo-inject:end -->
@@ -85,15 +85,15 @@
     <div id="share" style="display: none">
       <ul>
   <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://bomb-chicken.github.io/2017/09/20/BZOJ4242/"><i class="fa fa-facebook " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://twitter.com/share?url=https://bomb-chicken.github.io/2017/09/20/BZOJ4242/&text=【平面图MST+树上RMQ】"><i class="fa fa-twitter " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://bomb-chicken.github.io/2017/09/20/BZOJ4242/&title=【平面图MST+树上RMQ】"><i class="fa fa-linkedin " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://bomb-chicken.github.io/2017/09/20/BZOJ4242/&is_video=false&description=【平面图MST+树上RMQ】"><i class="fa fa-pinterest " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=【平面图MST+树上RMQ】&body=Check out this article: https://bomb-chicken.github.io/2017/09/20/BZOJ4242/"><i class="fa fa-envelope " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://getpocket.com/save?url=https://bomb-chicken.github.io/2017/09/20/BZOJ4242/&title=【平面图MST+树上RMQ】"><i class="fa fa-get-pocket " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://reddit.com/submit?url=https://bomb-chicken.github.io/2017/09/20/BZOJ4242/&title=【平面图MST+树上RMQ】"><i class="fa fa-reddit " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://bomb-chicken.github.io/2017/09/20/BZOJ4242/&title=【平面图MST+树上RMQ】"><i class="fa fa-stumbleupon " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://digg.com/submit?url=https://bomb-chicken.github.io/2017/09/20/BZOJ4242/&title=【平面图MST+树上RMQ】"><i class="fa fa-digg " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://bomb-chicken.github.io/2017/09/20/BZOJ4242/&name=【平面图MST+树上RMQ】&description="><i class="fa fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://bomb-chicken.github.io/2017/09/20/BZOJ4242/&text=【平面图MST+树上RMQ】水壶"><i class="fa fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://bomb-chicken.github.io/2017/09/20/BZOJ4242/&title=【平面图MST+树上RMQ】水壶"><i class="fa fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://bomb-chicken.github.io/2017/09/20/BZOJ4242/&is_video=false&description=【平面图MST+树上RMQ】水壶"><i class="fa fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=【平面图MST+树上RMQ】水壶&body=Check out this article: https://bomb-chicken.github.io/2017/09/20/BZOJ4242/"><i class="fa fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://bomb-chicken.github.io/2017/09/20/BZOJ4242/&title=【平面图MST+树上RMQ】水壶"><i class="fa fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://bomb-chicken.github.io/2017/09/20/BZOJ4242/&title=【平面图MST+树上RMQ】水壶"><i class="fa fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://bomb-chicken.github.io/2017/09/20/BZOJ4242/&title=【平面图MST+树上RMQ】水壶"><i class="fa fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://bomb-chicken.github.io/2017/09/20/BZOJ4242/&title=【平面图MST+树上RMQ】水壶"><i class="fa fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://bomb-chicken.github.io/2017/09/20/BZOJ4242/&name=【平面图MST+树上RMQ】水壶&description="><i class="fa fa-tumblr " aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
@@ -110,7 +110,7 @@
   <header>
     
     <h1 class="posttitle" itemprop="name headline">
-        【平面图MST+树上RMQ】
+        【平面图MST+树上RMQ】水壶
     </h1>
 
 
@@ -187,15 +187,15 @@
     <div id="share-footer" style="display: none">
       <ul>
   <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://bomb-chicken.github.io/2017/09/20/BZOJ4242/"><i class="fa fa-facebook fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://twitter.com/share?url=https://bomb-chicken.github.io/2017/09/20/BZOJ4242/&text=【平面图MST+树上RMQ】"><i class="fa fa-twitter fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://bomb-chicken.github.io/2017/09/20/BZOJ4242/&title=【平面图MST+树上RMQ】"><i class="fa fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://bomb-chicken.github.io/2017/09/20/BZOJ4242/&is_video=false&description=【平面图MST+树上RMQ】"><i class="fa fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=【平面图MST+树上RMQ】&body=Check out this article: https://bomb-chicken.github.io/2017/09/20/BZOJ4242/"><i class="fa fa-envelope fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://getpocket.com/save?url=https://bomb-chicken.github.io/2017/09/20/BZOJ4242/&title=【平面图MST+树上RMQ】"><i class="fa fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://reddit.com/submit?url=https://bomb-chicken.github.io/2017/09/20/BZOJ4242/&title=【平面图MST+树上RMQ】"><i class="fa fa-reddit fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://bomb-chicken.github.io/2017/09/20/BZOJ4242/&title=【平面图MST+树上RMQ】"><i class="fa fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://digg.com/submit?url=https://bomb-chicken.github.io/2017/09/20/BZOJ4242/&title=【平面图MST+树上RMQ】"><i class="fa fa-digg fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://bomb-chicken.github.io/2017/09/20/BZOJ4242/&name=【平面图MST+树上RMQ】&description="><i class="fa fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://bomb-chicken.github.io/2017/09/20/BZOJ4242/&text=【平面图MST+树上RMQ】水壶"><i class="fa fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://bomb-chicken.github.io/2017/09/20/BZOJ4242/&title=【平面图MST+树上RMQ】水壶"><i class="fa fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://bomb-chicken.github.io/2017/09/20/BZOJ4242/&is_video=false&description=【平面图MST+树上RMQ】水壶"><i class="fa fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=【平面图MST+树上RMQ】水壶&body=Check out this article: https://bomb-chicken.github.io/2017/09/20/BZOJ4242/"><i class="fa fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://bomb-chicken.github.io/2017/09/20/BZOJ4242/&title=【平面图MST+树上RMQ】水壶"><i class="fa fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://bomb-chicken.github.io/2017/09/20/BZOJ4242/&title=【平面图MST+树上RMQ】水壶"><i class="fa fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://bomb-chicken.github.io/2017/09/20/BZOJ4242/&title=【平面图MST+树上RMQ】水壶"><i class="fa fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://bomb-chicken.github.io/2017/09/20/BZOJ4242/&title=【平面图MST+树上RMQ】水壶"><i class="fa fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://bomb-chicken.github.io/2017/09/20/BZOJ4242/&name=【平面图MST+树上RMQ】水壶&description="><i class="fa fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
