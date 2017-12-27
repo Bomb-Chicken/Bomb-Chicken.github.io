@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="传送门：ARC087F srO一觉醒来秒了此题的zzs2003  思路：   考虑路径和在什么时候取到最大，边$(u,v)$的最大贡献是$2min(size_u,size_v)$；   然后这个数值对于任意情况都能取到：     当树有2个重心的时候，重心两边的点都不超过$\frac{n}{2}$，当且仅当所有点经过2个重心所在边时路径和取到最大值，方案数为$(\frac{n}{2}!)^2$；">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【树的重心+容斥+dp】">
+<meta property="og:url" content="https://bomb-chicken.github.io/2017/12/27/ARC087F/index.html">
+<meta property="og:site_name" content="炸鸡">
+<meta property="og:description" content="传送门：ARC087F srO一觉醒来秒了此题的zzs2003  思路：   考虑路径和在什么时候取到最大，边$(u,v)$的最大贡献是$2min(size_u,size_v)$；   然后这个数值对于任意情况都能取到：     当树有2个重心的时候，重心两边的点都不超过$\frac{n}{2}$，当且仅当所有点经过2个重心所在边时路径和取到最大值，方案数为$(\frac{n}{2}!)^2$；">
+<meta property="og:updated_time" content="2017-12-27T12:52:56.966Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="【树的重心+容斥+dp】">
+<meta name="twitter:description" content="传送门：ARC087F srO一觉醒来秒了此题的zzs2003  思路：   考虑路径和在什么时候取到最大，边$(u,v)$的最大贡献是$2min(size_u,size_v)$；   然后这个数值对于任意情况都能取到：     当树有2个重心的时候，重心两边的点都不超过$\frac{n}{2}$，当且仅当所有点经过2个重心所在边时路径和取到最大值，方案数为$(\frac{n}{2}!)^2$；">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>【树的重心+容斥+dp】</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- rss --><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    
+    
+</head>
+
+<body>
+    
+      <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="header-post">
+  <a id="menu-icon" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about">About</a></li>
+         
+          <li><a href="/links">Links</a></li>
+         
+          <li><a href="/tags">Tags</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" href="/2017/12/22/BZOJ1468/"><i class="fa fa-chevron-right" aria-hidden="true" onmouseover='$("#i-next").toggle();' onmouseout='$("#i-next").toggle();'></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa fa-chevron-up" aria-hidden="true" onmouseover='$("#i-top").toggle();' onmouseout='$("#i-top").toggle();'></i></a></li>
+        <li><a class="icon" href="#"><i class="fa fa-share-alt" aria-hidden="true" onmouseover='$("#i-share").toggle();' onmouseout='$("#i-share").toggle();' onclick='$("#share").toggle();return false;'></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://bomb-chicken.github.io/2017/12/27/ARC087F/"><i class="fa fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://bomb-chicken.github.io/2017/12/27/ARC087F/&text=【树的重心+容斥+dp】"><i class="fa fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://bomb-chicken.github.io/2017/12/27/ARC087F/&title=【树的重心+容斥+dp】"><i class="fa fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://bomb-chicken.github.io/2017/12/27/ARC087F/&is_video=false&description=【树的重心+容斥+dp】"><i class="fa fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=【树的重心+容斥+dp】&body=Check out this article: https://bomb-chicken.github.io/2017/12/27/ARC087F/"><i class="fa fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://bomb-chicken.github.io/2017/12/27/ARC087F/&title=【树的重心+容斥+dp】"><i class="fa fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://bomb-chicken.github.io/2017/12/27/ARC087F/&title=【树的重心+容斥+dp】"><i class="fa fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://bomb-chicken.github.io/2017/12/27/ARC087F/&title=【树的重心+容斥+dp】"><i class="fa fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://bomb-chicken.github.io/2017/12/27/ARC087F/&title=【树的重心+容斥+dp】"><i class="fa fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://bomb-chicken.github.io/2017/12/27/ARC087F/&name=【树的重心+容斥+dp】&description="><i class="fa fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index width mx-auto px2 my4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        【树的重心+容斥+dp】
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">炸鸡</span>
+      </span>
+      
+    <div class="postdate">
+        <time datetime="2017-12-27T12:17:10.000Z" itemprop="datePublished">2017-12-27</time>
+    </div>
+
+
+      
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <p>传送门：<a href="https://arc087.contest.atcoder.jp/tasks/arc087_d" target="_blank" rel="external">ARC087F</a></p>
+<p>srO一觉醒来秒了此题的zzs2003</p>
+<hr>
+<p>思路：</p>
+<ul>
+<li>
+<p>考虑路径和在什么时候取到最大，边$(u,v)$的最大贡献是$2min(size_u,size_v)$；</p>
+</li>
+<li>
+<p>然后这个数值对于任意情况都能取到：</p>
+</li>
+<li>
+<ul>
+<li>
+<p>当树有2个重心的时候，重心两边的点都不超过$\frac{n}{2}$，当且仅当所有点经过2个重心所在边时路径和取到最大值，方案数为$(\frac{n}{2}!)^2$；</p>
+</li>
+<li>
+<p>当树仅有1个重心的时候，每个子树大小不超过$\frac{n}{2}$，当且仅当所有点经过重心时取到路径和能取到最大值，容斥可得：
+$$
+\large ans=\sum_{S\in T}(-1)^{|S|}\times f_S\times(n-|S|)!
+$$
+其中$f_s$表示集合$S$内的点都回到原先的子树内的方案数；</p>
+</li>
+<li>
+<p>对于所有$|S|$相同的$S$，可以dp求出它们的总方案数。</p>
+</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></div><div class="line"></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> LL long long</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> N 5005</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> INF 0x3f3f3f3f3f3f3f3fLL</span></div><div class="line"></div><div class="line"><span class="keyword">const</span> LL mod=<span class="number">1000000007</span>;</div><div class="line"></div><div class="line">LL n,m,x,y,ans,c,tot,sum,a[N],sz[N],mx[N],head[N],fac[N],ifac[N],f[N][N];</div><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">edge</span>&#123;</span>LL v,nxt;&#125;e[N*<span class="number">2</span>];</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(LL x,LL y)</span></span>&#123;e[++tot].v=y; e[tot].nxt=head[x]; head[x]=tot;&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(LL u,LL fa)</span></span>&#123;</div><div class="line">	sz[u]=<span class="number">1</span>; mx[u]=<span class="number">0</span>;</div><div class="line">	<span class="keyword">for</span> (LL i=head[u],v;i;i=e[i].nxt)</div><div class="line">		<span class="keyword">if</span> ((v=e[i].v)!=fa)&#123;</div><div class="line">			dfs(v,u); sz[u]+=sz[v]; mx[u]=max(mx[u],sz[v]);</div><div class="line">		&#125;</div><div class="line">	mx[u]=max(mx[u],n-sz[u]);</div><div class="line">	<span class="keyword">if</span> (mx[u]&lt;mx[c]) c=u;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">getsz</span><span class="params">(LL u,LL fa)</span></span>&#123;</div><div class="line">	sz[u]=<span class="number">1</span>;</div><div class="line">	<span class="keyword">for</span> (LL i=head[u],v;i;i=e[i].nxt)</div><div class="line">		<span class="keyword">if</span> ((v=e[i].v)!=fa)&#123;</div><div class="line">			dfs(v,u); sz[u]+=sz[v];</div><div class="line">		&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function">LL <span class="title">inv</span><span class="params">(LL x)</span></span>&#123;<span class="keyword">return</span> x==<span class="number">1</span>?<span class="number">1</span>:(mod-mod/x)*inv(mod%x)%mod;&#125;</div><div class="line"></div><div class="line"><span class="function">LL <span class="title">C</span><span class="params">(LL x,LL y)</span></span>&#123;<span class="keyword">return</span> fac[x]*ifac[y]%mod*ifac[x-y]%mod;&#125;</div><div class="line"></div><div class="line"><span class="function">LL <span class="title">P</span><span class="params">(LL x,LL y)</span></span>&#123;<span class="keyword">return</span> fac[x]*ifac[x-y]%mod;&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line">	<span class="built_in">scanf</span>(<span class="string">"%lld"</span>,&amp;n);</div><div class="line">	<span class="keyword">for</span> (LL i=<span class="number">1</span>;i&lt;n;i++)&#123;</div><div class="line">		<span class="built_in">scanf</span>(<span class="string">"%lld%lld"</span>,&amp;x,&amp;y);</div><div class="line">		add(x,y); add(y,x);</div><div class="line">	&#125;</div><div class="line">	mx[c=<span class="number">0</span>]=INF; dfs(<span class="number">1</span>,<span class="number">0</span>);</div><div class="line">	<span class="keyword">for</span> (LL i=<span class="number">1</span>;i&lt;=n;i++)</div><div class="line">		<span class="keyword">if</span> (i!=c &amp;&amp; mx[i]==mx[c])&#123;</div><div class="line">			ans=<span class="number">1</span>;</div><div class="line">			<span class="keyword">for</span> (LL i=<span class="number">1</span>;i&lt;=n/<span class="number">2</span>;i++)</div><div class="line">				(ans*=i)%=mod;</div><div class="line">			<span class="built_in">printf</span>(<span class="string">"%lld\n"</span>,ans*ans%mod);</div><div class="line">			<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">		&#125;</div><div class="line">	getsz(c,<span class="number">0</span>);</div><div class="line">	<span class="keyword">for</span> (LL i=head[c];i;i=e[i].nxt)</div><div class="line">		a[++m]=sz[e[i].v];</div><div class="line">	fac[<span class="number">0</span>]=<span class="number">1</span>; <span class="keyword">for</span> (LL i=<span class="number">1</span>;i&lt;=n;i++) fac[i]=fac[i<span class="number">-1</span>]*i%mod;</div><div class="line">	ifac[n]=inv(fac[n]); <span class="keyword">for</span> (LL i=n<span class="number">-1</span>;i&gt;=<span class="number">0</span>;i--) ifac[i]=ifac[i+<span class="number">1</span>]*(i+<span class="number">1</span>)%mod;</div><div class="line">	sum=<span class="number">0</span>; f[<span class="number">0</span>][<span class="number">0</span>]=<span class="number">1</span>;</div><div class="line">	<span class="keyword">for</span> (LL i=<span class="number">1</span>;i&lt;=m;i++)&#123;</div><div class="line">		sum+=a[i];</div><div class="line">		<span class="keyword">for</span> (LL j=<span class="number">0</span>;j&lt;=sum;j++)</div><div class="line">			<span class="keyword">for</span> (LL k=<span class="number">0</span>;k&lt;=a[i] &amp;&amp; k&lt;=j;k++)</div><div class="line">				(f[i][j]+=f[i<span class="number">-1</span>][j-k]*C(a[i],k)%mod*P(a[i],k)%mod)%=mod;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">for</span> (LL i=<span class="number">0</span>;i&lt;=n;i++) (ans+=f[m][i]*fac[n-i]%mod*(i&amp;<span class="number">1</span>?<span class="number">-1</span>:<span class="number">1</span>)+mod)%=mod;</div><div class="line">	<span class="built_in">printf</span>(<span class="string">"%lld\n"</span>,ans);</div><div class="line">	</div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+  </div>
+</article>
+
+
+
+    </div>
+    
+      <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about">About</a></li>
+         
+          <li><a href="/links">Links</a></li>
+         
+          <li><a href="/tags">Tags</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://bomb-chicken.github.io/2017/12/27/ARC087F/"><i class="fa fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://bomb-chicken.github.io/2017/12/27/ARC087F/&text=【树的重心+容斥+dp】"><i class="fa fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://bomb-chicken.github.io/2017/12/27/ARC087F/&title=【树的重心+容斥+dp】"><i class="fa fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://bomb-chicken.github.io/2017/12/27/ARC087F/&is_video=false&description=【树的重心+容斥+dp】"><i class="fa fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=【树的重心+容斥+dp】&body=Check out this article: https://bomb-chicken.github.io/2017/12/27/ARC087F/"><i class="fa fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://bomb-chicken.github.io/2017/12/27/ARC087F/&title=【树的重心+容斥+dp】"><i class="fa fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://bomb-chicken.github.io/2017/12/27/ARC087F/&title=【树的重心+容斥+dp】"><i class="fa fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://bomb-chicken.github.io/2017/12/27/ARC087F/&title=【树的重心+容斥+dp】"><i class="fa fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://bomb-chicken.github.io/2017/12/27/ARC087F/&title=【树的重心+容斥+dp】"><i class="fa fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://bomb-chicken.github.io/2017/12/27/ARC087F/&name=【树的重心+容斥+dp】&description="><i class="fa fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+      <ul>
+        <li id="toc"><a class="icon" href="#" onclick='$("#toc-footer").toggle();return false;'><i class="fa fa-list fa-lg" aria-hidden="true"></i> TOC</a></li>
+        <li id="share"><a class="icon" href="#" onclick='$("#share-footer").toggle();return false;'><i class="fa fa-share-alt fa-lg" aria-hidden="true"></i> Share</a></li>
+        <li id="top" style="display:none"><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a></li>
+        <li id="menu"><a class="icon" href="#" onclick='$("#nav-footer").toggle();return false;'><i class="fa fa-bars fa-lg" aria-hidden="true"></i> Menu</a></li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+    
+    <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2017 炸鸡
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about">About</a></li>
+         
+          <li><a href="/links">Links</a></li>
+         
+          <li><a href="/tags">Tags</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+
+</body>
+</html>
+<!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="/lib/meslo-LG/styles.css">
+<link rel="stylesheet" href="/lib/justified-gallery/justifiedGallery.min.css">
+
+
+<!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- Google Analytics -->
+
+<!-- Disqus Comments -->
+
+
