@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="传送门：BZOJ4712  思路：   考虑朴素的DP：   $$ f_u=min(val_u,\sum f_v) $$     树剖以后，可以维护$fL_u=\sum f_{Lv}$表示$u$的轻儿子DP值之和；   那么可以得到：   $$ f_u=min(val_u,fL_u+f_v) $$     我们可以定义一条重链上的转移$trans_{a,b}(x)$，令$a=val_u,b=Lf_">
+<meta name="keywords" content="动态规划DP,线段树,树链剖分">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【树剖+线段树维护DP】洪水">
+<meta property="og:url" content="https://bomb-chicken.github.io/2018/01/04/BZOJ4712/index.html">
+<meta property="og:site_name" content="炸鸡">
+<meta property="og:description" content="传送门：BZOJ4712  思路：   考虑朴素的DP：   $$ f_u=min(val_u,\sum f_v) $$     树剖以后，可以维护$fL_u=\sum f_{Lv}$表示$u$的轻儿子DP值之和；   那么可以得到：   $$ f_u=min(val_u,fL_u+f_v) $$     我们可以定义一条重链上的转移$trans_{a,b}(x)$，令$a=val_u,b=Lf_">
+<meta property="og:updated_time" content="2018-01-04T12:49:59.029Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="【树剖+线段树维护DP】洪水">
+<meta name="twitter:description" content="传送门：BZOJ4712  思路：   考虑朴素的DP：   $$ f_u=min(val_u,\sum f_v) $$     树剖以后，可以维护$fL_u=\sum f_{Lv}$表示$u$的轻儿子DP值之和；   那么可以得到：   $$ f_u=min(val_u,fL_u+f_v) $$     我们可以定义一条重链上的转移$trans_{a,b}(x)$，令$a=val_u,b=Lf_">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>【树剖+线段树维护DP】洪水</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- rss --><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    
+    
+</head>
+
+<body>
+    
+      <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="header-post">
+  <a id="menu-icon" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about">About</a></li>
+         
+          <li><a href="/links">Links</a></li>
+         
+          <li><a href="/tags">Tags</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" href="/2018/01/04/LOJ6208/"><i class="fa fa-chevron-right" aria-hidden="true" onmouseover='$("#i-next").toggle();' onmouseout='$("#i-next").toggle();'></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa fa-chevron-up" aria-hidden="true" onmouseover='$("#i-top").toggle();' onmouseout='$("#i-top").toggle();'></i></a></li>
+        <li><a class="icon" href="#"><i class="fa fa-share-alt" aria-hidden="true" onmouseover='$("#i-share").toggle();' onmouseout='$("#i-share").toggle();' onclick='$("#share").toggle();return false;'></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://bomb-chicken.github.io/2018/01/04/BZOJ4712/"><i class="fa fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://bomb-chicken.github.io/2018/01/04/BZOJ4712/&text=【树剖+线段树维护DP】洪水"><i class="fa fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://bomb-chicken.github.io/2018/01/04/BZOJ4712/&title=【树剖+线段树维护DP】洪水"><i class="fa fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://bomb-chicken.github.io/2018/01/04/BZOJ4712/&is_video=false&description=【树剖+线段树维护DP】洪水"><i class="fa fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=【树剖+线段树维护DP】洪水&body=Check out this article: https://bomb-chicken.github.io/2018/01/04/BZOJ4712/"><i class="fa fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://bomb-chicken.github.io/2018/01/04/BZOJ4712/&title=【树剖+线段树维护DP】洪水"><i class="fa fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://bomb-chicken.github.io/2018/01/04/BZOJ4712/&title=【树剖+线段树维护DP】洪水"><i class="fa fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://bomb-chicken.github.io/2018/01/04/BZOJ4712/&title=【树剖+线段树维护DP】洪水"><i class="fa fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://bomb-chicken.github.io/2018/01/04/BZOJ4712/&title=【树剖+线段树维护DP】洪水"><i class="fa fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://bomb-chicken.github.io/2018/01/04/BZOJ4712/&name=【树剖+线段树维护DP】洪水&description="><i class="fa fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index width mx-auto px2 my4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        【树剖+线段树维护DP】洪水
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">炸鸡</span>
+      </span>
+      
+    <div class="postdate">
+        <time datetime="2018-01-04T08:43:38.000Z" itemprop="datePublished">2018-01-04</time>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/动态规划DP/">动态规划DP</a>, <a class="tag-link" href="/tags/树链剖分/">树链剖分</a>, <a class="tag-link" href="/tags/线段树/">线段树</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <p>传送门：<a href="http://www.lydsy.com/JudgeOnline/problem.php?id=4712" target="_blank" rel="external">BZOJ4712</a></p>
+<hr>
+<p>思路：</p>
+<ul>
+<li>
+<p>考虑朴素的DP：</p>
+</li>
+<li>
+<p>$$
+f_u=min(val_u,\sum f_v)
+$$</p>
+</li>
+</ul>
+<ul>
+<li>
+<p>树剖以后，可以维护$fL_u=\sum f_{Lv}$表示$u$的轻儿子DP值之和；</p>
+</li>
+<li>
+<p>那么可以得到：</p>
+</li>
+<li>
+<p>$$
+f_u=min(val_u,fL_u+f_v)
+$$</p>
+</li>
+</ul>
+<ul>
+<li>
+<p>我们可以定义一条重链上的转移$trans_{a,b}(x)$，令$a=val_u,b=Lf_u,x=f_v$；</p>
+</li>
+<li>
+<p>则转移可以表示为$trans_{a_1,b_1}(trans_{a_2,b_2}(\cdots))$；</p>
+</li>
+<li>
+<p>可以发现：</p>
+</li>
+<li>
+<p>$$
+\begin{align*}
+&amp;\ \ \ \ \ trans_{a1,b1}(trans_{a2,b2}(x))\
+&amp;=trans_{a_1,b_1}(min(a2,b2+x))\
+&amp;=min(a_1,b_1+min(a_2,b_2+x))\
+&amp;=min(min(a_1,b_1+a_2),b_1+b_2+x)\
+&amp;=trans_{min(a_1,b_1+a_2),b_1+b_2}(x)\
+\end{align*}
+$$</p>
+</li>
+</ul>
+<ul>
+<li>
+<p>也这就是这个转移是封闭的，滋磁结合律；</p>
+</li>
+<li>
+<p>所以可以用线段树大力维护转移和修改。</p>
+</li>
+</ul>
+<p>注意：</p>
+<ul>
+<li>要开long long。</li>
+</ul>
+<hr>
+<p>代码如下：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></div><div class="line"></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> LL long long</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> N 300000</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> INF 0x3f3f3f3f3f3f3f3fLL</span></div><div class="line"></div><div class="line">LL n,m,x,y,fa[N],sz[N],top[N],but[N],dfn[N],head[N],tot,clk,c[N];</div><div class="line"><span class="keyword">char</span> ch;</div><div class="line"><span class="keyword">bool</span> mk[N];</div><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">edge</span>&#123;</span>LL v,nxt;&#125;e[N*<span class="number">2</span>];</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">adde</span><span class="params">(LL x,LL y)</span></span>&#123;e[++tot].v=y; e[tot].nxt=head[x]; head[x]=tot;&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">trans</span>&#123;</span></div><div class="line">	LL a,b;</div><div class="line">	trans():a(<span class="number">0</span>),b(<span class="number">0</span>)&#123;&#125;;</div><div class="line">	trans(LL a,LL b):a(a),b(b)&#123;&#125;;</div><div class="line">	trans <span class="keyword">operator</span> + (<span class="keyword">const</span> trans t) <span class="keyword">const</span>&#123;</div><div class="line">		<span class="keyword">return</span> trans(min(a,b+t.a),min(b+t.b,INF));</div><div class="line">	&#125;</div><div class="line">	<span class="function">LL <span class="title">calc</span><span class="params">()</span></span>&#123;<span class="keyword">return</span> min(a,b);&#125;</div><div class="line">&#125;seg[N*<span class="number">4</span>];</div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> ls x&lt;&lt;1</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> rs x&lt;&lt;1|1</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">mdf</span><span class="params">(LL x,LL l,LL r,LL k,trans tmp)</span></span>&#123;</div><div class="line">	<span class="keyword">if</span> (l==r)&#123;seg[x]=tmp; <span class="keyword">return</span>;&#125;</div><div class="line">	LL mid=(l+r)&gt;&gt;<span class="number">1</span>;</div><div class="line">	<span class="keyword">if</span> (k&lt;=mid) mdf(ls,l,mid,k,tmp);</div><div class="line">	<span class="keyword">else</span> mdf(rs,mid+<span class="number">1</span>,r,k,tmp);</div><div class="line">	seg[x]=seg[ls]+seg[rs];</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function">trans <span class="title">qry</span><span class="params">(LL x,LL l,LL r,LL L,LL R)</span></span>&#123;</div><div class="line">	<span class="keyword">if</span> (l&gt;=L &amp;&amp; r&lt;=R) <span class="keyword">return</span> seg[x];</div><div class="line">	LL mid=(l+r)&gt;&gt;<span class="number">1</span>;</div><div class="line">	<span class="keyword">if</span> (L&lt;=mid)&#123;</div><div class="line">		<span class="keyword">if</span> (R&gt;mid) <span class="keyword">return</span> qry(ls,l,mid,L,R)+qry(rs,mid+<span class="number">1</span>,r,L,R);</div><div class="line">		<span class="keyword">else</span> <span class="keyword">return</span> qry(ls,l,mid,L,R);</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">else</span> <span class="keyword">return</span> qry(rs,mid+<span class="number">1</span>,r,L,R);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">undef</span> ls</span></div><div class="line"><span class="meta">#<span class="meta-keyword">undef</span> rs</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs1</span><span class="params">(LL u)</span></span>&#123;</div><div class="line">	sz[u]=<span class="number">1</span>;</div><div class="line">	<span class="keyword">for</span> (LL i=head[u],v;i;i=e[i].nxt)</div><div class="line">		<span class="keyword">if</span> ((v=e[i].v)!=fa[u])&#123;</div><div class="line">			fa[v]=u; dfs1(v); sz[u]+=sz[v];</div><div class="line">		&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs2</span><span class="params">(LL u)</span></span>&#123;</div><div class="line">	<span class="keyword">if</span> (!top[u]) top[u]=u; LL t=<span class="number">0</span>;</div><div class="line">	dfn[u]=++clk; but[top[u]]=u;</div><div class="line">	<span class="keyword">for</span> (LL i=head[u],v;i;i=e[i].nxt)</div><div class="line">		<span class="keyword">if</span> ((v=e[i].v)!=fa[u] &amp;&amp; sz[v]&gt;sz[t]) t=v;</div><div class="line">	<span class="keyword">if</span> (!t)&#123;mdf(<span class="number">1</span>,<span class="number">1</span>,n,dfn[u],trans(<span class="number">0</span>,INF)); <span class="keyword">return</span>;&#125; top[t]=top[u]; dfs2(t);</div><div class="line">	<span class="keyword">for</span> (LL i=head[u],v;i;i=e[i].nxt)</div><div class="line">		<span class="keyword">if</span> ((v=e[i].v)!=fa[u] &amp;&amp; v!=t) dfs2(v);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(LL x,LL y)</span></span>&#123;</div><div class="line">	trans tmp2=qry(<span class="number">1</span>,<span class="number">1</span>,n,dfn[x],dfn[x]);</div><div class="line">	trans tmp=trans(tmp2.a+y,qry(<span class="number">1</span>,<span class="number">1</span>,n,dfn[x],dfn[x]).b);</div><div class="line">	<span class="keyword">while</span> (x)&#123;</div><div class="line">		<span class="keyword">if</span> (fa[top[x]])&#123;</div><div class="line">			tmp2=qry(<span class="number">1</span>,<span class="number">1</span>,n,dfn[fa[top[x]]],dfn[fa[top[x]]]);</div><div class="line">			tmp2.b-=qry(<span class="number">1</span>,<span class="number">1</span>,n,dfn[top[x]],dfn[but[top[x]]]).calc();</div><div class="line">		&#125;</div><div class="line">		mdf(<span class="number">1</span>,<span class="number">1</span>,n,dfn[x],tmp);</div><div class="line">		<span class="keyword">if</span> (fa[top[x]])&#123;</div><div class="line">			tmp2.b+=qry(<span class="number">1</span>,<span class="number">1</span>,n,dfn[top[x]],dfn[but[top[x]]]).calc();</div><div class="line">			tmp=tmp2;</div><div class="line">		&#125;</div><div class="line">		x=fa[top[x]];</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line">	<span class="built_in">scanf</span>(<span class="string">"%lld"</span>,&amp;n);</div><div class="line">	<span class="keyword">for</span> (LL i=<span class="number">1</span>;i&lt;=n;i++) <span class="built_in">scanf</span>(<span class="string">"%lld"</span>,&amp;c[i]);</div><div class="line">	<span class="keyword">for</span> (LL i=<span class="number">1</span>;i&lt;n;i++)&#123;</div><div class="line">		<span class="built_in">scanf</span>(<span class="string">"%lld%lld"</span>,&amp;x,&amp;y);</div><div class="line">		adde(x,y); adde(y,x);</div><div class="line">	&#125;</div><div class="line">	dfs1(<span class="number">1</span>); dfs2(<span class="number">1</span>);</div><div class="line">	<span class="keyword">for</span> (LL i=<span class="number">1</span>;i&lt;=n;i++) add(i,c[i]);</div><div class="line">	<span class="built_in">scanf</span>(<span class="string">"%lld"</span>,&amp;m);</div><div class="line">	<span class="keyword">while</span> (m--)&#123;</div><div class="line">		<span class="keyword">for</span> (ch=getchar();ch!=<span class="string">'Q'</span> &amp;&amp; ch!=<span class="string">'C'</span>;ch=getchar());</div><div class="line">		<span class="keyword">if</span> (ch==<span class="string">'Q'</span>)&#123;</div><div class="line">			<span class="built_in">scanf</span>(<span class="string">"%lld"</span>,&amp;x);</div><div class="line">			<span class="built_in">printf</span>(<span class="string">"%lld\n"</span>,qry(<span class="number">1</span>,<span class="number">1</span>,n,dfn[x],dfn[but[top[x]]]).calc());</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">if</span> (ch==<span class="string">'C'</span>)&#123;</div><div class="line">			<span class="built_in">scanf</span>(<span class="string">"%lld%lld"</span>,&amp;x,&amp;y);</div><div class="line">			add(x,y);</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+  </div>
+</article>
+
+    <div class="blog-post-comments">
+        <div id="disqus_thread">
+            <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        </div>
+    </div>
+
+
+
+    </div>
+    
+      <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about">About</a></li>
+         
+          <li><a href="/links">Links</a></li>
+         
+          <li><a href="/tags">Tags</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://bomb-chicken.github.io/2018/01/04/BZOJ4712/"><i class="fa fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://bomb-chicken.github.io/2018/01/04/BZOJ4712/&text=【树剖+线段树维护DP】洪水"><i class="fa fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://bomb-chicken.github.io/2018/01/04/BZOJ4712/&title=【树剖+线段树维护DP】洪水"><i class="fa fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://bomb-chicken.github.io/2018/01/04/BZOJ4712/&is_video=false&description=【树剖+线段树维护DP】洪水"><i class="fa fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=【树剖+线段树维护DP】洪水&body=Check out this article: https://bomb-chicken.github.io/2018/01/04/BZOJ4712/"><i class="fa fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://bomb-chicken.github.io/2018/01/04/BZOJ4712/&title=【树剖+线段树维护DP】洪水"><i class="fa fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://bomb-chicken.github.io/2018/01/04/BZOJ4712/&title=【树剖+线段树维护DP】洪水"><i class="fa fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://bomb-chicken.github.io/2018/01/04/BZOJ4712/&title=【树剖+线段树维护DP】洪水"><i class="fa fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://bomb-chicken.github.io/2018/01/04/BZOJ4712/&title=【树剖+线段树维护DP】洪水"><i class="fa fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://bomb-chicken.github.io/2018/01/04/BZOJ4712/&name=【树剖+线段树维护DP】洪水&description="><i class="fa fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+      <ul>
+        <li id="toc"><a class="icon" href="#" onclick='$("#toc-footer").toggle();return false;'><i class="fa fa-list fa-lg" aria-hidden="true"></i> TOC</a></li>
+        <li id="share"><a class="icon" href="#" onclick='$("#share-footer").toggle();return false;'><i class="fa fa-share-alt fa-lg" aria-hidden="true"></i> Share</a></li>
+        <li id="top" style="display:none"><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a></li>
+        <li id="menu"><a class="icon" href="#" onclick='$("#nav-footer").toggle();return false;'><i class="fa fa-bars fa-lg" aria-hidden="true"></i> Menu</a></li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+    
+    <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2018 炸鸡
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about">About</a></li>
+         
+          <li><a href="/links">Links</a></li>
+         
+          <li><a href="/tags">Tags</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+
+</body>
+</html>
+<!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="/lib/meslo-LG/styles.css">
+<link rel="stylesheet" href="/lib/justified-gallery/justifiedGallery.min.css">
+
+
+<!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- Google Analytics -->
+
+    <script type="text/javascript">
+        (function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-111610190-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+
+<!-- Disqus Comments -->
+
+    <script type="text/javascript">
+        var disqus_shortname = 'bomb-chicken';
+
+        (function(){
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        }());
+    </script>
+
+
