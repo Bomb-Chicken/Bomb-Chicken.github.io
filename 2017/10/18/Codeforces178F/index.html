@@ -13,7 +13,7 @@
 <meta property="og:url" content="https://bomb-chicken.github.io/2017/10/18/Codeforces178F/index.html">
 <meta property="og:site_name" content="炸鸡">
 <meta property="og:description" content="传送门：Codeforces178F  思路：  首先把所有的串建成一个字典树，那么两个串$i,j$的贡献等于$lca(i,j)$到根的距离； 考虑计算每条边的贡献，用$f_{u,i}$表示从u的子树中选取i个字符串的答案，就可以进行转移； 可以发现每对字符串的贡献只会在它们的lca时计算，所以时间是$O(n^2)$； 然而有一个问题，就是有很多结点只有一个子结点，这种结点不需要转移，只要继承子节">
-<meta property="og:updated_time" content="2017-10-18T07:42:24.647Z">
+<meta property="og:updated_time" content="2017-10-18T07:42:24.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【字典树+缩点+DP】Representative Sampling">
 <meta name="twitter:description" content="传送门：Codeforces178F  思路：  首先把所有的串建成一个字典树，那么两个串$i,j$的贡献等于$lca(i,j)$到根的距离； 考虑计算每条边的贡献，用$f_{u,i}$表示从u的子树中选取i个字符串的答案，就可以进行转移； 可以发现每对字符串的贡献只会在它们的lca时计算，所以时间是$O(n^2)$； 然而有一个问题，就是有很多结点只有一个子结点，这种结点不需要转移，只要继承子节">
