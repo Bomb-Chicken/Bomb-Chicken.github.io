@@ -6,17 +6,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="传送门：BZOJ4712  思路：   考虑朴素的DP：   $$ f_u=min(val_u,\sum f_v) $$     树剖以后，可以维护$fL_u=\sum f_{Lv}$表示$u$的轻儿子DP值之和；   那么可以得到：   $$ f_u=min(val_u,fL_u+f_v) $$     我们可以定义一条重链上的转移$trans_{a,b}(x)$，令$a=val_u,b=Lf_">
+    <meta name="description" content="传送门：BZOJ4712  思路：   考虑朴素的DP：   $$ f_u=min(val_u,\sum f_v) $$     树剖以后，可以维护$fL_u=\sum f_{Lv}$表示$u$的轻儿子DP值之和；   那么可以得到：   $$ f_u=min(val_u,fL_u+f_v) $$    我们可以定义一条重链上的转移$trans_{a,b}(x)$，令$a=val_u,b=Lf_u">
 <meta name="keywords" content="动态规划DP,线段树,树链剖分">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【树剖+线段树维护DP】洪水">
 <meta property="og:url" content="https://bomb-chicken.github.io/2018/01/04/BZOJ4712/index.html">
 <meta property="og:site_name" content="炸鸡">
-<meta property="og:description" content="传送门：BZOJ4712  思路：   考虑朴素的DP：   $$ f_u=min(val_u,\sum f_v) $$     树剖以后，可以维护$fL_u=\sum f_{Lv}$表示$u$的轻儿子DP值之和；   那么可以得到：   $$ f_u=min(val_u,fL_u+f_v) $$     我们可以定义一条重链上的转移$trans_{a,b}(x)$，令$a=val_u,b=Lf_">
-<meta property="og:updated_time" content="2018-01-04T12:49:59.000Z">
+<meta property="og:description" content="传送门：BZOJ4712  思路：   考虑朴素的DP：   $$ f_u=min(val_u,\sum f_v) $$     树剖以后，可以维护$fL_u=\sum f_{Lv}$表示$u$的轻儿子DP值之和；   那么可以得到：   $$ f_u=min(val_u,fL_u+f_v) $$    我们可以定义一条重链上的转移$trans_{a,b}(x)$，令$a=val_u,b=Lf_u">
+<meta property="og:updated_time" content="2018-02-07T09:26:48.878Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【树剖+线段树维护DP】洪水">
-<meta name="twitter:description" content="传送门：BZOJ4712  思路：   考虑朴素的DP：   $$ f_u=min(val_u,\sum f_v) $$     树剖以后，可以维护$fL_u=\sum f_{Lv}$表示$u$的轻儿子DP值之和；   那么可以得到：   $$ f_u=min(val_u,fL_u+f_v) $$     我们可以定义一条重链上的转移$trans_{a,b}(x)$，令$a=val_u,b=Lf_">
+<meta name="twitter:description" content="传送门：BZOJ4712  思路：   考虑朴素的DP：   $$ f_u=min(val_u,\sum f_v) $$     树剖以后，可以维护$fL_u=\sum f_{Lv}$表示$u$的轻儿子DP值之和；   那么可以得到：   $$ f_u=min(val_u,fL_u+f_v) $$    我们可以定义一条重链上的转移$trans_{a,b}(x)$，令$a=val_u,b=Lf_u">
     
     
         
@@ -164,27 +164,25 @@ $$</p>
 </li>
 </ul>
 <ul>
-<li>
-<p>我们可以定义一条重链上的转移$trans_{a,b}(x)$，令$a=val_u,b=Lf_u,x=f_v$；</p>
-</li>
-<li>
-<p>则转移可以表示为$trans_{a_1,b_1}(trans_{a_2,b_2}(\cdots))$；</p>
-</li>
-<li>
-<p>可以发现：</p>
-</li>
-<li>
-<p>$$
-\begin{align*}
-&amp;\ \ \ \ \ trans_{a1,b1}(trans_{a2,b2}(x))\
-&amp;=trans_{a_1,b_1}(min(a2,b2+x))\
-&amp;=min(a_1,b_1+min(a_2,b_2+x))\
-&amp;=min(min(a_1,b_1+a_2),b_1+b_2+x)\
-&amp;=trans_{min(a_1,b_1+a_2),b_1+b_2}(x)\
-\end{align*}
-$$</p>
-</li>
+<li>我们可以定义一条重链上的转移$trans_{a,b}(x)$，令$a=val_u,b=Lf_u,x=f_v$；</li>
+<li>则转移可以表示为$trans_{a_1,b_1}(trans_{a_2,b_2}(\cdots))$；</li>
+<li>可以发现：</li>
 </ul>
+<p>$$
+trans_{a1,b1}(trans_{a2,b2}(x))
+$$</p>
+<p>$$
+=trans_{a_1,b_1}(min(a2,b2+x))
+$$</p>
+<p>$$
+=min(a_1,b_1+min(a_2,b_2+x))
+$$</p>
+<p>$$
+=min(min(a_1,b_1+a_2),b_1+b_2+x)
+$$</p>
+<p>$$
+=trans_{min(a_1,b_1+a_2),b_1+b_2}(x)
+$$</p>
 <ul>
 <li>
 <p>也这就是这个转移是封闭的，滋磁结合律；</p>
