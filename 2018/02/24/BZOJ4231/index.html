@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="传送门：BZOJ4231  思路：  首先这道题是有向路径并且字母在边上非常难受然而并没有什么办法 考虑一个长度为$len$的询问，发现转弯的最多只有$O(n)$个，所以取出来KMP即可； 考虑所有不转弯的部分，一定是树上一条直的链； 可以先把询问串建成AC自动机； 然后遍历原树，在AC自动机上更新每个串出现的子树，等价于Fail树上到根的路径加，可以化成单点加子树查询；这样就可以实现在任意点查询">
+<meta name="keywords" content="树论,字符串">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【AC自动机+KMP+数据结构】回忆树">
+<meta property="og:url" content="https://bomb-chicken.github.io/2018/02/24/BZOJ4231/index.html">
+<meta property="og:site_name" content="炸鸡">
+<meta property="og:description" content="传送门：BZOJ4231  思路：  首先这道题是有向路径并且字母在边上非常难受然而并没有什么办法 考虑一个长度为$len$的询问，发现转弯的最多只有$O(n)$个，所以取出来KMP即可； 考虑所有不转弯的部分，一定是树上一条直的链； 可以先把询问串建成AC自动机； 然后遍历原树，在AC自动机上更新每个串出现的子树，等价于Fail树上到根的路径加，可以化成单点加子树查询；这样就可以实现在任意点查询">
+<meta property="og:updated_time" content="2018-02-24T00:47:29.408Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="【AC自动机+KMP+数据结构】回忆树">
+<meta name="twitter:description" content="传送门：BZOJ4231  思路：  首先这道题是有向路径并且字母在边上非常难受然而并没有什么办法 考虑一个长度为$len$的询问，发现转弯的最多只有$O(n)$个，所以取出来KMP即可； 考虑所有不转弯的部分，一定是树上一条直的链； 可以先把询问串建成AC自动机； 然后遍历原树，在AC自动机上更新每个串出现的子树，等价于Fail树上到根的路径加，可以化成单点加子树查询；这样就可以实现在任意点查询">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>【AC自动机+KMP+数据结构】回忆树</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- rss --><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    
+    
+</head>
+
+<body>
+    
+      <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="header-post">
+  <a id="menu-icon" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about">About</a></li>
+         
+          <li><a href="/links">Links</a></li>
+         
+          <li><a href="/tags">Tags</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" href="/2018/02/23/莫比乌斯反演/"><i class="fa fa-chevron-right" aria-hidden="true" onmouseover='$("#i-next").toggle();' onmouseout='$("#i-next").toggle();'></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa fa-chevron-up" aria-hidden="true" onmouseover='$("#i-top").toggle();' onmouseout='$("#i-top").toggle();'></i></a></li>
+        <li><a class="icon" href="#"><i class="fa fa-share-alt" aria-hidden="true" onmouseover='$("#i-share").toggle();' onmouseout='$("#i-share").toggle();' onclick='$("#share").toggle();return false;'></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://bomb-chicken.github.io/2018/02/24/BZOJ4231/"><i class="fa fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://bomb-chicken.github.io/2018/02/24/BZOJ4231/&text=【AC自动机+KMP+数据结构】回忆树"><i class="fa fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://bomb-chicken.github.io/2018/02/24/BZOJ4231/&title=【AC自动机+KMP+数据结构】回忆树"><i class="fa fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://bomb-chicken.github.io/2018/02/24/BZOJ4231/&is_video=false&description=【AC自动机+KMP+数据结构】回忆树"><i class="fa fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=【AC自动机+KMP+数据结构】回忆树&body=Check out this article: https://bomb-chicken.github.io/2018/02/24/BZOJ4231/"><i class="fa fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://bomb-chicken.github.io/2018/02/24/BZOJ4231/&title=【AC自动机+KMP+数据结构】回忆树"><i class="fa fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://bomb-chicken.github.io/2018/02/24/BZOJ4231/&title=【AC自动机+KMP+数据结构】回忆树"><i class="fa fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://bomb-chicken.github.io/2018/02/24/BZOJ4231/&title=【AC自动机+KMP+数据结构】回忆树"><i class="fa fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://bomb-chicken.github.io/2018/02/24/BZOJ4231/&title=【AC自动机+KMP+数据结构】回忆树"><i class="fa fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://bomb-chicken.github.io/2018/02/24/BZOJ4231/&name=【AC自动机+KMP+数据结构】回忆树&description="><i class="fa fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index width mx-auto px2 my4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        【AC自动机+KMP+数据结构】回忆树
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">炸鸡</span>
+      </span>
+      
+    <div class="postdate">
+        <time datetime="2018-02-24T00:14:55.000Z" itemprop="datePublished">2018-02-24</time>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/字符串/">字符串</a>, <a class="tag-link" href="/tags/树论/">树论</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <p>传送门：<a href="http://www.lydsy.com/JudgeOnline/problem.php?id=4231" target="_blank" rel="external">BZOJ4231</a></p>
+<hr>
+<p>思路：</p>
+<ul>
+<li>首先这道题是有向路径并且字母在边上非常难受<del>然而并没有什么办法</del></li>
+<li>考虑一个长度为$len$的询问，发现转弯的最多只有$O(n)$个，所以取出来KMP即可；</li>
+<li>考虑所有不转弯的部分，一定是树上一条直的链；</li>
+<li>可以先把询问串建成AC自动机；</li>
+<li>然后遍历原树，在AC自动机上更新每个串出现的子树，等价于Fail树上到根的路径加，可以化成单点加子树查询；这样就可以实现在任意点查询$pre_u$，其中$pre_u$为$root$到$u$的路径上任意字符串的数量；</li>
+<li>然后考虑答案，$edge(u,v)|dep_u&lt;dep_v$的答案可以通过$pre_v-pre_p$实现，其中$v,p$就是该询问的关键点；</li>
+<li>只要提前把询问挂到关键点上即可。</li>
+</ul>
+<p>注意：</p>
+<ul>
+<li>由于是有向路径KMP只要顺着跑一遍；</li>
+<li>树状数组for到cnt为止，因为维护的是Fail树的dfs序。</li>
+</ul>
+<hr>
+<p>代码如下（好长啊）：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></div><div class="line"></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> N 320000</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> ff first</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> ss second</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> P(x,y) make_pair(x,y)</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> gt(x) ((x)&lt;=m?(x):((x)-m))</span></div><div class="line"></div><div class="line"><span class="keyword">int</span> n,m,x,y,z,cnt,a[N*<span class="number">2</span>],bd[N],c[N][<span class="number">30</span>],bit[N],ans[N],q[N],fa[N];</div><div class="line"><span class="keyword">char</span> s[N],ss[N],sss[N];</div><div class="line"><span class="built_in">vector</span>&lt;pair&lt;<span class="keyword">int</span>,<span class="keyword">int</span>&gt; &gt; cc[N];</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">edge</span>&#123;</span><span class="keyword">int</span> v,nxt,ch;&#125;;</div><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">graph</span>&#123;</span></div><div class="line">	<span class="keyword">int</span> tot,clk,dep[N],sz[N],head[N],fa[N],dfn[N],fst[N],end[N],top[N],ps[N];</div><div class="line">	edge e[N*<span class="number">2</span>];</div><div class="line">	</div><div class="line">	<span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y,<span class="keyword">char</span> ch)</span></span>&#123;e[++tot].v=y; e[tot].ch=ch; e[tot].nxt=head[x]; head[x]=tot;&#125;</div><div class="line">	</div><div class="line">	<span class="function"><span class="keyword">void</span> <span class="title">dfs1</span><span class="params">(<span class="keyword">int</span> u)</span></span>&#123;</div><div class="line">		dep[u]=dep[fa[u]]+<span class="number">1</span>;</div><div class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i=head[u],v;i;i=e[i].nxt)</div><div class="line">			<span class="keyword">if</span> ((v=e[i].v)!=fa[u])&#123;fa[v]=u; dfs1(v); sz[u]+=sz[v];&#125;</div><div class="line">		<span class="keyword">if</span> (!sz[u]) sz[u]++;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	<span class="function"><span class="keyword">void</span> <span class="title">dfs2</span><span class="params">(<span class="keyword">int</span> u)</span></span>&#123;</div><div class="line">		fst[u]=end[u]=dfn[u]=++clk; ps[clk]=u;</div><div class="line">		<span class="keyword">if</span> (!top[u]) top[u]=u; <span class="keyword">int</span> t=<span class="number">0</span>;</div><div class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i=head[u],v;i;i=e[i].nxt)</div><div class="line">			<span class="keyword">if</span> ((v=e[i].v)!=fa[u]&amp;&amp;sz[v]&gt;sz[t]) t=v;</div><div class="line">		<span class="keyword">if</span> (!t) <span class="keyword">return</span>; top[t]=top[u]; dfs2(t); end[u]=end[t];</div><div class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i=head[u],v;i;i=e[i].nxt)</div><div class="line">			<span class="keyword">if</span> ((v=e[i].v)!=fa[u]&amp;&amp;v!=t) dfs2(v),end[u]=end[v];</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	<span class="function"><span class="keyword">int</span> <span class="title">lca</span><span class="params">(<span class="keyword">int</span> u,<span class="keyword">int</span> v)</span></span>&#123;</div><div class="line">		<span class="keyword">for</span> (;top[u]!=top[v];u=fa[top[u]]) <span class="keyword">if</span> (dep[top[u]]&lt;dep[top[v]]) swap(u,v);</div><div class="line">		<span class="keyword">return</span> dep[u]&lt;dep[v]?u:v;</div><div class="line">	&#125;</div><div class="line">&#125;g1,g2;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">kmp</span><span class="params">(<span class="keyword">char</span> ss[],<span class="keyword">char</span> s[])</span></span>&#123;</div><div class="line">	<span class="keyword">int</span> ret=<span class="number">0</span>,l1=<span class="built_in">strlen</span>(ss+<span class="number">1</span>),l2=<span class="built_in">strlen</span>(s+<span class="number">1</span>);</div><div class="line">	bd[<span class="number">1</span>]=<span class="number">0</span>;</div><div class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">2</span>,j=<span class="number">0</span>;i&lt;=l2;i++)&#123;</div><div class="line">		<span class="keyword">for</span> (j=bd[i<span class="number">-1</span>];j&amp;&amp;s[j+<span class="number">1</span>]!=s[i];j=bd[j]);</div><div class="line">		<span class="keyword">if</span> (s[j+<span class="number">1</span>]==s[i]) bd[i]=j+<span class="number">1</span>; <span class="keyword">else</span> bd[i]=<span class="number">0</span>;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>,j=<span class="number">0</span>;i&lt;=l1;i++)&#123;</div><div class="line">		<span class="keyword">for</span> (;j&amp;&amp;(j&gt;=l2||s[j+<span class="number">1</span>]!=ss[i]);j=bd[j]);</div><div class="line">		<span class="keyword">if</span> (s[j+<span class="number">1</span>]==ss[i]) j++; <span class="keyword">if</span> (j==l2) ret++;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> ret;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> k)</span></span>&#123;<span class="keyword">for</span> (<span class="keyword">int</span> i=x;i&lt;=cnt;i+=i&amp;(-i)) bit[i]+=k;&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">qry</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;<span class="keyword">int</span> ret=<span class="number">0</span>; <span class="keyword">for</span> (<span class="keyword">int</span> i=x;i;i-=i&amp;(-i)) ret+=bit[i]; <span class="keyword">return</span> ret;&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> u)</span></span>&#123;</div><div class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i=g1.head[u],v;i;i=g1.e[i].nxt)</div><div class="line">		<span class="keyword">if</span> ((v=g1.e[i].v)!=g1.fa[u])&#123;ss[v]=g1.e[i].ch; dfs(v);&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> u,<span class="keyword">int</span> now)</span></span>&#123;</div><div class="line">	<span class="keyword">int</span> w=ss[u]-<span class="string">'a'</span>;</div><div class="line">	<span class="keyword">for</span> (;now&amp;&amp;(w&lt;<span class="number">0</span>||!c[now][w]);now=fa[now]); now=c[now][w]; <span class="keyword">if</span> (!now) now=<span class="number">1</span>;</div><div class="line">	add(g2.dfn[now],<span class="number">1</span>);</div><div class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;(<span class="keyword">int</span>)cc[u].size();i++)&#123;</div><div class="line">		<span class="keyword">int</span> j=cc[u][i].ff,k=cc[u][i].ss;</div><div class="line">		ans[j]+=k*(qry(g2.end[a[j]])-qry(g2.fst[a[j]]<span class="number">-1</span>));</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i=g1.head[u],v;i;i=g1.e[i].nxt)</div><div class="line">		<span class="keyword">if</span> ((v=g1.e[i].v)!=g1.fa[u]) dfs(v,now);</div><div class="line">	add(g2.dfn[now],<span class="number">-1</span>);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line">	<span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;n,&amp;m);</div><div class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;n;i++)&#123;</div><div class="line">		<span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;x,&amp;y); <span class="keyword">char</span> ch;</div><div class="line">		<span class="keyword">for</span> (ch=getchar();ch==<span class="string">' '</span>;ch=getchar());</div><div class="line">		g1.add(x,y,ch); g1.add(y,x,ch);</div><div class="line">	&#125;</div><div class="line">	g1.dfs1(<span class="number">1</span>); g1.dfs2(<span class="number">1</span>); dfs(<span class="number">1</span>);</div><div class="line">	cnt=<span class="number">1</span>;</div><div class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;i++)&#123;</div><div class="line">		<span class="built_in">scanf</span>(<span class="string">"%d%d%s"</span>,&amp;x,&amp;y,s+<span class="number">1</span>); z=g1.lca(x,y);</div><div class="line">		cc[x].push_back(P(i+m,<span class="number">1</span>)); cc[y].push_back(P(i,<span class="number">1</span>));</div><div class="line">		<span class="keyword">int</span> d1=g1.dep[x],d2=g1.dep[y];</div><div class="line">		<span class="keyword">int</span> len=<span class="built_in">strlen</span>(s+<span class="number">1</span>),now=<span class="number">1</span>;</div><div class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=len;j++)&#123;</div><div class="line">			<span class="keyword">int</span> w=s[j]-<span class="string">'a'</span>;</div><div class="line">			<span class="keyword">if</span> (!c[now][w]) c[now][w]=++cnt;</div><div class="line">			now=c[now][w];</div><div class="line">		&#125;</div><div class="line">		a[i]=now;</div><div class="line">		now=<span class="number">1</span>;</div><div class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> j=len;j&gt;=<span class="number">1</span>;j--)&#123;</div><div class="line">			<span class="keyword">int</span> w=s[j]-<span class="string">'a'</span>;</div><div class="line">			<span class="keyword">if</span> (!c[now][w]) c[now][w]=++cnt;</div><div class="line">			now=c[now][w];</div><div class="line">		&#125;</div><div class="line">		a[i+m]=now;</div><div class="line">		<span class="keyword">for</span> (;g1.dep[g1.top[x]]-g1.dep[z]&gt;=len;x=g1.fa[g1.top[x]]);</div><div class="line">		<span class="keyword">if</span> (g1.dep[x]-g1.dep[z]&gt;=len) x=g1.ps[g1.dfn[x]-(g1.dep[x]-g1.dep[z]-len+<span class="number">1</span>)];</div><div class="line">		<span class="keyword">for</span> (;g1.dep[g1.top[y]]-g1.dep[z]&gt;=len;y=g1.fa[g1.top[y]]);</div><div class="line">		<span class="keyword">if</span> (g1.dep[y]-g1.dep[z]&gt;=len) y=g1.ps[g1.dfn[y]-(g1.dep[y]-g1.dep[z]-len+<span class="number">1</span>)];</div><div class="line">		assert(g1.dep[x]&lt;=d1); assert(g1.dep[y]&lt;=d2);</div><div class="line">		cc[x].push_back(P(i+m,<span class="number">-1</span>));	cc[y].push_back(P(i,<span class="number">-1</span>));</div><div class="line">		<span class="keyword">int</span> tt=g1.dep[x]+g1.dep[y]-g1.dep[z]*<span class="number">2</span>;</div><div class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> j=<span class="number">1</span>;x!=z;j++,x=g1.fa[x]) sss[j]=ss[x];</div><div class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> j=tt;y!=z;j--,y=g1.fa[y]) sss[j]=ss[y];</div><div class="line">		sss[tt+<span class="number">1</span>]=<span class="number">0</span>; ans[i]+=kmp(sss,s);</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">int</span> tt=<span class="number">0</span>,ww=<span class="number">1</span>; q[<span class="number">1</span>]=<span class="number">1</span>;</div><div class="line">	<span class="keyword">while</span> (tt&lt;ww)&#123;</div><div class="line">		<span class="keyword">int</span> xb=q[++tt];</div><div class="line">		g2.add(fa[xb],xb,<span class="number">0</span>);</div><div class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">26</span>;i++) <span class="keyword">if</span> (c[xb][i])&#123;</div><div class="line">			<span class="keyword">int</span> tmp=fa[xb];</div><div class="line">			<span class="keyword">for</span> (;tmp&amp;&amp;!c[tmp][i];tmp=fa[tmp]);</div><div class="line">			fa[c[xb][i]]=tmp?c[tmp][i]:<span class="number">1</span>;</div><div class="line">			q[++ww]=c[xb][i];</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	g2.dfs1(<span class="number">1</span>); g2.dfs2(<span class="number">1</span>);</div><div class="line">	dfs(<span class="number">1</span>,<span class="number">1</span>);</div><div class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;i++) <span class="built_in">printf</span>(<span class="string">"%d\n"</span>,ans[i]+ans[i+m]);</div><div class="line">	</div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+  </div>
+</article>
+
+    <div class="blog-post-comments">
+        <div id="disqus_thread">
+            <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        </div>
+    </div>
+
+
+
+    </div>
+    
+      <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about">About</a></li>
+         
+          <li><a href="/links">Links</a></li>
+         
+          <li><a href="/tags">Tags</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://bomb-chicken.github.io/2018/02/24/BZOJ4231/"><i class="fa fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://bomb-chicken.github.io/2018/02/24/BZOJ4231/&text=【AC自动机+KMP+数据结构】回忆树"><i class="fa fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://bomb-chicken.github.io/2018/02/24/BZOJ4231/&title=【AC自动机+KMP+数据结构】回忆树"><i class="fa fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://bomb-chicken.github.io/2018/02/24/BZOJ4231/&is_video=false&description=【AC自动机+KMP+数据结构】回忆树"><i class="fa fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=【AC自动机+KMP+数据结构】回忆树&body=Check out this article: https://bomb-chicken.github.io/2018/02/24/BZOJ4231/"><i class="fa fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://bomb-chicken.github.io/2018/02/24/BZOJ4231/&title=【AC自动机+KMP+数据结构】回忆树"><i class="fa fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://bomb-chicken.github.io/2018/02/24/BZOJ4231/&title=【AC自动机+KMP+数据结构】回忆树"><i class="fa fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://bomb-chicken.github.io/2018/02/24/BZOJ4231/&title=【AC自动机+KMP+数据结构】回忆树"><i class="fa fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://bomb-chicken.github.io/2018/02/24/BZOJ4231/&title=【AC自动机+KMP+数据结构】回忆树"><i class="fa fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://bomb-chicken.github.io/2018/02/24/BZOJ4231/&name=【AC自动机+KMP+数据结构】回忆树&description="><i class="fa fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+      <ul>
+        <li id="toc"><a class="icon" href="#" onclick='$("#toc-footer").toggle();return false;'><i class="fa fa-list fa-lg" aria-hidden="true"></i> TOC</a></li>
+        <li id="share"><a class="icon" href="#" onclick='$("#share-footer").toggle();return false;'><i class="fa fa-share-alt fa-lg" aria-hidden="true"></i> Share</a></li>
+        <li id="top" style="display:none"><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a></li>
+        <li id="menu"><a class="icon" href="#" onclick='$("#nav-footer").toggle();return false;'><i class="fa fa-bars fa-lg" aria-hidden="true"></i> Menu</a></li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+    
+    <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2018 炸鸡
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about">About</a></li>
+         
+          <li><a href="/links">Links</a></li>
+         
+          <li><a href="/tags">Tags</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+
+</body>
+</html>
+<!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="/lib/meslo-LG/styles.css">
+<link rel="stylesheet" href="/lib/justified-gallery/justifiedGallery.min.css">
+
+
+<!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- Google Analytics -->
+
+    <script type="text/javascript">
+        (function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-111610190-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+
+<!-- Disqus Comments -->
+
+    <script type="text/javascript">
+        var disqus_shortname = 'bomb-chicken';
+
+        (function(){
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        }());
+    </script>
+
+
